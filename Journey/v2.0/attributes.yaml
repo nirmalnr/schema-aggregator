@@ -1,0 +1,48 @@
+openapi: 3.1.0
+info:
+  title: Journey
+  version: 2.0.0
+  description: Schema definition for the Journey entity in the Beckn Mobility domain.
+  license:
+    name: CC-BY-NC-SA 4.0 International
+    url: https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+  contact:
+    name: Beckn Labs
+    url: https://beckn.io
+components:
+  schemas:
+    Journey:
+      x-iri: https://schema.beckn.io/Journey/v2.0
+      type: object
+      title: Journey
+      description: A complete travel itinerary from origin to destination, potentially
+        comprising multiple legs using different transport modes.
+      x-tags:
+        - mobility
+        - schema-org
+        - ride-hailing
+      properties:
+        origin:
+          description: Origin location of the journey
+          $ref: https://schema.beckn.io/Location/v2.0/attributes.yaml#/components/schemas/Location
+        destination:
+          description: Destination location of the journey
+          $ref: https://schema.beckn.io/Location/v2.0/attributes.yaml#/components/schemas/Location
+        departureTime:
+          description: Planned departure time
+          type: string
+          format: date-time
+        arrivalTime:
+          description: Planned arrival time
+          type: string
+          format: date-time
+        legs:
+          description: Ordered list of legs comprising this journey
+          $ref: https://schema.beckn.io/Leg/v2.0/attributes.yaml#/components/schemas/Leg
+        id:
+          description: Unique identifier for the journey
+          type: string
+        descriptor:
+          description: Human-readable description of the journey
+          $ref: https://schema.beckn.io/Descriptor/v2.0/attributes.yaml#/components/schemas/Descriptor
+      additionalProperties: false

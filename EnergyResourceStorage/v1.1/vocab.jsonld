@@ -1,0 +1,55 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "erDeg":  "https://schema.nfh.global/deg/EnergyResource/",
+    "deg":    "https://schema.nfh.global/deg#",
+    "qudt":   "http://qudt.org/schema/qudt/",
+    "rdf":    "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs":   "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd":    "http://www.w3.org/2001/XMLSchema#",
+    "schema": "https://schema.org/"
+  },
+  "@graph": [
+    {
+      "@id": "erDeg:EnergyResourceStorage",
+      "@type": "rdfs:Class",
+      "rdfs:label": "EnergyResource — Storage",
+      "rdfs:comment": "A stationary battery energy storage resource (BESS). v1.1: storageCapacity is qudt:QuantitativeValue. CIM: BatteryUnit (IEC 61970-302).",
+      "rdfs:subClassOf": { "@id": "deg:EnergyResourceCommon" },
+      "rdfs:seeAlso": { "@id": "https://ontology.tno.nl/IEC_CIM/iec61970-302.ttl#BatteryUnit" }
+    },
+    {
+      "@id": "erDeg:storageCapacity",
+      "@type": "rdf:Property",
+      "rdfs:label": "Storage Capacity",
+      "rdfs:comment": "Rated stored-energy capacity as a QuantitativeValue. Typical unit: kWh. CIM: BatteryUnit.ratedE. Replaces storageCapacityKwh from v1.0.",
+      "rdfs:domain": { "@id": "erDeg:EnergyResourceStorage" },
+      "rdfs:range":  { "@id": "qudt:QuantitativeValue" },
+      "rdfs:seeAlso": { "@id": "https://ontology.tno.nl/IEC_CIM/iec61970-302.ttl#BatteryUnit.ratedE" }
+    },
+    {
+      "@id": "erDeg:storageType",
+      "@type": "rdf:Property",
+      "rdfs:label": "Storage Type",
+      "rdfs:comment": "Battery storage technology (LithiumIon, LeadAcid, FlowBattery, NaS, NiCd, Flywheel, Other).",
+      "rdfs:domain": { "@id": "erDeg:EnergyResourceStorage" },
+      "schema:rangeIncludes": { "@id": "xsd:string" }
+    },
+    {
+      "@id": "erDeg:stateOfHealthPct",
+      "@type": "rdf:Property",
+      "rdfs:label": "State of Health (%)",
+      "rdfs:comment": "Battery state-of-health as a percentage (0–100).",
+      "rdfs:domain": { "@id": "erDeg:EnergyResourceStorage" },
+      "schema:rangeIncludes": { "@id": "xsd:decimal" }
+    },
+    {
+      "@id": "erDeg:roundTripEfficiencyPct",
+      "@type": "rdf:Property",
+      "rdfs:label": "Round-Trip Efficiency (%)",
+      "rdfs:comment": "AC-to-AC round-trip efficiency (0–100) — fraction of energy returned to the grid relative to energy drawn over a full charge/discharge cycle. Measured per IEC 62933-2-1. Distinct from stateOfHealthPct.",
+      "rdfs:domain": { "@id": "erDeg:EnergyResourceStorage" },
+      "schema:rangeIncludes": { "@id": "xsd:decimal" }
+    }
+  ]
+}

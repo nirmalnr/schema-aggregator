@@ -1,0 +1,63 @@
+{
+  "@context": {
+    "beckn": "https://schema.beckn.io/LinkedData/v2.1/context.jsonld",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/version/latest/schemaorg-current-https.jsonld",
+    "RatingInput": "beckn:RatingInput",
+    "@type": "beckn:@type",
+    "checksum": "beckn:checksum",
+    "checksumAlgorithm": "beckn:checksumAlgorithm",
+    "code": "beckn:code",
+    "data": "beckn:data",
+    "descriptor": "beckn:descriptor",
+    "docs": "beckn:docs",
+    "feedbackFormSubmission": "beckn:feedbackFormSubmission",
+    "id": "beckn:id",
+    "keyId": "beckn:keyId",
+    "label": "beckn:label",
+    "longDesc": "beckn:longDesc",
+    "mediaFile": "beckn:mediaFile",
+    "mimeType": "beckn:mimeType",
+    "name": "beckn:name",
+    "range": "beckn:range",
+    "security": "beckn:security",
+    "shortDesc": "beckn:shortDesc",
+    "signature": "beckn:signature",
+    "signatureAlgorithm": "beckn:signatureAlgorithm",
+    "standard": "beckn:standard",
+    "submissionId": "beckn:submissionId",
+    "submittedAt": "beckn:submittedAt",
+    "target": "beckn:target",
+    "targetAttributes": "beckn:targetAttributes",
+    "thumbnailImage": "beckn:thumbnailImage",
+    "uri": "beckn:uri",
+    "url": "beckn:url"
+  },
+  "@graph": [
+    {
+      "@id": "beckn:RatingInput",
+      "@type": "rdfs:Class",
+      "rdfs:label": "RatingInput",
+      "rdfs:comment": "A form designed to capture rating and feedback from a user. This can be used by both BAP and BPP to fetch ratings and feedback of their respective users.\n\nThis schema is part of the Long Term Support of Beckn Protocol V2.0 API specification and MUST NOT be extended. Any domain-specific extension must use the property of this schema which is of type Attribute."
+    },
+    {
+      "@id": "beckn:target",
+      "@type": "rdf:Property",
+      "rdfs:label": "target",
+      "rdfs:comment": "The thing being rated. It could be a person, an application, a service, a product, an instrument used in the fulfillment of the contract, or the overall experience."
+    },
+    {
+      "@id": "beckn:range",
+      "@type": "rdf:Property",
+      "rdfs:label": "range",
+      "rdfs:comment": "Property range"
+    },
+    {
+      "@id": "beckn:feedbackFormSubmission",
+      "@type": "rdf:Property",
+      "rdfs:label": "feedbackFormSubmission",
+      "rdfs:comment": "The submission to the feedback form sent along with a rating request"
+    }
+  ]
+}

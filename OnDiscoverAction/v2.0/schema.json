@@ -1,0 +1,20 @@
+{
+  "$id": "https://schema.beckn.io/OnDiscoverAction/v2.0",
+  "x-iri": "https://schema.beckn.io/OnDiscoverAction/v2.0",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "The on_discover response payload containing matching catalogs.",
+  "type": "object",
+  "required": [
+    "catalogs"
+  ],
+  "properties": {
+    "catalogs": {
+      "type": "array",
+      "description": "Array of catalogs matching the discovery request. Array of catalogs matching the discovery request.",
+      "items": {
+        "$ref": "https://schema.beckn.io/Catalog/v2.0/schema.json"
+      }
+    }
+  },
+  "additionalProperties": false
+}

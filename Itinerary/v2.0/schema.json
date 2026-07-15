@@ -1,0 +1,51 @@
+{
+  "$id": "https://schema.beckn.io/Itinerary/v2.0",
+  "x-iri": "https://schema.beckn.io/Itinerary/v2.0",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Itinerary",
+  "type": "object",
+  "description": "A complete planned trip containing an ordered sequence of legs, including transfer points, durations, and timing.",
+  "properties": {
+    "legs": {
+      "description": "Ordered list of legs making up this itinerary",
+      "$ref": "https://schema.beckn.io/Leg/v2.0/schema.json"
+    },
+    "totalDuration": {
+      "description": "Total travel duration for the itinerary",
+      "type": "string",
+      "format": "duration"
+    },
+    "totalDistance": {
+      "description": "Total distance in metres for the itinerary",
+      "type": "number"
+    },
+    "transferCount": {
+      "description": "Number of transfers in the itinerary",
+      "type": "number"
+    },
+    "departureTime": {
+      "description": "Departure time of the first leg",
+      "type": "string",
+      "format": "date-time"
+    },
+    "arrivalTime": {
+      "description": "Arrival time of the last leg",
+      "type": "string",
+      "format": "date-time"
+    },
+    "id": {
+      "description": "Unique identifier for the itinerary",
+      "type": "string"
+    },
+    "descriptor": {
+      "description": "Human-readable description of the itinerary",
+      "$ref": "https://schema.beckn.io/Descriptor/v2.1/schema.json"
+    }
+  },
+  "additionalProperties": false,
+  "x-tags": [
+    "mobility",
+    "schema-org",
+    "ride-hailing"
+  ]
+}

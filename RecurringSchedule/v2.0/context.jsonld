@@ -1,0 +1,18 @@
+{
+  "@context": {
+    "schema": "https://schema.org/",
+    "RecurringSchedule": "beckn:RecurringSchedule",
+    "days": "beckn:days",
+    "timeRange": "beckn:timeRange",
+    "start": "beckn:start",
+    "end": "beckn:end",
+    "holidays": "beckn:holidays",
+    "timezone": "beckn:timezone",
+    "@version": 1.1,
+    "@protected": true,
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "beckn": "https://schema.beckn.io/LinkedData/v2.1/context.jsonld"
+  }
+}

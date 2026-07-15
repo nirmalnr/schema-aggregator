@@ -1,0 +1,43 @@
+{
+  "$id": "https://schema.beckn.io/DeliveryPolicy/v2.0",
+  "x-iri": "https://schema.beckn.io/DeliveryPolicy/v2.0",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "description": "Callback delivery retry configuration",
+  "properties": {
+    "timeoutSeconds": {
+      "type": "integer",
+      "default": 30,
+      "description": "Per-request HTTP timeout in seconds"
+    },
+    "maxPayloadBytes": {
+      "type": "integer",
+      "description": "Maximum callback payload size in bytes"
+    },
+    "retryPolicy": {
+      "type": "object",
+      "properties": {
+        "maxRetries": {
+          "type": "integer",
+          "default": 5,
+          "description": "Maximum retry attempts before sending to DLT"
+        },
+        "initialDelaySeconds": {
+          "type": "integer",
+          "default": 5,
+          "description": "Base delay before first retry"
+        },
+        "maxDelaySeconds": {
+          "type": "integer",
+          "default": 300,
+          "description": "Maximum delay cap for exponential backoff"
+        },
+        "backoffMultiplier": {
+          "type": "number",
+          "default": 2.0,
+          "description": "Delay multiplied by this after each retry"
+        }
+      }
+    }
+  }
+}

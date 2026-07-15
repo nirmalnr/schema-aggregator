@@ -1,0 +1,40 @@
+openapi: 3.1.1
+info:
+  title: Constraint
+  version: 2.0.0
+  description: Schema definition for Constraint in the Beckn Protocol v2.0.1
+  license:
+    name: CC-BY-NC-SA 4.0 International
+  contact:
+    name: Beckn Labs
+    url: https://beckn.io
+components:
+  schemas:
+    Constraint:
+      x-iri: https://schema.beckn.io/Constraint/v2.0
+      description: Schema definition for Constraint in the Beckn Protocol v2.0.1
+      title: Constraint
+      type: object
+      properties:
+        constraintType:
+          description: Type of constraint (extensible term)
+          type: string
+        id:
+          description: Identifier for the constraint
+          type: string
+        operator:
+          description: Comparator/operator (<=, >=, =, etc.)
+          type: string
+        unitCode:
+          description: Unit code (e.g., km, min)
+          type: string
+        validity:
+          $ref: https://schema.beckn.io/TimePeriod/v2.1/attributes.yaml#/components/schemas/TimePeriod
+        value:
+          description: Constraint value
+          type: number
+      required:
+      - id
+      additionalProperties: false
+      x-tags:
+      - common

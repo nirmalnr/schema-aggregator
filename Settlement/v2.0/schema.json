@@ -1,0 +1,25 @@
+{
+  "$id": "https://schema.beckn.io/Settlement/v2.0",
+  "x-iri": "https://schema.beckn.io/Settlement/v2.0",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "considerationId": {
+      "$ref": "#/properties/id"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "DRAFT",
+        "COMMITTED",
+        "COMPLETE"
+      ]
+    },
+    "settlementAttributes": {
+      "$ref": "https://schema.beckn.io/Attributes/v2.0/schema.json"
+    }
+  }
+}

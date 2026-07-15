@@ -1,0 +1,19 @@
+{
+  "$id": "https://schema.beckn.io/CatalogOnPublishAction/v2.0",
+  "x-iri": "https://schema.beckn.io/CatalogOnPublishAction/v2.0",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Catalog publish processing results from CDS to BPP.",
+  "type": "object",
+  "required": [
+    "results"
+  ],
+  "properties": {
+    "results": {
+      "type": "array",
+      "description": "Per-catalog processing results",
+      "items": {
+        "$ref": "https://schema.beckn.io/CatalogProcessingResult/v2.0/schema.json"
+      }
+    }
+  }
+}

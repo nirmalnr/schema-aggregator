@@ -1,0 +1,21 @@
+{
+  "$id": "https://schema.beckn.io/Pagination/v2.0",
+  "x-iri": "https://schema.beckn.io/Pagination/v2.0",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "description": "Pagination metadata returned with list responses",
+  "properties": {
+    "count": {
+      "type": "integer",
+      "description": "Number of items in this page"
+    },
+    "limit": {
+      "type": "integer",
+      "description": "Page size used in this response"
+    },
+    "offset": {
+      "type": "integer",
+      "description": "Zero-based offset used in this response"
+    }
+  }
+}

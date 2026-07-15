@@ -1,0 +1,9 @@
+# DayType
+
+A classification of a day (e.g., weekday, weekend, public holiday) used to define when a service pattern is valid.
+
+## Versions
+
+| Version | attributes.yaml | attributes.jsonschema.yaml | context.jsonld | vocab.jsonld | README |
+|---|---|---|---|---|---|
+| **v2.0** | [https://schema.beckn.io/DayType/v2.0/attributes.yaml](https://schema.beckn.io/DayType/v2.0/attributes.yaml) | [https://schema.beckn.io/DayType/v2.0/attributes.jsonschema.yaml](https://schema.beckn.io/DayType/v2.0/attributes.jsonschema.yaml) | [https://schema.beckn.io/DayType/v2.0/context.jsonld](https://schema.beckn.io/DayType/v2.0/context.jsonld) | [https://schema.beckn.io/DayType/v2.0/vocab.jsonld](https://schema.beckn.io/DayType/v2.0/vocab.jsonld) | [https://schema.beckn.io/DayType/v2.0/README.md](https://schema.beckn.io/DayType/v2.0/README.md) |

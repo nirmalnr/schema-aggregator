@@ -1,0 +1,153 @@
+openapi: 3.1.1
+info:
+  title: ElectricityCredential
+  version: 1.1.0
+  description: >
+    Unified W3C Verifiable Credential (VC Data Model 2.0) issued per meter by
+    electricity distribution utilities.
+
+    customerProfile holds only non-PII utility identity: customerNumber (CA
+    number), optional idRef, energyResources[], and consumptionProfiles[].
+
+    energyResources[] uses EnergyResource/v2.0. Each entry has id, type,
+    and all attributes directly on the object — no attribute-bag wrapper.
+    Multiple topologies are supported: a single CA number may span multiple
+    meters (different premises, sub-meters, parallel meters) each with their
+    own child DERs linked via parentResources[].
+
+    consumptionProfiles[] links tariff/load characteristics to a specific
+    meter via meterId (= that meter's id in energyResources[]).
+
+    PII (fullName) is exclusively in customerDetails.
+
+    v1.0 → v1.1 field mapping (nothing lost)
+    ─────────────────────────────────────────
+    customerProfile.meterNumber        → energyResources[METER].id
+    customerProfile.meterType          → energyResources[METER].meterType
+    consumptionProfiles[].premisesType       → consumptionProfiles[].premisesType
+    consumptionProfiles[].connectionType     → consumptionProfiles[].connectionType
+    consumptionProfiles[].sanctionedLoadKW   → consumptionProfiles[].sanctionedLoadKW
+    consumptionProfiles[].tariffCategoryCode → consumptionProfiles[].tariffCategoryCode
+    generationProfiles[].assetId         → energyResources[DER].id
+    generationProfiles[].generationType  → energyResources[DER].type  (SOLAR, WIND, …)
+    generationProfiles[].capacityKW      → energyResources[DER].ratedPowerKw
+    generationProfiles[].manufacturer    → energyResources[DER].make
+    generationProfiles[].modelNumber     → energyResources[DER].model
+    generationProfiles[].commissioningDate → energyResources[DER].commissioningDate
+    storageProfiles[].assetId            → energyResources[DER].id
+    storageProfiles[].storageCapacityKWh → energyResources[DER].energyCapacityKwh
+    storageProfiles[].powerRatingKW      → energyResources[DER].ratedPowerKw
+    storageProfiles[].storageType        → energyResources[DER].storageType
+    storageProfiles[].commissioningDate  → energyResources[DER].commissioningDate
+
+jsonSchemaDialect: https://json-schema.org/draft/2020-12/schema
+servers:
+  - url: https://schema.nfh.global
+    description: Canonical schema registry
+paths: {}
+components:
+  schemas:
+
+    ElectricityCredential:
+      $id: https://schema.nfh.global/ElectricityCredential/v1.1
+      title: ElectricityCredential
+      type: object
+      additionalProperties: true
+      allOf:
+        - $ref: "https://schema.nfh.global/EnergyCredential/v2.0"
+      x-tags:
+        - energy
+        - credential
+        - verifiable-credential
+        - electricity
+        - customer
+        - deg
+      x-jsonld:
+        "@context": ./context.jsonld
+        "@type": ElectricityCredential
+      properties:
+        credentialSubject:
+          type: object
+          required:
+            - customerProfile
+          x-jsonld:
+            "@id": deg:credentialSubject
+          properties:
+            id:
+              type: string
+              format: uri
+              description: Optional DID of the customer/credential subject.
+              x-jsonld:
+                "@id": "@id"
+            customerProfile:
+              $ref: "#/components/schemas/CustomerProfile"
+            customerDetails:
+              $ref: "#/components/schemas/CustomerDetails"
+
+    CustomerProfile:
+      type: object
+      description: >
+        Non-PII customer identity and asset list. No PII — safe to share
+        without customerDetails. Supports arbitrary topologies: a single
+        customerNumber may have multiple METER entries (different premises,
+        sub-meters, parallel meters) each with their own child DERs.
+      required:
+        - customerNumber
+        - energyResources
+      x-jsonld:
+        "@id": deg:customerProfile
+      properties:
+        customerNumber:
+          type: string
+          minLength: 1
+          description: Utility customer account number (CA number).
+          x-jsonld:
+            "@id": deg:customerNumber
+        idRef:
+          $ref: "https://schema.nfh.global/IdRef/v1.0#/components/schemas/IdRef"
+          description: External identity reference for the customer. Defined in IdRef/v1.0.
+          x-jsonld:
+            "@id": deg:idRef
+        energyResources:
+          type: array
+          minItems: 1
+          description: >
+            All physical energy assets for this customer account as
+            EnergyResource/v2.0 entries. Each entry has id, type,
+            attributes (open bag), subResources, and parentResources.
+            For METER entries, id is the meter serial number; type-specific
+            fields (meterType, gps, feeder, bus) live in attributes.
+            DERs (SOLAR, WIND, BATTERY, …) declare their parent meter via
+            parentResources[]; their dimensioning and type-specific fields
+            (ratedPowerKw, commissioningDate, storageType, …) also live in
+            attributes.
+          x-jsonld:
+            "@id": deg:energyResources
+          items:
+            $ref: "https://schema.nfh.global/EnergyResource/v2.0#/components/schemas/EnergyResource"
+        consumptionProfiles:
+          type: array
+          minItems: 1
+          description: >
+            Tariff and load characteristics per meter connection. Each
+            entry links to a specific meter via meterId. Separate from
+            physical asset data because tariff data is administrative and
+            changes independently.
+          x-jsonld:
+            "@id": deg:consumptionProfiles
+          items:
+            $ref: "#/components/schemas/ConsumptionProfile"
+
+    ConsumptionProfile:
+      $ref: "https://schema.nfh.global/MeterServiceProfile/v1.0#/components/schemas/MeterServiceProfile"
+      description: >
+        Tariff and regulatory load profile for one meter connection.
+        meterId links to a METER entry in customerProfile.energyResources[].
+        Alias for MeterServiceProfile/v1.0 — kept for backward compatibility.
+
+    CustomerDetails:
+      $ref: "https://schema.nfh.global/CustomerDetails/v1.0#/components/schemas/CustomerDetails"
+      description: >
+        PII section — fullName, installationAddress, serviceConnectionDate.
+        fullName appears ONLY here — never in customerProfile or resource entries.
+        Defined in CustomerDetails/v1.0.

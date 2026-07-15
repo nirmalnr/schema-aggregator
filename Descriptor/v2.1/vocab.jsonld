@@ -1,0 +1,77 @@
+{
+  "@context": {
+    "beckn": "https://schema.beckn.io/LinkedData/v2.1/context.jsonld",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/version/latest/schemaorg-current-https.jsonld",
+    "Descriptor": "beckn:Descriptor",
+    "checksum": "beckn:checksum",
+    "checksumAlgorithm": "beckn:checksumAlgorithm",
+    "code": "beckn:code",
+    "docs": "beckn:docs",
+    "keyId": "beckn:keyId",
+    "label": "beckn:label",
+    "longDesc": "beckn:longDesc",
+    "mediaFile": "beckn:mediaFile",
+    "mimeType": "beckn:mimeType",
+    "name": "beckn:name",
+    "security": "beckn:security",
+    "shortDesc": "beckn:shortDesc",
+    "signature": "beckn:signature",
+    "signatureAlgorithm": "beckn:signatureAlgorithm",
+    "standard": "beckn:standard",
+    "thumbnailImage": "beckn:thumbnailImage",
+    "uri": "beckn:uri",
+    "url": "beckn:url"
+  },
+  "@graph": [
+    {
+      "@id": "beckn:Descriptor",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Descriptor",
+      "rdfs:comment": "Schema definition for Descriptor in the Beckn Protocol v2.0.1\n\nThis schema is part of the Long Term Support of Beckn Protocol V2.0 API specification and MUST NOT be extended. Any domain-specific extension must use the property of this schema which is of type Attribute."
+    },
+    {
+      "@id": "beckn:code",
+      "@type": "rdf:Property",
+      "rdfs:label": "code",
+      "rdfs:comment": "A machine-readable code identifying the state or type of the entity being described. The valid values for this field are defined by the context in which the Descriptor is used (e.g. DRAFT, ACTIVE, CANCELLED, COMPLETE for a Contract status)."
+    },
+    {
+      "@id": "beckn:longDesc",
+      "@type": "rdf:Property",
+      "rdfs:label": "longDesc",
+      "rdfs:comment": "Detailed description of the item"
+    },
+    {
+      "@id": "beckn:shortDesc",
+      "@type": "rdf:Property",
+      "rdfs:label": "shortDesc",
+      "rdfs:comment": "Short description of the item"
+    },
+    {
+      "@id": "beckn:name",
+      "@type": "rdf:Property",
+      "rdfs:label": "name",
+      "rdfs:comment": "Name of the entity being described"
+    },
+    {
+      "@id": "beckn:thumbnailImage",
+      "@type": "rdf:Property",
+      "rdfs:label": "thumbnailImage",
+      "rdfs:comment": "Name of the entity being described"
+    },
+    {
+      "@id": "beckn:docs",
+      "@type": "rdf:Property",
+      "rdfs:label": "docs",
+      "rdfs:comment": "Links to downloadable documents"
+    },
+    {
+      "@id": "beckn:mediaFile",
+      "@type": "rdf:Property",
+      "rdfs:label": "mediaFile",
+      "rdfs:comment": "Links to multimedia files and images"
+    }
+  ]
+}

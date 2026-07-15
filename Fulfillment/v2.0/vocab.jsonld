@@ -1,0 +1,61 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "beckn": "https://schema.beckn.io/",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "schema": "https://schema.org/",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "beckn:Fulfillment",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Fulfillment",
+      "rdfs:comment": "Schema definition for Fulfillment in the Beckn Protocol"
+    },
+    {
+      "@id": "beckn:context",
+      "@type": "rdf:Property",
+      "rdfs:label": "context",
+      "rdfs:comment": "context property of Fulfillment"
+    },
+    {
+      "@id": "beckn:type",
+      "@type": "rdf:Property",
+      "rdfs:label": "type",
+      "rdfs:comment": "type property of Fulfillment"
+    },
+    {
+      "@id": "beckn:id",
+      "@type": "rdf:Property",
+      "rdfs:label": "id",
+      "rdfs:comment": "id property of Fulfillment"
+    },
+    {
+      "@id": "beckn:fulfillmentStatus",
+      "@type": "rdf:Property",
+      "rdfs:label": "fulfillmentStatus",
+      "rdfs:comment": "fulfillmentStatus property of Fulfillment"
+    },
+    {
+      "@id": "beckn:mode",
+      "@type": "rdf:Property",
+      "rdfs:label": "mode",
+      "rdfs:comment": "mode property of Fulfillment"
+    },
+    {
+      "@id": "beckn:trackingAction",
+      "@type": "rdf:Property",
+      "rdfs:label": "trackingAction",
+      "rdfs:comment": "trackingAction property of Fulfillment"
+    },
+    {
+      "@id": "beckn:deliveryAttributes",
+      "@type": "rdf:Property",
+      "rdfs:label": "deliveryAttributes",
+      "rdfs:comment": "deliveryAttributes property of Fulfillment"
+    }
+  ]
+}

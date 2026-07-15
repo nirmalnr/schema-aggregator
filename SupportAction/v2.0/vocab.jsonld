@@ -1,0 +1,55 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "beckn": "https://schema.beckn.io/LinkedData/v2.1/context.jsonld",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "schema": "https://schema.org/version/latest/schemaorg-current-https.jsonld",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "SupportAction": "beckn:SupportAction",
+    "@type": "beckn:@type",
+    "channels": "beckn:channels",
+    "checksum": "beckn:checksum",
+    "checksumAlgorithm": "beckn:checksumAlgorithm",
+    "code": "beckn:code",
+    "descriptor": "beckn:descriptor",
+    "docs": "beckn:docs",
+    "keyId": "beckn:keyId",
+    "label": "beckn:label",
+    "longDesc": "beckn:longDesc",
+    "mediaFile": "beckn:mediaFile",
+    "mimeType": "beckn:mimeType",
+    "name": "beckn:name",
+    "orderId": "beckn:orderId",
+    "security": "beckn:security",
+    "shortDesc": "beckn:shortDesc",
+    "signature": "beckn:signature",
+    "signatureAlgorithm": "beckn:signatureAlgorithm",
+    "standard": "beckn:standard",
+    "support": "beckn:support",
+    "thumbnailImage": "beckn:thumbnailImage",
+    "uri": "beckn:uri",
+    "url": "beckn:url"
+  },
+  "@graph": [
+    {
+      "@id": "beckn:SupportAction",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Support Action",
+      "rdfs:comment": "Beckn /beckn/support action envelope. Sent by a BAP to a BPP to request support contact information or to open a support ticket for an existing order/contract."
+    },
+    {
+      "@id": "beckn:context",
+      "@type": "rdf:Property",
+      "rdfs:label": "context",
+      "rdfs:comment": "TODO: Description Needed - context"
+    },
+    {
+      "@id": "beckn:message",
+      "@type": "rdf:Property",
+      "rdfs:label": "message",
+      "rdfs:comment": "TODO: Description Needed - message"
+    }
+  ]
+}

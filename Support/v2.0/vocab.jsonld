@@ -1,0 +1,84 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "beckn": "https://schema.beckn.io/LinkedData/v2.1/context.jsonld",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "schema": "https://schema.org/version/latest/schemaorg-current-https.jsonld",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "Support": "beckn:Support",
+    "@type": "beckn:@type",
+    "channels": "beckn:channels",
+    "checksum": "beckn:checksum",
+    "checksumAlgorithm": "beckn:checksumAlgorithm",
+    "code": "beckn:code",
+    "descriptor": "beckn:descriptor",
+    "docs": "beckn:docs",
+    "keyId": "beckn:keyId",
+    "label": "beckn:label",
+    "longDesc": "beckn:longDesc",
+    "mediaFile": "beckn:mediaFile",
+    "mimeType": "beckn:mimeType",
+    "name": "beckn:name",
+    "orderId": "beckn:orderId",
+    "security": "beckn:security",
+    "shortDesc": "beckn:shortDesc",
+    "signature": "beckn:signature",
+    "signatureAlgorithm": "beckn:signatureAlgorithm",
+    "standard": "beckn:standard",
+    "thumbnailImage": "beckn:thumbnailImage",
+    "uri": "beckn:uri",
+    "url": "beckn:url"
+  },
+  "@graph": [
+    {
+      "@id": "beckn:Support",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Support",
+      "rdfs:comment": "Support request payload sent by a BAP to a BPP in the /beckn/support call."
+    },
+    {
+      "@id": "beckn:@context",
+      "@type": "rdf:Property",
+      "rdfs:label": "@context",
+      "rdfs:comment": "JSON-LD context URI."
+    },
+    {
+      "@id": "beckn:@type",
+      "@type": "rdf:Property",
+      "rdfs:label": "@type",
+      "rdfs:comment": "JSON-LD type identifier."
+    },
+    {
+      "@id": "beckn:orderId",
+      "@type": "rdf:Property",
+      "rdfs:label": "order Id",
+      "rdfs:comment": "The order against which support is required."
+    },
+    {
+      "@id": "beckn:ticketIds",
+      "@type": "rdf:Property",
+      "rdfs:label": "ticket Ids",
+      "rdfs:comment": "IDs of existing support tickets for this order."
+    },
+    {
+      "@id": "beckn:callbackPhone",
+      "@type": "rdf:Property",
+      "rdfs:label": "callback Phone",
+      "rdfs:comment": "Telephone number of the user for a support callback."
+    },
+    {
+      "@id": "beckn:issue",
+      "@type": "rdf:Property",
+      "rdfs:label": "issue",
+      "rdfs:comment": "Free-text description of the issue requiring support."
+    },
+    {
+      "@id": "beckn:issueCode",
+      "@type": "rdf:Property",
+      "rdfs:label": "issue Code",
+      "rdfs:comment": "Structured issue category code (domain-defined)."
+    }
+  ]
+}

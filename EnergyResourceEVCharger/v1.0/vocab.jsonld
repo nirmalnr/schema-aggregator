@@ -1,0 +1,46 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "erDeg":  "https://schema.nfh.global/deg/EnergyResource/",
+    "deg":    "https://schema.nfh.global/deg#",
+    "rdf":    "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs":   "http://www.w3.org/2000/01/rdf-schema#",
+    "owl":    "http://www.w3.org/2002/07/owl#",
+    "xsd":    "http://www.w3.org/2001/XMLSchema#",
+    "schema": "https://schema.org/",
+    "skos":   "http://www.w3.org/2004/02/skos/core#"
+  },
+  "@graph": [
+    {
+      "@id": "erDeg:EnergyResourceEVCharger",
+      "@type": "rdfs:Class",
+      "rdfs:label": "EnergyResource — EV Charger",
+      "rdfs:comment": "An EV charging station (EVSE) energy resource. A flexible load at the grid connection point — NOT a storage resource. EV_V2G is a specialisation with ISO 15118-20 / OCPP 2.1 BPT bidirectional capability. CIM: ElectricVehicleChargingStation (CIM17+).",
+      "rdfs:subClassOf": { "@id": "deg:EnergyResourceCommon" }
+    },
+    {
+      "@id": "erDeg:connectorType",
+      "@type": "rdf:Property",
+      "rdfs:label": "Connector type",
+      "rdfs:comment": "Physical connector standard. Type1/Type2: IEC 62196. CCS1/CCS2: Combined Charging System (DC). CHAdeMO: CHAdeMO Association (DC, V2G capable). GB_T: Chinese GB/T 20234. NACS: North American Charging Standard (SAE J3400).",
+      "rdfs:domain": { "@id": "erDeg:EnergyResourceEVCharger" },
+      "schema:rangeIncludes": { "@id": "xsd:string" }
+    },
+    {
+      "@id": "erDeg:controlProtocol",
+      "@type": "rdf:Property",
+      "rdfs:label": "Control protocol",
+      "rdfs:comment": "EVSE control and smart-charging protocol. OCPP_1.6/2.0.1/2.1: Open Charge Point Protocol (OCA). ISO_15118_2: V2G communication (AC/DC). ISO_15118_20: V2G with BPT (bidirectional power transfer).",
+      "rdfs:domain": { "@id": "erDeg:EnergyResourceEVCharger" },
+      "schema:rangeIncludes": { "@id": "xsd:string" }
+    },
+    {
+      "@id": "erDeg:v2xProtocol",
+      "@type": "rdf:Property",
+      "rdfs:label": "V2X protocol",
+      "rdfs:comment": "Vehicle-to-Grid / V2X protocol. Present only for EV_V2G resources. CHAdeMO_V2G, CCS_BPT, ISO_15118_20_AC_BPT, ISO_15118_20_DC_BPT.",
+      "rdfs:domain": { "@id": "erDeg:EnergyResourceEVCharger" },
+      "schema:rangeIncludes": { "@id": "xsd:string" }
+    }
+  ]
+}

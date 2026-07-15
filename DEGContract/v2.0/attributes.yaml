@@ -1,0 +1,94 @@
+openapi: 3.1.1
+info:
+  title: DEG — Contract (v2.0)
+  version: 2.0.0
+  description: >
+    Standard contract schema for all DEG energy contracts. Carried as a
+    sub-attribute of domain-specific offer schemas (e.g. EnergyTradeOffer.contractTerms,
+    DemandFlexBuyOffer.contractTerms) and promoted to Contract.contractAttributes
+    at select/init. Defines the role list and the policy reference.
+
+    Note: customer/discom identity that backs each role lives at
+    Contract.participants[*].participantAttributes (Beckn-native).
+
+    Computed revenue flows can land in either of two destinations,
+    selected by the BPP-side `contractpolicyenforcer` plugin's `outputPath` config:
+      - "raw" / contractAttributes.revenueFlows  — legacy shape, used by
+        demand-flex; the array is declared below as an optional property.
+      - "jsonld" / Contract.consideration[*].considerationAttributes —
+        Beckn-native, used by wave2 P2P trading.
+
+components:
+  schemas:
+    DEGContract:
+      type: object
+      additionalProperties: false
+      required: [roles, policy]
+      x-jsonld:
+        "@context": ./context.jsonld
+        "@type": DEGContract
+      properties:
+
+        roles:
+          type: array
+          description: >
+            Contract roles. The participantId key is required on every role
+            entry, but its value MAY be null in the catalog/offer (buyer
+            and buyerDiscom unknown until select/init) and is bound to a
+            concrete participant id at select/init. Identity attributes
+            (meter, utility, utilityCustomerId) for each bound role live
+            at Contract.participants[*].participantAttributes.
+          items:
+            type: object
+            additionalProperties: false
+            required: [role, participantId]
+            properties:
+              role:
+                type: string
+              participantId:
+                type:
+                  - string
+                  - "null"
+                description: >
+                  Concrete participant id once bound (buyerPlatform/sellerPlatform
+                  use the utilityId-meter compound id, e.g. "TPDDL-DL-seller-001";
+                  discom roles use the discom-ledger participant id).
+                  Null at catalog publish for sides not yet bound.
+
+        policy:
+          type: object
+          additionalProperties: false
+          required: [url, queryPath]
+          description: OPA/Rego policy governing this contract.
+          properties:
+            url:
+              type: string
+              format: uri
+            queryPath:
+              type: string
+
+        revenueFlows:
+          type: array
+          description: >
+            Optional. Settlement-time per-role flows written by the
+            `contractpolicyenforcer` plugin when it is configured with
+            outputMode: raw and outputPath ending at this property
+            (the legacy demand-flex shape). Wave2 P2P trading instead
+            uses Contract.consideration[*].considerationAttributes
+            (RevenueFlow JSON-LD) and leaves this array unset.
+          items:
+            type: object
+            additionalProperties: false
+            required: [role, value, currency]
+            properties:
+              role:
+                type: string
+              value:
+                type: number
+              currency:
+                type: string
+                minLength: 3
+                maxLength: 3
+                x-standard: "ISO 4217"
+              description:
+                type: string

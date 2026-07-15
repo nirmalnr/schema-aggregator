@@ -1,0 +1,62 @@
+openapi: 3.1.1
+info:
+  title: CatalogPullAction
+  version: 2.0.0
+  description: "Container schemas fetched from beckn.yaml. This cannot be extended as it is a reserved schema in beckn protocol. Any additional properties added to this schema can only be made using its *Attributes property"
+  license:
+    name: CC-BY-NC-SA 4.0 International
+  contact:
+    name: Beckn Labs
+    url: https://beckn.io
+components:
+  schemas:
+    CatalogPullAction:
+      x-iri: https://schema.beckn.io/CatalogPullAction/v2.0
+      type: object
+      description: 'Message payload for catalog/pull
+
+
+        This schema is part of the Long Term Support of Beckn Protocol V2.0 API specification and MUST NOT be extended. Any domain-specific extension must use the property of this schema which is of type Attribute.'
+      required:
+      - mode
+      properties:
+        mode:
+          type: string
+          enum:
+          - FULL
+          - INCREMENTAL
+          description: "- `FULL` — returns the latest version of each matching catalog. - `INCREMENTAL` — returns all catalog versions indexed between   `fromDate` and `toDate` (inclusive). "
+        filters:
+          type: object
+          description: Optional filters narrowing which catalogs are returned
+          properties:
+            networkIds:
+              type: array
+              items:
+                type: string
+              description: Filter by network IDs (empty = all networks)
+              default: []
+            schemaTypes:
+              type: array
+              items:
+                type: string
+              description: Filter by schema type URIs (empty = all types)
+              default: []
+        catalogIds:
+          type: array
+          items:
+            type: string
+          description: Explicit catalog IDs to pull (alternative to filters)
+        limit:
+          type: integer
+          minimum: 1
+          description: Maximum number of catalogs to return (server may apply its own cap)
+        fromDate:
+          type: string
+          format: date-time
+          description: Inclusive lower bound for INCREMENTAL mode
+        toDate:
+          type: string
+          format: date-time
+          description: Inclusive upper bound for INCREMENTAL mode
+      x-lts: true

@@ -1,0 +1,104 @@
+openapi: 3.1.1
+info:
+  title: EnergyTradeOffer — Offer Attributes (v2.0)
+  version: 2.0.0
+  description: >
+    Offer attributes for P2P energy trading. Attached to Offer.offerAttributes.
+
+    The contract table schema is declared once in
+    `offerAttributes.commitmentAttributes` at catalog publish time. Each
+    payloadDescriptor carries an `insertedBy` field naming the role responsible
+    for populating that column. The table grows across the lifecycle:
+
+      publish / on_select  — seller seeds PRICE_PER_KWH + AVAILABLE_QTY intervals
+      init / confirm       — buyer appends REQUESTED_QTY (to same interval ids)
+      post-delivery        — discoms append BUYER_DISCOM_ALLOC, BUYER_DISCOM_STATUS,
+                             SELLER_DISCOM_ALLOC, SELLER_DISCOM_STATUS, FINAL_ALLOC
+
+    `offerAttributes.commitmentAttributes` is immutable after publish — it
+    represents the seller's offer declaration. The live/growing contract data
+    lives in `Commitment.commitmentAttributes` (a sibling of `offer`).
+
+    Consistency rule: every payloadType in
+    commitmentAttributes.intervals[*].payloads[*].type MUST appear in
+    commitmentAttributes.payloadDescriptors, and every payloadDescriptor type
+    MUST appear in at least one interval payload.
+
+components:
+  schemas:
+
+    EnergyTradeOffer:
+      type: object
+      additionalProperties: false
+      x-tags:
+        - energy-trade
+        - p2p-trading
+        - offer
+      x-jsonld:
+        "@context": ./context.jsonld
+        "@type": EnergyTradeOffer
+      properties:
+
+        validityWindow:
+          allOf:
+            - $ref: "https://schema.nfh.global/TimePeriod/2.0/attributes.yaml#/components/schemas/TimePeriod"
+          description: >
+            Time window during which this offer can be selected/accepted.
+            Typically set to expire before the earliest delivery starts.
+            Present in catalog publish; may be omitted in downstream messages.
+          x-jsonld:
+            "@id": validityWindow
+
+        contractAttributes:
+          type: object
+          additionalProperties: true
+          description: >
+            JSON-LD container for contract terms attached at catalog publish time.
+            Only roles with a non-null participantId are included (unknown parties
+            are omitted at publish time). MUST carry @context and @type (typically
+            DEGContract). Present in catalog publish; omitted in downstream messages
+            where Contract.contractAttributes carries the full party list.
+          required: ["@context", "@type"]
+          properties:
+            "@context":
+              type: string
+              format: uri
+            "@type":
+              type: string
+          x-jsonld:
+            "@id": contractAttributes
+
+        commitmentAttributes:
+          type: object
+          additionalProperties: true
+          description: >
+            Seller's BecknTimeSeries published at catalog time. Declares the full
+            schema of the contract table via payloadDescriptors, each annotated
+            with `insertedBy` (the role responsible for populating that column).
+            Carries the seller's initial interval data (PRICE_PER_KWH +
+            AVAILABLE_QTY per slot). Immutable after publish — repeated verbatim
+            in all downstream messages as the authoritative offer definition.
+
+            MUST carry @context (BecknTimeSeries/v1.0/context.jsonld) and
+            @type: TimeSeries.
+
+            Standard payloadDescriptors and their insertedBy:
+              PRICE_PER_KWH  (EVENT)  — insertedBy: seller
+              AVAILABLE_QTY  (EVENT)  — insertedBy: seller
+              REQUESTED_QTY  (EVENT)  — insertedBy: buyer
+              BUYER_DISCOM_ALLOC  (REPORT)  — insertedBy: buyerDiscom
+              BUYER_DISCOM_STATUS (REPORT)  — insertedBy: buyerDiscom
+              SELLER_DISCOM_ALLOC  (REPORT) — insertedBy: sellerDiscom
+              SELLER_DISCOM_STATUS (REPORT) — insertedBy: sellerDiscom
+              FINAL_ALLOC  (REPORT)  — insertedBy: sellerDiscom
+          required: ["@context", "@type"]
+          properties:
+            "@context":
+              type: string
+              format: uri
+            "@type":
+              type: string
+              enum: ["TimeSeries"]
+          x-jsonld:
+            "@id": commitmentAttributes
+

@@ -1,0 +1,48 @@
+openapi: 3.1.1
+info:
+  title: CatalogSubscribeAction
+  version: 2.0.0
+  description: "Container schemas fetched from beckn.yaml. This cannot be extended as it is a reserved schema in beckn protocol. Any additional properties added to this schema can only be made using its *Attributes property"
+  license:
+    name: CC-BY-NC-SA 4.0 International
+  contact:
+    name: Beckn Labs
+    url: https://beckn.io
+components:
+  schemas:
+    CatalogSubscribeAction:
+      x-iri: https://schema.beckn.io/CatalogSubscribeAction/v2.0
+      type: object
+      description: 'Message payload for catalog/subscription.
+
+        At least one of `networkIds` or `schemaTypes` must be non-empty.
+
+        An empty `schemaTypes` array is treated as the wildcard sentinel `"*"`,
+
+        matching all schema types for the specified networks.
+
+        '
+      required:
+      - subscription
+      properties:
+        subscription:
+          type: object
+          required:
+          - networkIds
+          properties:
+            networkIds:
+              type: array
+              items:
+                type: string
+              description: Network IDs to subscribe to
+            schemaTypes:
+              type: array
+              items:
+                type: string
+              description: Schema type URIs to filter on (empty = wildcard)
+            callbackUrl:
+              type: string
+              format: uri
+              description: Override callback URL (defaults to context.bapUri)
+            deliveryPolicy:
+              $ref: https://schema.beckn.io/DeliveryPolicy/v2.0/attributes.yaml#/components/schemas/DeliveryPolicy

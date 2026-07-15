@@ -1,0 +1,43 @@
+{
+  "$id": "https://schema.beckn.io/MediaInput/v2.0",
+  "x-iri": "https://schema.beckn.io/MediaInput/v2.0",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "type",
+    "url"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "image",
+        "audio",
+        "video"
+      ]
+    },
+    "url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "contentType": {
+      "type": "string"
+    },
+    "textHint": {
+      "type": "string"
+    },
+    "language": {
+      "type": "string"
+    },
+    "startMs": {
+      "type": "integer"
+    },
+    "endMs": {
+      "type": "integer"
+    }
+  },
+  "additionalProperties": false
+}

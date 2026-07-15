@@ -1,0 +1,125 @@
+{
+  "@context": {
+    "beckn": "https://schema.beckn.io/LinkedData/v2.1/context.jsonld",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/version/latest/schemaorg-current-https.jsonld",
+    "Catalog": "beckn:Catalog",
+    "addOns": "beckn:addOns",
+    "address": "beckn:address",
+    "addressCountry": "beckn:addressCountry",
+    "addressLocality": "beckn:addressLocality",
+    "addressRegion": "beckn:addressRegion",
+    "availableAt": "beckn:availableAt",
+    "availableTo": "beckn:availableTo",
+    "bbox": "beckn:bbox",
+    "bppId": "beckn:bppId",
+    "bppUri": "beckn:bppUri",
+    "checksum": "beckn:checksum",
+    "checksumAlgorithm": "beckn:checksumAlgorithm",
+    "code": "beckn:code",
+    "considerationAttributes": "beckn:considerationAttributes",
+    "considerationIds": "beckn:considerationIds",
+    "coordinates": "beckn:coordinates",
+    "descriptor": "beckn:descriptor",
+    "docs": "beckn:docs",
+    "endDate": "beckn:endDate",
+    "endTime": "beckn:endTime",
+    "extendedAddress": "beckn:extendedAddress",
+    "fulfillmentIds": "beckn:fulfillmentIds",
+    "geo": "beckn:geo",
+    "geometries": "beckn:geometries",
+    "id": "beckn:id",
+    "isActive": "beckn:isActive",
+    "keyId": "beckn:keyId",
+    "label": "beckn:label",
+    "longDesc": "beckn:longDesc",
+    "mediaFile": "beckn:mediaFile",
+    "mimeType": "beckn:mimeType",
+    "name": "beckn:name",
+    "offerAttributes": "beckn:offerAttributes",
+    "offers": "beckn:offers",
+    "postalCode": "beckn:postalCode",
+    "provider": "beckn:provider",
+    "providerAttributes": "beckn:providerAttributes",
+    "resourceAttributes": "beckn:resourceAttributes",
+    "resourceIds": "beckn:resourceIds",
+    "resources": "beckn:resources",
+    "security": "beckn:security",
+    "shortDesc": "beckn:shortDesc",
+    "signature": "beckn:signature",
+    "signatureAlgorithm": "beckn:signatureAlgorithm",
+    "standard": "beckn:standard",
+    "startDate": "beckn:startDate",
+    "startTime": "beckn:startTime",
+    "status": "beckn:status",
+    "streetAddress": "beckn:streetAddress",
+    "thumbnailImage": "beckn:thumbnailImage",
+    "type": "beckn:type",
+    "uri": "beckn:uri",
+    "url": "beckn:url",
+    "validity": "beckn:validity"
+  },
+  "@graph": [
+    {
+      "@id": "beckn:Catalog",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Catalog",
+      "rdfs:comment": "A structured representation of the resources, offers, and provider information that a PN makes available on the network for discovery, selection, and commitment by CNs.\n\nCatalogs appear in the discovery phase of the value-exchange lifecycle. The PN produces them and publishes them to the CS (Cataloging Service) via CatalogPublishAction; the CS indexes them and synchronizes them to the DS, which serves them to CNs in OnDiscoverAction responses.\n\nFabric context: Catalogs are managed by the CS, which indexes them for discovery and synchronizes them to the DS for delivery to subscribing CNs. The CS also stores and serves canonical master catalog items.\n\nRelationship: Composes Provider, Resource, and Offer schemas. MUST include at least one of a resources array or an offers array. The validity field constrains the temporal window during which the catalog is active, expressed as a TimePeriod."
+    },
+    {
+      "@id": "beckn:bppId",
+      "@type": "rdf:Property",
+      "rdfs:label": "bppId",
+      "rdfs:comment": "PN (Beckn Protocol Provider) identifier that publishes this catalog"
+    },
+    {
+      "@id": "beckn:bppUri",
+      "@type": "rdf:Property",
+      "rdfs:label": "bppUri",
+      "rdfs:comment": "Beckn Protocol API base URL of the PN"
+    },
+    {
+      "@id": "beckn:descriptor",
+      "@type": "rdf:Property",
+      "rdfs:label": "descriptor",
+      "rdfs:comment": "Human / Agent-readable description of this catalog"
+    },
+    {
+      "@id": "beckn:id",
+      "@type": "rdf:Property",
+      "rdfs:label": "id",
+      "rdfs:comment": "Unique identifier for the catalog"
+    },
+    {
+      "@id": "beckn:isActive",
+      "@type": "rdf:Property",
+      "rdfs:label": "isActive",
+      "rdfs:comment": "Whether the catalog is active"
+    },
+    {
+      "@id": "beckn:offers",
+      "@type": "rdf:Property",
+      "rdfs:label": "offers",
+      "rdfs:comment": "Array of offers optionally linked to resources"
+    },
+    {
+      "@id": "beckn:resources",
+      "@type": "rdf:Property",
+      "rdfs:label": "resources",
+      "rdfs:comment": "Array of generalized Resource entities in this catalog (new model)"
+    },
+    {
+      "@id": "beckn:provider",
+      "@type": "rdf:Property",
+      "rdfs:label": "provider",
+      "rdfs:comment": "Property provider"
+    },
+    {
+      "@id": "beckn:validity",
+      "@type": "rdf:Property",
+      "rdfs:label": "validity",
+      "rdfs:comment": "The time period during which this catalog is valid"
+    }
+  ]
+}

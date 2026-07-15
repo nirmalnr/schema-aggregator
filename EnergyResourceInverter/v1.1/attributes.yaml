@@ -1,0 +1,123 @@
+openapi: 3.1.1
+info:
+  title: EnergyResourceInverter
+  version: 1.1.0
+  description: |
+    Typed attribute schema for grid-connected power-electronics inverter
+    energy resources (type = INVERTER).
+    v1.1: ratedApparentPowerKva → ratedApparentPower, maxReactivePowerKvar →
+    maxReactivePower, minReactivePowerKvar → minReactivePower (all
+    QuantitativeValue {value, unit}); inherits EnergyResourceCommon/v1.1.
+    CIM: PowerElectronicsConnection (IEC 61970-302).
+
+components:
+  schemas:
+
+    EnergyResourceInverter:
+      description: >
+        A grid-connected power-electronics inverter energy resource. Captures
+        IEEE 1547-2018 ride-through categories, operating mode, and reactive /
+        frequency-support capabilities.
+        CIM: PowerElectronicsConnection (IEC 61970-302).
+      x-tags: [energy-resource, inverter, energy, deg]
+      x-jsonld:
+        "@context": ./context.jsonld
+        "@type": EnergyResourceInverter
+      allOf:
+        - $ref: "https://schema.nfh.global/EnergyResourceCommon/v1.1#/components/schemas/EnergyResourceCommon"
+        - type: object
+          required: [id, type]
+          properties:
+            type:
+              type: string
+              const: "INVERTER"
+              description: >
+                Asset-class discriminator. Must be "INVERTER".
+                CIM: PowerElectronicsConnection (IEC 61970-302).
+              x-jsonld:
+                "@id": erDeg:resourceType
+            attributes:
+              $ref: "#/components/schemas/EnergyResourceInverterAttributes"
+
+    EnergyResourceInverterAttributes:
+      description: >
+        Attributes for INVERTER resources. Common fields (make, model,
+        ratedPower, maxExport, maxImport, telemetryProvider, commissioningDate,
+        location) are inherited from EnergyResourceCommon/v1.1 via allOf.
+      x-jsonld:
+        "@id": erDeg:attributes
+      allOf:
+        - $ref: "https://schema.nfh.global/EnergyResourceCommon/v1.1#/components/schemas/EnergyResourceCommonAttributes"
+        - type: object
+          additionalProperties: true
+          properties:
+
+            ratedApparentPower:
+              $ref: "https://schema.nfh.global/EnergyResourceCommon/v1.1#/components/schemas/QVApparentPower"
+              description: >
+                Rated apparent power. Replaces ratedApparentPowerKva from v1.0.
+              x-standard: "SunSpec DER Model 702 (maxVA); CIM (IEC 61970-302 PowerElectronicsConnection.ratedS)"
+              x-jsonld:
+                "@id": erDeg:ratedApparentPower
+
+            maxReactivePower:
+              $ref: "https://schema.nfh.global/EnergyResourceCommon/v1.1#/components/schemas/QVReactivePower"
+              description: >
+                Maximum reactive power injection (leading / over-excited).
+                Replaces maxReactivePowerKvar from v1.0.
+              x-standard: "SunSpec DER Model 702 (maxVar); CIM (IEC 61970-302 PowerElectronicsConnection.maxQ)"
+              x-jsonld:
+                "@id": erDeg:maxReactivePower
+
+            minReactivePower:
+              $ref: "https://schema.nfh.global/EnergyResourceCommon/v1.1#/components/schemas/QVReactivePower"
+              description: >
+                Maximum reactive power absorption (lagging / under-excited).
+                Value is typically negative. Replaces minReactivePowerKvar from v1.0.
+              x-standard: "SunSpec DER Model 702 (maxVarNeg); CIM (IEC 61970-302 PowerElectronicsConnection.minQ)"
+              x-jsonld:
+                "@id": erDeg:minReactivePower
+
+            rideThroughCategory:
+              type: string
+              enum: [CategoryI, CategoryII, CategoryIII]
+              description: >
+                Abnormal operating performance category. CategoryI: basic.
+                CategoryII: enhanced for distribution-connected DER.
+                CategoryIII: advanced for large/transmission-connected DER.
+              x-standard: "IEEE 1547-2018 (ride-through category)"
+              x-jsonld:
+                "@id": erDeg:rideThroughCategory
+
+            operatingMode:
+              type: string
+              enum: [GridFollowing, GridForming, Standby]
+              description: >
+                Inverter grid-interaction mode. GridFollowing: PLL-based sync.
+                GridForming: own V/f reference (microgrid islanding, black-start).
+                Standby: energised but not injecting.
+              x-standard: "CIM (IEC 61970-302 PowerElectronicsConnection.inverterMode)"
+              x-jsonld:
+                "@id": erDeg:operatingMode
+
+            voltVarEnabled:
+              type: boolean
+              description: Volt-VAr curve active.
+              x-standard: "IEEE 2030.5 (opModVoltVar); SunSpec DER Model 705"
+              x-jsonld:
+                "@id": erDeg:voltVarEnabled
+
+            freqDroopEnabled:
+              type: boolean
+              description: Frequency-Watt droop active.
+              x-standard: "IEEE 1547-2018; SunSpec DER Model 711"
+              x-jsonld:
+                "@id": erDeg:freqDroopEnabled
+
+            enterServiceRampTimeSec:
+              type: number
+              minimum: 0
+              description: Seconds to ramp from 0 to rated power after reconnection.
+              x-standard: "SunSpec DER Model 703 (ESRmpTms)"
+              x-jsonld:
+                "@id": erDeg:enterServiceRampTimeSec

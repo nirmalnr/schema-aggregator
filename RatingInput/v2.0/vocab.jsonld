@@ -1,0 +1,67 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "beckn": "https://schema.beckn.io/",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "schema": "https://schema.org/",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "beckn:RatingInput",
+      "@type": "rdfs:Class",
+      "rdfs:label": "RatingInput",
+      "rdfs:comment": "Schema definition for RatingInput in the Beckn Protocol"
+    },
+    {
+      "@id": "beckn:context",
+      "@type": "rdf:Property",
+      "rdfs:label": "context",
+      "rdfs:comment": "context property of RatingInput"
+    },
+    {
+      "@id": "beckn:type",
+      "@type": "rdf:Property",
+      "rdfs:label": "type",
+      "rdfs:comment": "type property of RatingInput"
+    },
+    {
+      "@id": "beckn:id",
+      "@type": "rdf:Property",
+      "rdfs:label": "id",
+      "rdfs:comment": "id property of RatingInput"
+    },
+    {
+      "@id": "beckn:ratingValue",
+      "@type": "rdf:Property",
+      "rdfs:label": "ratingValue",
+      "rdfs:comment": "ratingValue property of RatingInput"
+    },
+    {
+      "@id": "beckn:bestRating",
+      "@type": "rdf:Property",
+      "rdfs:label": "bestRating",
+      "rdfs:comment": "bestRating property of RatingInput"
+    },
+    {
+      "@id": "beckn:worstRating",
+      "@type": "rdf:Property",
+      "rdfs:label": "worstRating",
+      "rdfs:comment": "worstRating property of RatingInput"
+    },
+    {
+      "@id": "beckn:category",
+      "@type": "rdf:Property",
+      "rdfs:label": "category",
+      "rdfs:comment": "category property of RatingInput"
+    },
+    {
+      "@id": "beckn:feedback",
+      "@type": "rdf:Property",
+      "rdfs:label": "feedback",
+      "rdfs:comment": "feedback property of RatingInput"
+    }
+  ]
+}

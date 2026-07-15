@@ -1,0 +1,49 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "beckn": "https://schema.beckn.io/",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "schema": "https://schema.org/",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "beckn:Descriptor",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Descriptor",
+      "rdfs:comment": "Schema definition for Descriptor in the Beckn Protocol"
+    },
+    {
+      "@id": "beckn:type",
+      "@type": "rdf:Property",
+      "rdfs:label": "type",
+      "rdfs:comment": "type property of Descriptor"
+    },
+    {
+      "@id": "beckn:name",
+      "@type": "rdf:Property",
+      "rdfs:label": "name",
+      "rdfs:comment": "name property of Descriptor"
+    },
+    {
+      "@id": "beckn:shortDesc",
+      "@type": "rdf:Property",
+      "rdfs:label": "shortDesc",
+      "rdfs:comment": "shortDesc property of Descriptor"
+    },
+    {
+      "@id": "beckn:longDesc",
+      "@type": "rdf:Property",
+      "rdfs:label": "longDesc",
+      "rdfs:comment": "longDesc property of Descriptor"
+    },
+    {
+      "@id": "beckn:image",
+      "@type": "rdf:Property",
+      "rdfs:label": "image",
+      "rdfs:comment": "image property of Descriptor"
+    }
+  ]
+}

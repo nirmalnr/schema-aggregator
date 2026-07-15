@@ -1,0 +1,43 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "beckn": "https://schema.beckn.io/",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "schema": "https://schema.org/",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "beckn:CategoryCode",
+      "@type": "rdfs:Class",
+      "rdfs:label": "CategoryCode",
+      "rdfs:comment": "Schema definition for CategoryCode in the Beckn Protocol"
+    },
+    {
+      "@id": "beckn:type",
+      "@type": "rdf:Property",
+      "rdfs:label": "type",
+      "rdfs:comment": "type property of CategoryCode"
+    },
+    {
+      "@id": "beckn:codeValue",
+      "@type": "rdf:Property",
+      "rdfs:label": "codeValue",
+      "rdfs:comment": "codeValue property of CategoryCode"
+    },
+    {
+      "@id": "beckn:name",
+      "@type": "rdf:Property",
+      "rdfs:label": "name",
+      "rdfs:comment": "name property of CategoryCode"
+    },
+    {
+      "@id": "beckn:description",
+      "@type": "rdf:Property",
+      "rdfs:label": "description",
+      "rdfs:comment": "description property of CategoryCode"
+    }
+  ]
+}

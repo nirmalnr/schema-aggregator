@@ -1,0 +1,88 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "erDeg":  "https://schema.nfh.global/deg/EnergyResource/",
+    "deg":    "https://schema.nfh.global/deg#",
+    "rdf":    "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs":   "http://www.w3.org/2000/01/rdf-schema#",
+    "owl":    "http://www.w3.org/2002/07/owl#",
+    "xsd":    "http://www.w3.org/2001/XMLSchema#",
+    "schema": "https://schema.org/",
+    "skos":   "http://www.w3.org/2004/02/skos/core#"
+  },
+  "@graph": [
+    {
+      "@id": "erDeg:EnergyResourceInverter",
+      "@type": "rdfs:Class",
+      "rdfs:label": "EnergyResource — Inverter",
+      "rdfs:comment": "Grid-connected power-electronics converter without a dedicated fuel source. Captures reactive-power and frequency-support capabilities per IEEE 1547-2018 and SunSpec DER Models 702-714. CIM: PowerElectronicsConnection (IEC 61970-302).",
+      "rdfs:subClassOf": { "@id": "deg:EnergyResourceCommon" },
+      "rdfs:seeAlso": { "@id": "https://ontology.tno.nl/IEC_CIM/iec61970-301.ttl#PowerElectronicsConnection" }
+    },
+    {
+      "@id": "erDeg:ratedApparentPowerKva",
+      "@type": "rdf:Property",
+      "rdfs:label": "Rated apparent power (kVA)",
+      "rdfs:comment": "Rated apparent power in kVA. SunSpec Model 702 maxVA. CIM: PowerElectronicsConnection.ratedS.",
+      "rdfs:domain": { "@id": "erDeg:EnergyResourceInverter" },
+      "schema:rangeIncludes": { "@id": "xsd:decimal" }
+    },
+    {
+      "@id": "erDeg:maxReactivePowerKvar",
+      "@type": "rdf:Property",
+      "rdfs:label": "Max reactive power (kVAr)",
+      "rdfs:comment": "Maximum reactive power injection (leading / over-excited), kVAr. SunSpec Model 702 maxVar. CIM: PowerElectronicsConnection.maxQ.",
+      "rdfs:domain": { "@id": "erDeg:EnergyResourceInverter" },
+      "schema:rangeIncludes": { "@id": "xsd:decimal" }
+    },
+    {
+      "@id": "erDeg:minReactivePowerKvar",
+      "@type": "rdf:Property",
+      "rdfs:label": "Min reactive power (kVAr)",
+      "rdfs:comment": "Maximum reactive power absorption (lagging / under-excited), kVAr. Usually negative. SunSpec Model 702 maxVarNeg. CIM: PowerElectronicsConnection.minQ.",
+      "rdfs:domain": { "@id": "erDeg:EnergyResourceInverter" },
+      "schema:rangeIncludes": { "@id": "xsd:decimal" }
+    },
+    {
+      "@id": "erDeg:rideThroughCategory",
+      "@type": "rdf:Property",
+      "rdfs:label": "Ride-through category",
+      "rdfs:comment": "IEEE 1547-2018 abnormal operating performance category. CategoryI: basic. CategoryII: enhanced (distribution DER). CategoryIII: advanced (large/transmission-connected DER).",
+      "rdfs:domain": { "@id": "erDeg:EnergyResourceInverter" },
+      "schema:rangeIncludes": { "@id": "xsd:string" },
+      "rdfs:seeAlso": { "@id": "https://standards.ieee.org/ieee/1547/6616/" }
+    },
+    {
+      "@id": "erDeg:operatingMode",
+      "@type": "rdf:Property",
+      "rdfs:label": "Operating mode",
+      "rdfs:comment": "Grid-interaction mode. GridFollowing: PLL-based synchronisation (typical DER). GridForming: establishes V/f reference for islanding. Standby: energised, not injecting. CIM: PowerElectronicsConnection.inverterMode.",
+      "rdfs:domain": { "@id": "erDeg:EnergyResourceInverter" },
+      "schema:rangeIncludes": { "@id": "xsd:string" }
+    },
+    {
+      "@id": "erDeg:voltVarEnabled",
+      "@type": "rdf:Property",
+      "rdfs:label": "Volt-VAr enabled",
+      "rdfs:comment": "Volt-VAr curve active — autonomous reactive power response vs. terminal voltage. IEEE 2030.5 opModVoltVar / SunSpec Model 705.",
+      "rdfs:domain": { "@id": "erDeg:EnergyResourceInverter" },
+      "schema:rangeIncludes": { "@id": "xsd:boolean" }
+    },
+    {
+      "@id": "erDeg:freqDroopEnabled",
+      "@type": "rdf:Property",
+      "rdfs:label": "Freq-droop enabled",
+      "rdfs:comment": "Frequency-Watt droop active — active power reduced proportionally to over-frequency deviation. SunSpec Model 711 / IEEE 1547-2018 Frequency-Watt.",
+      "rdfs:domain": { "@id": "erDeg:EnergyResourceInverter" },
+      "schema:rangeIncludes": { "@id": "xsd:boolean" }
+    },
+    {
+      "@id": "erDeg:enterServiceRampTimeSec",
+      "@type": "rdf:Property",
+      "rdfs:label": "Enter service ramp time (s)",
+      "rdfs:comment": "Ramp time in seconds from 0 to rated power after reconnection. SunSpec Model 703 ESRmpTms.",
+      "rdfs:domain": { "@id": "erDeg:EnergyResourceInverter" },
+      "schema:rangeIncludes": { "@id": "xsd:decimal" }
+    }
+  ]
+}

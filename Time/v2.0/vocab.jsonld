@@ -1,0 +1,61 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "beckn": "https://schema.beckn.io/LinkedData/v2.1/context.jsonld",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "schema": "https://schema.org/version/latest/schemaorg-current-https.jsonld",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "Time": "beckn:Time",
+    "@type": "beckn:@type",
+    "duration": "beckn:duration",
+    "label": "beckn:label",
+    "range": "beckn:range",
+    "timestamp": "beckn:timestamp"
+  },
+  "@graph": [
+    {
+      "@id": "beckn:Time",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Time",
+      "rdfs:comment": "Represents a moment or duration in time. Can express a timestamp, a duration, or a time range."
+    },
+    {
+      "@id": "beckn:@context",
+      "@type": "rdf:Property",
+      "rdfs:label": "@context",
+      "rdfs:comment": "TODO: Description Needed - @context"
+    },
+    {
+      "@id": "beckn:@type",
+      "@type": "rdf:Property",
+      "rdfs:label": "@type",
+      "rdfs:comment": "TODO: Description Needed - @type"
+    },
+    {
+      "@id": "beckn:timestamp",
+      "@type": "rdf:Property",
+      "rdfs:label": "timestamp",
+      "rdfs:comment": "A specific instant in time (ISO 8601)"
+    },
+    {
+      "@id": "beckn:duration",
+      "@type": "rdf:Property",
+      "rdfs:label": "duration",
+      "rdfs:comment": "ISO 8601 duration (e.g., PT30M for 30 minutes)"
+    },
+    {
+      "@id": "beckn:range",
+      "@type": "rdf:Property",
+      "rdfs:label": "range",
+      "rdfs:comment": "A time range with start and end"
+    },
+    {
+      "@id": "beckn:label",
+      "@type": "rdf:Property",
+      "rdfs:label": "label",
+      "rdfs:comment": "Human-readable label for this time"
+    }
+  ]
+}

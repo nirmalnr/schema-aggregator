@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.nfh.global/EnergyResourceLoad/v1.0",
+  "title": "EnergyResourceLoad",
+  "description": "Typed schema for controllable load energy resources (smart HVAC, smart water heater, generic controllable load). Participate in demand-response and demand-flexibility programs. CIM: cim:EnergyConsumer / cim:ConformLoad (IEC 61970-301). Common fields inherited from EnergyResourceCommon/v1.0.",
+  "allOf": [
+    { "$ref": "https://schema.nfh.global/EnergyResourceCommon/v1.0#EnergyResourceCommon" },
+    {
+      "type": "object",
+      "required": ["id", "type"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["SMART_HVAC", "SMART_WATER_HEATER", "CONTROLLABLE_LOAD"],
+          "description": "Asset-class discriminator. CIM: EnergyConsumer / ConformLoad (IEC 61970-301)."
+        },
+        "attributes": { "$ref": "#/$defs/EnergyResourceLoadAttributes" }
+      }
+    }
+  ],
+  "$defs": {
+    "EnergyResourceLoadAttributes": {
+      "allOf": [
+        { "$ref": "https://schema.nfh.global/EnergyResourceCommon/v1.0#EnergyResourceCommonAttributes" },
+        {
+          "type": "object",
+          "additionalProperties": true,
+          "description": "Attributes for controllable load resources. Common fields inherited. Load-specific fields below.",
+          "properties": {
+            "controlProtocol": {
+              "type": "string",
+              "enum": ["OpenADR_2.0b", "OCPP_2.0.1", "SunSpec_Modbus", "EEBus", "Modbus", "Other"],
+              "description": "Demand-response / control protocol supported by this load device."
+            },
+            "loadCategory": {
+              "type": "string",
+              "enum": ["Heating", "Cooling", "WaterHeating", "Lighting", "EV", "Industrial", "Other"],
+              "description": "Functional category of this load. CIM: ConformLoad.conformLoadSchedule / load classification."
+            }
+          }
+        }
+      ]
+    }
+  }
+}

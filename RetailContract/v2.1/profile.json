@@ -1,0 +1,33 @@
+{
+  "id": "https://schema.beckn.io/RetailContract/v2.1",
+  "name": "Retail Contract Attributes",
+  "version": "2.1.0",
+  "protocol_version": "2.0",
+  "semantic_model": "generalised",
+  "included_schemas": ["RetailContract"],
+  "discovery_fields": [
+    "source.channel",
+    "gift.isGift"
+  ],
+  "indexable_paths": [
+    "beckn:contractAttributes.quoteReference",
+    "beckn:contractAttributes.source.channel",
+    "beckn:contractAttributes.source.campaignId",
+    "beckn:contractAttributes.loyalty.programId",
+    "beckn:contractAttributes.invoicePreferences.taxId.country",
+    "beckn:contractAttributes.gift.isGift"
+  ],
+  "filterable_paths": [
+    "beckn:contractAttributes.source.channel",
+    "beckn:contractAttributes.gift.isGift",
+    "beckn:contractAttributes.deliveryPreferences.contactless",
+    "beckn:contractAttributes.deliveryPreferences.leaveAtDoor",
+    "beckn:contractAttributes.invoicePreferences.taxId.country"
+  ],
+  "sortable_paths": [],
+  "privacy_notes": [
+    "invoicePreferences.taxId.value contains a tax registration number and must be treated as sensitive PII",
+    "invoicePreferences.email is personal contact data",
+    "invoicePreferences.companyName may reveal business identity"
+  ]
+}

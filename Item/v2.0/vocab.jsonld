@@ -1,0 +1,97 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "beckn": "https://schema.beckn.io/",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "schema": "https://schema.org/",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "beckn:Item",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Item",
+      "rdfs:comment": "Schema definition for Item in the Beckn Protocol"
+    },
+    {
+      "@id": "beckn:context",
+      "@type": "rdf:Property",
+      "rdfs:label": "context",
+      "rdfs:comment": "context property of Item"
+    },
+    {
+      "@id": "beckn:type",
+      "@type": "rdf:Property",
+      "rdfs:label": "type",
+      "rdfs:comment": "type property of Item"
+    },
+    {
+      "@id": "beckn:id",
+      "@type": "rdf:Property",
+      "rdfs:label": "id",
+      "rdfs:comment": "id property of Item"
+    },
+    {
+      "@id": "beckn:descriptor",
+      "@type": "rdf:Property",
+      "rdfs:label": "descriptor",
+      "rdfs:comment": "descriptor property of Item"
+    },
+    {
+      "@id": "beckn:category",
+      "@type": "rdf:Property",
+      "rdfs:label": "category",
+      "rdfs:comment": "category property of Item"
+    },
+    {
+      "@id": "beckn:availableAt",
+      "@type": "rdf:Property",
+      "rdfs:label": "availableAt",
+      "rdfs:comment": "availableAt property of Item"
+    },
+    {
+      "@id": "beckn:availabilityWindow",
+      "@type": "rdf:Property",
+      "rdfs:label": "availabilityWindow",
+      "rdfs:comment": "availabilityWindow property of Item"
+    },
+    {
+      "@id": "beckn:rateable",
+      "@type": "rdf:Property",
+      "rdfs:label": "rateable",
+      "rdfs:comment": "rateable property of Item"
+    },
+    {
+      "@id": "beckn:rating",
+      "@type": "rdf:Property",
+      "rdfs:label": "rating",
+      "rdfs:comment": "rating property of Item"
+    },
+    {
+      "@id": "beckn:isActive",
+      "@type": "rdf:Property",
+      "rdfs:label": "isActive",
+      "rdfs:comment": "isActive property of Item"
+    },
+    {
+      "@id": "beckn:networkId",
+      "@type": "rdf:Property",
+      "rdfs:label": "networkId",
+      "rdfs:comment": "networkId property of Item"
+    },
+    {
+      "@id": "beckn:provider",
+      "@type": "rdf:Property",
+      "rdfs:label": "provider",
+      "rdfs:comment": "provider property of Item"
+    },
+    {
+      "@id": "beckn:itemAttributes",
+      "@type": "rdf:Property",
+      "rdfs:label": "itemAttributes",
+      "rdfs:comment": "itemAttributes property of Item"
+    }
+  ]
+}

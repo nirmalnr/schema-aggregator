@@ -1,0 +1,63 @@
+openapi: 3.1.1
+info:
+  title: FulfillmentStageAuthorization
+  version: 2.0.0
+  description: 'A credential/document/proof relevant to authorization at a fulfillment
+    stage endpoint. This may be a token to be verified (QR/OTP/URL) or a document
+    to be inspected manually.
+
+    '
+  license:
+    name: CC-BY-NC-SA 4.0 International
+  contact:
+    name: Beckn Labs
+    url: https://beckn.io
+components:
+  schemas:
+    FulfillmentStageAuthorization:
+      x-iri: https://schema.beckn.io/FulfillmentStageAuthorization/v2.0
+      description: 'A credential/document/proof relevant to authorization at a fulfillment
+        stage endpoint. This may be a token to be verified (QR/OTP/URL) or a document
+        to be inspected manually.
+
+        '
+      title: FulfillmentStageAuthorization
+      type: object
+      additionalProperties: false
+      required:
+      - purpose
+      - requirement
+      - status
+      properties:
+        mediaFiles:
+          description: Media files required to enter or exit this fulfillment stage.
+            The could be images of delivered packages, recorded video proof of installation,
+            etc
+          type: array
+          items:
+            $ref: https://schema.beckn.io/MediaFile/v2.0/attributes.yaml#/components/schemas/MediaFile
+        docs:
+          description: Documents required to enter or exit this fulfillment stage.
+            The could be entry tickets, boarding passes, waybill, permits, certificates,
+            credentials, etc
+          type: array
+          items:
+            $ref: https://schema.beckn.io/Document/v2.0/attributes.yaml#/components/schemas/Document
+        purpose:
+          description: The purpose of this authorization. e.g., proof of delivery,
+            entry verification, identity check
+          type: string
+        requirement:
+          description: Describes what is required to fulfill this authorization. e.g.,
+            OTP, QR code, government ID
+          type: string
+        status:
+          description: The current status of this authorization. e.g., valid, expired,
+            pending, used
+          type: string
+        authToken:
+          type: string
+          description: A human readable string that needs to be provided to enter
+            or exit this fulfillment stage. Like an OTP
+      x-tags:
+      - common

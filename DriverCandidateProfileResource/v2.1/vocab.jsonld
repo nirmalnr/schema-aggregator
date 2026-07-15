@@ -1,0 +1,115 @@
+{
+  "@context": {
+    "@import": "https://schema.beckn.io/core/v2/vocab.jsonld",
+    "dcpra": "https://schema.beckn.io/DriverCandidateProfileResource#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "DriverCandidateProfileResource": "dcpra:DriverCandidateProfileResource",
+    "DriverRoleType": "dcpra:DriverRoleType",
+    "DriverVehicleCategory": "dcpra:DriverVehicleCategory"
+  },
+  "@graph": [
+    {
+      "@id": "dcpra:DriverCandidateProfileResource",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Driver Candidate Profile Resource",
+      "rdfs:comment": "Extension attributes for a driver candidate profile resource."
+    },
+    {
+      "@id": "dcpra:DriverRoleType",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Driver Role Type",
+      "rdfs:comment": "Classification of driver roles a candidate can perform."
+    },
+    {
+      "@id": "dcpra:BUS_DRIVER",
+      "@type": "dcpra:DriverRoleType",
+      "rdfs:label": "Bus Driver"
+    },
+    {
+      "@id": "dcpra:TRUCK_DRIVER",
+      "@type": "dcpra:DriverRoleType",
+      "rdfs:label": "Truck Driver"
+    },
+    {
+      "@id": "dcpra:TAXI_DRIVER",
+      "@type": "dcpra:DriverRoleType",
+      "rdfs:label": "Taxi Driver"
+    },
+    {
+      "@id": "dcpra:AUTO_DRIVER",
+      "@type": "dcpra:DriverRoleType",
+      "rdfs:label": "Auto Driver"
+    },
+    {
+      "@id": "dcpra:DELIVERY_DRIVER",
+      "@type": "dcpra:DriverRoleType",
+      "rdfs:label": "Delivery Driver"
+    },
+    {
+      "@id": "dcpra:HEAVY_VEHICLE_DRIVER",
+      "@type": "dcpra:DriverRoleType",
+      "rdfs:label": "Heavy Vehicle Driver"
+    },
+    {
+      "@id": "dcpra:LIGHT_VEHICLE_DRIVER",
+      "@type": "dcpra:DriverRoleType",
+      "rdfs:label": "Light Vehicle Driver"
+    },
+    {
+      "@id": "dcpra:SCHOOL_BUS_DRIVER",
+      "@type": "dcpra:DriverRoleType",
+      "rdfs:label": "School Bus Driver"
+    },
+    {
+      "@id": "dcpra:AMBULANCE_DRIVER",
+      "@type": "dcpra:DriverRoleType",
+      "rdfs:label": "Ambulance Driver"
+    },
+    {
+      "@id": "dcpra:DriverVehicleCategory",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Driver Vehicle Category",
+      "rdfs:comment": "Vehicle categories for licensing purposes."
+    },
+    {
+      "@id": "dcpra:LIGHT_MOTOR_VEHICLE",
+      "@type": "dcpra:DriverVehicleCategory",
+      "rdfs:label": "Light Motor Vehicle"
+    },
+    {
+      "@id": "dcpra:HEAVY_MOTOR_VEHICLE",
+      "@type": "dcpra:DriverVehicleCategory",
+      "rdfs:label": "Heavy Motor Vehicle"
+    },
+    {
+      "@id": "dcpra:TRANSPORT_VEHICLE",
+      "@type": "dcpra:DriverVehicleCategory",
+      "rdfs:label": "Transport Vehicle"
+    },
+    {
+      "@id": "dcpra:MOTORCYCLE",
+      "@type": "dcpra:DriverVehicleCategory",
+      "rdfs:label": "Motorcycle"
+    },
+    {
+      "@id": "dcpra:AUTO_RICKSHAW",
+      "@type": "dcpra:DriverVehicleCategory",
+      "rdfs:label": "Auto Rickshaw"
+    },
+    {
+      "@id": "dcpra:BUS",
+      "@type": "dcpra:DriverVehicleCategory",
+      "rdfs:label": "Bus"
+    },
+    {
+      "@id": "dcpra:TRUCK",
+      "@type": "dcpra:DriverVehicleCategory",
+      "rdfs:label": "Truck"
+    },
+    {
+      "@id": "dcpra:AMBULANCE",
+      "@type": "dcpra:DriverVehicleCategory",
+      "rdfs:label": "Ambulance"
+    }
+  ]
+}

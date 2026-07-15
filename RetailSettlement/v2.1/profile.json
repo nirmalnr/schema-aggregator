@@ -1,0 +1,37 @@
+{
+  "id": "https://schema.beckn.io/RetailSettlement/v2.1",
+  "name": "Retail Settlement Attributes",
+  "version": "2.1.0",
+  "protocol_version": "2.0",
+  "semantic_model": "generalised",
+  "included_schemas": ["RetailSettlement"],
+  "discovery_fields": [
+    "method",
+    "reconciliationStatus"
+  ],
+  "indexable_paths": [
+    "beckn:settlementAttributes.method",
+    "beckn:settlementAttributes.paymentRail",
+    "beckn:settlementAttributes.settledAt",
+    "beckn:settlementAttributes.settledAmount",
+    "beckn:settlementAttributes.currency",
+    "beckn:settlementAttributes.reconciliationId",
+    "beckn:settlementAttributes.reconciliationStatus",
+    "beckn:settlementAttributes.refund.status"
+  ],
+  "filterable_paths": [
+    "beckn:settlementAttributes.method",
+    "beckn:settlementAttributes.paymentRail",
+    "beckn:settlementAttributes.currency",
+    "beckn:settlementAttributes.reconciliationStatus",
+    "beckn:settlementAttributes.refund.status"
+  ],
+  "sortable_paths": [
+    "beckn:settlementAttributes.settledAt",
+    "beckn:settlementAttributes.settledAmount"
+  ],
+  "privacy_notes": [
+    "gateway.transactionId is a financial reference and should be treated as sensitive — restrict to authorised parties only",
+    "gateway.url may expose gateway-specific session tokens in query parameters"
+  ]
+}

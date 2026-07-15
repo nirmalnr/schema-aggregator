@@ -1,0 +1,64 @@
+{
+  "$id": "https://schema.beckn.io/CatalogPullAction/v2.0",
+  "x-iri": "https://schema.beckn.io/CatalogPullAction/v2.0",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "description": "Message payload for catalog/pull",
+  "required": [
+    "mode"
+  ],
+  "properties": {
+    "mode": {
+      "type": "string",
+      "enum": [
+        "FULL",
+        "INCREMENTAL"
+      ],
+      "description": "- `FULL` — returns the latest version of each matching catalog. - `INCREMENTAL` — returns all catalog versions indexed between   `fromDate` and `toDate` (inclusive). "
+    },
+    "filters": {
+      "type": "object",
+      "description": "Optional filters narrowing which catalogs are returned",
+      "properties": {
+        "networkIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Filter by network IDs (empty = all networks)",
+          "default": []
+        },
+        "schemaTypes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Filter by schema type URIs (empty = all types)",
+          "default": []
+        }
+      }
+    },
+    "catalogIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Explicit catalog IDs to pull (alternative to filters)"
+    },
+    "limit": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Maximum number of catalogs to return (server may apply its own cap)"
+    },
+    "fromDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Inclusive lower bound for INCREMENTAL mode"
+    },
+    "toDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Inclusive upper bound for INCREMENTAL mode"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "@context": {
+    "schema": "https://schema.org/",
+    "beckn": "https://schema.beckn.io/",
+    "hkr": "https://schema.beckn.io/HomeAndKitchenResource#",
+    "HomeAndKitchenResource": "hkr:HomeAndKitchenResource",
+    "careInstructions": "hkr:careInstructions",
+    "installation": "hkr:installation",
+    "installationRequired": "hkr:installationRequired",
+    "installationProvidedBySeller": "hkr:installationProvidedBySeller",
+    "installationNotes": "hkr:installationNotes",
+    "usage": "hkr:usage",
+    "indoorOnly": "hkr:indoorOnly",
+    "outdoorOnly": "hkr:outdoorOnly",
+    "compatibleWith": "hkr:compatibleWith"
+  }
+}

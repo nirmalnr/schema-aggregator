@@ -1,0 +1,22 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "beckn": "https://schema.nfh.global/core/v2.0/",
+    "deg": "https://schema.nfh.global/deg/DEGContract/v2.0/",
+    "DEGContract": "deg:DEGContract",
+    "roles": "deg:roles",
+    "role": { "@id": "deg:role", "@type": "@id" },
+    "participantId": "deg:participantId",
+    "policy": "deg:policy",
+    "url": "deg:url",
+    "queryPath": "deg:queryPath",
+    "revenueFlows": "deg:revenueFlows",
+    "value": "deg:value",
+    "currency": "deg:currency",
+    "buyer": "deg:RoleBuyer",
+    "seller": "deg:RoleSeller",
+    "buyerDiscom": "deg:RoleBuyerDiscom",
+    "sellerDiscom": "deg:RoleSellerDiscom"
+  },
+  "@graph": []
+}

@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.nfh.global/EnergyResourceMeter/v1.0",
+  "title": "EnergyResourceMeter",
+  "description": "Typed schema for metering-point energy resources (type = METER). CIM: cim:Meter / cim:EndDevice (IEC 61968-9). Common fields inherited from EnergyResourceCommon/v1.0.",
+  "allOf": [
+    { "$ref": "https://schema.nfh.global/EnergyResourceCommon/v1.0#EnergyResourceCommon" },
+    {
+      "type": "object",
+      "required": ["id", "type"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "const": "METER",
+          "description": "Asset-class discriminator. Must be \"METER\". CIM: cim:Meter (IEC 61968-9 EndDevice subtype)."
+        },
+        "attributes": { "$ref": "#/$defs/EnergyResourceMeterAttributes" }
+      }
+    }
+  ],
+  "$defs": {
+    "EnergyResourceMeterAttributes": {
+      "allOf": [
+        { "$ref": "https://schema.nfh.global/EnergyResourceCommon/v1.0#EnergyResourceCommonAttributes" },
+        {
+          "type": "object",
+          "additionalProperties": true,
+          "description": "Attributes for METER resources. Common fields inherited. Meter-specific fields below.",
+          "properties": {
+            "meterCapability": {
+              "type": "string",
+              "enum": ["Electromechanical", "CMRI", "AMR", "AMI"],
+              "description": "Communication/automation generation. Electromechanical=induction disc, no comms. CMRI=static with manual optical-port read (India legacy). AMR=one-way automated read. AMI=two-way smart meter. CIM: AmiBillingReadyKind (IEC 61968-9)."
+            },
+            "energyDirection": {
+              "type": "string",
+              "enum": ["Forward", "Reverse", "Bidirectional", "Net"],
+              "default": "Forward",
+              "description": "Energy flow direction metered. Forward=import only (default). Reverse=export only. Bidirectional=import and export in separate registers. Net=algebraically netted register. CIM: FlowDirectionKind (ESPI NAESB REQ.21)."
+            },
+            "functions": {
+              "type": "array",
+              "uniqueItems": true,
+              "description": "Bag of optional capabilities active on this meter, per IEC 61968-9 EndDeviceFunction[0..*] pattern.",
+              "items": {
+                "type": "string",
+                "enum": ["ToU", "NetMetering", "MaxDemand", "LoadControl", "TamperDetection", "PowerQuality", "EventLogging"]
+              }
+            },
+            "feeder": { "type": "string", "description": "Feeder identifier this meter is supplied from." },
+            "bus": { "type": "string", "description": "Busbar identifier at the meter's connection point." },
+            "communicationTechnology": {
+              "type": "string",
+              "enum": ["PLC", "RF_Mesh", "GPRS", "NB-IoT", "LoRa", "ZigBee", "Other"],
+              "description": "Last-mile (physical layer) communication technology used by this meter's head-end system."
+            },
+            "applicationProtocol": {
+              "type": "string",
+              "enum": ["DLMS_COSEM", "ANSI_C12_18", "IEC_61850", "Modbus", "Other"],
+              "description": "Application-layer protocol used to read/communicate meter data. DLMS_COSEM: IEC 62056 (mandatory for India AMI per BIS IS 16444). ANSI_C12_18: North American optical-port / table-data model. IEC_61850: substation automation. Modbus: legacy industrial."
+            }
+          }
+        }
+      ]
+    }
+  }
+}

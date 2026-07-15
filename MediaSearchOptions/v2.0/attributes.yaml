@@ -1,0 +1,37 @@
+openapi: 3.1.1
+info:
+  title: MediaSearchOptions
+  version: 2.0.0
+  description: "Container schemas fetched from beckn.yaml. This cannot be extended as it is a reserved schema in beckn protocol. Any additional properties added to this schema can only be made using its *Attributes property"
+  license:
+    name: CC-BY-NC-SA 4.0 International
+  contact:
+    name: Beckn Labs
+    url: https://beckn.io
+components:
+  schemas:
+    MediaSearchOptions:
+      x-iri: https://schema.beckn.io/MediaSearchOptions/v2.0
+      description: How the discovery engine should use the provided media inputs.
+      title: MediaSearchOptions
+      type: object
+      properties:
+        goals:
+          description: Desired processing goals for the media.
+          type: array
+          items:
+            type: string
+            enum:
+            - visual-similarity
+            - visual-object-detect
+            - text-from-image
+            - text-from-audio
+            - semantic-audio-match
+            - semantic-video-match
+        augment_text_search:
+          type: boolean
+        restrict_results_to_media_proximity:
+          type: boolean
+      additionalProperties: false
+      x-tags:
+      - common

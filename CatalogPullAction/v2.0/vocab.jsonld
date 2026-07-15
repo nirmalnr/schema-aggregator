@@ -1,0 +1,61 @@
+{
+  "@context": {
+    "beckn": "https://schema.beckn.io/LinkedData/v2.1/context.jsonld",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/version/latest/schemaorg-current-https.jsonld",
+    "CatalogPullAction": "beckn:CatalogPullAction",
+    "catalogIds": "beckn:catalogIds",
+    "filters": "beckn:filters",
+    "fromDate": "beckn:fromDate",
+    "limit": "beckn:limit",
+    "mode": "beckn:mode",
+    "networkIds": "beckn:networkIds",
+    "schemaTypes": "beckn:schemaTypes",
+    "toDate": "beckn:toDate"
+  },
+  "@graph": [
+    {
+      "@id": "beckn:CatalogPullAction",
+      "@type": "rdfs:Class",
+      "rdfs:label": "CatalogPullAction",
+      "rdfs:comment": "Message payload for catalog/pull\n\nThis schema is part of the Long Term Support of Beckn Protocol V2.0 API specification and MUST NOT be extended. Any domain-specific extension must use the property of this schema which is of type Attribute."
+    },
+    {
+      "@id": "beckn:mode",
+      "@type": "rdf:Property",
+      "rdfs:label": "mode",
+      "rdfs:comment": "- `FULL` — returns the latest version of each matching catalog.\n- `INCREMENTAL` — returns all catalog versions indexed between\n  `fromDate` and `toDate` (inclusive).\n"
+    },
+    {
+      "@id": "beckn:filters",
+      "@type": "rdf:Property",
+      "rdfs:label": "filters",
+      "rdfs:comment": "Optional filters narrowing which catalogs are returned"
+    },
+    {
+      "@id": "beckn:catalogIds",
+      "@type": "rdf:Property",
+      "rdfs:label": "catalogIds",
+      "rdfs:comment": "Explicit catalog IDs to pull (alternative to filters)"
+    },
+    {
+      "@id": "beckn:limit",
+      "@type": "rdf:Property",
+      "rdfs:label": "limit",
+      "rdfs:comment": "Maximum number of catalogs to return (server may apply its own cap)"
+    },
+    {
+      "@id": "beckn:fromDate",
+      "@type": "rdf:Property",
+      "rdfs:label": "fromDate",
+      "rdfs:comment": "Inclusive lower bound for INCREMENTAL mode"
+    },
+    {
+      "@id": "beckn:toDate",
+      "@type": "rdf:Property",
+      "rdfs:label": "toDate",
+      "rdfs:comment": "Inclusive upper bound for INCREMENTAL mode"
+    }
+  ]
+}

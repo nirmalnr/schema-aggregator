@@ -1,0 +1,113 @@
+openapi: 3.1.1
+info:
+  title: BecknTimeSeries — Time-Series Payload (v1.0)
+  version: 1.0.0
+  description: >
+    Lightweight, OpenADR 3.1.0-aligned time-series envelope for any beckn
+    payload that needs to carry interval-aligned signals (price, baseline,
+    usage, forecast, …) without each domain schema re-inventing its own
+    shape. Built by `$ref`-reusing OpenADR's `interval`, `intervalPeriod`,
+    `valuesMap`, `reportPayloadDescriptor`, and `point`.
+
+components:
+  schemas:
+
+    BecknTimeSeries:
+      type: object
+      additionalProperties: false
+      required: [intervalPeriod, payloadDescriptors, intervals]
+      description: >
+        A time-series payload. `intervalPeriod` sets the default temporal
+        bounds; each `interval` carries one or more typed `payloads`
+        (valuesMap rows). `payloadDescriptors` declare units/currency/
+        reading-type for each `payloadType` referenced in the rows; every
+        type used in `intervals` SHOULD be declared in `payloadDescriptors`.
+        `payloadType` follows OpenADR's open-string convention — consumer
+        profiles (e.g. `DemandFlexPerformance`) MAY restrict it to a
+        domain-specific set and add cross-field membership checks.
+      x-standard: "OpenADR 3.1.0"
+      x-tags:
+        - time-series
+        - openadr
+      x-jsonld:
+        "@context": ./context.jsonld
+        "@type": TimeSeries
+
+      properties:
+
+        "@type":
+          type: string
+          enum: ["TimeSeries"]
+          description: >
+            Optional JSON-LD type discriminator. Present when the embedder
+            wants to surface the type in the payload; the parent schema's
+            `$ref` to BecknTimeSeries is what drives validation.
+
+        "@context":
+          type: string
+          format: uri
+          description: >
+            Optional JSON-LD context URL. Usually omitted — the envelope's
+            `context.schemaContext[]` array carries it once for the whole
+            payload. Required only when the embedder relies on
+            beckn-onix's `@context`-based schema discovery instead of
+            inline `$ref` from the parent schema.
+
+        intervalPeriod:
+          $ref: "https://schema.nfh.global/openadr/v3.1.0#/components/schemas/intervalPeriod"
+          description: >
+            Default temporal bounds of the series — ISO 8601 `start` and
+            `duration`. An individual interval may override these.
+
+        payloadDescriptors:
+          type: array
+          minItems: 1
+          description: >
+            Sidecar describing each `payloadType` carried by the rows
+            (units, currency, reading type, accuracy/confidence). Every
+            `intervals[*].payloads[*].type` SHOULD appear here; consumer
+            profiles enforce that as a cross-field constraint.
+            Each descriptor must be either an OpenADR3 eventPayloadDescriptor
+            (objectType: EVENT_PAYLOAD_DESCRIPTOR — for offer/bid signals) or
+            a reportPayloadDescriptor (objectType: REPORT_PAYLOAD_DESCRIPTOR
+            — for telemetry/meter readings). The objectType field is the discriminator.
+          items:
+            oneOf:
+              - $ref: "https://schema.nfh.global/openadr/v3.1.0#/components/schemas/eventPayloadDescriptor"
+              - $ref: "https://schema.nfh.global/openadr/v3.1.0#/components/schemas/reportPayloadDescriptor"
+            discriminator:
+              propertyName: objectType
+              mapping:
+                EVENT_PAYLOAD_DESCRIPTOR: "https://schema.nfh.global/openadr/v3.1.0#/components/schemas/eventPayloadDescriptor"
+                REPORT_PAYLOAD_DESCRIPTOR: "https://schema.nfh.global/openadr/v3.1.0#/components/schemas/reportPayloadDescriptor"
+
+        intervals:
+          type: array
+          minItems: 1
+          description: >
+            Series rows. Each row carries an integer `id` and a list of
+            typed `payloads` (valuesMap). Per-row `intervalPeriod` is
+            optional and overrides the default.
+          items:
+            $ref: "https://schema.nfh.global/openadr/v3.1.0#/components/schemas/interval"
+
+        resourceName:
+          type: string
+          description: >
+            Identifies the single resource these readings are about — the
+            data source. Mirrors OpenADR 3.1.0's
+            `Report.resources[].resourceName`. Use when the series captures
+            telemetry from a specific physical device or asset; in energy
+            domains this is typically the meter id. Omit (or set to `"0"`,
+            following OpenADR convention) for aggregate / unattributed
+            series. Optional, so existing payloads continue to validate
+            without change.
+
+        clientName:
+          type: string
+          description: >
+            Identifies the reporting client — the party authoring this
+            time-series and pushing it onto the wire. Mirrors OpenADR
+            3.1.0's `Report.clientName` (VEN name). In energy domains this
+            is typically the utility / DISCOM / aggregator subscriber id.
+            Optional.

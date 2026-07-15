@@ -1,0 +1,24 @@
+{
+  "@context": {
+    "schema": "https://schema.org/",
+    "beckn": "https://schema.beckn.io/",
+    "fnbo": "https://schema.beckn.io/FoodAndBeverageOffer#",
+    "FoodAndBeverageOffer": "fnbo:FoodAndBeverageOffer",
+    "customization": "fnbo:customization",
+    "customizationGroups": "fnbo:customizationGroups",
+    "customizationGroupCode": "fnbo:customizationGroupCode",
+    "customizationGroupName": "fnbo:customizationGroupName",
+    "customizationSelection": "fnbo:customizationSelection",
+    "minSelections": "fnbo:minSelections",
+    "maxSelections": "fnbo:maxSelections",
+    "options": "fnbo:options",
+    "optionCode": "fnbo:optionCode",
+    "optionName": "fnbo:optionName",
+    "priceDelta": "fnbo:priceDelta",
+    "priceDeltaType": "fnbo:priceDeltaType",
+    "priceDeltaValue": "fnbo:priceDeltaValue",
+    "itemRef": "fnbo:itemRef",
+    "offerRef": "fnbo:offerRef",
+    "available": "fnbo:available"
+  }
+}

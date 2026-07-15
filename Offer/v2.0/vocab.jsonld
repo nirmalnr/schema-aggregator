@@ -1,0 +1,103 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "beckn": "https://schema.beckn.io/",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "schema": "https://schema.org/",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "beckn:Offer",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Offer",
+      "rdfs:comment": "Schema definition for Offer in the Beckn Protocol"
+    },
+    {
+      "@id": "beckn:context",
+      "@type": "rdf:Property",
+      "rdfs:label": "context",
+      "rdfs:comment": "context property of Offer"
+    },
+    {
+      "@id": "beckn:type",
+      "@type": "rdf:Property",
+      "rdfs:label": "type",
+      "rdfs:comment": "type property of Offer"
+    },
+    {
+      "@id": "beckn:id",
+      "@type": "rdf:Property",
+      "rdfs:label": "id",
+      "rdfs:comment": "id property of Offer"
+    },
+    {
+      "@id": "beckn:descriptor",
+      "@type": "rdf:Property",
+      "rdfs:label": "descriptor",
+      "rdfs:comment": "descriptor property of Offer"
+    },
+    {
+      "@id": "beckn:provider",
+      "@type": "rdf:Property",
+      "rdfs:label": "provider",
+      "rdfs:comment": "provider property of Offer"
+    },
+    {
+      "@id": "beckn:items",
+      "@type": "rdf:Property",
+      "rdfs:label": "items",
+      "rdfs:comment": "items property of Offer"
+    },
+    {
+      "@id": "beckn:addOns",
+      "@type": "rdf:Property",
+      "rdfs:label": "addOns",
+      "rdfs:comment": "addOns property of Offer"
+    },
+    {
+      "@id": "beckn:addOnItems",
+      "@type": "rdf:Property",
+      "rdfs:label": "addOnItems",
+      "rdfs:comment": "addOnItems property of Offer"
+    },
+    {
+      "@id": "beckn:isActive",
+      "@type": "rdf:Property",
+      "rdfs:label": "isActive",
+      "rdfs:comment": "isActive property of Offer"
+    },
+    {
+      "@id": "beckn:validity",
+      "@type": "rdf:Property",
+      "rdfs:label": "validity",
+      "rdfs:comment": "validity property of Offer"
+    },
+    {
+      "@id": "beckn:price",
+      "@type": "rdf:Property",
+      "rdfs:label": "price",
+      "rdfs:comment": "price property of Offer"
+    },
+    {
+      "@id": "beckn:eligibleRegion",
+      "@type": "rdf:Property",
+      "rdfs:label": "eligibleRegion",
+      "rdfs:comment": "eligibleRegion property of Offer"
+    },
+    {
+      "@id": "beckn:acceptedPaymentMethod",
+      "@type": "rdf:Property",
+      "rdfs:label": "acceptedPaymentMethod",
+      "rdfs:comment": "acceptedPaymentMethod property of Offer"
+    },
+    {
+      "@id": "beckn:offerAttributes",
+      "@type": "rdf:Property",
+      "rdfs:label": "offerAttributes",
+      "rdfs:comment": "offerAttributes property of Offer"
+    }
+  ]
+}

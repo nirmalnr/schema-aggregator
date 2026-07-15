@@ -1,0 +1,115 @@
+{
+  "$id": "https://schema.beckn.io/Order/v2.0",
+  "x-iri": "https://schema.beckn.io/Order/v2.0",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Schema definition for Order in the Beckn Protocol",
+  "title": "Order",
+  "type": "object",
+  "properties": {
+    "beckn:id": {
+      "type": "string",
+      "x-jsonld": {
+        "@id": "schema:identifier"
+      }
+    },
+    "beckn:orderStatus": {
+      "type": "string",
+      "description": "Order status/state",
+      "enum": [
+        "CREATED",
+        "PENDING",
+        "CONFIRMED",
+        "INPROGRESS",
+        "PARTIALLYFULFILLED",
+        "COMPLETED",
+        "CANCELLED",
+        "REJECTED",
+        "FAILED",
+        "RETURNED",
+        "REFUNDED",
+        "ONHOLD"
+      ],
+      "x-jsonld": {
+        "@id": "beckn:orderStatus"
+      }
+    },
+    "beckn:orderNumber": {
+      "type": "string",
+      "description": "Human-visible order number",
+      "x-jsonld": {
+        "@id": "schema:orderNumber"
+      }
+    },
+    "beckn:seller": {
+      "$ref": "https://schema.beckn.io/Provider/v2.1/schema.json",
+      "x-jsonld": {
+        "@id": "schema:seller"
+      }
+    },
+    "beckn:buyer": {
+      "$ref": "https://schema.beckn.io/Buyer/v2.0/schema.json",
+      "x-jsonld": {
+        "@id": "schema:customer"
+      }
+    },
+    "beckn:orderItems": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "https://schema.beckn.io/OrderItem/v2.0/schema.json"
+      },
+      "x-jsonld": {
+        "@id": "schema:orderItem"
+      }
+    },
+    "beckn:acceptedOffers": {
+      "type": "array",
+      "items": {
+        "$ref": "https://schema.beckn.io/Offer/v2.1/schema.json"
+      },
+      "description": "Offers accepted at order-level (optional if captured per line)",
+      "x-jsonld": {
+        "@id": "schema:acceptedOffer"
+      }
+    },
+    "beckn:orderValue": {
+      "$ref": "https://schema.beckn.io/PriceSpecification/v2.1/schema.json",
+      "description": "Order totals snapshot (derivable from lines; optional)",
+      "x-jsonld": {
+        "@id": "schema:priceSpecification"
+      }
+    },
+    "beckn:invoice": {
+      "$ref": "https://schema.beckn.io/Invoice/v2.1/schema.json",
+      "description": "Invoice reference/summary",
+      "x-jsonld": {
+        "@id": "schema:Invoice"
+      }
+    },
+    "beckn:payment": {
+      "$ref": "https://schema.beckn.io/Payment/v2.0/schema.json",
+      "description": "Method/status; rail-specific payloads go to packs",
+      "x-jsonld": {
+        "@id": "schema:PaymentMethod|schema:PaymentStatusType"
+      }
+    },
+    "beckn:fulfillment": {
+      "$ref": "https://schema.beckn.io/Fulfillment/v2.1/schema.json",
+      "description": "Parcel delivery or reservation summary",
+      "x-jsonld": {
+        "@id": "schema:ParcelDelivery|schema:Reservation"
+      }
+    },
+    "beckn:orderAttributes": {
+      "$ref": "https://schema.beckn.io/Attributes/v2.0/schema.json",
+      "description": "Order-level Attribute Pack (vertical/regulatory specifics)"
+    }
+  },
+  "required": [
+    "beckn:orderStatus",
+    "beckn:seller",
+    "beckn:buyer",
+    "beckn:orderItems"
+  ],
+  "additionalProperties": false
+}

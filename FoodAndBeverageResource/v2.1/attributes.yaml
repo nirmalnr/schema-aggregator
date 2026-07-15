@@ -1,0 +1,73 @@
+openapi: 3.1.1
+info:
+  title: Retail — Food and Beverage Resource Attributes (v2.1)
+  version: 2.1.0
+  description: >
+    Food and beverage-specific resource attributes for prepared foods, cuisine, and allergens.
+    Migrated from FoodAndBeverageItem (v2) to the v2.1 generalised model.
+    Extends RetailResource via allOf to add allergens, cuisine, and preparation properties.
+    NOTE: Fields like resourceId, lineId, offerId, quantity, price from v2 FoodAndBeverageItem
+    have moved to RetailCommitment in v2.1 (not in resourceAttributes).
+    Attaches to beckn:Resource via resourceAttributes.
+
+components:
+  schemas:
+    FoodAndBeverageResource:
+      type: object
+      x-beckn-container: resourceAttributes
+      x-jsonld:
+        "@context": "https://schema.beckn.io/FoodAndBeverageResource/v2.1/context.jsonld"
+        "@type": fnbr:FoodAndBeverageResource
+      allOf:
+        - $ref: "../../RetailResource/v2.1/attributes.yaml#/components/schemas/RetailResource"
+        - type: object
+          properties:
+            allergens:
+              type: array
+              items:
+                type: string
+                enum:
+                  - GLUTEN       # Cereals containing gluten (wheat, rye, barley, oats)
+                  - NUTS         # Tree nuts (almonds, cashews, walnuts, pecans, pistachios, etc.)
+                  - DAIRY        # Milk and milk-derived products
+                  - EGGS         # Eggs and egg-derived products
+                  - SOY          # Soya / soybean
+                  - SHELLFISH    # Crustacean shellfish (crab, lobster, shrimp/prawns)
+                  - FISH         # Fish (all species)
+                  - SESAME       # Sesame seeds and sesame oil
+                  - SULPHITES    # Sulphur dioxide and sulphites (preservatives; EU Annex II major allergen)
+                  - CELERY       # Celery and celeriac (EU Annex II major allergen)
+                  - MUSTARD      # Mustard seeds, leaves, and oil (EU Annex II major allergen)
+                  - LUPIN        # Lupin flour and seeds (EU Annex II major allergen)
+              description: >
+                List of allergens present in the food item. Values align with the EU Annex II major
+                allergen list (Regulation (EU) No 1169/2011) and the US "Big Nine" (FDA 2023).
+                MOLLUSCS (e.g. oysters, squid) and PEANUTS are internationally recognised allergens
+                that may be added in future versions or via L2 extension.
+              x-jsonld-id: "fnbr:allergens"
+            cuisine:
+              type: string
+              description: Cuisine type (e.g., Italian, Indian, Mexican, American, Chinese, Mediterranean, Japanese)
+              x-jsonld-id: "fnbr:cuisine"
+            spiceLevel:
+              type: string
+              enum: [NONE, LOW, MEDIUM, HIGH, EXTRA_HOT]
+              description: Perceived heat/spice level of the food item
+              x-jsonld-id: "fnbr:spiceLevel"
+            preparation:
+              type: object
+              properties:
+                instructions:
+                  type: string
+                  description: Preparation instructions or special handling notes
+                  x-jsonld-id: "fnbr:preparationInstructions"
+                storage:
+                  type: string
+                  description: Storage instructions (e.g., "Refrigerate at 4°C", "Keep frozen")
+                  x-jsonld-id: "fnbr:storageInstructions"
+                shelfLife:
+                  type: string
+                  description: Shelf life as ISO 8601 duration (e.g., "P7D" for 7 days)
+                  x-jsonld-id: "fnbr:shelfLife"
+              description: Preparation, storage, and shelf life information
+              x-jsonld-id: "fnbr:preparation"

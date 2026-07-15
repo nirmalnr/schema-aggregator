@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.nfh.global/EnergyResourceNetwork/v1.0",
+  "title": "EnergyResourceNetwork",
+  "description": "Typed schema for grid-network infrastructure energy resources acting as topology anchors (distribution transformer, busbar, feeder, microgrid). CIM: DT → cim:PowerTransformer, BUS → cim:BusbarSection, FEEDER → cim:Feeder, MICROGRID → cim:Substation (IEC 61970-301). Common fields inherited from EnergyResourceCommon/v1.0.",
+  "allOf": [
+    { "$ref": "https://schema.nfh.global/EnergyResourceCommon/v1.0#EnergyResourceCommon" },
+    {
+      "type": "object",
+      "required": ["id", "type"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["DT", "BUS", "FEEDER", "MICROGRID"],
+          "description": "Asset-class discriminator. CIM: DT → PowerTransformer, BUS → BusbarSection, FEEDER → Feeder, MICROGRID → Substation/microgrid container (IEC 61970-301)."
+        },
+        "attributes": { "$ref": "#/$defs/EnergyResourceNetworkAttributes" }
+      }
+    }
+  ],
+  "$defs": {
+    "EnergyResourceNetworkAttributes": {
+      "allOf": [
+        { "$ref": "https://schema.nfh.global/EnergyResourceCommon/v1.0#EnergyResourceCommonAttributes" },
+        {
+          "type": "object",
+          "additionalProperties": true,
+          "description": "Attributes for grid-network infrastructure resources. Common fields inherited. Network-specific fields below.",
+          "properties": {
+            "nominalVoltageKv": {
+              "type": "number",
+              "minimum": 0,
+              "description": "Nominal operating voltage, kV. CIM: BaseVoltage.nominalVoltage."
+            },
+            "zone": {
+              "type": "string",
+              "description": "Operating zone or region identifier used by the utility."
+            },
+            "substationId": {
+              "type": "string",
+              "description": "Parent substation identifier per utility records."
+            },
+            "feederCode": {
+              "type": "string",
+              "description": "Feeder code per utility records. Relevant for FEEDER and DT resources."
+            }
+          }
+        }
+      ]
+    }
+  }
+}

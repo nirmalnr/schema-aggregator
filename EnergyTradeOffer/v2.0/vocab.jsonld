@@ -1,0 +1,50 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "beckn": "https://schema.nfh.global/core/v2.0/",
+    "deg": "https://schema.nfh.global/deg/EnergyTradeOffer/v2.0/",
+    "schema": "https://schema.org/",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "deg:EnergyTradeOffer",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Energy Trade Offer",
+      "rdfs:comment": "Offer attributes for P2P energy trading, attached to Offer.offerAttributes. Declares the contract table schema via commitmentAttributes.payloadDescriptors (each with insertedBy) and seeds the seller's initial offer data."
+    },
+    {
+      "@id": "deg:validityWindow",
+      "@type": "rdf:Property",
+      "rdfs:label": "Validity window",
+      "rdfs:comment": "Time window when the offer can be selected/accepted. Present at catalog publish time.",
+      "rdfs:domain": "deg:EnergyTradeOffer",
+      "schema:rangeIncludes": "schema:TimePeriod"
+    },
+    {
+      "@id": "deg:contractAttributes",
+      "@type": "rdf:Property",
+      "rdfs:label": "Contract terms",
+      "rdfs:comment": "JSON-LD container for contract terms (DEGContract) published at catalog time. Includes only roles with known participantIds; null/unknown parties are omitted.",
+      "rdfs:domain": "deg:EnergyTradeOffer",
+      "schema:rangeIncludes": { "@id": "https://schema.nfh.global/deg/DEGContract/v2.0/DEGContract" }
+    },
+    {
+      "@id": "deg:commitmentAttributes",
+      "@type": "rdf:Property",
+      "rdfs:label": "Commitment attributes",
+      "rdfs:comment": "Seller's BecknTimeSeries at catalog time. Declares the full contract table schema via payloadDescriptors (each annotated with insertedBy). Carries PRICE_PER_KWH + AVAILABLE_QTY intervals as the seller's initial offer data. Immutable after publish.",
+      "rdfs:domain": "deg:EnergyTradeOffer",
+      "schema:rangeIncludes": { "@id": "https://schema.nfh.global/deg/BecknTimeSeries/v1.0/TimeSeries" }
+    },
+    {
+      "@id": "deg:insertedBy",
+      "@type": "rdf:Property",
+      "rdfs:label": "Inserted by",
+      "rdfs:comment": "Role name (buyer, seller, buyerDiscom, sellerDiscom) of the party responsible for populating this payloadDescriptor column in the commitment table.",
+      "rdfs:domain": "deg:commitmentAttributes"
+    }
+  ]
+}

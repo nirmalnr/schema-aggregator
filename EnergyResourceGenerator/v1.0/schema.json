@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.nfh.global/EnergyResourceGenerator/v1.0",
+  "title": "EnergyResourceGenerator",
+  "description": "Typed schema for generation DER energy resources (solar PV, wind, hydro, biogas, CHP, fuel cell). CIM: GeneratingUnit and subtypes — SOLAR_PV/SOLAR → PhotovoltaicUnit, WIND → WindGeneratingUnit, HYDRO → HydroGeneratingUnit, BIOGAS/CHP → ThermalGeneratingUnit (IEC 61970-301/302). SOLAR is a deprecated alias for SOLAR_PV. Common fields inherited from EnergyResourceCommon/v1.0.",
+  "allOf": [
+    { "$ref": "https://schema.nfh.global/EnergyResourceCommon/v1.0#EnergyResourceCommon" },
+    {
+      "type": "object",
+      "required": ["id", "type"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["SOLAR_PV", "SOLAR", "WIND", "HYDRO", "BIOGAS", "CHP", "FUEL_CELL"],
+          "description": "Asset-class discriminator. SOLAR is deprecated; use SOLAR_PV. CIM: PhotovoltaicUnit, WindGeneratingUnit, HydroGeneratingUnit, ThermalGeneratingUnit (IEC 61970-302)."
+        },
+        "attributes": { "$ref": "#/$defs/EnergyResourceGeneratorAttributes" }
+      }
+    }
+  ],
+  "$defs": {
+    "EnergyResourceGeneratorAttributes": {
+      "allOf": [
+        { "$ref": "https://schema.nfh.global/EnergyResourceCommon/v1.0#EnergyResourceCommonAttributes" },
+        {
+          "type": "object",
+          "additionalProperties": true,
+          "description": "Attributes for generation DER resources. Common fields inherited. Generator-specific fields below.",
+          "properties": {
+            "nominalPowerKw": {
+              "type": "number",
+              "minimum": 0,
+              "description": "Nominal (nameplate) power output, kW. CIM: GeneratingUnit.nominalP. Typically equals DC STC rating for solar PV."
+            },
+            "efficiency": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 100,
+              "description": "Conversion efficiency as a percentage (0–100). Most relevant for FUEL_CELL and CHP resources."
+            }
+          }
+        }
+      ]
+    }
+  }
+}

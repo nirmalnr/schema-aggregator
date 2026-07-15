@@ -1,0 +1,23 @@
+openapi: 3.1.1
+info:
+  title: EnergyContract
+  version: '2.0'
+  description: 'EnergyContract is a subclass of beckn:Contract representing energy-specific contracts
+    on the DEG (Digital Energy Grid) network. It serves as a semantic subclass marker for energy contracts
+    and is the parent of P2PTrade and other DEG energy contract types.
+
+    This schema introduces no additional properties beyond those inherited from beckn:Contract. Domain-specific
+    properties are defined in concrete subclass schemas (e.g., P2PTrade).'
+components:
+  schemas:
+    EnergyContract:
+      type: object
+      additionalProperties: false
+      x-tags:
+      - energy
+      - contract
+      x-jsonld:
+        '@context': ./context.jsonld
+        '@type': EnergyContract
+      allOf:
+      - $ref: https://schema.nfh.global/Contract/v2.0

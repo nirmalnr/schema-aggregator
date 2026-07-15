@@ -1,0 +1,35 @@
+openapi: 3.1.1
+info:
+  title: SupportRequest
+  version: 2.0.0
+  description: Support request by a user. If no field is set, the user can expect
+    a public support contact info
+  license:
+    name: CC-BY-NC-SA 4.0 International
+  contact:
+    name: Beckn Labs
+    url: https://beckn.io
+components:
+  schemas:
+    SupportRequest:
+      x-iri: https://schema.beckn.io/SupportRequest/v2.0
+      description: Support request by a user. If no field is set, the user can expect
+        a public support contact info
+      title: SupportRequest
+      type: object
+      properties:
+        orderId:
+          description: The order against which support is required
+          type: string
+        ticketIds:
+          description: IDs of support ticket if open
+          type: array
+          items:
+            $ref: https://schema.beckn.io/SupportTicket/v2.0/attributes.yaml#/components/schemas/SupportTicket
+        callbackPhone:
+          description: Telephone number of the user for callback.
+          type: string
+      required: []
+      additionalProperties: false
+      x-tags:
+      - common

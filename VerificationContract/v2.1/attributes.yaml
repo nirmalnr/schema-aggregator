@@ -1,0 +1,324 @@
+openapi: 3.1.1
+$id: "https://schema.beckn.io/VerificationContract/v2.1/attributes.yaml"
+info:
+  title: Verification Contract Attributes
+  description: >
+    Domain-specific attributes for a verification contract on the
+    Beckn Verification Service Network. Extends beckn:contractAttributes.
+    Captures the verification request context: subject reference, consent,
+    purpose, and aggregate verification outcome.
+  version: 2.1.0
+  license:
+    name: CC-BY-NC-SA 4.0 International
+    url: https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+
+components:
+  schemas:
+    VerificationContract:
+      type: object
+      x-beckn-container: contractAttributes
+      x-status: under-review
+      x-tags:
+        - verification-service
+        - contract
+      x-jsonld:
+        "@context": "https://schema.beckn.io/VerificationContract/v2.1/context.jsonld"
+        "@type": "vc:VerificationContract"
+      description: >
+        Transaction-level metadata for a verification request contract.
+        Captures who is being verified, why, under what consent, and the
+        aggregate outcome of all verifications in the contract.
+      required:
+        - subject
+        - purpose
+        - consentReference
+      properties:
+        subject:
+          x-jsonld-id: "vc:subject"
+          description: >
+            Reference to the individual being verified. Contains enough
+            information to identify the subject to the verification provider
+            without duplicating full PII in the contract metadata.
+          $ref: '#/components/schemas/SubjectReference'
+
+        purpose:
+          x-jsonld-id: "vc:purpose"
+          description: >
+            The purpose for which verification is being requested. This
+            helps the verification provider apply appropriate processing
+            and may be required for regulatory compliance.
+          type: object
+          required:
+            - code
+          properties:
+            code:
+              x-jsonld-id: "vc:purposeCode"
+              type: string
+              description: >
+                Machine-readable purpose code. Well-known values:
+                EMPLOYMENT_ONBOARDING, KYC_COMPLIANCE, REGULATORY_AUDIT,
+                BACKGROUND_CHECK, CREDENTIAL_RENEWAL, INSURANCE_UNDERWRITING,
+                PLATFORM_ONBOARDING.
+            description:
+              x-jsonld-id: "vc:purposeDescription"
+              type: string
+              description: Human-readable description of the verification purpose.
+
+        consentReference:
+          x-jsonld-id: "vc:consentReference"
+          description: >
+            Reference to the subject's consent for this verification.
+            The actual consent artifact is managed externally; this field
+            carries the reference token.
+          $ref: '#/components/schemas/ConsentReference'
+
+        aggregateResult:
+          x-jsonld-id: "vc:aggregateResult"
+          description: >
+            The overall verification outcome across all verifications
+            in this contract. Set by the BPP after all performance units
+            have completed.
+          type: object
+          properties:
+            status:
+              x-jsonld-id: "vc:aggregateStatus"
+              type: string
+              description: >
+                Aggregate verification status. Values: VERIFIED,
+                PARTIALLY_VERIFIED, NOT_VERIFIED, INCONCLUSIVE, EXPIRED.
+              enum:
+                - VERIFIED
+                - PARTIALLY_VERIFIED
+                - NOT_VERIFIED
+                - INCONCLUSIVE
+                - EXPIRED
+            summary:
+              x-jsonld-id: "vc:summary"
+              type: string
+              description: Human-readable summary of the aggregate result.
+            completedAt:
+              x-jsonld-id: "vc:completedAt"
+              type: string
+              format: date-time
+              description: Timestamp when the aggregate result was determined.
+
+        requestedBy:
+          x-jsonld-id: "vc:requestedBy"
+          description: >
+            Reference to the entity that initiated the verification request.
+            Supplements the participant list with requester-specific metadata.
+          type: object
+          properties:
+            organizationName:
+              x-jsonld-id: "vc:organizationName"
+              type: string
+              description: Name of the requesting organization.
+            organizationType:
+              x-jsonld-id: "vc:organizationType"
+              type: string
+              description: >
+                Type of organization. Values: EMPLOYER, PLATFORM, INSURER,
+                REGULATOR, FINANCIAL_INSTITUTION, OTHER.
+            referenceId:
+              x-jsonld-id: "vc:referenceId"
+              type: string
+              description: >
+                Requester's internal reference for this verification
+                (e.g., application ID, onboarding case ID).
+
+        expiresAt:
+          x-jsonld-id: "vc:expiresAt"
+          description: >
+            Timestamp after which this verification contract and its results
+            are considered expired and should not be relied upon.
+          type: string
+          format: date-time
+
+        issuedCredentials:
+          x-jsonld-id: "vc:issuedCredentials"
+          description: >
+            Credentials issued by the verifier as deliverables of this
+            verification contract. Each entry points to (or embeds) a signed
+            artifact — a W3C Verifiable Credential, a PDF certificate, or a
+            signed image — that the Requesting NP can carry, present, or store
+            as portable proof of the verification outcome.
+
+            Credentials at this level are contract-scoped: they attest to the
+            aggregate outcome across all verification types in the contract.
+            Per-check credentials (attesting to one specific verification type)
+            are carried in VerificationPerformance.
+
+            This field is populated by the BPP on confirm or on_status, once
+            the verification is complete and credentials have been issued.
+          type: array
+          items:
+            $ref: '#/components/schemas/IssuedCredential'
+
+    IssuedCredential:
+      type: object
+      description: >
+        A single issued credential artifact produced as the output of a
+        verification contract. May be a W3C Verifiable Credential, a signed
+        PDF certificate, or a signed image. The artifact may be linked via URL
+        (for externally hosted credentials) or embedded inline (for small
+        JSON-LD VCs where URL persistence cannot be guaranteed).
+      required:
+        - credentialId
+        - credentialType
+      properties:
+        credentialId:
+          x-jsonld-id: "vc:credentialId"
+          type: string
+          description: >
+            Unique identifier for this credential, assigned by the issuing
+            verification provider. Stable across re-fetches of the same
+            credential.
+
+        credentialType:
+          x-jsonld-id: "vc:credentialType"
+          type: string
+          description: >
+            The format or standard of the issued credential.
+          enum:
+            - W3C_VC
+            - PDF
+            - IMAGE
+            - OPEN_BADGE
+            - OTHER
+
+        format:
+          x-jsonld-id: "vc:credentialFormat"
+          type: string
+          description: >
+            MIME type of the credential artifact. Examples:
+            application/ld+json (W3C VC), application/pdf,
+            image/png, image/jpeg.
+
+        url:
+          x-jsonld-id: "vc:credentialUrl"
+          type: string
+          format: uri
+          description: >
+            URL at which the credential artifact can be retrieved. May be
+            time-limited (pre-signed URL) or persistent. At least one of
+            url or embeddedCredential must be present.
+
+        issuedAt:
+          x-jsonld-id: "vc:credentialIssuedAt"
+          type: string
+          format: date-time
+          description: >
+            Timestamp when this credential was issued by the verification
+            provider.
+
+        credentialExpiresAt:
+          x-jsonld-id: "vc:credentialExpiresAt"
+          type: string
+          format: date-time
+          description: >
+            Timestamp after which this credential is no longer valid.
+            Distinct from the contract's expiresAt: the credential may
+            have a longer or shorter validity window than the contract.
+
+        issuerId:
+          x-jsonld-id: "vc:issuerId"
+          type: string
+          description: >
+            DID or provider-specific identifier of the entity that issued
+            the credential. For W3C VCs this should match the issuer field
+            inside the VC payload.
+
+        embeddedCredential:
+          x-jsonld-id: "vc:embeddedCredential"
+          type: object
+          additionalProperties: true
+          description: >
+            The full credential payload embedded inline. Used when the
+            credential is a W3C VC in JSON-LD form and the issuer prefers
+            not to rely on URL persistence. If url is also present, this
+            field takes precedence for cryptographic verification.
+
+    SubjectReference:
+      type: object
+      description: >
+        A reference to the individual being verified. Carries the minimum
+        identifiers needed by the verification provider. Full PII is
+        exchanged only during the init/confirm flow under consent.
+      required:
+        - name
+      properties:
+        name:
+          x-jsonld-id: "vc:subjectName"
+          type: string
+          description: Full name of the subject as it appears on official documents.
+        dateOfBirth:
+          x-jsonld-id: "vc:dateOfBirth"
+          type: string
+          format: date
+          description: Date of birth of the subject (ISO 8601 date).
+        identifiers:
+          x-jsonld-id: "vc:identifiers"
+          type: array
+          description: >
+            One or more identity references for the subject. Each identifier
+            is typed (e.g., AADHAAR, PAN, MOBILE) and carries a value.
+          items:
+            type: object
+            required:
+              - type
+              - value
+            properties:
+              type:
+                x-jsonld-id: "vc:identifierType"
+                type: string
+                description: >
+                  Identifier type. Values: AADHAAR, PAN, MOBILE, EMAIL,
+                  LICENCE_NUMBER, PASSPORT_NUMBER, VOTER_ID, EMPLOYEE_ID.
+              value:
+                x-jsonld-id: "vc:identifierValue"
+                type: string
+                description: The identifier value.
+              maskedValue:
+                x-jsonld-id: "vc:maskedValue"
+                type: string
+                description: >
+                  A masked version of the identifier for display purposes
+                  (e.g., "XXXX-XXXX-1234" for Aadhaar).
+
+    ConsentReference:
+      type: object
+      description: >
+        Reference to the subject's consent for verification. Points to an
+        externally managed consent artifact.
+      required:
+        - consentId
+        - mechanism
+      properties:
+        consentId:
+          x-jsonld-id: "vc:consentId"
+          type: string
+          description: Unique identifier of the consent artifact.
+        mechanism:
+          x-jsonld-id: "vc:mechanism"
+          type: string
+          description: >
+            The consent mechanism used. Values: OTP, DIGITAL_SIGNATURE,
+            AADHAAR_EKYC, DIGILOCKER, OFFLINE_CONSENT, BIOMETRIC.
+        grantedAt:
+          x-jsonld-id: "vc:grantedAt"
+          type: string
+          format: date-time
+          description: Timestamp when consent was granted by the subject.
+        expiresAt:
+          x-jsonld-id: "vc:consentExpiresAt"
+          type: string
+          format: date-time
+          description: Timestamp when the consent expires.
+        scope:
+          x-jsonld-id: "vc:scope"
+          type: array
+          description: >
+            What the consent covers. List of verification type codes
+            the subject has consented to.
+          items:
+            type: string

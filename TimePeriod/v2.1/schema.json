@@ -1,0 +1,53 @@
+{
+  "$id": "https://schema.beckn.io/TimePeriod/v2.1",
+  "x-iri": "https://schema.beckn.io/TimePeriod/v2.1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Time window with date-time precision for availability/validity",
+  "title": "TimePeriod",
+  "x-tags": [
+    "common"
+  ],
+  "type": "object",
+  "properties": {
+    "startDate": {
+      "description": "Start instant (inclusive)",
+      "type": "string",
+      "format": "date-time"
+    },
+    "endDate": {
+      "description": "End instant in RFC 3339 date-time format",
+      "type": "string",
+      "format": "date-time",
+      "example": "2025-12-31T23:59:59Z"
+    },
+    "startTime": {
+      "description": "Start time of the time period",
+      "type": "string",
+      "format": "time"
+    },
+    "endTime": {
+      "description": "End time of the time period",
+      "type": "string",
+      "format": "time"
+    }
+  },
+  "anyOf": [
+    {
+      "required": [
+        "startDate"
+      ]
+    },
+    {
+      "required": [
+        "endDate"
+      ]
+    },
+    {
+      "required": [
+        "startTime",
+        "endTime"
+      ]
+    }
+  ],
+  "additionalProperties": false
+}

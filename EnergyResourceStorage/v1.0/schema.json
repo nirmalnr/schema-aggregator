@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.nfh.global/EnergyResourceStorage/v1.0",
+  "title": "EnergyResourceStorage",
+  "description": "Typed schema for stationary battery energy storage resources (BESS). CIM: cim:BatteryUnit (IEC 61970-302). BATTERY is a deprecated alias for BESS. EV charging stations (EV_CHARGER, EV_V2G) moved to EnergyResourceEVCharger/v1.0. storageCapacityKwh is exclusive to this kind. Common fields inherited from EnergyResourceCommon/v1.0.",
+  "allOf": [
+    { "$ref": "https://schema.nfh.global/EnergyResourceCommon/v1.0#EnergyResourceCommon" },
+    {
+      "type": "object",
+      "required": ["id", "type"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["BESS", "BATTERY"],
+          "description": "Asset-class discriminator. BATTERY is deprecated; use BESS. CIM: cim:BatteryUnit (IEC 61970-302). EV charging stations use EnergyResourceEVCharger (EV_CHARGER, EV_V2G)."
+        },
+        "attributes": { "$ref": "#/$defs/EnergyResourceStorageAttributes" }
+      }
+    }
+  ],
+  "$defs": {
+    "EnergyResourceStorageAttributes": {
+      "allOf": [
+        { "$ref": "https://schema.nfh.global/EnergyResourceCommon/v1.0#EnergyResourceCommonAttributes" },
+        {
+          "type": "object",
+          "additionalProperties": true,
+          "description": "Attributes for BESS resources. Common fields inherited. Storage-specific fields below.",
+          "properties": {
+            "storageCapacityKwh": {
+              "type": "number",
+              "minimum": 0,
+              "description": "Rated stored-energy capacity, kWh. CIM: BatteryUnit.ratedE. Exclusive to EnergyResourceStorage — replaces energyCapacityKwh from EnergyResource v1.1."
+            },
+            "storageType": {
+              "type": "string",
+              "enum": ["LithiumIon", "LeadAcid", "FlowBattery", "NaS", "NiCd", "Flywheel", "Other"],
+              "description": "Battery storage technology type."
+            },
+            "stateOfHealthPct": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 100,
+              "description": "Battery state-of-health as a percentage (0–100)."
+            }
+          }
+        }
+      ]
+    }
+  }
+}

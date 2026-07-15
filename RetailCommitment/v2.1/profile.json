@@ -1,0 +1,32 @@
+{
+  "id": "https://schema.beckn.io/RetailCommitment/v2.1",
+  "name": "Retail Commitment Attributes",
+  "version": "2.1.0",
+  "protocol_version": "2.0",
+  "semantic_model": "generalised",
+  "included_schemas": ["RetailCommitment"],
+  "discovery_fields": [
+    "resourceId",
+    "offerId",
+    "quantity.unitCode"
+  ],
+  "indexable_paths": [
+    "beckn:commitmentAttributes.lineId",
+    "beckn:commitmentAttributes.resourceId",
+    "beckn:commitmentAttributes.offerId",
+    "beckn:commitmentAttributes.quantity.unitCode",
+    "beckn:commitmentAttributes.addOnIds"
+  ],
+  "filterable_paths": [
+    "beckn:commitmentAttributes.resourceId",
+    "beckn:commitmentAttributes.offerId",
+    "beckn:commitmentAttributes.quantity.unitCode",
+    "beckn:commitmentAttributes.quantity.unitQuantity"
+  ],
+  "sortable_paths": [
+    "beckn:commitmentAttributes.quantity.unitQuantity"
+  ],
+  "privacy_notes": [
+    "specialInstructions may contain free-text dietary or personal requirements and should be handled with discretion"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "$id": "https://schema.beckn.io/FulfillmentMode/v2.0",
+  "x-iri": "https://schema.beckn.io/FulfillmentMode/v2.0",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Describes the mode of fulfillment. This is an extensible container allowing domain-specific fulfillment modes to be expressed via attributes.",
+  "title": "FulfillmentMode",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "descriptor": {
+      "$ref": "https://schema.beckn.io/Descriptor/v2.1/schema.json"
+    },
+    "modeAttributes": {
+      "description": "Domain-specific fulfillment mode attributes (e.g., delivery, pickup, reservation, digital)",
+      "$ref": "https://schema.beckn.io/Attributes/v2.0/schema.json"
+    }
+  },
+  "additionalProperties": false,
+  "x-tags": [
+    "common"
+  ]
+}

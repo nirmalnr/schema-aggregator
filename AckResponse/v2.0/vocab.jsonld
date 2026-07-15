@@ -1,0 +1,48 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "beckn": "https://schema.beckn.io/LinkedData/v2.1/context.jsonld",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "schema": "https://schema.org/version/latest/schemaorg-current-https.jsonld",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "AckResponse": "beckn:AckResponse",
+    "ack_status": "beckn:ack_status",
+    "error": "beckn:error",
+    "timestamp": "beckn:timestamp",
+    "transaction_id": "beckn:transaction_id"
+  },
+  "@graph": [
+    {
+      "@id": "beckn:AckResponse",
+      "@type": "rdfs:Class",
+      "rdfs:label": "AckResponse",
+      "rdfs:comment": "Schema definition for AckResponse in the Beckn Protocol"
+    },
+    {
+      "@id": "beckn:transaction_id",
+      "@type": "rdf:Property",
+      "rdfs:label": "transaction_id",
+      "rdfs:comment": "transaction_id property of AckResponse"
+    },
+    {
+      "@id": "beckn:timestamp",
+      "@type": "rdf:Property",
+      "rdfs:label": "timestamp",
+      "rdfs:comment": "timestamp property of AckResponse"
+    },
+    {
+      "@id": "beckn:ack_status",
+      "@type": "rdf:Property",
+      "rdfs:label": "ack_status",
+      "rdfs:comment": "ack_status property of AckResponse"
+    },
+    {
+      "@id": "beckn:error",
+      "@type": "rdf:Property",
+      "rdfs:label": "error",
+      "rdfs:comment": "error property of AckResponse"
+    }
+  ]
+}

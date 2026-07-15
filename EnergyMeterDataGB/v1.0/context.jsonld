@@ -1,0 +1,21 @@
+{
+    "@context": [
+        "https://schema.nfh.global/espiGreenButton/v1.0/context.jsonld",
+        {
+            "@version": 1.1,
+            "@protected": true,
+            "xsd": "http://www.w3.org/2001/XMLSchema#",
+            "deg": "https://schema.nfh.global/deg/",
+
+            "MeterDataGB": "deg:MeterDataGB",
+            "meterDataGB": {
+                "@id": "deg:meterDataGB",
+                "@type": "@id"
+            },
+            "timeZone": {
+                "@id": "deg:timeZone",
+                "@type": "xsd:string"
+            }
+        }
+    ]
+}

@@ -1,0 +1,94 @@
+openapi: 3.1.1
+info:
+  title: EnergyResource — Resource Attributes (v2.0)
+  version: 2.0.0
+  description: >
+    Canonical, technology-neutral class for any asset that produces,
+    consumes, stores, or modulates energy.
+
+    Architecture
+    ────────────
+    EnergyResourceCommon (envelope: id, type, subResources, parentResources,
+    attributes) and EnergyResourceCommonAttributes (attribute bag base: make,
+    model, maxExportKw, maxImportKw, ratedPowerKw, telemetryProvider,
+    commissioningDate, location) are defined in EnergyResourceCommon/v1.0.
+    All seven kinds inherit them via allOf external $ref.
+
+    Seven typed kinds each inherit EnergyResourceCommon via allOf and
+    refine the attributes bag with kind-specific fields:
+      EnergyResourceMeter     (METER)
+      EnergyResourceGenerator (SOLAR_PV, WIND, HYDRO, BIOGAS, CHP, FUEL_CELL)
+      EnergyResourceStorage   (BESS)
+      EnergyResourceEVCharger (EV_CHARGER, EV_V2G)
+      EnergyResourceInverter  (INVERTER)
+      EnergyResourceLoad      (SMART_HVAC, SMART_WATER_HEATER, CONTROLLABLE_LOAD)
+      EnergyResourceNetwork   (DT, BUS, FEEDER, MICROGRID)
+
+    EnergyResource is the discriminated union: oneOf [all seven kinds].
+    Domain profiles reference individual kinds for targeted validation.
+
+components:
+  schemas:
+
+    # ── Canonical kind aliases ────────────────────────────────────────────
+    # Each kind lives in its own specification/schema/<Kind>/v1.0/ folder
+    # and is published to schema.nfh.global/<Kind>/v1.0.
+    # Common base schemas (EnergyResourceCommon, EnergyResourceCommonAttributes)
+    # live at schema.nfh.global/EnergyResourceCommon/v1.0 and are referenced
+    # directly by the kind schemas — not re-aliased here.
+
+    EnergyResourceMeter:
+      $ref: "https://schema.nfh.global/EnergyResourceMeter/v1.0#/components/schemas/EnergyResourceMeter"
+
+    EnergyResourceGenerator:
+      $ref: "https://schema.nfh.global/EnergyResourceGenerator/v1.0#/components/schemas/EnergyResourceGenerator"
+
+    EnergyResourceStorage:
+      $ref: "https://schema.nfh.global/EnergyResourceStorage/v1.0#/components/schemas/EnergyResourceStorage"
+
+    EnergyResourceEVCharger:
+      $ref: "https://schema.nfh.global/EnergyResourceEVCharger/v1.0#/components/schemas/EnergyResourceEVCharger"
+
+    EnergyResourceInverter:
+      $ref: "https://schema.nfh.global/EnergyResourceInverter/v1.0#/components/schemas/EnergyResourceInverter"
+
+    EnergyResourceLoad:
+      $ref: "https://schema.nfh.global/EnergyResourceLoad/v1.0#/components/schemas/EnergyResourceLoad"
+
+    EnergyResourceNetwork:
+      $ref: "https://schema.nfh.global/EnergyResourceNetwork/v1.0#/components/schemas/EnergyResourceNetwork"
+
+    # ── Union entry point ─────────────────────────────────────────────────
+
+    EnergyResource:
+      description: >
+        Discriminated union of all typed EnergyResource kinds. Dispatched by
+        the 'type' field. Each kind lives in its own schema at
+        schema.nfh.global/<Kind>/v1.0 and is referenced above.
+
+        EnergyResourceCommon (id, type, subResources, parentResources,
+        attributes) and EnergyResourceCommonAttributes (make, model,
+        maxExportKw, maxImportKw, ratedPowerKw, telemetryProvider,
+        commissioningDate, location) are defined in EnergyResourceCommon/v1.0
+        and inherited by all kinds via allOf external $ref.
+
+        For P2P-trading: minimal usage is {id, type}.
+        For demand-flex and credentials: add attributes fields as needed.
+        For targeted validation: $ref the specific kind directly.
+      oneOf:
+        - $ref: "#/components/schemas/EnergyResourceMeter"
+        - $ref: "#/components/schemas/EnergyResourceGenerator"
+        - $ref: "#/components/schemas/EnergyResourceStorage"
+        - $ref: "#/components/schemas/EnergyResourceEVCharger"
+        - $ref: "#/components/schemas/EnergyResourceInverter"
+        - $ref: "#/components/schemas/EnergyResourceLoad"
+        - $ref: "#/components/schemas/EnergyResourceNetwork"
+      x-tags:
+        - energy-trade
+        - p2p-trading
+        - demand-flex
+        - item
+        - energy-resource
+      x-jsonld:
+        "@context": ./context.jsonld
+        "@type": EnergyResource

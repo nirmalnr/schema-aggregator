@@ -1,0 +1,56 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "erDeg": "https://schema.nfh.global/deg/EnergyResource/",
+    "deg":   "https://schema.nfh.global/deg#",
+    "rdf":   "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs":  "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd":   "http://www.w3.org/2001/XMLSchema#",
+    "schema": "https://schema.org/"
+  },
+  "@graph": [
+    {
+      "@id": "erDeg:EnergyResourceNetwork",
+      "@type": "rdfs:Class",
+      "rdfs:label": "EnergyResource — Network",
+      "rdfs:comment": "A grid-network infrastructure energy resource (DT, busbar, feeder, microgrid). CIM: PowerTransformer, BusbarSection, Feeder, Substation (IEC 61970-301).",
+      "rdfs:subClassOf": { "@id": "deg:EnergyResourceCommon" },
+      "rdfs:seeAlso": { "@id": "https://ontology.tno.nl/IEC_CIM/iec61970-301.ttl#EquipmentContainer" }
+    },
+    {
+      "@id": "erDeg:nominalVoltageKv",
+      "@type": "rdf:Property",
+      "rdfs:label": "Nominal voltage (kV)",
+      "rdfs:comment": "Nominal operating voltage in kilovolts. CIM: BaseVoltage.nominalVoltage.",
+      "rdfs:domain": { "@id": "erDeg:EnergyResourceNetwork" },
+      "schema:rangeIncludes": { "@id": "xsd:decimal" },
+      "rdfs:seeAlso": { "@id": "https://ontology.tno.nl/IEC_CIM/iec61970-301.ttl#BaseVoltage.nominalVoltage" }
+    },
+    {
+      "@id": "erDeg:zone",
+      "@type": "rdf:Property",
+      "rdfs:label": "Operating zone",
+      "rdfs:comment": "Operating zone or region identifier used by the utility.",
+      "rdfs:domain": { "@id": "erDeg:EnergyResourceNetwork" },
+      "schema:rangeIncludes": { "@id": "xsd:string" }
+    },
+    {
+      "@id": "erDeg:substationId",
+      "@type": "rdf:Property",
+      "rdfs:label": "Substation ID",
+      "rdfs:comment": "Parent substation identifier per utility records. CIM: Substation.",
+      "rdfs:domain": { "@id": "erDeg:EnergyResourceNetwork" },
+      "schema:rangeIncludes": { "@id": "xsd:string" },
+      "rdfs:seeAlso": { "@id": "https://ontology.tno.nl/IEC_CIM/iec61970-301.ttl#Substation" }
+    },
+    {
+      "@id": "erDeg:feederCode",
+      "@type": "rdf:Property",
+      "rdfs:label": "Feeder code",
+      "rdfs:comment": "Feeder code per utility records. CIM: Feeder (EquipmentContainer).",
+      "rdfs:domain": { "@id": "erDeg:EnergyResourceNetwork" },
+      "schema:rangeIncludes": { "@id": "xsd:string" },
+      "rdfs:seeAlso": { "@id": "https://ontology.tno.nl/IEC_CIM/iec61970-301.ttl#Feeder" }
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+openapi: 3.1.1
+info:
+  title: CatalogSubscription
+  version: 2.0.0
+  description: "Container schemas fetched from beckn.yaml. This cannot be extended as it is a reserved schema in beckn protocol. Any additional properties added to this schema can only be made using its *Attributes property"
+  license:
+    name: CC-BY-NC-SA 4.0 International
+  contact:
+    name: Beckn Labs
+    url: https://beckn.io
+components:
+  schemas:
+    CatalogSubscription:
+      x-iri: https://schema.beckn.io/CatalogSubscription/v2.0
+      type: object
+      description: Full subscription record
+      required:
+      - id
+      - status
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Subscription UUID
+        networkIds:
+          type: array
+          items:
+            type: string
+          description: Network IDs covered by this subscription
+        schemaTypes:
+          type: array
+          items:
+            type: string
+          description: Schema type URIs filtered by this subscription (empty = wildcard
+            "*")
+        callbackUrl:
+          type: string
+          format: uri
+          description: Delivery callback URL
+        status:
+          type: string
+          enum:
+          - ACTIVE
+          - INACTIVE
+          - DELETED
+          description: Lifecycle status of the subscription
+        deliveryPolicy:
+          $ref: https://schema.beckn.io/DeliveryPolicy/v2.0/attributes.yaml#/components/schemas/DeliveryPolicy
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time

@@ -1,0 +1,25 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "@protected": true,
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "beckn": "https://schema.beckn.io/",
+    "Offer": "beckn:Offer",
+    "@context": "beckn:@context",
+    "@type": "beckn:@type",
+    "id": "beckn:id",
+    "descriptor": "beckn:descriptor",
+    "provider": "beckn:provider",
+    "items": "beckn:items",
+    "addOns": "beckn:addOns",
+    "addOnItems": "beckn:addOnItems",
+    "isActive": "beckn:isActive",
+    "validity": "beckn:validity",
+    "price": "beckn:price",
+    "eligibleRegion": "beckn:eligibleRegion",
+    "acceptedPaymentMethod": "beckn:acceptedPaymentMethod",
+    "offerAttributes": "beckn:offerAttributes"
+  }
+}

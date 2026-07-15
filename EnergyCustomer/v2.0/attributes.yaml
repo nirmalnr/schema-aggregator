@@ -1,0 +1,87 @@
+openapi: 3.1.1
+info:
+  title: EnergyCustomer — Customer Attributes (v2.0)
+  version: 2.0.0
+  description: >
+    Customer attributes for energy flows. Used for consumers, producers, or
+    prosumers as the customer-identity block in:
+      - offerAttributes.inputs[*].inputs.customerAttributes (P2P trading)
+      - orderItemAttributes (init/response): meterId for delivery destination
+      - buyerAttributes (enrollment): meterId + sanctionedLoad
+
+components:
+  schemas:
+    EnergyCustomer:
+      type: object
+      additionalProperties: false
+      required: [meterId]
+      x-tags:
+        - energy-trade
+        - p2p-trading
+        - energy-enrollment
+        - customer
+      x-jsonld:
+        "@context": ./context.jsonld
+        "@type": EnergyCustomer
+      properties:
+
+        meterId:
+          type: string
+          description: >
+            Meter identifier in DER address format (der://meter/{id}). Used
+            for customer identification and energy delivery tracking in P2P
+            trading flows.
+          example: "der://meter/98765456"
+          x-jsonld:
+            "@id": meterId
+
+        sanctionedLoad:
+          type: number
+          minimum: 0
+          description: >
+            Sanctioned load capacity in kilowatts (kW). Optional field
+            representing the approved electrical load capacity for the
+            customer's connection. Used for load management and regulatory
+            compliance.
+          example: 15.0
+          x-jsonld:
+            "@id": sanctionedLoad
+
+        utilityCustomerId:
+          type: string
+          description: >
+            Customer's account identifier with the utility company (e.g.,
+            PG&E customer number). Used for billing, service identification,
+            and utility system integration.
+          example: "UTIL-CUST-123456"
+          x-jsonld:
+            "@id": utilityCustomerId
+
+        utilityId:
+          type: string
+          description: >
+            Utility/DISCOM identifier for the customer's service territory
+            (e.g., "TPDDL-DL", "BESCOM-KA"). Used in inter-utility /
+            inter-DISCOM P2P trading to identify which utility serves this
+            customer.
+          example: "TPDDL-DL"
+          x-jsonld:
+            "@id": utilityId
+
+        platformUrl:
+          type: string
+          format: uri
+          description: >
+            Base URL (scheme + host[:port]) of the Beckn trading platform that
+            represents this customer on the network. The platform exposes the
+            standard Beckn paths under this base: `/bap/caller`, `/bap/receiver`,
+            `/bpp/caller`, `/bpp/receiver`. Used by downstream nodes to address
+            this customer's platform for cascade sub-transactions — e.g. a
+            seller-side adapter cascading a /status query into its own discom
+            ledger and needing the discom's response routed back to its own
+            /bap/receiver. The path appended depends on the action's
+            BAP↔BPP direction (/bap/receiver for on_*, /bpp/receiver for
+            request actions).
+          example: "http://bap.example.com:9000"
+          x-jsonld:
+            "@id": platformUrl

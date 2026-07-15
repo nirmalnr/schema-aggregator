@@ -1,0 +1,127 @@
+{
+  "@context": {
+    "beckn": "https://schema.beckn.io/LinkedData/v2.1/context.jsonld",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/version/latest/schemaorg-current-https.jsonld",
+    "Offer": "beckn:Offer",
+    "@type": "beckn:@type",
+    "addOns": "beckn:addOns",
+    "address": "beckn:address",
+    "addressCountry": "beckn:addressCountry",
+    "addressLocality": "beckn:addressLocality",
+    "addressRegion": "beckn:addressRegion",
+    "availableAt": "beckn:availableAt",
+    "availableTo": "beckn:availableTo",
+    "bbox": "beckn:bbox",
+    "checksum": "beckn:checksum",
+    "checksumAlgorithm": "beckn:checksumAlgorithm",
+    "code": "beckn:code",
+    "considerationAttributes": "beckn:considerationAttributes",
+    "considerationIds": "beckn:considerationIds",
+    "coordinates": "beckn:coordinates",
+    "descriptor": "beckn:descriptor",
+    "docs": "beckn:docs",
+    "endDate": "beckn:endDate",
+    "endTime": "beckn:endTime",
+    "extendedAddress": "beckn:extendedAddress",
+    "fulfillmentIds": "beckn:fulfillmentIds",
+    "geo": "beckn:geo",
+    "geometries": "beckn:geometries",
+    "id": "beckn:id",
+    "keyId": "beckn:keyId",
+    "label": "beckn:label",
+    "longDesc": "beckn:longDesc",
+    "mediaFile": "beckn:mediaFile",
+    "mimeType": "beckn:mimeType",
+    "name": "beckn:name",
+    "offerAttributes": "beckn:offerAttributes",
+    "postalCode": "beckn:postalCode",
+    "provider": "beckn:provider",
+    "providerAttributes": "beckn:providerAttributes",
+    "resourceAttributes": "beckn:resourceAttributes",
+    "resourceIds": "beckn:resourceIds",
+    "security": "beckn:security",
+    "shortDesc": "beckn:shortDesc",
+    "signature": "beckn:signature",
+    "signatureAlgorithm": "beckn:signatureAlgorithm",
+    "standard": "beckn:standard",
+    "startDate": "beckn:startDate",
+    "startTime": "beckn:startTime",
+    "status": "beckn:status",
+    "streetAddress": "beckn:streetAddress",
+    "thumbnailImage": "beckn:thumbnailImage",
+    "type": "beckn:type",
+    "uri": "beckn:uri",
+    "url": "beckn:url",
+    "validity": "beckn:validity"
+  },
+  "@graph": [
+    {
+      "@id": "beckn:Offer",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Offer",
+      "rdfs:comment": "A generalized, cross-domain Offer that captures the terms under which\none or more Resources may be committed.\n\nCore intent:\n- Support multiple terms/eligibility/constraints/price points for the same Resource(s)\n- Support dynamic / on-the-fly offers (e.g., bundling, combinational discounts,\n eligibility changes, capacity-aware pricing)\n\nThis mirrors the role of Offer in current Beckn (and schema.org patterns),\nbut keeps the shape minimal and composable via `beckn:offerAttributes`.\n\nThis schema is part of the Long Term Support of Beckn Protocol V2.0 API specification and MUST NOT be extended. Any domain-specific extension must use the property of this schema which is of type Attribute."
+    },
+    {
+      "@id": "beckn:id",
+      "@type": "rdf:Property",
+      "rdfs:label": "id",
+      "rdfs:comment": "Unique identifier of the offer."
+    },
+    {
+      "@id": "beckn:descriptor",
+      "@type": "rdf:Property",
+      "rdfs:label": "descriptor",
+      "rdfs:comment": "Human / agent-readable description of this offer."
+    },
+    {
+      "@id": "beckn:provider",
+      "@type": "rdf:Property",
+      "rdfs:label": "provider",
+      "rdfs:comment": "Property provider"
+    },
+    {
+      "@id": "beckn:resourceIds",
+      "@type": "rdf:Property",
+      "rdfs:label": "resourceIds",
+      "rdfs:comment": "References (IDs) to resources covered by this offer."
+    },
+    {
+      "@id": "beckn:addOns",
+      "@type": "rdf:Property",
+      "rdfs:label": "addOns",
+      "rdfs:comment": "IDs of optional extra Offers or Resources that can be attached."
+    },
+    {
+      "@id": "beckn:considerationIds",
+      "@type": "rdf:Property",
+      "rdfs:label": "considerationIds",
+      "rdfs:comment": "Property considerationIds"
+    },
+    {
+      "@id": "beckn:fulfillmentIds",
+      "@type": "rdf:Property",
+      "rdfs:label": "fulfillmentIds",
+      "rdfs:comment": "Details regarding the fulfillment of this offer"
+    },
+    {
+      "@id": "beckn:validity",
+      "@type": "rdf:Property",
+      "rdfs:label": "validity",
+      "rdfs:comment": "Property validity"
+    },
+    {
+      "@id": "beckn:availableTo",
+      "@type": "rdf:Property",
+      "rdfs:label": "availableTo",
+      "rdfs:comment": "Optional visibility constraint indicating which network participants\n(by participantId / networkId / role) are allowed to discover or\ntransact on this entity.\n\nIf omitted, the entity is assumed to be visible to all participants\nin the addressed network(s)."
+    },
+    {
+      "@id": "beckn:offerAttributes",
+      "@type": "rdf:Property",
+      "rdfs:label": "offerAttributes",
+      "rdfs:comment": "Property offerAttributes"
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "beckn": "https://schema.beckn.io/",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "schema": "https://schema.org/",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "beckn:Form",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Form",
+      "rdfs:comment": "Describes a form"
+    },
+    {
+      "@id": "beckn:context",
+      "@type": "rdf:Property",
+      "rdfs:label": "context",
+      "rdfs:comment": "context property of Form"
+    },
+    {
+      "@id": "beckn:type",
+      "@type": "rdf:Property",
+      "rdfs:label": "type",
+      "rdfs:comment": "type property of Form"
+    },
+    {
+      "@id": "beckn:url",
+      "@type": "rdf:Property",
+      "rdfs:label": "url",
+      "rdfs:comment": "url property of Form"
+    },
+    {
+      "@id": "beckn:data",
+      "@type": "rdf:Property",
+      "rdfs:label": "data",
+      "rdfs:comment": "data property of Form"
+    },
+    {
+      "@id": "beckn:mime_type",
+      "@type": "rdf:Property",
+      "rdfs:label": "mime_type",
+      "rdfs:comment": "mime_type property of Form"
+    },
+    {
+      "@id": "beckn:submission_id",
+      "@type": "rdf:Property",
+      "rdfs:label": "submission_id",
+      "rdfs:comment": "submission_id property of Form"
+    }
+  ]
+}

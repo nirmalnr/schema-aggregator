@@ -1,0 +1,49 @@
+openapi: 3.1.1
+info:
+  title: EnergyCustomerProfile
+  version: 1.0.0
+  description: Core customer identity for energy credentials — links a utility account to a physical meter.
+jsonSchemaDialect: https://json-schema.org/draft/2020-12/schema
+servers:
+  - url: https://schema.nfh.global
+    description: Canonical schema registry
+paths: {}
+components:
+  schemas:
+    EnergyCustomerProfile:
+      $id: https://schema.nfh.global/EnergyCustomerProfile/v1.0
+      title: CustomerProfile
+      description: Core customer identity for energy credentials — links a utility account to a physical meter.
+      x-tags: [energy, identity, deg]
+      type: object
+      required:
+        - customerNumber
+        - meterNumber
+        - meterType
+      properties:
+        customerNumber:
+          type: string
+          minLength: 1
+          description: Utility account number assigned by the distribution company.
+        meterNumber:
+          type: string
+          minLength: 1
+          maxLength: 50
+          description: Unique meter serial number.
+        meterType:
+          type: string
+          enum:
+            - AMR
+            - AMI
+            - Electromechanical
+            - Forward
+            - Reverse
+            - Bidirectional
+            - Prepaid
+            - NetMeter
+            - Other
+          description: Type of electricity meter installed.
+        idRef:
+          $ref: "https://schema.nfh.global/IdRef/v1.0#/components/schemas/IdRef"
+          description: External identity reference for the customer. Defined in IdRef/v1.0.
+      additionalProperties: false

@@ -1,0 +1,44 @@
+openapi: 3.1.1
+info:
+  title: TransactionEndpoint
+  version: 2.0.0
+  description: Beckn protocol transaction endpoint identifier.
+  license:
+    name: CC-BY-NC-SA 4.0 International
+  contact:
+    name: Beckn Labs
+    url: https://beckn.io
+components:
+  schemas:
+    TransactionEndpoint:
+      x-iri: https://schema.beckn.io/TransactionEndpoint/v2.0
+      description: Beckn protocol transaction endpoint identifier.
+      title: TransactionEndpoint
+      allOf:
+      - $ref: https://schema.beckn.io/BecknEndpoint/v2.0/attributes.yaml#/components/schemas/BecknEndpoint
+      - type: string
+        enum:
+        - beckn/discover
+        - beckn/on_discover
+        - beckn/catalog/publish
+        - beckn/catalog/on_publish
+        - beckn/select
+        - beckn/on_select
+        - beckn/init
+        - beckn/on_init
+        - beckn/confirm
+        - beckn/on_confirm
+        - beckn/status
+        - beckn/on_status
+        - beckn/update
+        - beckn/on_update
+        - beckn/cancel
+        - beckn/on_cancel
+        - beckn/track
+        - beckn/on_track
+        - beckn/rate
+        - beckn/on_rate
+        - beckn/support
+        - beckn/on_support
+      x-tags:
+      - common

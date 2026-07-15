@@ -1,0 +1,102 @@
+openapi: 3.1.1
+info:
+  title: EnergyResourceNetwork
+  version: 1.0.0
+  description: |
+    Typed attribute schema for grid-network infrastructure energy resources.
+
+    CIM alignment (IEC 61970-301):
+      DT        → cim:PowerTransformer
+      BUS       → cim:BusbarSection
+      FEEDER    → cim:Feeder (EquipmentContainer)
+      MICROGRID → cim:Substation / custom microgrid container
+
+    Network resources act as topology anchors in the EnergyResource graph;
+    they carry metering points and DER resources as subResources.
+
+    Common attributes (make, model, ratedPowerKw, maxExportKw, maxImportKw,
+    telemetryProvider, commissioningDate, location) are inherited from
+    EnergyResourceCommon/v1.0 via allOf.
+
+components:
+  schemas:
+
+    EnergyResourceNetwork:
+      description: >
+        A grid-network infrastructure energy resource (distribution transformer,
+        busbar, feeder, or microgrid). These are topology containers that anchor
+        metering points and DER resources. CIM: PowerTransformer, BusbarSection,
+        Feeder, Substation (IEC 61970-301).
+      x-tags:
+        - energy-resource
+        - energy
+        - deg
+        - network
+        - grid
+        - infrastructure
+      x-jsonld:
+        "@context": ./context.jsonld
+        "@type": EnergyResourceNetwork
+      allOf:
+        - $ref: "https://schema.nfh.global/EnergyResourceCommon/v1.0#/components/schemas/EnergyResourceCommon"
+        - type: object
+          required: [id, type]
+          properties:
+            type:
+              type: string
+              enum:
+                - DT
+                - BUS
+                - FEEDER
+                - MICROGRID
+              description: >
+                Asset-class discriminator. CIM: DT → PowerTransformer,
+                BUS → BusbarSection, FEEDER → Feeder (EquipmentContainer),
+                MICROGRID → Substation / custom microgrid container (IEC 61970-301).
+              x-cim-class: cim:EquipmentContainer
+              x-jsonld:
+                "@id": erDeg:resourceType
+            attributes:
+              $ref: "#/components/schemas/EnergyResourceNetworkAttributes"
+
+    EnergyResourceNetworkAttributes:
+      description: >
+        Attributes for grid-network infrastructure resources. Common fields (make,
+        model, ratedPowerKw, maxExportKw, maxImportKw, telemetryProvider,
+        commissioningDate, location) are inherited from EnergyResourceCommonAttributes
+        via allOf. Only network-specific fields are defined here.
+      x-jsonld:
+        "@id": erDeg:attributes
+      allOf:
+        - $ref: "https://schema.nfh.global/EnergyResourceCommon/v1.0#/components/schemas/EnergyResourceCommonAttributes"
+        - type: object
+          additionalProperties: true
+          properties:
+
+            # ── Network-specific attributes ────────────────────────────────────
+
+            nominalVoltageKv:
+              type: number
+              minimum: 0
+              description: >
+                Nominal operating voltage, kV. CIM: BaseVoltage.nominalVoltage.
+              x-jsonld:
+                "@id": erDeg:nominalVoltageKv
+
+            zone:
+              type: string
+              description: Operating zone or region identifier used by the utility.
+              x-jsonld:
+                "@id": erDeg:zone
+
+            substationId:
+              type: string
+              description: Parent substation identifier per utility records.
+              x-jsonld:
+                "@id": erDeg:substationId
+
+            feederCode:
+              type: string
+              description: Feeder code per utility records. Relevant for FEEDER and DT resources.
+              x-jsonld:
+                "@id": erDeg:feederCode

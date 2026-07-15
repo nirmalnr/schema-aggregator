@@ -1,0 +1,27 @@
+{
+  "$id": "https://schema.beckn.io/Skill/v2.0",
+  "x-iri": "https://schema.beckn.io/Skill/v2.0",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Schema definition for Skill in the Beckn Protocol v2.0.1",
+  "title": "Skill",
+  "type": "object",
+  "properties": {
+    "category": {
+      "$ref": "https://schema.beckn.io/CategoryCode/v2.1/schema.json"
+    },
+    "descriptor": {
+      "$ref": "https://schema.beckn.io/Descriptor/v2.1/schema.json"
+    },
+    "id": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "descriptor"
+  ],
+  "additionalProperties": false,
+  "x-tags": [
+    "common"
+  ]
+}

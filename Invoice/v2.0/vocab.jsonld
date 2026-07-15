@@ -1,0 +1,79 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "beckn": "https://schema.beckn.io/",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "schema": "https://schema.org/",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "beckn:Invoice",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Invoice",
+      "rdfs:comment": "Schema definition for Invoice in the Beckn Protocol"
+    },
+    {
+      "@id": "beckn:context",
+      "@type": "rdf:Property",
+      "rdfs:label": "context",
+      "rdfs:comment": "context property of Invoice"
+    },
+    {
+      "@id": "beckn:type",
+      "@type": "rdf:Property",
+      "rdfs:label": "type",
+      "rdfs:comment": "type property of Invoice"
+    },
+    {
+      "@id": "beckn:id",
+      "@type": "rdf:Property",
+      "rdfs:label": "id",
+      "rdfs:comment": "id property of Invoice"
+    },
+    {
+      "@id": "beckn:number",
+      "@type": "rdf:Property",
+      "rdfs:label": "number",
+      "rdfs:comment": "number property of Invoice"
+    },
+    {
+      "@id": "beckn:issueDate",
+      "@type": "rdf:Property",
+      "rdfs:label": "issueDate",
+      "rdfs:comment": "issueDate property of Invoice"
+    },
+    {
+      "@id": "beckn:dueDate",
+      "@type": "rdf:Property",
+      "rdfs:label": "dueDate",
+      "rdfs:comment": "dueDate property of Invoice"
+    },
+    {
+      "@id": "beckn:payee",
+      "@type": "rdf:Property",
+      "rdfs:label": "payee",
+      "rdfs:comment": "payee property of Invoice"
+    },
+    {
+      "@id": "beckn:payer",
+      "@type": "rdf:Property",
+      "rdfs:label": "payer",
+      "rdfs:comment": "payer property of Invoice"
+    },
+    {
+      "@id": "beckn:totals",
+      "@type": "rdf:Property",
+      "rdfs:label": "totals",
+      "rdfs:comment": "totals property of Invoice"
+    },
+    {
+      "@id": "beckn:invoiceAttributes",
+      "@type": "rdf:Property",
+      "rdfs:label": "invoiceAttributes",
+      "rdfs:comment": "invoiceAttributes property of Invoice"
+    }
+  ]
+}

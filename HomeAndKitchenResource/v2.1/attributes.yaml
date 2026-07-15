@@ -1,0 +1,63 @@
+openapi: 3.1.1
+info:
+  title: Retail — Home and Kitchen Resource Attributes (v2.1)
+  version: 2.1.0
+  description: >
+    Home and kitchen-specific resource attributes for furniture, appliances, and household products.
+    Migrated from HomeAndKitchenItem (v2) to the v2.1 generalised model.
+    Extends RetailResource via allOf to add care, installation, and usage properties.
+    Warranty is inherited from RetailResource.
+    Attaches to beckn:Resource via resourceAttributes.
+
+components:
+  schemas:
+    HomeAndKitchenResource:
+      type: object
+      x-beckn-container: resourceAttributes
+      x-jsonld:
+        "@context": "https://schema.beckn.io/HomeAndKitchenResource/v2.1/context.jsonld"
+        "@type": hkr:HomeAndKitchenResource
+      allOf:
+        - $ref: "../../RetailResource/v2.1/attributes.yaml#/components/schemas/RetailResource"
+        - type: object
+          properties:
+            careInstructions:
+              type: string
+              description: Care and maintenance instructions for the product (e.g., cleaning, treatment)
+              x-jsonld-id: "hkr:careInstructions"
+            installation:
+              type: object
+              properties:
+                installationRequired:
+                  type: boolean
+                  description: Whether installation is required for this product
+                  x-jsonld-id: "hkr:installationRequired"
+                providedBySeller:
+                  type: boolean
+                  description: Whether the seller provides installation service (capability declaration only; scheduling is in performanceAttributes)
+                  x-jsonld-id: "hkr:installationProvidedBySeller"
+                notes:
+                  type: string
+                  description: General notes about installation requirements, e.g., "Assembly required", "Professional installation recommended"
+                  x-jsonld-id: "hkr:installationNotes"
+              description: Installation capability declaration. Execution scheduling (time slots, availability) belongs in RetailPerformance.installationScheduling.
+              x-jsonld-id: "hkr:installation"
+            usage:
+              type: object
+              properties:
+                indoorOnly:
+                  type: boolean
+                  description: Whether this product is suitable only for indoor use
+                  x-jsonld-id: "hkr:indoorOnly"
+                outdoorOnly:
+                  type: boolean
+                  description: Whether this product is suitable only for outdoor use
+                  x-jsonld-id: "hkr:outdoorOnly"
+                compatibleWith:
+                  type: array
+                  items:
+                    type: string
+                  description: Array of compatible product types, materials, or standard specifications (e.g., "120V electrical outlet", "standard doorway width 36 inches")
+                  x-jsonld-id: "hkr:compatibleWith"
+              description: Usage context and compatibility information
+              x-jsonld-id: "hkr:usage"

@@ -1,0 +1,52 @@
+{
+  "@context": {
+    "beckn": "https://schema.beckn.io/LinkedData/v2.1/context.jsonld",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/version/latest/schemaorg-current-https.jsonld",
+    "Provider": "beckn:Provider",
+    "availableAt": "beckn:availableAt",
+    "descriptor": "beckn:descriptor",
+    "id": "beckn:id",
+    "providerAttributes": "beckn:providerAttributes",
+    "url": "beckn:url"
+  },
+  "@graph": [
+    {
+      "@id": "beckn:Provider",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Provider",
+      "rdfs:comment": "A registered entity on the Beckn network that makes resources and offers available through one or more catalogs, operating from one or more physical or virtual locations.\n\nProviders appear in the discovery phase of the value-exchange lifecycle as part of a Catalog, and persist through the negotiation phase as the counterparty identified in Offers. The PN produces provider records; the CN consumes them to identify and display the source of the resources and offers being considered.\n\nRelationship: Composed within the Catalog and Offer schemas. The availableAt field composes one or more Location schemas representing the provider's physical operating sites. The providerAttributes field extends the core schema with domain-specific attributes via the Attributes schema."
+    },
+    {
+      "@id": "beckn:availableAt",
+      "@type": "rdf:Property",
+      "rdfs:label": "availableAt",
+      "rdfs:comment": "Physical locations where the provider operates"
+    },
+    {
+      "@id": "beckn:descriptor",
+      "@type": "rdf:Property",
+      "rdfs:label": "descriptor",
+      "rdfs:comment": "Property descriptor"
+    },
+    {
+      "@id": "beckn:id",
+      "@type": "rdf:Property",
+      "rdfs:label": "id",
+      "rdfs:comment": "Unique identifier for the provider"
+    },
+    {
+      "@id": "beckn:providerAttributes",
+      "@type": "rdf:Property",
+      "rdfs:label": "providerAttributes",
+      "rdfs:comment": "Property providerAttributes"
+    },
+    {
+      "@id": "beckn:url",
+      "@type": "rdf:Property",
+      "rdfs:label": "url",
+      "rdfs:comment": "The Beckn API URL of the provider. It MUST carry a fully qualified domain name (FQDN) of its host application — i.e. the Provider Node. The domain name MUST be the one that the Provider Node's namespace was verified against. If the domain name does not match the namespace-linked domain name, the provider is assumed to be untrusted and MAY be rejected by the consumer node or cataloging service."
+    }
+  ]
+}

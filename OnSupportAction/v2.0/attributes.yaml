@@ -1,0 +1,29 @@
+openapi: 3.1.1
+info:
+  title: OnSupportAction
+  version: 2.0.0
+  description: "Container schemas fetched from beckn.yaml. This cannot be extended as it is a reserved schema in beckn protocol. Any additional properties added to this schema can only be made using its *Attributes property"
+  license:
+    name: CC-BY-NC-SA 4.0 International
+  contact:
+    name: Beckn Labs
+    url: https://beckn.io
+components:
+  schemas:
+    OnSupportAction:
+      x-iri: https://schema.beckn.io/OnSupportAction/v2.0
+      title: On Support Action
+      description: 'Beckn /beckn/on_support message payload. Sent by a BPP to a BAP
+        in
+
+        response to a /beckn/support call, returning support contact details
+
+        and available channels.
+
+        (Context wrapper stripped; only the message-content portion is inlined.)'
+      additionalProperties: false
+      properties:
+        support:
+          $ref: https://schema.beckn.io/Support/v2.0/attributes.yaml#/components/schemas/Support
+      required:
+      - support

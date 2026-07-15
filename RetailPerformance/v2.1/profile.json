@@ -1,0 +1,34 @@
+{
+  "id": "https://schema.beckn.io/RetailPerformance/v2.1",
+  "name": "Retail Performance Attributes",
+  "version": "2.1.0",
+  "protocol_version": "2.0",
+  "semantic_model": "generalised",
+  "included_schemas": ["RetailPerformance"],
+  "discovery_fields": [
+    "supportedPerformanceModes",
+    "handling",
+    "installationScheduling.available"
+  ],
+  "indexable_paths": [
+    "beckn:performanceAttributes.supportedPerformanceModes",
+    "beckn:performanceAttributes.sla.unitBasis",
+    "beckn:performanceAttributes.handling",
+    "beckn:performanceAttributes.installationScheduling.available",
+    "beckn:performanceAttributes.returnQcResult"
+  ],
+  "filterable_paths": [
+    "beckn:performanceAttributes.supportedPerformanceModes",
+    "beckn:performanceAttributes.sla.unitBasis",
+    "beckn:performanceAttributes.handling",
+    "beckn:performanceAttributes.installationScheduling.available",
+    "beckn:performanceAttributes.returnQcResult"
+  ],
+  "sortable_paths": [],
+  "privacy_notes": [
+    "deliveryDetails.contact.name and deliveryDetails.contact.phone are personal contact data — do not index or expose in discovery responses",
+    "agent.name and agent.phone are personal data belonging to the delivery agent — transmit only to the relevant buyer",
+    "deliveryOtp and selfPickupCode are single-use secrets — never log or cache",
+    "proofOfDelivery URI may contain photographic evidence of the buyer's premises"
+  ]
+}

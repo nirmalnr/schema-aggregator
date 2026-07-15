@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schema.nfh.global/CustomerDetails/v1.0",
+  "title": "CustomerDetails v1.0",
+  "description": "PII identity and address details for a utility service customer. fullName appears ONLY here. CIM: cim:Customer (IEC 61968-1).",
+  "$defs": {
+    "CustomerDetails": {
+      "$anchor": "CustomerDetails",
+      "type": "object",
+      "required": ["fullName", "installationAddress", "serviceConnectionDate"],
+      "properties": {
+        "fullName": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200,
+          "description": "Full name of the customer as per ID proof."
+        },
+        "careOf": {
+          "type": "object",
+          "description": "Optional care-of (c/o) reference person used to uniquely identify / disambiguate a customer who may share the same fullName with others in a locality. Pairs a name with an optional, gender-neutral relationship.",
+          "required": ["name"],
+          "additionalProperties": false,
+          "properties": {
+            "name": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200,
+              "description": "Name of the care-of / reference person used to disambiguate the customer."
+            },
+            "relationship": {
+              "type": "string",
+              "enum": ["parent", "spouse", "guardian", "sibling", "child", "other"],
+              "description": "Gender-neutral relationship of the reference person to the customer."
+            }
+          }
+        },
+        "installationAddress": {
+          "$ref": "https://schema.nfh.global/Location/2.0/schema.json#/$defs/Location",
+          "description": "Physical location of the metered installation. geo (GeoJSON Point) required; address (PostalAddress) optional."
+        },
+        "serviceConnectionDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date and time the service connection was activated (ISO 8601 with timezone offset)."
+        }
+      }
+    }
+  }
+}

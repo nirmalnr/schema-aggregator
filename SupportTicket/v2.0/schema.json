@@ -1,0 +1,21 @@
+{
+  "$id": "https://schema.beckn.io/SupportTicket/v2.0",
+  "x-iri": "https://schema.beckn.io/SupportTicket/v2.0",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "A support ticket raised against an order",
+  "title": "SupportTicket",
+  "x-tags": [
+    "common"
+  ],
+  "type": "object",
+  "properties": {
+    "id": {
+      "description": "Ticket ID",
+      "type": "string"
+    },
+    "supportTicketAttributes": {
+      "$ref": "https://schema.beckn.io/Attributes/v2.0/schema.json"
+    }
+  },
+  "additionalProperties": false
+}

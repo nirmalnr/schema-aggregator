@@ -1,0 +1,106 @@
+openapi: 3.1.1
+info:
+  title: EnergyResourceStorage
+  version: 1.0.0
+  description: |
+    Typed attribute schema for stationary battery energy storage resources.
+
+    CIM alignment (IEC 61970-302):
+      BESS   → cim:BatteryUnit
+      BATTERY → cim:BatteryUnit (deprecated alias; use BESS)
+
+    EV charging stations (EV_CHARGER, EV_V2G) are a separate kind —
+    see EnergyResourceEVCharger/v1.0.
+
+    storageCapacityKwh replaces energyCapacityKwh from EnergyResource v1.1.
+    maxExportKw (discharge rate, ≥0) and maxImportKw (charge rate, ≥0)
+    replace maxDischargeRateKw / maxChargeRateKw.
+
+    Common attributes (make, model, ratedPowerKw, maxExportKw, maxImportKw,
+    telemetryProvider, commissioningDate, location) are inherited from
+    EnergyResourceCommon/v1.0 via allOf.
+
+components:
+  schemas:
+
+    EnergyResourceStorage:
+      description: >
+        A stationary battery energy storage resource (BESS).
+        Corresponds to cim:BatteryUnit (IEC 61970-302).
+        EV charging stations use EnergyResourceEVCharger (EV_CHARGER, EV_V2G).
+      x-tags:
+        - energy-resource
+        - energy
+        - deg
+        - storage
+        - bess
+      x-jsonld:
+        "@context": ./context.jsonld
+        "@type": EnergyResourceStorage
+      allOf:
+        - $ref: "https://schema.nfh.global/EnergyResourceCommon/v1.0#/components/schemas/EnergyResourceCommon"
+        - type: object
+          required: [id, type]
+          properties:
+            type:
+              type: string
+              enum:
+                - BESS
+                - BATTERY
+              description: >
+                Asset-class discriminator. BATTERY is a deprecated alias for BESS;
+                new payloads should use BESS.
+                CIM: cim:BatteryUnit (IEC 61970-302).
+                EV charging stations use EnergyResourceEVCharger (EV_CHARGER, EV_V2G).
+              x-cim-class: cim:BatteryUnit
+              x-jsonld:
+                "@id": erDeg:resourceType
+            attributes:
+              $ref: "#/components/schemas/EnergyResourceStorageAttributes"
+
+    EnergyResourceStorageAttributes:
+      description: >
+        Attributes for BESS resources. Common fields (make, model, ratedPowerKw,
+        maxExportKw, maxImportKw, telemetryProvider, commissioningDate, location)
+        are inherited from EnergyResourceCommonAttributes via allOf.
+        Only storage-specific fields are defined here.
+      x-jsonld:
+        "@id": erDeg:attributes
+      allOf:
+        - $ref: "https://schema.nfh.global/EnergyResourceCommon/v1.0#/components/schemas/EnergyResourceCommonAttributes"
+        - type: object
+          additionalProperties: true
+          properties:
+
+            # ── Storage-specific attributes ────────────────────────────────────
+
+            storageCapacityKwh:
+              type: number
+              minimum: 0
+              description: >
+                Rated stored-energy capacity, kWh. CIM: BatteryUnit.ratedE.
+                Replaces energyCapacityKwh used in EnergyResource v1.1.
+              x-jsonld:
+                "@id": erDeg:storageCapacityKwh
+
+            storageType:
+              type: string
+              enum:
+                - LithiumIon
+                - LeadAcid
+                - FlowBattery
+                - NaS
+                - NiCd
+                - Flywheel
+                - Other
+              description: Battery storage technology type.
+              x-jsonld:
+                "@id": erDeg:storageType
+
+            stateOfHealthPct:
+              type: number
+              minimum: 0
+              maximum: 100
+              description: Battery state-of-health as a percentage (0–100).
+              x-jsonld:
+                "@id": erDeg:stateOfHealthPct

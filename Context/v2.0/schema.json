@@ -1,0 +1,103 @@
+{
+  "$id": "https://schema.beckn.io/Context/v2.0",
+  "x-iri": "https://schema.beckn.io/Context/v2.0",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Base context schema for all Beckn API calls. Contains addressing information (BAP/BPP identifiers and API URLs), protocol version, the action being called, transaction and message IDs, timestamp, TTL, and optional encryption key. This schema defines all possible properties but imposes NO required-field constraints. Endpoint-specific validation is defined inline in operation request schemas.",
+  "type": "object",
+  "title": "Context",
+  "properties": {
+    "domain": {
+      "description": "Domain code that is relevant to this transaction context",
+      "type": "string"
+    },
+    "location": {
+      "description": "The location where the transaction is intended to be fulfilled.",
+      "type": "object",
+      "properties": {
+        "city": {
+          "description": "The city code where this transaction is restricted to",
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string"
+            }
+          }
+        },
+        "country": {
+          "description": "The country code this transaction is restricted to",
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "action": {
+      "description": "The Beckn protocol method being called by the sender and executed at the receiver.",
+      "type": "string"
+    },
+    "version": {
+      "type": "string",
+      "description": "Version of transaction protocol being used by the sender.",
+      "const": "2.0.0"
+    },
+    "bapId": {
+      "description": "Subscriber ID of the BAP as registered on dedi.global",
+      "type": "string"
+    },
+    "bapUri": {
+      "description": "The callback URL of the BAP.  REQUIRED: This should necessarily contain the same domain name as verified in its namespace under dedi.global, and MUST have the same URL as registered in its subscriber registry on dedi.global",
+      "type": "string",
+      "format": "uri"
+    },
+    "bppId": {
+      "description": "Subscriber ID of the BPP as registered on dedi.global",
+      "type": "string"
+    },
+    "bppUri": {
+      "description": "The request URL of the BPP.  REQUIRED: This MUST contain the same domain name as verified in its namespace under dedi.global, and MUST have the same URL as registered in its subscriber registry on dedi.global",
+      "type": "string",
+      "format": "uri"
+    },
+    "transactionId": {
+      "description": "This is a unique value which persists across all API calls from `search` through `confirm`. This is done to indicate an active user session across multiple requests. The BPPs can use this value to push personalized recommendations, and dynamic offerings related to an ongoing transaction despite being unaware of the user active on the BAP.",
+      "type": "string",
+      "format": "uuid"
+    },
+    "messageId": {
+      "description": "This is a unique value which persists during a request / callback cycle. Since beckn protocol APIs are asynchronous, BAPs need a common value to match an incoming callback from a BPP to an earlier call. This value can also be used to ignore duplicate messages coming from the BPP. It is recommended to generate a fresh message_id for every new interaction. When sending unsolicited callbacks, BPPs must generate a new message_id.",
+      "type": "string",
+      "format": "uuid"
+    },
+    "networkId": {
+      "description": "Unique identifier of a network. This identifier ALWAYS represents a specific beckn registry in a specific namespace on dedi.global. Format : `{namespace_id}/{registry_id}@{dedi-host}`. The `@{dedi-host}` suffix is optional. If it is not present, the network is assumed to be registered on dedi.glounique Example: Assuming acmenet.org is the namespace, and registry_name = charge-net, so networkId should be `acmenet.org/charge-net`",
+      "type": "string"
+    },
+    "timestamp": {
+      "description": "Time of request generation in RFC3339 format",
+      "type": "string",
+      "format": "date-time"
+    },
+    "key": {
+      "description": "The encryption public key of the sender",
+      "type": "string"
+    },
+    "ttl": {
+      "description": "The duration in ISO8601 format after timestamp for which this message holds valid",
+      "type": "string"
+    },
+    "schemaContext": {
+      "description": "Array of JSON-LD context urls representing the schemas relevant to the request in which this context object is transported.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      }
+    },
+    "requestDigest": {
+      "$ref": "https://schema.beckn.io/RequestDigest/v2.0/schema.json"
+    }
+  }
+}

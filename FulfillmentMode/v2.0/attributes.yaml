@@ -1,0 +1,31 @@
+openapi: 3.1.1
+info:
+  title: FulfillmentMode
+  version: 2.0.0
+  description: Describes the mode of fulfillment. This is an extensible container
+    allowing domain-specific fulfillment modes to be expressed via attributes.
+  license:
+    name: CC-BY-NC-SA 4.0 International
+  contact:
+    name: Beckn Labs
+    url: https://beckn.io
+components:
+  schemas:
+    FulfillmentMode:
+      x-iri: https://schema.beckn.io/FulfillmentMode/v2.0
+      description: Describes the mode of fulfillment. This is an extensible container
+        allowing domain-specific fulfillment modes to be expressed via attributes.
+      title: FulfillmentMode
+      type: object
+      properties:
+        id:
+          type: string
+        descriptor:
+          $ref: https://schema.beckn.io/Descriptor/v2.1/attributes.yaml#/components/schemas/Descriptor
+        modeAttributes:
+          description: Domain-specific fulfillment mode attributes (e.g., delivery,
+            pickup, reservation, digital)
+          $ref: https://schema.beckn.io/Attributes/v2.0/attributes.yaml#/components/schemas/Attributes
+      additionalProperties: false
+      x-tags:
+      - common

@@ -1,0 +1,26 @@
+openapi: 3.1.1
+info:
+  title: RefundTerms
+  version: 2.0.0
+  description: Schema definition for RefundTerms in the Beckn Protocol v2.0.1
+  license:
+    name: CC-BY-NC-SA 4.0 International
+  contact:
+    name: Beckn Labs
+    url: https://beckn.io
+components:
+  schemas:
+    RefundTerms:
+      x-iri: https://schema.beckn.io/RefundTerms/v2.0
+      description: Schema definition for RefundTerms in the Beckn Protocol v2.0.1
+      title: RefundTerms
+      x-tags:
+      - common
+      type: object
+      properties:
+        refundTo:
+          type: string
+          enum:
+          - SOURCE_ACCOUNT
+          - OTHER
+      additionalProperties: false

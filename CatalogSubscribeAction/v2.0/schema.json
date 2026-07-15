@@ -1,0 +1,42 @@
+{
+  "$id": "https://schema.beckn.io/CatalogSubscribeAction/v2.0",
+  "x-iri": "https://schema.beckn.io/CatalogSubscribeAction/v2.0",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "description": "Message payload for catalog/subscription. At least one of `networkIds` or `schemaTypes` must be non-empty. An empty `schemaTypes` array is treated as the wildcard sentinel `\"*\"`, matching all schema types for the specified networks. ",
+  "required": [
+    "subscription"
+  ],
+  "properties": {
+    "subscription": {
+      "type": "object",
+      "required": [
+        "networkIds"
+      ],
+      "properties": {
+        "networkIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Network IDs to subscribe to"
+        },
+        "schemaTypes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Schema type URIs to filter on (empty = wildcard)"
+        },
+        "callbackUrl": {
+          "type": "string",
+          "format": "uri",
+          "description": "Override callback URL (defaults to context.bapUri)"
+        },
+        "deliveryPolicy": {
+          "$ref": "https://schema.beckn.io/DeliveryPolicy/v2.0/schema.json"
+        }
+      }
+    }
+  }
+}

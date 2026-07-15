@@ -1,0 +1,100 @@
+{
+  "@context": {
+    "beckn": "https://schema.beckn.io/LinkedData/v2.1/context.jsonld",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/version/latest/schemaorg-current-https.jsonld",
+    "Commitment": "beckn:Commitment",
+    "@type": "beckn:@type",
+    "addOns": "beckn:addOns",
+    "address": "beckn:address",
+    "addressCountry": "beckn:addressCountry",
+    "addressLocality": "beckn:addressLocality",
+    "addressRegion": "beckn:addressRegion",
+    "availableAt": "beckn:availableAt",
+    "availableTo": "beckn:availableTo",
+    "bbox": "beckn:bbox",
+    "checksum": "beckn:checksum",
+    "checksumAlgorithm": "beckn:checksumAlgorithm",
+    "code": "beckn:code",
+    "commitmentAttributes": "beckn:commitmentAttributes",
+    "considerationAttributes": "beckn:considerationAttributes",
+    "considerationIds": "beckn:considerationIds",
+    "coordinates": "beckn:coordinates",
+    "descriptor": "beckn:descriptor",
+    "docs": "beckn:docs",
+    "endDate": "beckn:endDate",
+    "endTime": "beckn:endTime",
+    "extendedAddress": "beckn:extendedAddress",
+    "fulfillmentIds": "beckn:fulfillmentIds",
+    "geo": "beckn:geo",
+    "geometries": "beckn:geometries",
+    "id": "beckn:id",
+    "keyId": "beckn:keyId",
+    "label": "beckn:label",
+    "longDesc": "beckn:longDesc",
+    "mediaFile": "beckn:mediaFile",
+    "mimeType": "beckn:mimeType",
+    "name": "beckn:name",
+    "offer": "beckn:offer",
+    "offerAttributes": "beckn:offerAttributes",
+    "postalCode": "beckn:postalCode",
+    "provider": "beckn:provider",
+    "providerAttributes": "beckn:providerAttributes",
+    "resourceAttributes": "beckn:resourceAttributes",
+    "resourceIds": "beckn:resourceIds",
+    "resources": "beckn:resources",
+    "security": "beckn:security",
+    "shortDesc": "beckn:shortDesc",
+    "signature": "beckn:signature",
+    "signatureAlgorithm": "beckn:signatureAlgorithm",
+    "standard": "beckn:standard",
+    "startDate": "beckn:startDate",
+    "startTime": "beckn:startTime",
+    "status": "beckn:status",
+    "streetAddress": "beckn:streetAddress",
+    "thumbnailImage": "beckn:thumbnailImage",
+    "type": "beckn:type",
+    "uri": "beckn:uri",
+    "url": "beckn:url",
+    "validity": "beckn:validity"
+  },
+  "@graph": [
+    {
+      "@id": "beckn:Commitment",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Commitment",
+      "rdfs:comment": "This schema is part of the Long Term Support of Beckn Protocol V2.0 API specification and MUST NOT be extended. Any domain-specific extension must use the property of this schema which is of type Attribute."
+    },
+    {
+      "@id": "beckn:id",
+      "@type": "rdf:Property",
+      "rdfs:label": "id",
+      "rdfs:comment": "Property id"
+    },
+    {
+      "@id": "beckn:status",
+      "@type": "rdf:Property",
+      "rdfs:label": "status",
+      "rdfs:comment": "Property status"
+    },
+    {
+      "@id": "beckn:resources",
+      "@type": "rdf:Property",
+      "rdfs:label": "resources",
+      "rdfs:comment": "Property resources"
+    },
+    {
+      "@id": "beckn:offer",
+      "@type": "rdf:Property",
+      "rdfs:label": "offer",
+      "rdfs:comment": "Property offer"
+    },
+    {
+      "@id": "beckn:commitmentAttributes",
+      "@type": "rdf:Property",
+      "rdfs:label": "commitmentAttributes",
+      "rdfs:comment": "Domain-specific extension attributes for this commitment."
+    }
+  ]
+}

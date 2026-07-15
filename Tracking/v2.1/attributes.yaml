@@ -1,0 +1,40 @@
+openapi: 3.1.1
+info:
+  title: Tracking
+  version: 2.1.0
+  description: "Container schemas fetched from beckn.yaml. This cannot be extended as it is a reserved schema in beckn protocol. Any additional properties added to this schema can only be made using its *Attributes property"
+  license:
+    name: CC-BY-NC-SA 4.0 International
+  contact:
+    name: Beckn Labs
+    url: https://beckn.io
+components:
+  schemas:
+    Tracking:
+      x-iri: https://schema.beckn.io/Tracking/v2.1
+      description: Information regarding live tracking of the fufillment of a contract
+      title: Tracking
+      type: object
+      properties:
+        contract:
+          description: Attributes of the contract for which the tracking is performed
+          allOf:
+          - $ref: https://schema.beckn.io/Contract/v2.0/attributes.yaml#/components/schemas/Contract
+          - required:
+            - id
+        status:
+          type: string
+          enum:
+          - ACTIVE
+          - INACTIVE
+        url:
+          description: Link/handle to off-network tracking UI or endpoint.
+          type: string
+          format: uri
+        trackingAttributes:
+          description: Information specific to the use case for which the tracking
+            is performed
+          $ref: https://schema.beckn.io/Attributes/v2.0/attributes.yaml#/components/schemas/Attributes
+      required:
+      - url
+      - status

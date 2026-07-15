@@ -1,0 +1,40 @@
+{
+  "$id": "https://schema.beckn.io/RatingInput/v2.1",
+  "x-iri": "https://schema.beckn.io/RatingInput/v2.1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "A form designed to capture rating and feedback from a user. This can be used by both BAP and BPP to fetch ratings and feedback of their respective users.",
+  "title": "RatingInput",
+  "x-tags": [
+    "common"
+  ],
+  "type": "object",
+  "properties": {
+    "target": {
+      "description": "The thing being rated. It could be a person, an application, a service, a product, an instrument used in the fulfillment of the contract, or the overall experience.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "ID of the entity being rated (order/item/fulfillment/provider/agent).",
+          "type": "string"
+        },
+        "descriptor": {
+          "$ref": "https://schema.beckn.io/Descriptor/v2.1/schema.json"
+        },
+        "targetAttributes": {
+          "$ref": "https://schema.beckn.io/Attributes/v2.0/schema.json"
+        }
+      }
+    },
+    "range": {
+      "type": "object"
+    },
+    "feedbackFormSubmission": {
+      "$ref": "https://schema.beckn.io/FormSubmission/v2.0/schema.json"
+    }
+  },
+  "required": [
+    "target",
+    "range"
+  ],
+  "additionalProperties": false
+}

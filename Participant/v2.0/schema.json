@@ -1,0 +1,25 @@
+{
+  "$id": "https://schema.beckn.io/Participant/v2.0",
+  "x-iri": "https://schema.beckn.io/Participant/v2.0",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "descriptor": {
+      "$ref": "https://schema.beckn.io/Descriptor/v2.0/schema.json"
+    },
+    "participantAttributes": {
+      "description": "Domain-specific extension attributes for this contract. Use beckn:LogisticsContract for hyperlocal physical delivery. Use the generic Attributes schema for other fulfillment types where no well-known domain schema exists.",
+      "allOf": [
+        {
+          "$ref": "https://schema.beckn.io/Attributes/v2.0/schema.json"
+        },
+        {
+          "properties": {}
+        }
+      ]
+    }
+  }
+}

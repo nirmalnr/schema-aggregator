@@ -1,0 +1,177 @@
+{
+    "@context": {
+        "@version": 1.1,
+        "@protected": true,
+        "id": "@id",
+        "type": "@type",
+        "schema": "https://schema.org/",
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
+        "deg": "https://schema.nfh.global/deg#",
+        "CustomerCredential": {
+            "@id": "deg:CustomerCredential",
+            "@context": {
+                "@version": 1.1,
+                "@protected": true,
+                "id": "@id",
+                "type": "@type"
+            }
+        },
+        "customerProfile": {
+            "@id": "deg:customerProfile",
+            "@type": "@id",
+            "@context": {
+                "@version": 1.1,
+                "@protected": true,
+                "customerNumber": {
+                    "@id": "deg:customerNumber",
+                    "@type": "xsd:string"
+                },
+                "meterNumber": {
+                    "@id": "deg:meterNumber",
+                    "@type": "xsd:string"
+                },
+                "meterType": {
+                    "@id": "deg:meterType",
+                    "@type": "xsd:string"
+                },
+                "idRef": {
+                    "@id": "deg:idRef",
+                    "@type": "@id",
+                    "@context": {
+                        "issuedBy": {
+                            "@id": "deg:issuedBy",
+                            "@type": "@id"
+                        },
+                        "subjectId": {
+                            "@id": "deg:subjectId",
+                            "@type": "xsd:string"
+                        }
+                    }
+                }
+            }
+        },
+        "customerDetails": {
+            "@id": "deg:customerDetails",
+            "@type": "@id",
+            "@context": {
+                "@import": "https://schema.nfh.global/CustomerDetails/v1.0/context.jsonld",
+                "@protected": true
+            }
+        },
+        "consumptionProfiles": {
+            "@id": "deg:consumptionProfiles",
+            "@type": "@id",
+            "@container": "@set",
+            "@context": {
+                "@version": 1.1,
+                "@protected": true,
+                "premisesType": {
+                    "@id": "deg:premisesType",
+                    "@type": "xsd:string"
+                },
+                "connectionType": {
+                    "@id": "deg:connectionType",
+                    "@type": "xsd:string"
+                },
+                "sanctionedLoadKW": {
+                    "@id": "deg:sanctionedLoadKW",
+                    "@type": "xsd:decimal"
+                },
+                "tariffCategoryCode": {
+                    "@id": "deg:tariffCategoryCode",
+                    "@type": "xsd:string"
+                }
+            }
+        },
+        "generationProfiles": {
+            "@id": "deg:generationProfiles",
+            "@type": "@id",
+            "@container": "@set",
+            "@context": {
+                "@version": 1.1,
+                "@protected": true,
+                "assetId": {
+                    "@id": "deg:assetId",
+                    "@type": "xsd:string"
+                },
+                "generationType": {
+                    "@id": "deg:generationType",
+                    "@type": "xsd:string"
+                },
+                "capacityKW": {
+                    "@id": "deg:capacityKW",
+                    "@type": "xsd:decimal"
+                },
+                "commissioningDate": {
+                    "@id": "deg:commissioningDate",
+                    "@type": "xsd:dateTime"
+                },
+                "manufacturer": {
+                    "@id": "schema:manufacturer",
+                    "@type": "xsd:string"
+                },
+                "modelNumber": {
+                    "@id": "deg:modelNumber",
+                    "@type": "xsd:string"
+                }
+            }
+        },
+        "storageProfiles": {
+            "@id": "deg:storageProfiles",
+            "@type": "@id",
+            "@container": "@set",
+            "@context": {
+                "@version": 1.1,
+                "@protected": true,
+                "assetId": {
+                    "@id": "deg:storageAssetId",
+                    "@type": "xsd:string"
+                },
+                "storageCapacityKWh": {
+                    "@id": "deg:storageCapacityKWh",
+                    "@type": "xsd:decimal"
+                },
+                "powerRatingKW": {
+                    "@id": "deg:powerRatingKW",
+                    "@type": "xsd:decimal"
+                },
+                "commissioningDate": {
+                    "@id": "deg:storageCommissioningDate",
+                    "@type": "xsd:dateTime"
+                },
+                "storageType": {
+                    "@id": "deg:storageType",
+                    "@type": "xsd:string"
+                }
+            }
+        },
+        "idRef": {
+            "@id": "deg:idRef",
+            "@type": "@id",
+            "@context": {
+                "issuedBy": {
+                    "@id": "deg:issuedBy",
+                    "@type": "@id"
+                },
+                "subjectId": {
+                    "@id": "deg:subjectId",
+                    "@type": "xsd:string"
+                }
+            }
+        },
+        "credentialStatus": {
+            "@id": "deg:credentialStatus",
+            "@type": "@id",
+            "@context": {
+                "statusPurpose": {
+                    "@id": "deg:statusPurpose",
+                    "@type": "xsd:string"
+                },
+                "statusListCredential": {
+                    "@id": "deg:statusListCredential",
+                    "@type": "@id"
+                }
+            }
+        }
+    }
+}

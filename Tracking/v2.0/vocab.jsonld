@@ -1,0 +1,55 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "beckn": "https://schema.beckn.io/",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "schema": "https://schema.org/",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "beckn:Tracking",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Tracking",
+      "rdfs:comment": "Non-streaming tracking handle per legacy semantics (url/transport/status)."
+    },
+    {
+      "@id": "beckn:context",
+      "@type": "rdf:Property",
+      "rdfs:label": "context",
+      "rdfs:comment": "context property of Tracking"
+    },
+    {
+      "@id": "beckn:type",
+      "@type": "rdf:Property",
+      "rdfs:label": "type",
+      "rdfs:comment": "type property of Tracking"
+    },
+    {
+      "@id": "beckn:tl_method",
+      "@type": "rdf:Property",
+      "rdfs:label": "tl_method",
+      "rdfs:comment": "tl_method property of Tracking"
+    },
+    {
+      "@id": "beckn:url",
+      "@type": "rdf:Property",
+      "rdfs:label": "url",
+      "rdfs:comment": "url property of Tracking"
+    },
+    {
+      "@id": "beckn:trackingStatus",
+      "@type": "rdf:Property",
+      "rdfs:label": "trackingStatus",
+      "rdfs:comment": "trackingStatus property of Tracking"
+    },
+    {
+      "@id": "beckn:expires_at",
+      "@type": "rdf:Property",
+      "rdfs:label": "expires_at",
+      "rdfs:comment": "expires_at property of Tracking"
+    }
+  ]
+}

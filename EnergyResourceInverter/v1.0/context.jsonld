@@ -1,0 +1,30 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "erDeg": "https://schema.nfh.global/deg/EnergyResource/",
+    "deg":   "https://schema.nfh.global/deg#",
+    "xsd":   "http://www.w3.org/2001/XMLSchema#",
+    "EnergyResourceInverter": {
+      "@id": "erDeg:EnergyResourceInverter",
+      "@context": {
+        "@version": 1.1,
+        "attributes": {
+          "@id": "deg:attributes",
+          "@context": {
+            "@import": "https://schema.nfh.global/EnergyResourceCommon/v1.0/attributes-context.jsonld",
+            "ratedApparentPowerKva":   { "@id": "erDeg:ratedApparentPowerKva",   "@type": "xsd:decimal" },
+            "maxReactivePowerKvar":    { "@id": "erDeg:maxReactivePowerKvar",    "@type": "xsd:decimal" },
+            "minReactivePowerKvar":    { "@id": "erDeg:minReactivePowerKvar",    "@type": "xsd:decimal" },
+            "rideThroughCategory":     { "@id": "erDeg:rideThroughCategory",     "@type": "xsd:string"  },
+            "operatingMode":           { "@id": "erDeg:operatingMode",           "@type": "xsd:string"  },
+            "voltVarEnabled":          { "@id": "erDeg:voltVarEnabled",          "@type": "xsd:boolean" },
+            "freqDroopEnabled":        { "@id": "erDeg:freqDroopEnabled",        "@type": "xsd:boolean" },
+            "enterServiceRampTimeSec": { "@id": "erDeg:enterServiceRampTimeSec", "@type": "xsd:decimal" }
+          }
+        },
+        "subResources":    { "@id": "deg:subResources",    "@container": "@set" },
+        "parentResources": { "@id": "deg:parentResources", "@container": "@set" }
+      }
+    }
+  }
+}

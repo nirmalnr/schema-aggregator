@@ -1,0 +1,25 @@
+openapi: 3.1.1
+info:
+  title: NackBadRequest
+  version: 2.0.0
+  description: "Container schemas fetched from beckn.yaml. This cannot be extended as it is a reserved schema in beckn protocol. Any additional properties added to this schema can only be made using its *Attributes property"
+  license:
+    name: CC-BY-NC-SA 4.0 International
+  contact:
+    name: Beckn Labs
+    url: https://beckn.io
+components:
+  schemas:
+    NackBadRequest:
+      x-iri: https://schema.beckn.io/NackBadRequest/v2.0
+      description: 'NACK — Bad Request: Malformed or invalid request; the server could
+        not parse or validate the payload.'
+      allOf:
+      - $ref: https://schema.beckn.io/Ack/v2.0/attributes.yaml#/components/schemas/Ack
+      - type: object
+        properties:
+          status:
+            type: string
+            const: NACK
+          error:
+            $ref: https://schema.beckn.io/Error/v2.0/attributes.yaml#/components/schemas/Error

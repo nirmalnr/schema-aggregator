@@ -1,0 +1,96 @@
+openapi: 3.1.1
+info:
+  title: Demand Flex — Performance Attributes (v2.0)
+  version: 2.0.0
+  description: >
+    Attribute schemas for demand-flex M&V (Performance.performanceAttributes).
+    Per-meter telemetry is carried as a BecknTimeSeries:
+      • before the event — intervals carry only BASELINE payloads
+      • after the event  — intervals carry BASELINE + USAGE payloads
+    The rego policy reads BASELINE / USAGE from the intervals to compute
+    settlements.
+
+components:
+  schemas:
+    DemandFlexPerformance:
+      type: object
+      description: >
+        Performance attributes for demand-flex M&V (Measurement & Verification).
+        Attached to Performance.performanceAttributes in on_status callbacks.
+      additionalProperties: false
+      x-jsonld:
+        "@context": ./context.jsonld
+        "@type": DemandFlexPerformance
+      properties:
+
+        eventId:
+          type: string
+          description: Identifier of the flex event being measured.
+          example: "evt-2026-04-01-001"
+          x-jsonld:
+            "@id": eventId
+
+        methodology:
+          type: string
+          description: >
+            Baseline methodology used across all meters (e.g., "5of10" means
+            average of 5 highest-consumption days out of last 10).
+          example: "5of10"
+          x-jsonld:
+            "@id": methodology
+
+        meters:
+          type: array
+          description: >
+            Per-meter M&V data. Each entry binds a meter ID to its time-series
+            telemetry for the event window. When the cohort fits in a single
+            message the BPP SHOULD inline the full array and omit `pageInfo`
+            entirely. For larger cohorts the BPP either ships paged slices
+            (sibling `pageInfo` present) or substitutes `metersRef` and omits
+            `meters[]` from this message. Settlement rego runs only on the
+            assembled view — receivers MUST NOT fire settlement-dependent
+            actions until `pageInfo.isLast == true` or the `metersRef` body
+            has been fetched and verified.
+          x-jsonld:
+            "@id": meters
+          items:
+            type: object
+            additionalProperties: false
+            required: [meterId, telemetry]
+            properties:
+              meterId:
+                type: string
+                description: Meter identifier.
+                example: "der://meter/001"
+              telemetry:
+                $ref: "https://schema.nfh.global/BecknTimeSeries/v1.0#/components/schemas/BecknTimeSeries"
+                description: >
+                  BecknTimeSeries carrying BASELINE (always) and — once the
+                  event has completed — USAGE payloads, aligned to the same
+                  interval grid. Validated inline via `$ref`, so the embedded
+                  payload only needs `@type` (optional) — `@context` is
+                  declared once at the envelope level via
+                  `context.schemaContext[]`.
+
+        pageInfo:
+          description: >
+            Optional. Present only when the `meters[]` collection has
+            been split across multiple on_status messages (paged inline
+            delivery). Receivers assemble all pages of the same
+            (transactionId, performance.id) by `pageInfo.sequence` and
+            defer settlement until `pageInfo.isLast == true`. Omit
+            entirely when the whole cohort fits in one message —
+            absence of `pageInfo` is the signal that this message is
+            self-contained.
+          $ref: "https://schema.nfh.global/BecknPageInfo/v1.0#/components/schemas/BecknPageInfo"
+
+        metersRef:
+          description: >
+            Optional. Off-protocol delivery of the per-meter telemetry
+            bundle when even paged-inline (`pageInfo`) is too heavy.
+            Mutually exclusive with `meters[]` and `pageInfo` on the
+            same message — the BPP substitutes this reference for the
+            entire collection. Receivers fetch `uri`, verify against
+            `contentHash` and `count`, then run settlement against the
+            fetched body.
+          $ref: "https://schema.nfh.global/BecknResourceRef/v1.0#/components/schemas/BecknResourceRef"

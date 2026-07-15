@@ -1,0 +1,69 @@
+{
+  "$id": "https://schema.beckn.io/Fulfillment/v2.1",
+  "x-iri": "https://schema.beckn.io/Fulfillment/v2.1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Schema definition for Fulfillment in the Beckn Protocol v2.0.1",
+  "title": "Fulfillment",
+  "x-tags": [
+    "common"
+  ],
+  "type": "object",
+  "properties": {
+    "agent": {
+      "description": "The entity that directly performs the fulfillment",
+      "$ref": "https://schema.beckn.io/FulfillmentAgent/v2.0/schema.json"
+    },
+    "fulfillmentAttributes": {
+      "description": "Extensible set of domain-specific attributes describing the fulfillment",
+      "$ref": "https://schema.beckn.io/Attributes/v2.0/schema.json"
+    },
+    "id": {
+      "description": "Fulfillment identifier",
+      "type": "string",
+      "x-jsonld": {
+        "@id": "schema:identifier"
+      }
+    },
+    "instructions": {
+      "type": "array",
+      "items": {
+        "$ref": "https://schema.beckn.io/Descriptor/v2.1/schema.json"
+      }
+    },
+    "mode": {
+      "description": "Extensible set of attributes describing the mode of fulfillment. Varies with Industry Use Case",
+      "x-jsonld": {
+        "@id": "beckn:FulfillmentMode"
+      },
+      "$ref": "https://schema.beckn.io/FulfillmentMode/v2.0/schema.json"
+    },
+    "participants": {
+      "description": "A list of participants who are entitled to receive the fulfillment of the order. By default, it is the consumer who placed the order",
+      "type": "array",
+      "items": {
+        "$ref": "https://schema.beckn.io/Participant/v2.0/schema.json"
+      },
+      "minItems": 1
+    },
+    "state": {
+      "description": "The current state of fulfillment",
+      "$ref": "https://schema.beckn.io/State/v2.0/schema.json"
+    },
+    "stages": {
+      "description": "The various stages of the fulfillment",
+      "type": "array",
+      "items": {
+        "$ref": "https://schema.beckn.io/FulfillmentStage/v2.0/schema.json"
+      },
+      "minItems": 1
+    },
+    "trackingEnabled": {
+      "description": "Whether tracking is enabled / possible for this fulfillment",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "mode"
+  ],
+  "additionalProperties": false
+}

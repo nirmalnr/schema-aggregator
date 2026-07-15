@@ -1,0 +1,103 @@
+openapi: 3.1.1
+info:
+  title: EnergyResourceLoad
+  version: 1.0.0
+  description: |
+    Typed attribute schema for controllable load energy resources.
+
+    CIM alignment (IEC 61970-301):
+      SMART_HVAC          → cim:EnergyConsumer / cim:ConformLoad (Heating/Cooling)
+      SMART_WATER_HEATER  → cim:EnergyConsumer / cim:ConformLoad (WaterHeating)
+      CONTROLLABLE_LOAD   → cim:EnergyConsumer / cim:ConformLoad (generic)
+
+    These resources participate in demand-response and demand-flexibility
+    programs, responding to OpenADR, OCPP, SunSpec Modbus, EEBus, or
+    Modbus control signals.
+
+    Common attributes (make, model, ratedPowerKw, maxExportKw, maxImportKw,
+    telemetryProvider, commissioningDate, location) are inherited from
+    EnergyResourceCommon/v1.0 via allOf.
+
+components:
+  schemas:
+
+    EnergyResourceLoad:
+      description: >
+        A controllable load energy resource (smart HVAC, smart water heater,
+        or generic controllable load). Corresponds to cim:EnergyConsumer /
+        cim:ConformLoad (IEC 61970-301).
+      x-tags:
+        - energy-resource
+        - energy
+        - deg
+        - load
+        - demand-response
+        - demand-flexibility
+      x-jsonld:
+        "@context": ./context.jsonld
+        "@type": EnergyResourceLoad
+      allOf:
+        - $ref: "https://schema.nfh.global/EnergyResourceCommon/v1.0#/components/schemas/EnergyResourceCommon"
+        - type: object
+          required: [id, type]
+          properties:
+            type:
+              type: string
+              enum:
+                - SMART_HVAC
+                - SMART_WATER_HEATER
+                - CONTROLLABLE_LOAD
+              description: >
+                Asset-class discriminator. CIM: EnergyConsumer / ConformLoad
+                (IEC 61970-301).
+              x-cim-class: cim:ConformLoad
+              x-jsonld:
+                "@id": erDeg:resourceType
+            attributes:
+              $ref: "#/components/schemas/EnergyResourceLoadAttributes"
+
+    EnergyResourceLoadAttributes:
+      description: >
+        Attributes for controllable load resources. Common fields (make, model,
+        ratedPowerKw, maxExportKw, maxImportKw, telemetryProvider, commissioningDate,
+        location) are inherited from EnergyResourceCommonAttributes via allOf.
+        Only load-specific fields are defined here.
+      x-jsonld:
+        "@id": erDeg:attributes
+      allOf:
+        - $ref: "https://schema.nfh.global/EnergyResourceCommon/v1.0#/components/schemas/EnergyResourceCommonAttributes"
+        - type: object
+          additionalProperties: true
+          properties:
+
+            # ── Load-specific attributes ──────────────────────────────────────
+
+            controlProtocol:
+              type: string
+              enum:
+                - OpenADR_2.0b
+                - OCPP_2.0.1
+                - SunSpec_Modbus
+                - EEBus
+                - Modbus
+                - Other
+              description: >
+                Demand-response / control protocol supported by this load device.
+              x-jsonld:
+                "@id": erDeg:controlProtocol
+
+            loadCategory:
+              type: string
+              enum:
+                - Heating
+                - Cooling
+                - WaterHeating
+                - Lighting
+                - EV
+                - Industrial
+                - Other
+              description: >
+                Functional category of this load. CIM: ConformLoad.conformLoadSchedule /
+                load classification.
+              x-jsonld:
+                "@id": erDeg:loadCategory
