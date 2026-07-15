@@ -1,0 +1,48 @@
+name: Sync sources
+
+on:
+  workflow_dispatch:
+    inputs:
+      source_id:
+        description: "'all' for every registered source, or a specific source id"
+        default: 'all'
+        required: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-${{ github.event.inputs.source_id || 'all' }}
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout aggregator repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install pyyaml
+
+      - name: Pull and flatten sources
+        env:
+          SOURCE_ID: ${{ github.event.inputs.source_id || 'all' }}
+        run: python3 .github/scripts/sync_sources.py
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "sync: pull schema content (source_id=${{ github.event.inputs.source_id || 'all' }})"
+            git push
+          fi

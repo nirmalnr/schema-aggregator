@@ -1,0 +1,43 @@
+# sources.yaml
+# Schema source registry for schema-aggregator (POC).
+#
+# Each entry declares a GitHub-hosted schema source that the sync workflow
+# (.github/workflows/sync.yml) pulls from and flattens into this repo's root
+# as <Term>/<Version>/<file>.
+#
+# Fields:
+#   id          : stable, explicit identifier — NOT derived from repo+ref,
+#                 so two sources from the same repo (different subpaths)
+#                 never collide the way they do in the current admin app.
+#   schemaPath  : GitHub tree URL pointing at the schema folder to pull.
+#   description : human-readable summary.
+#   tags        : domain tags applied to all schemas from this source.
+
+sources:
+  - id: schemas-main
+    schemaPath: "https://github.com/beckn/schemas/tree/main/schema"
+    description: ""
+
+  - id: local-retail-main
+    schemaPath: "https://github.com/beckn/local-retail/tree/main/schema"
+    description: ""
+
+  - id: deg-main
+    schemaPath: "https://github.com/beckn/DEG/tree/main/specification/schema"
+    description: "Schema to support digital energy grid. This also contains some schemas inspired from external standards (espiGreenButton, OpenADR etc.)."
+    tags: ["deg", "energy"]
+
+  - id: beckn-schemas-transport-hiring
+    schemaPath: "https://github.com/abhimail/beckn-schemas/tree/main/transport-hiring"
+    description: "Extension of hiring schemas to support driver hiring in transport sector"
+    tags: ["transport-hiring"]
+
+  - id: beckn-schemas-verification-service
+    schemaPath: "https://github.com/abhimail/beckn-schemas/tree/main/verification-service"
+    description: "This schema pack models a Verification Service Network on the Beckn Protocol v2.1 generalised core. It enables discovery, selection, and execution of identity, credential, and eligibility verification services across a decentralized network of verification providers."
+    tags: ["verification-service"]
+
+  - id: ddm-main
+    schemaPath: "https://github.com/beckn/DDM/tree/main/specification/schema"
+    description: "Decentralized Data Marketplace schema"
+    tags: ["data exchange", "data"]
