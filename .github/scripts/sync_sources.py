@@ -1,17 +1,25 @@
 #!/usr/bin/env python3
 """
-Pull-and-flatten sync for schema-aggregator (POC).
+Pull-and-flatten sync for schema-aggregator.
 
-Reads sources.yaml, and for each matching source, shallow-clones its
-GitHub tree URL at the tracked ref and copies each class directory found
-under the schema subpath into the repo root, flattened (no per-source
-subfolder). Root-level loose files in the source (e.g. a schema-root
-context.jsonld/vocab.jsonld, README.md, INDEX.md) are intentionally
-skipped — this POC only proves out per-term/version file serving.
+Reads sources.yaml, and for each matching source:
+  - shallow-clones its GitHub tree URL at the tracked ref
+  - validates each class/version found (schema_validator.validate_class_dir)
+  - copies only versions that pass validation into the repo root, flattened
+    (no per-source subfolder), with the leading "v" stripped from the
+    destination version-directory name (source's "v2.0" -> our "2.0")
+  - detects classes that no longer exist upstream (via a per-source manifest
+    committed at .sync/manifest-<source_id>.json) and removes them
+
+A version/class that fails validation is left untouched this run (whatever
+was there from a prior successful sync stays, nothing broken is published).
+A class that's genuinely gone upstream is removed and reported, not just
+left to rot.
 
 Controlled by the SOURCE_ID env var: "all" (default) or a specific id.
 """
 
+import json
 import os
 import re
 import shutil
@@ -21,11 +29,20 @@ import tempfile
 
 import yaml
 
+from schema_validator import validate_class_dir
+
 REPO_ROOT = os.getcwd()
 SOURCES_YAML = os.path.join(REPO_ROOT, "sources.yaml")
+MANIFEST_DIR = os.path.join(REPO_ROOT, ".sync")
 
 TREE_URL_RE = re.compile(r"github\.com/([^/]+)/([^/]+)/tree/([^/]+)/(.+)$")
+VERSION_PREFIX_RE = re.compile(r"^v(\d.*)$")
 
+all_issues = []      # dicts: source_id, class_name, version, code, message
+all_deletions = []   # dicts: source_id, class_name
+
+
+# ── sources.yaml / manifest helpers ───────────────────────────────────────
 
 def load_sources():
     with open(SOURCES_YAML) as f:
@@ -37,9 +54,97 @@ def parse_tree_url(url):
     m = TREE_URL_RE.search(url)
     if not m:
         raise ValueError(f"Could not parse GitHub tree URL: {url}")
-    owner, repo, ref, subpath = m.groups()
-    return owner, repo, ref, subpath
+    return m.groups()  # owner, repo, ref, subpath
 
+
+def normalize_version(name):
+    m = VERSION_PREFIX_RE.match(name)
+    return m.group(1) if m else name
+
+
+def manifest_path(source_id):
+    return os.path.join(MANIFEST_DIR, f"manifest-{source_id}.json")
+
+
+def load_manifest(source_id):
+    path = manifest_path(source_id)
+    if not os.path.isfile(path):
+        return set()
+    with open(path) as f:
+        return set(json.load(f))
+
+
+def write_manifest(source_id, class_names):
+    os.makedirs(MANIFEST_DIR, exist_ok=True)
+    with open(manifest_path(source_id), "w") as f:
+        json.dump(sorted(class_names), f, indent=2)
+        f.write("\n")
+
+
+# ── reporting ──────────────────────────────────────────────────────────────
+
+def record_issue(source_id, class_name, version, code, message):
+    all_issues.append({
+        "source_id": source_id, "class_name": class_name,
+        "version": version, "code": code, "message": message,
+    })
+    path = f"{class_name}/{version}" if version else class_name
+    print(f"::error file={path}::[{source_id}] [{code}] {message}")
+
+
+def record_deletion(source_id, class_name):
+    all_deletions.append({"source_id": source_id, "class_name": class_name})
+    print(f"::warning file={class_name}::[{source_id}] [removed] class no longer exists upstream")
+
+
+def write_reports():
+    lines = []
+    if all_deletions:
+        lines.append("### Removed (no longer present upstream)\n")
+        lines.append("| Source | Class |")
+        lines.append("|---|---|")
+        for d in all_deletions:
+            lines.append(f"| {d['source_id']} | {d['class_name']} |")
+        lines.append("")
+    if all_issues:
+        lines.append("### Validation issues (skipped, not published)\n")
+        lines.append("| Source | Class | Version | Issue |")
+        lines.append("|---|---|---|---|")
+        for i in all_issues:
+            lines.append(
+                f"| {i['source_id']} | {i['class_name']} | {i['version'] or '-'} | "
+                f"`{i['code']}`: {i['message']} |"
+            )
+        lines.append("")
+
+    report = "\n".join(lines) if lines else (
+        "All sources passed validation, no upstream deletions detected.\n"
+    )
+
+    summary_path = os.environ.get("GITHUB_STEP_SUMMARY")
+    if summary_path:
+        with open(summary_path, "a") as f:
+            f.write("## Schema sync report\n\n")
+            f.write(report)
+
+    failures_path = os.environ.get("VALIDATION_REPORT_PATH", "/tmp/validation-report.md")
+    with open(failures_path, "w") as f:
+        f.write(report)
+
+    has_failures = "true" if (all_issues or all_deletions) else "false"
+    output_path = os.environ.get("GITHUB_OUTPUT")
+    if output_path:
+        with open(output_path, "a") as f:
+            f.write(f"has_failures={has_failures}\n")
+
+    print(f"\nhas_failures={has_failures}")
+    if all_issues:
+        print(f"{len(all_issues)} validation issue(s) found.")
+    if all_deletions:
+        print(f"{len(all_deletions)} class(es) removed (no longer upstream).")
+
+
+# ── core sync ────────────────────────────────────────────────────────────
 
 def sync_one(source):
     source_id = source["id"]
@@ -49,33 +154,81 @@ def sync_one(source):
 
     with tempfile.TemporaryDirectory() as tmp:
         clone_dir = os.path.join(tmp, "clone")
-        subprocess.run(
-            [
-                "git", "clone", "--depth=1", "--branch", ref,
-                f"https://github.com/{owner}/{repo}.git", clone_dir,
-            ],
-            check=True,
-        )
+        try:
+            subprocess.run(
+                [
+                    "git", "clone", "--depth=1", "--branch", ref,
+                    f"https://github.com/{owner}/{repo}.git", clone_dir,
+                ],
+                check=True, capture_output=True, text=True,
+            )
+        except subprocess.CalledProcessError as e:
+            record_issue(source_id, "(source)", None, "clone-failed",
+                         f"could not clone {owner}/{repo}@{ref}: {e.stderr.strip()}")
+            return
 
         src_dir = os.path.join(clone_dir, subpath)
         if not os.path.isdir(src_dir):
-            print(f"  WARNING: '{subpath}' not found in {owner}/{repo}@{ref}, skipping")
+            record_issue(source_id, "(source)", None, "path-not-found",
+                         f"'{subpath}' not found in {owner}/{repo}@{ref}")
             return
 
-        copied = 0
+        current_classes = set()
+        copied_versions = 0
+
         for entry in sorted(os.listdir(src_dir)):
             entry_path = os.path.join(src_dir, entry)
             if not os.path.isdir(entry_path):
-                continue  # skip loose root-level files (context.jsonld, README.md, etc.)
+                continue  # skip loose root-level files (schema-root context.jsonld etc.)
 
-            dest_path = os.path.join(REPO_ROOT, entry)
-            if os.path.exists(dest_path):
-                shutil.rmtree(dest_path)
-            shutil.copytree(entry_path, dest_path)
-            copied += 1
-            print(f"  copied {entry}/")
+            current_classes.add(entry)
 
-        print(f"  {copied} class director{'y' if copied == 1 else 'ies'} synced from {source_id}")
+            class_issues, valid_versions, version_issues = validate_class_dir(entry_path)
+            for code, message in class_issues:
+                record_issue(source_id, entry, None, code, message)
+            for version_name, issues in version_issues.items():
+                for code, message in issues:
+                    record_issue(source_id, entry, version_name, code, message)
+
+            if not valid_versions:
+                continue  # nothing valid to publish for this class this run
+
+            class_dest = os.path.join(REPO_ROOT, entry)
+            os.makedirs(class_dest, exist_ok=True)
+
+            readme_src = os.path.join(entry_path, "README.md")
+            if os.path.isfile(readme_src):
+                shutil.copy2(readme_src, os.path.join(class_dest, "README.md"))
+
+            for version_name in valid_versions:
+                normalized = normalize_version(version_name)
+                dest_version_path = os.path.join(class_dest, normalized)
+
+                # migration: drop an old v-prefixed sibling left over from before normalization
+                if version_name != normalized:
+                    old_prefixed_path = os.path.join(class_dest, version_name)
+                    if os.path.isdir(old_prefixed_path):
+                        shutil.rmtree(old_prefixed_path)
+
+                if os.path.exists(dest_version_path):
+                    shutil.rmtree(dest_version_path)
+                shutil.copytree(os.path.join(entry_path, version_name), dest_version_path)
+                copied_versions += 1
+
+            print(f"  copied {entry}/ ({len(valid_versions)} version(s))")
+
+        print(f"  {copied_versions} version(s) synced from {source_id}")
+
+        # Deletion detection: anything in the previous manifest but absent now
+        previous_classes = load_manifest(source_id)
+        deleted = previous_classes - current_classes
+        for class_name in sorted(deleted):
+            class_path = os.path.join(REPO_ROOT, class_name)
+            if os.path.isdir(class_path):
+                shutil.rmtree(class_path)
+            record_deletion(source_id, class_name)
+
+        write_manifest(source_id, current_classes)
 
 
 def main():
@@ -94,6 +247,8 @@ def main():
 
     for source in sources:
         sync_one(source)
+
+    write_reports()
 
 
 if __name__ == "__main__":

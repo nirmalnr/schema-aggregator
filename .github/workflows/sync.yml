@@ -10,6 +10,7 @@ on:
 
 permissions:
   contents: write
+  issues: write
 
 concurrency:
   group: sync-${{ github.event.inputs.source_id || 'all' }}
@@ -30,9 +31,11 @@ jobs:
       - name: Install dependencies
         run: pip install pyyaml
 
-      - name: Pull and flatten sources
+      - name: Pull, validate, and flatten sources
+        id: sync
         env:
           SOURCE_ID: ${{ github.event.inputs.source_id || 'all' }}
+          VALIDATION_REPORT_PATH: /tmp/validation-report.md
         run: python3 .github/scripts/sync_sources.py
 
       - name: Commit and push if changed
@@ -45,4 +48,39 @@ jobs:
           else
             git commit -m "sync: pull schema content (source_id=${{ github.event.inputs.source_id || 'all' }})"
             git push
+          fi
+
+      - name: Update validation tracking issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          HAS_FAILURES: ${{ steps.sync.outputs.has_failures }}
+        run: |
+          set -e
+          REPO="${{ github.repository }}"
+          LABEL="sync-validation"
+          TITLE="Schema validation failures"
+
+          gh label create "$LABEL" --color FBCA04 \
+            --description "Schema sync validation failures" --repo "$REPO" 2>/dev/null || true
+
+          EXISTING=$(gh issue list --repo "$REPO" --label "$LABEL" --state open --json number --jq '.[0].number // empty')
+
+          if [ "$HAS_FAILURES" = "true" ]; then
+            if [ -n "$EXISTING" ]; then
+              gh issue edit "$EXISTING" --repo "$REPO" --body-file /tmp/validation-report.md
+              echo "Updated existing tracking issue #$EXISTING"
+            else
+              gh issue create --repo "$REPO" --title "$TITLE" --label "$LABEL" \
+                --body-file /tmp/validation-report.md
+              echo "Created new tracking issue"
+            fi
+          else
+            if [ -n "$EXISTING" ]; then
+              gh issue comment "$EXISTING" --repo "$REPO" \
+                --body "All sources passed validation as of this run — closing."
+              gh issue close "$EXISTING" --repo "$REPO"
+              echo "Closed tracking issue #$EXISTING"
+            else
+              echo "No failures, no existing tracking issue — nothing to do."
+            fi
           fi

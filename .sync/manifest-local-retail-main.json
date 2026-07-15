@@ -1,0 +1,13 @@
+[
+  "FoodAndBeverageOffer",
+  "FoodAndBeverageResource",
+  "GroceryResource",
+  "HomeAndKitchenResource",
+  "RetailCommitment",
+  "RetailConsideration",
+  "RetailContract",
+  "RetailOffer",
+  "RetailPerformance",
+  "RetailResource",
+  "RetailSettlement"
+]
