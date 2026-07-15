@@ -41,3 +41,8 @@ sources:
     schemaPath: "https://github.com/beckn/DDM/tree/main/specification/schema"
     description: "Decentralized Data Marketplace schema"
     tags: ["data exchange", "data"]
+
+  - id: schema-test
+    schemaPath: "https://github.com/nirmalnr/schema-test/tree/main/schema"
+    description: "Test fixture source for exercising sync validation (deliberately valid and invalid classes)"
+    tags: ["test-fixture"]
