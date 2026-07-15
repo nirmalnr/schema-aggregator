@@ -21,6 +21,20 @@ VERSION_DIR_RE = re.compile(r"^v\d+(\.\d+){0,2}$")
 REQUIRED_VERSION_FILES = ["attributes.yaml", "context.jsonld", "vocab.jsonld", "README.md"]
 
 
+def _clean_yaml_error(e):
+    """
+    Format a yaml.YAMLError without the absolute temp-clone path PyYAML embeds
+    in str(e) (e.g. "/tmp/tmpXXXXXX/clone/schema/Foo/v1.0/attributes.yaml") —
+    that path is meaningless to a human reading a validation report; only the
+    problem description and location within the file are useful.
+    """
+    problem = getattr(e, "problem", None)
+    mark = getattr(e, "problem_mark", None)
+    if problem and mark is not None:
+        return f"{problem} (line {mark.line + 1}, column {mark.column + 1})"
+    return str(e).splitlines()[0]
+
+
 def validate_version_dir(version_path):
     """Return a list of (code, message) issues for one version directory. Empty = valid."""
     issues = []
@@ -39,7 +53,7 @@ def validate_version_dir(version_path):
             with open(attrs_path) as f:
                 yaml.safe_load(f)
         except yaml.YAMLError as e:
-            issues.append(("invalid-yaml", f"attributes.yaml failed to parse: {e}"))
+            issues.append(("invalid-yaml", f"attributes.yaml failed to parse: {_clean_yaml_error(e)}"))
 
     return issues
 
