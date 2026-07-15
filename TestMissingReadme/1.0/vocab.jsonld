@@ -1,0 +1,5 @@
+{
+  "@graph": [
+    {"@id": "test:TestMissingReadme", "@type": "rdfs:Class"}
+  ]
+}

@@ -1,0 +1,3 @@
+# TestValidClass
+
+Test fixture class.

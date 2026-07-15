@@ -1,0 +1,3 @@
+# TestMultiVersionClass
+
+Test fixture class.
