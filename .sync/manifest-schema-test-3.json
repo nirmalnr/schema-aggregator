@@ -1,0 +1,10 @@
+[
+  "TestAllBroken",
+  "TestBadVersionName",
+  "TestBadYaml",
+  "TestMissingFile",
+  "TestMissingReadme",
+  "TestMixedVersions",
+  "TestMultiVersionClass",
+  "TestValidClass"
+]
