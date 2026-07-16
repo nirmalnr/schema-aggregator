@@ -4,7 +4,9 @@ Pull-and-flatten sync for schema-aggregator.
 
 Reads sources.yaml, and for each matching source:
   - shallow-clones its GitHub tree URL at the tracked ref
-  - validates each class/version found (schema_validator.validate_class_dir)
+  - skips any class already owned by an earlier-listed source (see
+    "Cross-source collisions" below), reporting it as an issue
+  - validates each remaining class/version found (schema_validator.validate_class_dir)
   - copies only versions that pass validation into the repo root, flattened
     (no per-source subfolder), with the leading "v" stripped from the
     destination version-directory name (source's "v2.0" -> our "2.0")
@@ -15,6 +17,23 @@ A version/class that fails validation is left untouched this run (whatever
 was there from a prior successful sync stays, nothing broken is published).
 A class that's genuinely gone upstream is removed and reported, not just
 left to rot.
+
+Cross-source collisions: if two different sources both have a class with
+the same name, the source that appears FIRST in sources.yaml always wins,
+regardless of which one happens to sync first in time. A later-listed
+source's colliding class is never copied and is reported as an issue
+("owned-by-other-source"), same reporting path as any other validation
+failure. This is resolved by checking every earlier-listed source's
+CURRENT manifest before touching each class -- which works correctly even
+when syncing a single source in isolation, since manifests persist across
+runs regardless of which source is being synced right now.
+
+A class this source used to own but has just lost to a newly-higher-
+priority source is dropped from this source's own manifest (it doesn't
+own it anymore) but its on-disk content is deliberately NOT deleted --
+the winning source's own sync is what's responsible for what ends up
+there, and treating a lost collision as a plain deletion would risk
+`rmtree`-ing the winner's freshly-published content out from under it.
 
 Controlled by the SOURCE_ID env var: "all" (default) or a specific id.
 """
@@ -102,6 +121,26 @@ def write_source_failures(source_id, issues):
             f.write("\n")
     elif os.path.isfile(path):
         os.remove(path)  # clean source -> no failures file needed for it
+
+
+def earlier_sources_owned_classes(source_id, ordered_source_ids):
+    """
+    Every class name currently claimed (per its persisted manifest) by a
+    source that appears BEFORE source_id in sources.yaml. Only ever checks
+    sources strictly earlier in the list -- a source never loses a class to
+    one listed after it, no matter what order they happen to sync in.
+
+    Returns {class_name: owning_source_id}, using the FIRST earlier owner
+    found for a given class (in list order) if more than one earlier source
+    happens to claim it.
+    """
+    owned = {}
+    for other_id in ordered_source_ids:
+        if other_id == source_id:
+            break
+        for class_name in load_manifest(other_id):
+            owned.setdefault(class_name, other_id)
+    return owned
 
 
 def aggregate_all_failures():
@@ -197,11 +236,14 @@ def write_reports():
 
 # ── core sync ────────────────────────────────────────────────────────────
 
-def sync_one(source):
+def sync_one(source, ordered_source_ids):
     source_id = source["id"]
     schema_path = source["schemaPath"]
     owner, repo, ref, subpath = parse_tree_url(schema_path)
     print(f"--- Syncing {source_id} ({owner}/{repo}@{ref}:{subpath}) ---")
+
+    blocked = earlier_sources_owned_classes(source_id, ordered_source_ids)
+    blocked_this_run = set()  # classes found upstream this run but skipped due to collision
 
     source_issues = []  # this source's CURRENT issues, replaces its failures file wholesale
 
@@ -237,6 +279,16 @@ def sync_one(source):
             entry_path = os.path.join(src_dir, entry)
             if not os.path.isdir(entry_path):
                 continue  # skip loose root-level files (schema-root context.jsonld etc.)
+
+            if entry in blocked:
+                owning_source_id = blocked[entry]
+                issue = record_issue(
+                    source_id, entry, None, "owned-by-other-source",
+                    f"already provided by source '{owning_source_id}' (earlier in sources.yaml) -- not synced",
+                )
+                source_issues.append(issue)
+                blocked_this_run.add(entry)
+                continue  # not this source's to validate or publish
 
             current_classes.add(entry)
 
@@ -276,9 +328,14 @@ def sync_one(source):
 
         print(f"  {copied_versions} version(s) synced from {source_id}")
 
-        # Deletion detection: anything in the previous manifest but absent now
+        # Deletion detection: anything in the previous manifest but absent now.
+        # Explicitly excludes blocked_this_run -- a class this source just lost
+        # to a higher-priority source is still physically present upstream, it
+        # just isn't this source's to publish anymore. Treating that as a
+        # deletion would rmtree the winning source's own content out from
+        # under it (which may already be sitting there, or about to be).
         previous_classes = load_manifest(source_id)
-        deleted = previous_classes - current_classes
+        deleted = previous_classes - current_classes - blocked_this_run
         for class_name in sorted(deleted):
             class_path = os.path.join(REPO_ROOT, class_name)
             if os.path.isdir(class_path):
@@ -291,10 +348,16 @@ def sync_one(source):
 
 def main():
     requested = os.environ.get("SOURCE_ID", "all")
-    sources = load_sources()
+    # Always load the FULL list, in file order, regardless of SOURCE_ID --
+    # collision priority is relative to every registered source's position
+    # in sources.yaml, not just whichever one(s) this run happens to touch.
+    all_sources = load_sources()
+    ordered_source_ids = [s["id"] for s in all_sources]
 
-    if requested != "all":
-        sources = [s for s in sources if s["id"] == requested]
+    if requested == "all":
+        sources = all_sources
+    else:
+        sources = [s for s in all_sources if s["id"] == requested]
         if not sources:
             print(f"No source with id '{requested}' found in sources.yaml", file=sys.stderr)
             sys.exit(1)
@@ -304,7 +367,7 @@ def main():
         sys.exit(1)
 
     for source in sources:
-        sync_one(source)
+        sync_one(source, ordered_source_ids)
 
     write_reports()
 
