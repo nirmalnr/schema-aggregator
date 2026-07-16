@@ -6,10 +6,11 @@ before and after a push to main, and for each source id that changed:
   - newly added  -> runs sync_sources.py targeted at it (first content pull)
   - removed      -> runs remove_source.py to clean up its published content
 
-Either way, regenerates sync.yml's dropdown afterward so it always matches
-the current sources.yaml. The actual git commit/push happens in the calling
-workflow, same pattern as sync.yml's own "commit if changed" step -- this
-script just leaves the working tree in the right state.
+The actual git commit/push happens in the calling workflow, same pattern
+as sync.yml's own "commit if changed" step -- this script just leaves the
+working tree in the right state. Does NOT touch sync.yml's dropdown --
+see propose_dropdown_update.py for why that has to be a separate PR
+rather than a direct commit.
 
 Env vars: BASE_SHA, HEAD_SHA.
 """
@@ -64,11 +65,12 @@ def main():
             check=True,
         )
 
-    print("\n=== Regenerating sync.yml dropdown ===")
-    subprocess.run(
-        [sys.executable, os.path.join(SCRIPTS_DIR, "update_sync_dropdown.py")],
-        check=True,
-    )
+    # NOTE: sync.yml's dropdown is deliberately NOT regenerated here.
+    # GITHUB_TOKEN can never push a commit that touches .github/workflows/*
+    # directly -- that's a hard platform restriction, not something any
+    # `permissions:` block can grant. propose_dropdown_update.py handles it
+    # separately, as its own PR (same pattern Dependabot etc. use for
+    # workflow-file changes), run as a distinct step in sources-changed.yml.
 
     # Refresh the tracking-issue report from the current aggregate state on
     # disk (.sync/failures-*.json), so update_tracking_issue.sh has an

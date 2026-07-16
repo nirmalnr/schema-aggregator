@@ -37,7 +37,9 @@ def build_options_block(ids):
     return "\n".join(lines)
 
 
-def main():
+def regenerate():
+    """Rewrites sync.yml's dropdown in place if it's out of date. Returns
+    True if a change was made, False if it already matched."""
     ids = load_source_ids()
 
     with open(SYNC_WORKFLOW) as f:
@@ -55,12 +57,13 @@ def main():
 
     if new_content == content:
         print("Dropdown already up to date, no change needed.")
-        return
+        return False
 
     with open(SYNC_WORKFLOW, "w") as f:
         f.write(new_content)
     print(f"Regenerated sync.yml dropdown with {len(ids)} source(s): {', '.join(ids)}")
+    return True
 
 
 if __name__ == "__main__":
-    main()
+    regenerate()
