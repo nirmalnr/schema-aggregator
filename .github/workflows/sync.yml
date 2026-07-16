@@ -4,9 +4,21 @@ on:
   workflow_dispatch:
     inputs:
       source_id:
-        description: "'all' for every registered source, or a specific source id"
+        description: >
+          Source to sync. NOTE: this list is a static snapshot of sources.yaml
+          at the time this workflow file was last edited — if you add/remove
+          a source, update these options too, or it'll drift out of sync.
+        type: choice
         default: 'all'
-        required: false
+        options:
+          - all
+          - schemas-main
+          - local-retail-main
+          - deg-main
+          - beckn-schemas-transport-hiring
+          - beckn-schemas-verification-service
+          - ddm-main
+          - schema-test
 
 permissions:
   contents: write
