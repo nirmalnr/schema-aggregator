@@ -1,0 +1,19 @@
+name: Remove a schema source
+description: Propose removing a currently-registered source (works without repo write access)
+title: "Remove source: "
+labels: ["remove-source-request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Submitting this opens a PR automatically if the source id is
+        actually registered in sources.yaml. If not, this issue gets a
+        comment explaining that -- no PR is opened until it is.
+  - type: input
+    id: source_id
+    attributes:
+      label: Source ID
+      description: Must match an id currently in sources.yaml exactly
+      placeholder: my-schemas-main
+    validations:
+      required: true

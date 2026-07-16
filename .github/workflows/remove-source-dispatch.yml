@@ -1,0 +1,40 @@
+name: Remove source (form)
+run-name: "Propose removal: ${{ inputs.source_id }}"
+
+on:
+  workflow_dispatch:
+    inputs:
+      source_id:
+        description: >
+          Free text, not a dropdown -- same reasoning as sync.yml's
+          source_id: GITHUB_TOKEN can never push a change to a workflow
+          file, so a dropdown here would just silently drift out of sync
+          with sources.yaml. Must match an id currently in sources.yaml.
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: remove-source-dispatch-${{ inputs.source_id }}
+  cancel-in-progress: true
+
+jobs:
+  propose:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - run: pip install pyyaml
+
+      - name: Propose removal
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SOURCE_ID: ${{ inputs.source_id }}
+        run: python3 .github/scripts/propose_removal.py

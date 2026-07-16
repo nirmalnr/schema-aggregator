@@ -1,0 +1,74 @@
+name: Remove source (issue form)
+
+on:
+  issues:
+    # See add-source-issue.yml for why 'labeled' is included: 'opened' and
+    # 'labeled' can fire within milliseconds of each other for the same
+    # issue (the form applies its label at creation time), and the
+    # concurrency group below -- not a missing trigger type -- is what
+    # actually prevents that from racing.
+    types: [opened, edited, labeled]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+concurrency:
+  group: remove-source-issue-${{ github.event.issue.number }}
+  cancel-in-progress: true
+
+jobs:
+  propose:
+    if: contains(github.event.issue.labels.*.name, 'remove-source-request')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - run: pip install pyyaml
+
+      - name: Parse the issue form
+        id: parsed
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+        run: python3 .github/scripts/parse_issue_form.py
+
+      - name: Set issue title from the parsed source_id
+        if: steps.parsed.outputs.source_id != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          SOURCE_ID: ${{ steps.parsed.outputs.source_id }}
+        run: |
+          gh issue edit "$ISSUE_NUMBER" --title "Remove source: $SOURCE_ID"
+
+      - name: Propose removal
+        id: propose
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SOURCE_ID: ${{ steps.parsed.outputs.source_id }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: python3 .github/scripts/propose_removal.py
+
+      - name: Comment result on the issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          OUTCOME: ${{ steps.propose.outcome }}
+          PR_URL: ${{ steps.propose.outputs.pr_url }}
+          ERROR: ${{ steps.propose.outputs.error }}
+        run: |
+          if [ "$OUTCOME" = "success" ]; then
+            gh issue comment "$ISSUE_NUMBER" --body "Opened $PR_URL."
+          else
+            gh issue comment "$ISSUE_NUMBER" --body "Couldn't open a PR yet: $ERROR. Edit this issue with a corrected source_id and it'll retry automatically."
+          fi
+
+      - name: Fail the run if the proposal failed
+        if: steps.propose.outcome != 'success'
+        run: exit 1
