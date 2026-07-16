@@ -81,15 +81,58 @@ def write_manifest(source_id, class_names):
         f.write("\n")
 
 
+def failures_path(source_id):
+    return os.path.join(MANIFEST_DIR, f"failures-{source_id}.json")
+
+
+def write_source_failures(source_id, issues):
+    """
+    Persist this source's CURRENT validation issues, replacing whatever was
+    recorded for it last time. This is what makes the tracking issue reflect
+    the true state of the whole registry even when a run only touches one
+    source: a targeted run updates only its own source's file, but the
+    aggregate report is always built from every source's file, not just the
+    one(s) touched this run.
+    """
+    os.makedirs(MANIFEST_DIR, exist_ok=True)
+    path = failures_path(source_id)
+    if issues:
+        with open(path, "w") as f:
+            json.dump(issues, f, indent=2)
+            f.write("\n")
+    elif os.path.isfile(path):
+        os.remove(path)  # clean source -> no failures file needed for it
+
+
+def aggregate_all_failures():
+    """
+    The current known validation state across every source that has ever
+    been synced, not just the source(s) touched this run. This is what the
+    tracking issue is built from, so a clean targeted run never wipes out
+    or closes over another source's still-real failures.
+    """
+    if not os.path.isdir(MANIFEST_DIR):
+        return []
+    aggregate = []
+    for fname in sorted(os.listdir(MANIFEST_DIR)):
+        if not (fname.startswith("failures-") and fname.endswith(".json")):
+            continue
+        with open(os.path.join(MANIFEST_DIR, fname)) as f:
+            aggregate.extend(json.load(f))
+    return aggregate
+
+
 # ── reporting ──────────────────────────────────────────────────────────────
 
 def record_issue(source_id, class_name, version, code, message):
-    all_issues.append({
+    issue = {
         "source_id": source_id, "class_name": class_name,
         "version": version, "code": code, "message": message,
-    })
+    }
+    all_issues.append(issue)
     path = f"{class_name}/{version}" if version else class_name
     print(f"::error file={path}::[{source_id}] [{code}] {message}")
+    return issue
 
 
 def record_deletion(source_id, class_name):
@@ -98,19 +141,22 @@ def record_deletion(source_id, class_name):
 
 
 def write_reports():
+    current_failures = aggregate_all_failures()
+
     lines = []
     if all_deletions:
-        lines.append("### Removed (no longer present upstream)\n")
+        lines.append("### Removed this run (no longer present upstream)\n")
         lines.append("| Source | Class |")
         lines.append("|---|---|")
         for d in all_deletions:
             lines.append(f"| {d['source_id']} | {d['class_name']} |")
         lines.append("")
-    if all_issues:
+    if current_failures:
         lines.append("### Validation issues (skipped, not published)\n")
+        lines.append("_Reflects the current state across every synced source, not just this run._\n")
         lines.append("| Source | Class | Version | Issue |")
         lines.append("|---|---|---|---|")
-        for i in all_issues:
+        for i in current_failures:
             lines.append(
                 f"| {i['source_id']} | {i['class_name']} | {i['version'] or '-'} | "
                 f"`{i['code']}`: {i['message']} |"
@@ -127,11 +173,14 @@ def write_reports():
             f.write("## Schema sync report\n\n")
             f.write(report)
 
-    failures_path = os.environ.get("VALIDATION_REPORT_PATH", "/tmp/validation-report.md")
-    with open(failures_path, "w") as f:
+    failures_report_path = os.environ.get("VALIDATION_REPORT_PATH", "/tmp/validation-report.md")
+    with open(failures_report_path, "w") as f:
         f.write(report)
 
-    has_failures = "true" if (all_issues or all_deletions) else "false"
+    # has_failures gates the tracking issue: true if ANY source currently has
+    # a known validation problem (aggregate, not just this run), or this run
+    # found a deletion worth a one-time callout.
+    has_failures = "true" if (current_failures or all_deletions) else "false"
     output_path = os.environ.get("GITHUB_OUTPUT")
     if output_path:
         with open(output_path, "a") as f:
@@ -139,7 +188,9 @@ def write_reports():
 
     print(f"\nhas_failures={has_failures}")
     if all_issues:
-        print(f"{len(all_issues)} validation issue(s) found.")
+        print(f"{len(all_issues)} validation issue(s) found this run.")
+    if current_failures:
+        print(f"{len(current_failures)} validation issue(s) currently known across all sources.")
     if all_deletions:
         print(f"{len(all_deletions)} class(es) removed (no longer upstream).")
 
@@ -152,6 +203,8 @@ def sync_one(source):
     owner, repo, ref, subpath = parse_tree_url(schema_path)
     print(f"--- Syncing {source_id} ({owner}/{repo}@{ref}:{subpath}) ---")
 
+    source_issues = []  # this source's CURRENT issues, replaces its failures file wholesale
+
     with tempfile.TemporaryDirectory() as tmp:
         clone_dir = os.path.join(tmp, "clone")
         try:
@@ -163,14 +216,18 @@ def sync_one(source):
                 check=True, capture_output=True, text=True,
             )
         except subprocess.CalledProcessError as e:
-            record_issue(source_id, "(source)", None, "clone-failed",
-                         f"could not clone {owner}/{repo}@{ref}: {e.stderr.strip()}")
+            issue = record_issue(source_id, "(source)", None, "clone-failed",
+                                  f"could not clone {owner}/{repo}@{ref}: {e.stderr.strip()}")
+            source_issues.append(issue)
+            write_source_failures(source_id, source_issues)
             return
 
         src_dir = os.path.join(clone_dir, subpath)
         if not os.path.isdir(src_dir):
-            record_issue(source_id, "(source)", None, "path-not-found",
-                         f"'{subpath}' not found in {owner}/{repo}@{ref}")
+            issue = record_issue(source_id, "(source)", None, "path-not-found",
+                                  f"'{subpath}' not found in {owner}/{repo}@{ref}")
+            source_issues.append(issue)
+            write_source_failures(source_id, source_issues)
             return
 
         current_classes = set()
@@ -185,10 +242,10 @@ def sync_one(source):
 
             class_issues, valid_versions, version_issues = validate_class_dir(entry_path)
             for code, message in class_issues:
-                record_issue(source_id, entry, None, code, message)
+                source_issues.append(record_issue(source_id, entry, None, code, message))
             for version_name, issues in version_issues.items():
                 for code, message in issues:
-                    record_issue(source_id, entry, version_name, code, message)
+                    source_issues.append(record_issue(source_id, entry, version_name, code, message))
 
             if not valid_versions:
                 continue  # nothing valid to publish for this class this run
@@ -229,6 +286,7 @@ def sync_one(source):
             record_deletion(source_id, class_name)
 
         write_manifest(source_id, current_classes)
+        write_source_failures(source_id, source_issues)
 
 
 def main():
