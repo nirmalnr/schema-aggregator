@@ -51,3 +51,8 @@ sources:
     schemaPath: "https://github.com/nirmalnr/schema-test/tree/main/schema"
     description: "test"
     tags: ["test", "test2"]
+
+  - id: schema-test-4
+    schemaPath: "https://github.com/nirmalnr/schema-test/tree/main/schema"
+    description: "test"
+    tags: ["tag1", "tag2"]
