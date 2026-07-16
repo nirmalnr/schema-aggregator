@@ -5,10 +5,16 @@ on:
     branches: [main]
     paths:
       - 'sources.yaml'
+  workflow_dispatch: {}  # manual retry -- compares against the commit just before HEAD
 
 permissions:
   contents: write
   issues: write
+  # Needed because this workflow's own commit can modify sync.yml (the
+  # regenerated dropdown) -- GITHUB_TOKEN can't push a change to anything
+  # under .github/workflows/ without this separate scope, distinct from
+  # contents: write.
+  workflows: write
 
 concurrency:
   group: sources-changed
@@ -32,7 +38,7 @@ jobs:
       - name: Sync new sources, clean up removed ones, regenerate dropdown
         id: sync_new
         env:
-          BASE_SHA: ${{ github.event.before }}
+          BASE_SHA: ${{ github.event.before || format('{0}~1', github.sha) }}
           HEAD_SHA: ${{ github.sha }}
           VALIDATION_REPORT_PATH: /tmp/validation-report.md
         run: python3 .github/scripts/sources_changed.py
