@@ -51,3 +51,8 @@ sources:
     schemaPath: "https://github.com/nirmalnr/schema-test/tree/main/schema"
     description: "test"
     tags: ["test", "test2"]
+
+  - id: schema-test-race-check
+    schemaPath: "https://github.com/nirmalnr/schema-test/tree/main/schema"
+    description: "Testing the concurrency fix for the race condition"
+    tags: ["test-fixture"]
