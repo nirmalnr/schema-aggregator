@@ -15,6 +15,17 @@ permissions:
   pull-requests: write
   issues: write
 
+# 'opened' and 'labeled' can both fire within milliseconds of each other for
+# the SAME issue (the form applies its label at creation time), causing two
+# runs to race pushing the same branch -- confirmed for real: both hit
+# `git push --force` on 'add-source-<id>' close enough together that git's
+# ref-locking rejected the loser with "cannot lock ref". Keying on the issue
+# number serializes any duplicate/overlapping events for one issue while
+# still letting different issues run fully in parallel.
+concurrency:
+  group: add-source-issue-${{ github.event.issue.number }}
+  cancel-in-progress: true
+
 jobs:
   propose:
     if: contains(github.event.issue.labels.*.name, 'add-source-request')
@@ -57,6 +68,7 @@ jobs:
           SCHEMA_PATH: ${{ steps.parsed.outputs.schema_path }}
           DESCRIPTION: ${{ steps.parsed.outputs.description }}
           TAGS: ${{ steps.parsed.outputs.tags }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
         run: python3 .github/scripts/propose_source.py
 
       # There's no run log for the person who filed the issue to check --

@@ -25,6 +25,14 @@ permissions:
   contents: write
   pull-requests: write
 
+# Same reasoning as add-source-issue.yml's concurrency group: two runs for
+# the same source_id would race pushing the identical branch. Unlikely here
+# (needs a genuine double-trigger, not two events firing together the way
+# issue forms do), but cheap insurance for the same failure mode.
+concurrency:
+  group: add-source-dispatch-${{ inputs.source_id }}
+  cancel-in-progress: true
+
 jobs:
   propose:
     runs-on: ubuntu-latest

@@ -13,12 +13,21 @@ classes) deliberately does NOT happen here -- that's validate_source_pr.py,
 running as a required check on the PR this script opens, since it needs a
 full clone and this step is meant to be the fast, no-PR-yet gate.
 
-Reads SOURCE_ID, SCHEMA_PATH, DESCRIPTION, TAGS from the environment.
+Reads SOURCE_ID, SCHEMA_PATH, DESCRIPTION, TAGS from the environment, plus
+optional ISSUE_NUMBER (set by add-source-issue.yml only) to add a
+"Closes #N" link so merging the PR auto-closes the originating issue.
+
 On success: writes pr_url=<url> to $GITHUB_OUTPUT, exits 0.
 On failure: writes error=<message> to $GITHUB_OUTPUT, exits 1 -- so the
 dispatch workflow run just fails with a clear message, and the issue
 wrapper can catch the failure (continue-on-error) and comment on the issue
-instead, since there's no run log for that caller to check.
+instead, since there's no run log for that caller to check. Every git/gh
+subprocess call and any other unexpected exception is funneled through
+fail() at the top level too, so error= is never left blank -- found via a
+real race: add-source-issue.yml can fire twice near-simultaneously for one
+issue (opened + labeled events both firing at creation time), and an
+uncaught CalledProcessError from a losing `git push --force` used to
+produce an empty error message instead of a real one.
 """
 
 import os
@@ -152,32 +161,40 @@ def main():
         succeed(already_open)
         return
 
-    subprocess.run(["git", "config", "user.name", "github-actions[bot]"], check=True)
-    subprocess.run(["git", "config", "user.email",
-                     "github-actions[bot]@users.noreply.github.com"], check=True)
-    subprocess.run(["git", "checkout", "-b", branch], check=True)
+    run = lambda *args: subprocess.run(args, check=True, capture_output=True, text=True)  # noqa: E731
+
+    run("git", "config", "user.name", "github-actions[bot]")
+    run("git", "config", "user.email", "github-actions[bot]@users.noreply.github.com")
+    run("git", "checkout", "-b", branch)
 
     with open(SOURCES_YAML, "a") as f:
         f.write("\n" + format_entry(source_id, schema_path, description, tags))
 
-    subprocess.run(["git", "add", "sources.yaml"], check=True)
-    subprocess.run(["git", "commit", "-m", f"Add source: {source_id}"], check=True)
-    subprocess.run(["git", "push", "-u", "origin", branch, "--force"], check=True)
+    run("git", "add", "sources.yaml")
+    run("git", "commit", "-m", f"Add source: {source_id}")
+    run("git", "push", "-u", "origin", branch, "--force")
 
+    issue_number = os.environ.get("ISSUE_NUMBER", "").strip()
+    closes_line = f"\n\nCloses #{issue_number}" if issue_number else ""
     pr_body = (
         f"Proposes registering **{source_id}**.\n\n"
         f"- Schema path: {schema_path}\n"
         f"- Description: {description or '_none provided_'}\n"
         f"- Tags: {', '.join(tags) if tags else '_none_'}\n\n"
         f"A validation check will run shortly and comment with what would actually publish."
+        f"{closes_line}"
     )
-    result = subprocess.run(
-        ["gh", "pr", "create", "--title", f"Add source: {source_id}",
-         "--body", pr_body, "--head", branch, "--base", "main"],
-        check=True, capture_output=True, text=True,
-    )
+    result = run("gh", "pr", "create", "--title", f"Add source: {source_id}",
+                 "--body", pr_body, "--head", branch, "--base", "main")
     succeed(result.stdout.strip())
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except subprocess.CalledProcessError as e:
+        stderr = (e.stderr or "").strip()
+        cmd = " ".join(e.cmd)
+        fail(f"command failed ({cmd}): {stderr or f'exit code {e.returncode}'}")
+    except Exception as e:
+        fail(f"unexpected error: {e}")
