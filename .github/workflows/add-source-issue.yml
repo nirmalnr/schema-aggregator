@@ -53,9 +53,7 @@ jobs:
           if [ "$OUTCOME" = "success" ]; then
             gh issue comment "$ISSUE_NUMBER" --body "Opened $PR_URL -- a validation check will comment there shortly with what would actually publish."
           else
-            gh issue comment "$ISSUE_NUMBER" --body "Couldn't open a PR yet: $ERROR
-
-Edit this issue with corrected details and it'll retry automatically."
+            gh issue comment "$ISSUE_NUMBER" --body "Couldn't open a PR yet: $ERROR. Edit this issue with corrected details and it'll retry automatically."
           fi
 
       - name: Fail the run if the proposal failed
