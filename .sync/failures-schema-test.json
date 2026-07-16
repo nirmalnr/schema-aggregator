@@ -1,6 +1,13 @@
 [
   {
     "source_id": "schema-test",
+    "class_name": "Address",
+    "version": null,
+    "code": "owned-by-other-source",
+    "message": "already provided by source 'schemas-main' (earlier in sources.yaml) -- not synced"
+  },
+  {
+    "source_id": "schema-test",
     "class_name": "TestAllBroken",
     "version": "v1.0",
     "code": "missing-file",
