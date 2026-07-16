@@ -46,3 +46,8 @@ sources:
     schemaPath: "https://github.com/nirmalnr/schema-test/tree/main/schema"
     description: "Test fixture source for exercising sync validation (deliberately valid and invalid classes)"
     tags: ["test-fixture"]
+
+  - id: schema-test-3
+    schemaPath: "https://github.com/nirmalnr/schema-test/tree/main/schema"
+    description: "test"
+    tags: ["test", "test2"]
