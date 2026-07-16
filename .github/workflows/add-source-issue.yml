@@ -45,7 +45,8 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
           SOURCE_ID: ${{ steps.parsed.outputs.source_id }}
-        run: gh issue edit "$ISSUE_NUMBER" --title "Add source: $SOURCE_ID"
+        run: |
+          gh issue edit "$ISSUE_NUMBER" --title "Add source: $SOURCE_ID"
 
       - name: Propose source
         id: propose
