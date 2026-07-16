@@ -6,22 +6,13 @@ on:
     inputs:
       source_id:
         description: >
-          Source to sync. This list is regenerated automatically by
-          sources-changed.yml whenever sources.yaml changes on main --
-          you shouldn't need to edit it by hand.
-        type: choice
+          'all' for every registered source, or a specific source id from
+          sources.yaml. Free text -- GITHUB_TOKEN can't push updates to
+          this file's own dropdown (a hard platform restriction, not
+          something worth a stored credential for at POC stage), so a
+          dropdown here would just silently drift out of sync instead.
+        type: string
         default: 'all'
-        # BEGIN generated options
-        options:
-          - all
-          - schemas-main
-          - local-retail-main
-          - deg-main
-          - beckn-schemas-transport-hiring
-          - beckn-schemas-verification-service
-          - ddm-main
-          - schema-test
-        # END generated options
 
 permissions:
   contents: write

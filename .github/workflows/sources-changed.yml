@@ -10,7 +10,6 @@ on:
 permissions:
   contents: write
   issues: write
-  pull-requests: write  # for the dropdown-update PR -- see propose_dropdown_update.py
 
 concurrency:
   group: sources-changed
@@ -31,7 +30,7 @@ jobs:
 
       - run: pip install pyyaml
 
-      - name: Sync new sources, clean up removed ones, regenerate dropdown
+      - name: Sync new sources, clean up removed ones
         id: sync_new
         env:
           BASE_SHA: ${{ github.event.before || format('{0}~1', github.sha) }}
@@ -47,7 +46,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else
-            git commit -m "sources-changed: sync new / clean up removed / regenerate dropdown"
+            git commit -m "sources-changed: sync new sources / clean up removed ones"
             git push
           fi
 
@@ -57,8 +56,3 @@ jobs:
           HAS_FAILURES: ${{ steps.sync_new.outputs.has_failures }}
           VALIDATION_REPORT_PATH: /tmp/validation-report.md
         run: bash .github/scripts/update_tracking_issue.sh
-
-      - name: Propose sync.yml dropdown update if needed
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: python3 .github/scripts/propose_dropdown_update.py
