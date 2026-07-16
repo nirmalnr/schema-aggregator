@@ -2,7 +2,13 @@ name: Add source (issue form)
 
 on:
   issues:
-    types: [opened, edited]
+    # 'labeled' covers the case where the add-source-request label didn't
+    # exist yet when an issue-form submission was created (GitHub Issue
+    # Forms only ever apply a label if it already exists in the repo --
+    # it never auto-creates a missing one, and silently drops the label
+    # from the issue if it's missing rather than erroring) -- adding the
+    # label after the fact will still pick it up here.
+    types: [opened, edited, labeled]
 
 permissions:
   contents: write
