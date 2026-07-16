@@ -1,0 +1,42 @@
+name: Add a schema source
+description: Propose registering a new schema source for the aggregator (works without repo write access)
+title: "Add source: "
+labels: ["add-source-request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Submitting this opens a PR automatically if the basic details check out
+        (the source id isn't already taken, and the schema path actually
+        resolves on GitHub). If something's wrong, this issue gets a comment
+        explaining what to fix -- no PR is opened until it does.
+  - type: input
+    id: source_id
+    attributes:
+      label: Source ID
+      description: Lowercase letters, digits, and hyphens only
+      placeholder: my-schemas-main
+    validations:
+      required: true
+  - type: input
+    id: schema_path
+    attributes:
+      label: Schema Path
+      description: GitHub tree URL pointing at the schema folder
+      placeholder: "https://github.com/<owner>/<repo>/tree/<ref>/<subpath>"
+    validations:
+      required: true
+  - type: input
+    id: description
+    attributes:
+      label: Description
+      description: Optional human-readable summary
+    validations:
+      required: false
+  - type: input
+    id: tags
+    attributes:
+      label: Tags
+      description: Optional, comma-separated
+    validations:
+      required: false

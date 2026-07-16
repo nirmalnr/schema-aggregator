@@ -1,0 +1,63 @@
+name: Add source (issue form)
+
+on:
+  issues:
+    types: [opened, edited]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  propose:
+    if: contains(github.event.issue.labels.*.name, 'add-source-request')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - run: pip install pyyaml
+
+      - name: Parse the issue form
+        id: parsed
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+        run: python3 .github/scripts/parse_issue_form.py
+
+      - name: Propose source
+        id: propose
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SOURCE_ID: ${{ steps.parsed.outputs.source_id }}
+          SCHEMA_PATH: ${{ steps.parsed.outputs.schema_path }}
+          DESCRIPTION: ${{ steps.parsed.outputs.description }}
+          TAGS: ${{ steps.parsed.outputs.tags }}
+        run: python3 .github/scripts/propose_source.py
+
+      # There's no run log for the person who filed the issue to check --
+      # the issue thread is their only interface, so both success and
+      # failure get reported there directly.
+      - name: Comment result on the issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          OUTCOME: ${{ steps.propose.outcome }}
+          PR_URL: ${{ steps.propose.outputs.pr_url }}
+          ERROR: ${{ steps.propose.outputs.error }}
+        run: |
+          if [ "$OUTCOME" = "success" ]; then
+            gh issue comment "$ISSUE_NUMBER" --body "Opened $PR_URL -- a validation check will comment there shortly with what would actually publish."
+          else
+            gh issue comment "$ISSUE_NUMBER" --body "Couldn't open a PR yet: $ERROR
+
+Edit this issue with corrected details and it'll retry automatically."
+          fi
+
+      - name: Fail the run if the proposal failed
+        if: steps.propose.outcome != 'success'
+        run: exit 1

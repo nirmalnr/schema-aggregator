@@ -6,11 +6,12 @@ on:
     inputs:
       source_id:
         description: >
-          Source to sync. NOTE: this list is a static snapshot of sources.yaml
-          at the time this workflow file was last edited — if you add/remove
-          a source, update these options too, or it'll drift out of sync.
+          Source to sync. This list is regenerated automatically by
+          sources-changed.yml whenever sources.yaml changes on main --
+          you shouldn't need to edit it by hand.
         type: choice
         default: 'all'
+        # BEGIN generated options
         options:
           - all
           - schemas-main
@@ -20,6 +21,7 @@ on:
           - beckn-schemas-verification-service
           - ddm-main
           - schema-test
+        # END generated options
 
 permissions:
   contents: write
@@ -67,33 +69,5 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           HAS_FAILURES: ${{ steps.sync.outputs.has_failures }}
-        run: |
-          set -e
-          REPO="${{ github.repository }}"
-          LABEL="sync-validation"
-          TITLE="Schema validation failures"
-
-          gh label create "$LABEL" --color FBCA04 \
-            --description "Schema sync validation failures" --repo "$REPO" 2>/dev/null || true
-
-          EXISTING=$(gh issue list --repo "$REPO" --label "$LABEL" --state open --json number --jq '.[0].number // empty')
-
-          if [ "$HAS_FAILURES" = "true" ]; then
-            if [ -n "$EXISTING" ]; then
-              gh issue edit "$EXISTING" --repo "$REPO" --body-file /tmp/validation-report.md
-              echo "Updated existing tracking issue #$EXISTING"
-            else
-              gh issue create --repo "$REPO" --title "$TITLE" --label "$LABEL" \
-                --body-file /tmp/validation-report.md
-              echo "Created new tracking issue"
-            fi
-          else
-            if [ -n "$EXISTING" ]; then
-              gh issue comment "$EXISTING" --repo "$REPO" \
-                --body "All sources passed validation as of this run — closing."
-              gh issue close "$EXISTING" --repo "$REPO"
-              echo "Closed tracking issue #$EXISTING"
-            else
-              echo "No failures, no existing tracking issue — nothing to do."
-            fi
-          fi
+          VALIDATION_REPORT_PATH: /tmp/validation-report.md
+        run: bash .github/scripts/update_tracking_issue.sh

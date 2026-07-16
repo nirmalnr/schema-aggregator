@@ -1,0 +1,47 @@
+name: Add source (form)
+run-name: "Propose source: ${{ inputs.source_id }}"
+
+on:
+  workflow_dispatch:
+    inputs:
+      source_id:
+        description: 'Stable id, e.g. "my-schemas-main" (lowercase, digits, hyphens only)'
+        required: true
+        type: string
+      schema_path:
+        description: 'GitHub tree URL, e.g. https://github.com/<owner>/<repo>/tree/<ref>/<subpath>'
+        required: true
+        type: string
+      description:
+        description: 'Optional human-readable summary'
+        required: false
+        type: string
+      tags:
+        description: 'Optional, comma-separated (e.g. "retail, mobility")'
+        required: false
+        type: string
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  propose:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - run: pip install pyyaml
+
+      - name: Propose source
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SOURCE_ID: ${{ inputs.source_id }}
+          SCHEMA_PATH: ${{ inputs.schema_path }}
+          DESCRIPTION: ${{ inputs.description }}
+          TAGS: ${{ inputs.tags }}
+        run: python3 .github/scripts/propose_source.py

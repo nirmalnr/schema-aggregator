@@ -1,0 +1,57 @@
+name: Sources changed
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'sources.yaml'
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: sources-changed
+  cancel-in-progress: false
+
+jobs:
+  handle:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout aggregator repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - run: pip install pyyaml
+
+      - name: Sync new sources, clean up removed ones, regenerate dropdown
+        id: sync_new
+        env:
+          BASE_SHA: ${{ github.event.before }}
+          HEAD_SHA: ${{ github.sha }}
+          VALIDATION_REPORT_PATH: /tmp/validation-report.md
+        run: python3 .github/scripts/sources_changed.py
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "sources-changed: sync new / clean up removed / regenerate dropdown"
+            git push
+          fi
+
+      - name: Update validation tracking issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          HAS_FAILURES: ${{ steps.sync_new.outputs.has_failures }}
+          VALIDATION_REPORT_PATH: /tmp/validation-report.md
+        run: bash .github/scripts/update_tracking_issue.sh
