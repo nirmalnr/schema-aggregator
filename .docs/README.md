@@ -80,8 +80,8 @@ Any failure here means no pull request is created; the error is reported directl
 ### When Proposing a Source Removal
 
 - `source_id` is required.
-- It must currently be registered in `sources.yaml`.
-- Its exact entry must be found in the file, so it can be removed cleanly.
+- It must currently be registered in `sources.yaml` -- checked structurally, by parsing the file and looking for a matching `id`.
+- Separately, that entry's raw text must be found in `sources.yaml` in the expected hand-written shape (a `  - id: <id>` line followed by its indented fields). Removal deletes that literal text rather than re-serializing the whole file through a YAML dumper, to avoid reformatting the rest of the file or losing comments -- the same reasoning `propose_source.py` uses when adding an entry. This is a genuinely separate check from the one above: it can fail even when the id is registered, if `sources.yaml` was ever hand-edited into a differently-shaped (but still valid) YAML -- different indentation, an inline/flow-style entry, reordered fields -- since the parser would still find the id, but the text-matching removal wouldn't recognize that block's shape.
 
 ## Usage
 
