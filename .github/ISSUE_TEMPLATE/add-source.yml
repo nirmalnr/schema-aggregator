@@ -7,17 +7,11 @@ body:
     attributes:
       value: |
         Submitting this opens a PR automatically if the basic details check out
-        (the source id isn't already taken, and the schema path actually
-        resolves on GitHub). If something's wrong, this issue gets a comment
-        explaining what to fix -- no PR is opened until it does.
-  - type: input
-    id: source_id
-    attributes:
-      label: Source ID
-      description: Lowercase letters, digits, and hyphens only
-      placeholder: my-schemas-main
-    validations:
-      required: true
+        (this repo/branch/folder isn't already registered, and the schema path
+        actually resolves on GitHub). If something's wrong, this issue gets a
+        comment explaining what to fix -- no PR is opened until it does. The
+        source's id is generated automatically from the schema path; there's
+        nothing to type for it.
   - type: input
     id: schema_path
     attributes:

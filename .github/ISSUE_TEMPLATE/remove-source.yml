@@ -14,6 +14,6 @@ body:
     attributes:
       label: Source ID
       description: Must match an id currently in sources.yaml exactly
-      placeholder: my-schemas-main
+      placeholder: beckn_schemas_main_schema
     validations:
       required: true

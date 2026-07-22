@@ -5,19 +5,25 @@ wrapper (add-source-dispatch.yml) and the issue-form wrapper
 (add-source-issue.yml) call this with the same four values -- everything
 after collecting the input is identical regardless of which one triggered it.
 
-Does the cheap, no-full-clone validation (source_id shape/uniqueness,
-schema_path shape, and one lightweight GitHub API existence check for the
-repo/ref/subpath) and, if everything passes, opens a PR adding the entry to
+Does the cheap, no-full-clone validation (schema_path shape, one lightweight
+GitHub API existence check for the repo/ref/subpath, and derived-id
+uniqueness) and, if everything passes, opens a PR adding the entry to
 sources.yaml. Full content validation (does the schema actually have valid
 classes) deliberately does NOT happen here -- that's validate_source_pr.py,
 running as a required check on the PR this script opens, since it needs a
 full clone and this step is meant to be the fast, no-PR-yet gate.
 
-Reads SOURCE_ID, SCHEMA_PATH, DESCRIPTION, TAGS from the environment, plus
-optional ISSUE_NUMBER (set by add-source-issue.yml only) to add a
-"Closes #N" link so merging the PR auto-closes the originating issue.
+source_id is not supplied by the caller -- it's derived here from the parsed
+schema_path (owner_repo_ref_subpath, see derive_source_id()), so nobody
+types one, and re-proposing the exact same (owner, repo, ref, subpath) always
+collides on the same derived id rather than silently registering twice under
+a different hand-picked name.
 
-On success: writes pr_url=<url> to $GITHUB_OUTPUT, exits 0.
+Reads SCHEMA_PATH, DESCRIPTION, TAGS from the environment, plus optional
+ISSUE_NUMBER (set by add-source-issue.yml only) to add a "Closes #N" link
+so merging the PR auto-closes the originating issue.
+
+On success: writes pr_url=<url> and derived_id=<id> to $GITHUB_OUTPUT, exits 0.
 On failure: writes error=<message> to $GITHUB_OUTPUT, exits 1 -- so the
 dispatch workflow run just fails with a clear message, and the issue
 wrapper can catch the failure (continue-on-error) and comment on the issue
@@ -41,7 +47,26 @@ REPO_ROOT = os.getcwd()
 SOURCES_YAML = os.path.join(REPO_ROOT, "sources.yaml")
 
 TREE_URL_RE = re.compile(r"^https://github\.com/([^/]+)/([^/]+)/tree/([^/]+)/(.+)$")
-SAFE_ID_RE = re.compile(r"^[a-z0-9][a-z0-9-]*$")
+SAFE_ID_RE = re.compile(r"^[a-z0-9][a-z0-9_-]*$")
+DISALLOWED_ID_CHARS_RE = re.compile(r"[^a-z0-9_-]+")
+REPEAT_UNDERSCORE_RE = re.compile(r"_+")
+
+
+def derive_source_id(owner, repo, ref, subpath):
+    """Deterministic id from the exact (owner, repo, ref, subpath) a schema_path
+    resolves to -- so nobody types an id, and proposing the same tuple twice
+    always derives the same id, catching the duplicate as an ordinary
+    already-registered rejection rather than silently registering it again
+    under a different hand-picked name.
+
+    '_' is the structural separator between components; '-' is left alone
+    since it's already this project's convention inside real repo/owner
+    names (e.g. beckn-schemas) and is never used as a delimiter here."""
+    parts = [owner, repo, ref] + subpath.split("/")
+    slug = "_".join(parts).lower()
+    slug = DISALLOWED_ID_CHARS_RE.sub("_", slug)
+    slug = REPEAT_UNDERSCORE_RE.sub("_", slug)
+    return slug.strip("_-")
 
 
 def fail(message):
@@ -53,12 +78,12 @@ def fail(message):
     sys.exit(1)
 
 
-def succeed(pr_url):
+def succeed(pr_url, source_id):
     output_path = os.environ.get("GITHUB_OUTPUT")
     if output_path:
         with open(output_path, "a") as f:
-            f.write(f"pr_url={pr_url}\n")
-    print(f"PR ready: {pr_url}")
+            f.write(f"pr_url={pr_url}\nderived_id={source_id}\n")
+    print(f"PR ready: {pr_url} (source_id: {source_id})")
 
 
 def load_sources():
@@ -122,28 +147,30 @@ def existing_open_pr(branch):
 
 
 def main():
-    source_id = os.environ.get("SOURCE_ID", "").strip()
     schema_path = os.environ.get("SCHEMA_PATH", "").strip()
     description = os.environ.get("DESCRIPTION", "").strip()
     tags_raw = os.environ.get("TAGS", "").strip()
     tags = [t.strip() for t in tags_raw.split(",") if t.strip()] if tags_raw else []
 
-    if not source_id or not schema_path:
-        fail("source_id and schema_path are both required.")
-
-    if not SAFE_ID_RE.match(source_id):
-        fail(f"source_id '{source_id}' must be lowercase letters, digits, and "
-             f"hyphens only, starting with a letter or digit.")
-
-    existing = load_sources()
-    if any(s.get("id") == source_id for s in existing):
-        fail(f"source_id '{source_id}' is already registered in sources.yaml.")
+    if not schema_path:
+        fail("schema_path is required.")
 
     m = TREE_URL_RE.match(schema_path)
     if not m:
         fail(f"schema_path '{schema_path}' doesn't match "
              f"https://github.com/<owner>/<repo>/tree/<ref>/<subpath>.")
     owner, repo, ref, subpath = m.groups()
+
+    source_id = derive_source_id(owner, repo, ref, subpath)
+
+    if not SAFE_ID_RE.match(source_id):
+        fail(f"derived id '{source_id}' didn't come out in the expected shape -- "
+             f"check schema_path for unusual characters.")
+
+    existing = load_sources()
+    if any(s.get("id") == source_id for s in existing):
+        fail(f"this exact source ({owner}/{repo}@{ref}:{subpath}) is already "
+             f"registered in sources.yaml as '{source_id}'.")
 
     try:
         exists = check_path_exists(owner, repo, ref, subpath)
@@ -158,7 +185,7 @@ def main():
 
     already_open = existing_open_pr(branch)
     if already_open:
-        succeed(already_open)
+        succeed(already_open, source_id)
         return
 
     run = lambda *args: subprocess.run(args, check=True, capture_output=True, text=True)  # noqa: E731
@@ -186,7 +213,7 @@ def main():
     )
     result = run("gh", "pr", "create", "--title", f"Add source: {source_id}",
                  "--body", pr_body, "--head", branch, "--base", "main")
-    succeed(result.stdout.strip())
+    succeed(result.stdout.strip(), source_id)
 
 
 if __name__ == "__main__":

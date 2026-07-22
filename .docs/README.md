@@ -22,7 +22,7 @@ Every upstream source is one entry in `sources.yaml`, at repo root:
 
 | Field | Meaning |
 |---|---|
-| `id` | Stable, explicit identifier for the source. Not derived from the repo/path, so two sources from the same upstream repo never collide over an id. |
+| `id` | Derived automatically from the source's own `(owner, repo, ref, subpath)` -- `owner_repo_ref_subpath`, lowercased, `_`-joined. Nobody types this; re-proposing the exact same repo/branch/folder always derives the same id, so it's caught as an ordinary duplicate rather than silently registered twice. |
 | `schemaPath` | A GitHub tree URL pointing at the folder to pull from, e.g. `https://github.com/<owner>/<repo>/tree/<ref>/<subpath>`. |
 | `description` | Human-readable summary. |
 | `tags` | Optional domain tags applied to everything pulled from this source. |
@@ -67,12 +67,11 @@ A schema pack with any of these issues is skipped; its sibling packs still publi
 
 ### When Proposing a New Source
 
-**Pre-submission** -- runs before any pull request is opened, without cloning anything:
-- `source_id` and `schema_path` are both required.
-- `source_id` must be lowercase letters, digits, and hyphens only.
-- `source_id` must not already be registered.
+**Pre-submission** -- runs before any pull request is opened, without cloning anything. The only input is `schema_path` (plus optional description/tags); there's no id to supply:
+- `schema_path` is required.
 - `schema_path` must match the `https://github.com/<owner>/<repo>/tree/<ref>/<subpath>` shape.
 - The referenced repo, ref, and subpath must actually exist.
+- The id derived from that `(owner, repo, ref, subpath)` must not already be registered -- this is what actually catches a resubmission of the same repo/branch/folder, since the id is a pure function of those four values.
 
 Any failure here means no pull request is created; the error is reported directly to wherever the proposal was made.
 
@@ -92,7 +91,7 @@ Trigger the sync workflow manually, choosing either every source or one specific
 
 ### Adding a Source
 
-Propose a new entry either by triggering the add-source workflow directly, or by opening an issue using the "Add source" issue form -- both collect the same information and go through the same validation described above. Once merged, the new source is synced automatically.
+Propose a new entry either by triggering the add-source workflow directly, or by opening an issue using the "Add source" issue form -- both just need a `schema_path` (plus optional description/tags; no id to come up with) and go through the same validation described above. Once merged, the new source is synced automatically.
 
 ### Removing a Source
 

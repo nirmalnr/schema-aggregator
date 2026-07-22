@@ -1,13 +1,9 @@
 name: Add source (form)
-run-name: "Propose source: ${{ inputs.source_id }}"
+run-name: "Propose source: ${{ inputs.schema_path }}"
 
 on:
   workflow_dispatch:
     inputs:
-      source_id:
-        description: 'Stable id, e.g. "my-schemas-main" (lowercase, digits, hyphens only)'
-        required: true
-        type: string
       schema_path:
         description: 'GitHub tree URL, e.g. https://github.com/<owner>/<repo>/tree/<ref>/<subpath>'
         required: true
@@ -26,11 +22,12 @@ permissions:
   pull-requests: write
 
 # Same reasoning as add-source-issue.yml's concurrency group: two runs for
-# the same source_id would race pushing the identical branch. Unlikely here
-# (needs a genuine double-trigger, not two events firing together the way
-# issue forms do), but cheap insurance for the same failure mode.
+# the same schema_path would derive the same source_id and race pushing the
+# identical branch. Unlikely here (needs a genuine double-trigger, not two
+# events firing together the way issue forms do), but cheap insurance for
+# the same failure mode.
 concurrency:
-  group: add-source-dispatch-${{ inputs.source_id }}
+  group: add-source-dispatch-${{ inputs.schema_path }}
   cancel-in-progress: true
 
 jobs:
@@ -48,7 +45,6 @@ jobs:
       - name: Propose source
         env:
           GH_TOKEN: ${{ github.token }}
-          SOURCE_ID: ${{ inputs.source_id }}
           SCHEMA_PATH: ${{ inputs.schema_path }}
           DESCRIPTION: ${{ inputs.description }}
           TAGS: ${{ inputs.tags }}
