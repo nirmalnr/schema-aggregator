@@ -35,6 +35,15 @@ the winning source's own sync is what's responsible for what ends up
 there, and treating a lost collision as a plain deletion would risk
 `rmtree`-ing the winner's freshly-published content out from under it.
 
+On a full ("all") sync only: after every current source has synced, any
+`.sync/manifest-<id>.json` whose id is no longer in sources.yaml is treated
+as an orphan and cleaned up via remove_source.remove_source() -- the same
+function sources-changed.yml calls for a source it sees disappear in a
+single push's before/after diff. This makes "Sync sources" a genuine full
+reconciliation against whatever sources.yaml currently says, regardless of
+how a removal's cleanup was missed (a lost push race, a direct edit to
+sources.yaml, anything) -- not just a re-pull of what's currently listed.
+
 Controlled by the SOURCE_ID env var: "all" (default) or a specific id.
 """
 
@@ -49,6 +58,7 @@ import tempfile
 import yaml
 
 from schema_validator import validate_class_dir
+from remove_source import remove_source
 
 REPO_ROOT = os.getcwd()
 SOURCES_YAML = os.path.join(REPO_ROOT, "sources.yaml")
@@ -346,6 +356,30 @@ def sync_one(source, ordered_source_ids):
         write_source_failures(source_id, source_issues)
 
 
+def reconcile_orphaned_manifests(ordered_source_ids):
+    """
+    Full-sync self-healing: a .sync/manifest-<id>.json whose id is no longer
+    in sources.yaml means that source was removed at some point without its
+    cleanup ever completing. Reuses remove_source() as-is -- same function
+    sources-changed.yml calls, same "skip if claimed by another source's
+    manifest" safety check -- rather than reimplementing the cleanup here.
+
+    Runs after every current source has already synced above, so that
+    safety check sees each current source's freshly written manifest, not
+    a stale one from before this run.
+    """
+    if not os.path.isdir(MANIFEST_DIR):
+        return
+    current_ids = set(ordered_source_ids)
+    for fname in sorted(os.listdir(MANIFEST_DIR)):
+        if not (fname.startswith("manifest-") and fname.endswith(".json")):
+            continue
+        manifest_id = fname[len("manifest-"):-len(".json")]
+        if manifest_id not in current_ids:
+            print(f"--- '{manifest_id}' no longer in sources.yaml -- reconciling ---")
+            remove_source(manifest_id)
+
+
 def main():
     requested = os.environ.get("SOURCE_ID", "all")
     # Always load the FULL list, in file order, regardless of SOURCE_ID --
@@ -368,6 +402,9 @@ def main():
 
     for source in sources:
         sync_one(source, ordered_source_ids)
+
+    if requested == "all":
+        reconcile_orphaned_manifests(ordered_source_ids)
 
     write_reports()
 
