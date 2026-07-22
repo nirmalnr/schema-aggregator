@@ -2,13 +2,17 @@
 
 ## Overview
 
-`schema-aggregator` pulls schema artifacts -- `context.jsonld`, `vocab.jsonld`, `attributes.yaml`, and related files -- from multiple upstream GitHub repositories, validates them, and publishes the merged result as a flat `<Term>/<Version>/<file>` tree at the root of this repository. Publishing happens straight from git: there is no build step and no application server standing between a commit landing on `main` and that content being available.
+`schema-aggregator` pulls schema artifacts -- `context.jsonld`, `vocab.jsonld`, `attributes.yaml`, and related files -- from multiple upstream GitHub repositories, validates them, and publishes the merged result as a flat `<Schema>/<Version>/<file>` tree at the root of this repository. It holds Beckn's extended schemas: domain-specific schema packs that extend the core protocol, as distinct from the core data model itself, which lives in `protocol-specifications-v2`.
+
+Publishing happens by pushing directly to this repository -- there is no admin application, sync server, or separate deployment pipeline standing between a merged change and that content going live. GitHub's own Pages build still has to run before a change is publicly reachable; see Hosting below for what that actually involves.
 
 ## Motivation
 
-This repo is a GitHub-native replacement for an older pipeline built around an admin application and a VM: a human triggered syncs through a UI, the app cloned each source, validated it, and wrote the result to local disk that a separate server then read from. That design had a single point of failure (one VM, one disk, no redundancy) and kept governance -- who can register a source, who approves a sync -- inside custom application code rather than GitHub's own permission model.
+This repo is a GitHub-native replacement for an older pipeline built around an admin application and a VM: a human triggered syncs through a UI, the app cloned each source, validated it, and wrote the result to local disk that a separate server then read from directly. That design had a single point of failure -- one VM, one disk, no redundancy -- and kept governance, such as who can register a source or approve a sync, inside custom application code rather than GitHub's own permission model.
 
-Here, the same responsibilities are handled by GitHub Actions and pull requests: registering a source is a reviewable PR, syncing is a workflow run with a visible log, and access control is repo permissions rather than an app's role system. This repo is one piece of a broader move to serve schema content off GitHub-backed infrastructure generally, described separately in the schema-serving migration proposal.
+Here, the same responsibilities are handled by GitHub Actions and pull requests: registering a source is a reviewable PR, syncing is a workflow run with a visible log, and access control is repo permissions rather than an app's role system.
+
+More broadly, this replaces disk reads off a single VM with serving from a CDN-backed origin: today that means GitHub Pages serving this repository directly, rather than an application reading from a local clone on disk. The durability and scale properties come from that origin, not from any code in this repo.
 
 ## Architecture
 
@@ -27,15 +31,15 @@ A source's position in this file also determines its priority -- see Collision R
 
 ### Sync Pipeline
 
-A sync clones each source, walks its class directories, and validates every version directory it finds (see Validation). Failure isolation happens at the version level, not the class or source level: a single broken version doesn't stop the rest of that class's versions from publishing, and a broken class doesn't stop the rest of that source. A source with some invalid content still publishes everything that is valid.
+A sync clones each source, walks the schemas it contains, and validates every schema pack it finds (see Validation). Failure isolation happens at the schema-pack level, not the schema or source level: a single broken schema pack doesn't stop the rest of that schema's packs from publishing, and a broken schema doesn't stop the rest of that source. A source with some invalid content still publishes everything that is valid.
 
 ### Collision Resolution
 
-If two sources both provide a class with the same name, the source listed **earlier** in `sources.yaml` wins. The later source's class is skipped entirely and logged as an error rather than silently dropped -- its own content is never deleted or overwritten, since the position of a source in the file can change independently of what it happens to sync in any given run.
+If two sources both provide a schema with the same name, the source listed **earlier** in `sources.yaml` wins. The later source's schema is skipped entirely and logged as an error rather than silently dropped -- its own content is never deleted or overwritten, since the position of a source in the file can change independently of what it happens to sync in any given run.
 
 ### Deletion Handling
 
-If a class or version disappears from a source's upstream repo, it is removed from this repo on the next sync of that source. The one exception is a class that had already lost a naming collision to another source: since that class was never this source's content to begin with, this source's own sync never touches it.
+If a schema or schema pack disappears from a source's upstream repo, it is removed from this repo on the next sync of that source. The one exception is a schema that had already lost a naming collision to another source: since that schema was never this source's content to begin with, this source's own sync never touches it.
 
 ### Status Reporting
 
@@ -43,25 +47,23 @@ A single tracking Issue reflects the current state of every validation issue acr
 
 ## Validation
 
-Validation is grouped below by *when* it runs, since some checks only make sense in the context of a specific action (proposing a source, for instance) rather than as a standalone list.
-
 ### At Sync Time
 
 Runs for every source, on every sync.
 
-**Structural checks, class level:**
-- `missing-readme` -- the class directory has no `README.md`. Non-blocking: the class still publishes.
-- `no-versions` -- the class directory contains no version subdirectories at all.
+**Structural checks, schema level:**
+- `missing-readme` -- the schema has no `README.md`. Non-blocking: the schema still publishes.
+- `no-versions` -- the schema has no schema-pack directories at all.
 
-**Structural checks, version level** (checked independently for every version directory):
+**Structural checks, schema-pack level** (checked independently for every schema pack):
 - `bad-version-name` -- the directory name doesn't match `vX[.Y[.Z]]`.
 - `missing-file` -- one of the four required files is absent: `attributes.yaml`, `context.jsonld`, `vocab.jsonld`, `README.md`.
 - `invalid-yaml` -- `attributes.yaml` fails to parse.
 
-A version with any of these issues is skipped; its sibling versions still publish.
+A schema pack with any of these issues is skipped; its sibling packs still publish.
 
 **Collision check:**
-- `owned-by-other-source` -- this class name is already owned by a source listed earlier in `sources.yaml`. The class is skipped for this source.
+- `owned-by-other-source` -- this schema name is already owned by a source listed earlier in `sources.yaml`. The schema is skipped for this source.
 
 ### When Proposing a New Source
 
@@ -74,7 +76,7 @@ A version with any of these issues is skipped; its sibling versions still publis
 
 Any failure here means no pull request is created; the error is reported directly to wherever the proposal was made.
 
-**Pull request check** -- runs once the proposal's pull request exists. Does a full clone of the proposed source and runs the same structural checks listed under *At Sync Time* against every class it finds. Blocks the merge only if the proposed source would publish zero valid classes -- almost always a sign of a wrong ref or subpath. If at least one class would publish, the check passes and instead comments the full breakdown of what would and wouldn't be included, so a reviewer can make an informed call before merging.
+**Pull request check** -- runs once the proposal's pull request exists. Does a full clone of the proposed source and runs the same structural checks listed under *At Sync Time* against every schema it finds. Blocks the merge only if the proposed source would publish zero valid schemas -- almost always a sign of a wrong ref or subpath. If at least one schema would publish, the check passes and instead comments the full breakdown of what would and wouldn't be included, so a reviewer can make an informed call before merging.
 
 ### When Proposing a Source Removal
 
@@ -104,7 +106,7 @@ The tracking Issue always reflects current validation state across all sources. 
 
 ### Serving Model
 
-This repo is published via GitHub Pages from the `main` branch root, using the legacy (Jekyll) build. Content is available at clean `<term>/<version>/<file>` URLs matching the repo's own layout.
+This repo is published via GitHub Pages from the `main` branch root, using the legacy (Jekyll) build. Each push triggers a fresh build -- typically under a minute -- after which the change is live at clean `<schema>/<version>/<file>` URLs matching the repo's own layout.
 
 ### Excluded Paths
 
