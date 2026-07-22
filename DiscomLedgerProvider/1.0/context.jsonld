@@ -8,7 +8,9 @@
     "beckn": "https://schema.nfh.global/core/v2.0/",
     "deg": "https://schema.nfh.global/deg/DiscomLedgerProvider/v1.0/",
     "DiscomLedgerProvider": "deg:DiscomLedgerProvider",
-    "utilityId": "deg:utilityId",
+    "discomId": "deg:discomId",
+    "discomUri": "deg:discomUri",
+    "ledgerId": "deg:ledgerId",
     "ledgerUri": "deg:ledgerUri"
   },
   "@graph": []
