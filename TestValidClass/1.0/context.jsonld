@@ -1,0 +1,6 @@
+{
+  "@context": {
+    "@vocab": "https://schema-test.nirmalnr.dev/TestValidClass/v1.0#",
+    "test": "https://schema-test.nirmalnr.dev/TestValidClass#"
+  }
+}

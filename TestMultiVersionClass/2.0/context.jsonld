@@ -1,0 +1,6 @@
+{
+  "@context": {
+    "@vocab": "https://schema-test.nirmalnr.dev/TestMultiVersionClass/v2.0#",
+    "test": "https://schema-test.nirmalnr.dev/TestMultiVersionClass#"
+  }
+}

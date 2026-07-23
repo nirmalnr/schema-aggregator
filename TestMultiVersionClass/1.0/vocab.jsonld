@@ -1,0 +1,5 @@
+{
+  "@graph": [
+    {"@id": "test:TestMultiVersionClass", "@type": "rdfs:Class"}
+  ]
+}
