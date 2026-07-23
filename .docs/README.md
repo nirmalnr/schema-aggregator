@@ -106,6 +106,8 @@ Two ways in, same validation either way (see Validation above), both ending in a
 
 **After the PR opens** (either path): `Validate proposed source (automatic)` runs as a required check and comments the breakdown -- how many schemas would publish, and any issues found. It only blocks the merge if zero schemas would publish; otherwise it's informational. Merge the PR once it looks right, same as any other PR -- `Sources changed (automatic)` picks up from there and syncs the new source in.
 
+This check needs one extra manual step the first time: since the PR is opened by `github-actions[bot]`, not a human, GitHub won't run its workflow automatically -- the PR shows *"This workflow is awaiting approval from a maintainer"*. A maintainer has to open the pending run under `Validate proposed source (automatic)` and click **Approve and run workflow** before the check (and its comment) actually appears. This is a GitHub default for bot-authored PRs, not something configured in this repo, and it doesn't apply to Remove Source since there's no PR-time check to approve there.
+
 ### Removing a Source
 
 Mirrors adding a source.
