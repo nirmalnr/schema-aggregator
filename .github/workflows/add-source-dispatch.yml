@@ -1,4 +1,4 @@
-name: Add source (form)
+name: 1 Add source (manual trigger)
 run-name: "Propose source: ${{ inputs.schema_path }}"
 
 on:

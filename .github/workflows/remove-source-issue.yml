@@ -1,4 +1,4 @@
-name: Remove source (issue form)
+name: Remove source (automatic, via Issue)
 
 on:
   issues:

@@ -1,4 +1,4 @@
-name: Validate proposed source
+name: Validate proposed source (automatic)
 
 on:
   pull_request:

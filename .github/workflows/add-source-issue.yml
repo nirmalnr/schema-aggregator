@@ -1,4 +1,4 @@
-name: Add source (issue form)
+name: Add source (automatic, via Issue)
 
 on:
   issues:

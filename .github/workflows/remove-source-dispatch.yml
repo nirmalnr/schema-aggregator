@@ -1,4 +1,4 @@
-name: Remove source (form)
+name: 2 Remove source (manual trigger)
 run-name: "Propose removal: ${{ inputs.source_id }}"
 
 on:

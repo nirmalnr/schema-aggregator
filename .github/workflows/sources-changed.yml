@@ -1,4 +1,4 @@
-name: Sources changed
+name: Sources changed (automatic)
 
 on:
   push:
