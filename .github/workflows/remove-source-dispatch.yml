@@ -4,12 +4,15 @@ run-name: "Propose removal: ${{ inputs.source_id }}"
 on:
   workflow_dispatch:
     inputs:
+      # Free text, not a dropdown of current ids: same reasoning as
+      # sync.yml's source_id -- GITHUB_TOKEN can never push a change to a
+      # workflow file, so a dropdown here would just silently drift out of
+      # sync with sources.yaml instead of staying current.
       source_id:
         description: >
-          Free text, not a dropdown -- same reasoning as sync.yml's
-          source_id: GITHUB_TOKEN can never push a change to a workflow
-          file, so a dropdown here would just silently drift out of sync
-          with sources.yaml. Must match an id currently in sources.yaml.
+          Source ID (required): the exact id of the source to remove, as it
+          appears in sources.yaml (check the Source Registry in
+          .docs/README.md, or the tracking Issue, if unsure).
         required: true
         type: string
 

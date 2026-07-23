@@ -5,15 +5,15 @@ on:
   workflow_dispatch:
     inputs:
       schema_path:
-        description: 'GitHub tree URL, e.g. https://github.com/<owner>/<repo>/tree/<ref>/<subpath>'
+        description: 'Schema Path (required): GitHub tree URL, e.g. https://github.com/<owner>/<repo>/tree/<ref>/<subpath>'
         required: true
         type: string
       description:
-        description: 'Optional human-readable summary'
+        description: 'Description (optional): human-readable summary of this source'
         required: false
         type: string
       tags:
-        description: 'Optional, comma-separated (e.g. "retail, mobility")'
+        description: 'Tags (optional): comma-separated, e.g. "retail, mobility"'
         required: false
         type: string
 

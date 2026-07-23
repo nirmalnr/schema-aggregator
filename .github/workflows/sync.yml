@@ -4,13 +4,15 @@ run-name: "Sync (${{ inputs.source_id || 'all' }}) by ${{ github.actor }}"
 on:
   workflow_dispatch:
     inputs:
+      # Free text, not a dropdown of current ids: GITHUB_TOKEN can never
+      # push a change to a workflow file, so a dropdown here would just
+      # silently drift out of sync with sources.yaml instead of staying
+      # current.
       source_id:
         description: >
-          'all' for every registered source, or a specific source id from
-          sources.yaml. Free text -- GITHUB_TOKEN can't push updates to
-          this file's own dropdown (a hard platform restriction, not
-          something worth a stored credential for at POC stage), so a
-          dropdown here would just silently drift out of sync instead.
+          Source ID: 'all' to sync every registered source (recommended --
+          also cleans up anything left over from a removed source), or the
+          exact id of one specific source to sync just that one.
         type: string
         default: 'all'
 
