@@ -1,3 +1,0 @@
-# TestMultiVersionClass
-
-Test fixture class.

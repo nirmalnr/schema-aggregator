@@ -1,5 +1,0 @@
-{
-  "@graph": [
-    {"@id": "test:TestMissingFile", "@type": "rdfs:Class"}
-  ]
-}

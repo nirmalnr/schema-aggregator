@@ -1,5 +1,0 @@
-{
-  "@graph": [
-    {"@id": "test:TestValidClass", "@type": "rdfs:Class"}
-  ]
-}

@@ -1,3 +1,0 @@
-# TestMixedVersions
-
-Test fixture class.

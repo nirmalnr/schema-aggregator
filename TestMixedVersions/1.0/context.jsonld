@@ -1,6 +1,0 @@
-{
-  "@context": {
-    "@vocab": "https://schema-test.nirmalnr.dev/TestMixedVersions/v1.0#",
-    "test": "https://schema-test.nirmalnr.dev/TestMixedVersions#"
-  }
-}
