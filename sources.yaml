@@ -31,3 +31,7 @@ sources:
     schemaPath: "https://github.com/nirmalnr/schema-test/tree/main/schema"
     description: "Test fixture source for exercising sync validation (deliberately valid and invalid classes)"
     tags: ["test-fixture"]
+
+  - id: nirmalnr_schema-test_main_readme_md
+    schemaPath: "https://github.com/nirmalnr/schema-test/tree/main/README.md"
+    description: "testing structural sources.yaml write, not for merging"
