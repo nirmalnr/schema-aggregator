@@ -91,6 +91,11 @@ Workflows in the Actions tab are named so the two groups are obvious at a glance
 
 Two ways in, same validation either way (see Validation above), both ending in a PR that still needs a human to merge it.
 
+**Via GitHub Issue** (no write access needed):
+1. **Issues** -> **New issue** -> the **"Add a schema source"** template.
+2. Fill in **Schema Path** (required), **Description** and **Tags** (optional). There's no id field to fill in -- it's derived automatically.
+3. Submit. `Add source (automatic, via Issue)` picks it up within moments: on success, the issue's title updates from the template's placeholder to the derived source id, and a comment links the opened PR. On failure, the comment explains what to fix -- edit the issue with corrected details and it retries automatically.
+
 **Via the Actions tab** (repo write access required):
 1. Go to **Actions** -> **`1 Add source (manual trigger)`** -> **Run workflow**.
 2. Fill in:
@@ -99,26 +104,21 @@ Two ways in, same validation either way (see Validation above), both ending in a
    - **tags** (optional, comma-separated).
 3. Run it. The run's log either prints the opened PR's URL, or exactly what to fix (bad path shape, path doesn't exist, already registered) with no PR created.
 
-**Via GitHub Issue** (no write access needed):
-1. **Issues** -> **New issue** -> the **"Add a schema source"** template.
-2. Fill in **Schema Path** (required), **Description** and **Tags** (optional). There's no id field to fill in -- it's derived automatically.
-3. Submit. `Add source (automatic, via Issue)` picks it up within moments: on success, the issue's title updates from the template's placeholder to the derived source id, and a comment links the opened PR. On failure, the comment explains what to fix -- edit the issue with corrected details and it retries automatically.
-
 **After the PR opens** (either path): `Validate proposed source (automatic)` runs as a required check and comments the breakdown -- how many schemas would publish, and any issues found. It only blocks the merge if zero schemas would publish; otherwise it's informational. Merge the PR once it looks right, same as any other PR -- `Sources changed (automatic)` picks up from there and syncs the new source in.
 
 ### Removing a Source
 
 Mirrors adding a source.
 
-**Via the Actions tab**:
-1. **Actions** -> **`2 Remove source (manual trigger)`** -> **Run workflow**.
-2. Enter **source_id** -- must exactly match an id currently in `sources.yaml` (check the Source Registry table above, or the tracking Issue, if unsure of the exact string).
-3. Run it. Same success/failure reporting as Add Source.
-
 **Via GitHub Issue**:
 1. **Issues** -> **New issue** -> the **"Remove a schema source"** template.
 2. Enter **Source ID** (must match exactly).
 3. Submit. Here the title updates immediately (the id is something you typed, not derived), and `Remove source (automatic, via Issue)` handles the rest the same way as the add path.
+
+**Via the Actions tab**:
+1. **Actions** -> **`2 Remove source (manual trigger)`** -> **Run workflow**.
+2. Enter **source_id** -- must exactly match an id currently in `sources.yaml` (check the Source Registry table above, or the tracking Issue, if unsure of the exact string).
+3. Run it. Same success/failure reporting as Add Source.
 
 **After the PR opens**: no PR-time check runs for a pure removal -- there's nothing new to validate, only an entry disappearing. Merge it directly; `Sources changed (automatic)` then deletes everything that source owned.
 
