@@ -55,13 +55,11 @@ import subprocess
 import sys
 import tempfile
 
-import yaml
-
 from schema_validator import validate_class_dir
 from remove_source import remove_source
+from sources_yaml import load_sources
 
 REPO_ROOT = os.getcwd()
-SOURCES_YAML = os.path.join(REPO_ROOT, "sources.yaml")
 MANIFEST_DIR = os.path.join(REPO_ROOT, ".sync")
 
 TREE_URL_RE = re.compile(r"github\.com/([^/]+)/([^/]+)/tree/([^/]+)/(.+)$")
@@ -71,13 +69,7 @@ all_issues = []      # dicts: source_id, class_name, version, code, message
 all_deletions = []   # dicts: source_id, class_name
 
 
-# ── sources.yaml / manifest helpers ───────────────────────────────────────
-
-def load_sources():
-    with open(SOURCES_YAML) as f:
-        data = yaml.safe_load(f)
-    return data.get("sources", [])
-
+# ── manifest helpers ───────────────────────────────────────────────────────
 
 def parse_tree_url(url):
     m = TREE_URL_RE.search(url)

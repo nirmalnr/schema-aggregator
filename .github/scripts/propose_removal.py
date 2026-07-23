@@ -14,6 +14,13 @@ failures file) already happens on merge via sources-changed.yml +
 remove_source.py, unchanged and reused as-is regardless of how the
 sources.yaml PR was created.
 
+Removal is a real structural edit via sources_yaml.write_sources() -- filter
+the parsed list, dump it back -- not a raw-text regex delete. Since the
+"is this id registered" check and the removal itself now read the same
+parsed list, there's no longer a separate way for removal to fail after
+that check passes (the old raw-text version could, if sources.yaml was ever
+hand-edited into an unexpected shape).
+
 Reads SOURCE_ID from the environment, plus optional ISSUE_NUMBER (set by
 remove-source-issue.yml only).
 
@@ -23,14 +30,10 @@ On failure: writes error=<message> to $GITHUB_OUTPUT, exits 1.
 
 import json
 import os
-import re
 import subprocess
 import sys
 
-import yaml
-
-REPO_ROOT = os.getcwd()
-SOURCES_YAML = os.path.join(REPO_ROOT, "sources.yaml")
+from sources_yaml import load_sources, write_sources
 
 
 def fail(message):
@@ -48,33 +51,6 @@ def succeed(pr_url):
         with open(output_path, "a") as f:
             f.write(f"pr_url={pr_url}\n")
     print(f"PR ready: {pr_url}")
-
-
-def load_sources():
-    if not os.path.isfile(SOURCES_YAML):
-        return []
-    with open(SOURCES_YAML) as f:
-        data = yaml.safe_load(f) or {}
-    return data.get("sources", [])
-
-
-def remove_entry_text(source_id):
-    """Removes the `  - id: <source_id>` block from sources.yaml's raw text,
-    the same way the entry was appended as raw text in propose_source.py --
-    keeps the rest of the file's hand-written formatting untouched rather
-    than round-tripping through a YAML dumper."""
-    with open(SOURCES_YAML) as f:
-        content = f.read()
-
-    pattern = re.compile(
-        r"\n?  - id: " + re.escape(source_id) + r"\n(?:    .*\n)*"
-    )
-    new_content, count = pattern.subn("", content)
-    if count == 0:
-        return None
-    with open(SOURCES_YAML, "w") as f:
-        f.write(new_content)
-    return new_content
 
 
 def existing_open_pr(branch):
@@ -111,10 +87,7 @@ def main():
     run("git", "config", "user.email", "github-actions[bot]@users.noreply.github.com")
     run("git", "checkout", "-b", branch)
 
-    if remove_entry_text(source_id) is None:
-        fail(f"Could not find the '{source_id}' entry's exact text to remove -- "
-             f"sources.yaml may be formatted differently than expected.")
-        return
+    write_sources([s for s in existing if s.get("id") != source_id])
 
     run("git", "add", "sources.yaml")
     run("git", "commit", "-m", f"Remove source: {source_id}")

@@ -8,10 +8,12 @@ after collecting the input is identical regardless of which one triggered it.
 Does the cheap, no-full-clone validation (schema_path shape, one lightweight
 GitHub API existence check for the repo/ref/subpath, and derived-id
 uniqueness) and, if everything passes, opens a PR adding the entry to
-sources.yaml. Full content validation (does the schema actually have valid
-classes) deliberately does NOT happen here -- that's validate_source_pr.py,
-running as a required check on the PR this script opens, since it needs a
-full clone and this step is meant to be the fast, no-PR-yet gate.
+sources.yaml -- via sources_yaml.write_sources(), a real structural
+load/mutate/dump, not a raw-text append. Full content validation (does the
+schema actually have valid classes) deliberately does NOT happen here --
+that's validate_source_pr.py, running as a required check on the PR this
+script opens, since it needs a full clone and this step is meant to be the
+fast, no-PR-yet gate.
 
 source_id is not supplied by the caller -- it's derived here from the parsed
 schema_path (owner_repo_ref_subpath, see derive_source_id()), so nobody
@@ -41,10 +43,7 @@ import re
 import subprocess
 import sys
 
-import yaml
-
-REPO_ROOT = os.getcwd()
-SOURCES_YAML = os.path.join(REPO_ROOT, "sources.yaml")
+from sources_yaml import load_sources, write_sources
 
 TREE_URL_RE = re.compile(r"^https://github\.com/([^/]+)/([^/]+)/tree/([^/]+)/(.+)$")
 SAFE_ID_RE = re.compile(r"^[a-z0-9][a-z0-9_-]*$")
@@ -86,14 +85,6 @@ def succeed(pr_url, source_id):
     print(f"PR ready: {pr_url} (source_id: {source_id})")
 
 
-def load_sources():
-    if not os.path.isfile(SOURCES_YAML):
-        return []
-    with open(SOURCES_YAML) as f:
-        data = yaml.safe_load(f) or {}
-    return data.get("sources", [])
-
-
 def check_path_exists(owner, repo, ref, subpath):
     """One lightweight Contents API call -- confirms repo/ref/subpath all
     exist, without a full clone. Works for the subpath being a directory
@@ -116,22 +107,16 @@ def check_path_exists(owner, repo, ref, subpath):
     raise RuntimeError(result.stderr.strip())
 
 
-def format_entry(source_id, schema_path, description, tags):
-    """Manually formatted to match the existing hand-written style in
-    sources.yaml, rather than round-tripping through yaml.dump (which would
-    risk reformatting quoting/spacing inconsistently with the rest of the
-    file)."""
-    lines = [
-        f"  - id: {source_id}",
-        f'    schemaPath: "{schema_path}"',
-    ]
+def build_entry(source_id, schema_path, description, tags):
+    """Same fields sources.yaml has always used for a new entry -- description
+    and tags are only included at all if actually provided, matching the
+    existing convention (an entry with neither just has id/schemaPath)."""
+    entry = {"id": source_id, "schemaPath": schema_path}
     if description:
-        escaped = description.replace('"', '\\"')
-        lines.append(f'    description: "{escaped}"')
+        entry["description"] = description
     if tags:
-        tag_list = ", ".join(f'"{t}"' for t in tags)
-        lines.append(f"    tags: [{tag_list}]")
-    return "\n".join(lines) + "\n"
+        entry["tags"] = tags
+    return entry
 
 
 def existing_open_pr(branch):
@@ -194,8 +179,7 @@ def main():
     run("git", "config", "user.email", "github-actions[bot]@users.noreply.github.com")
     run("git", "checkout", "-b", branch)
 
-    with open(SOURCES_YAML, "a") as f:
-        f.write("\n" + format_entry(source_id, schema_path, description, tags))
+    write_sources(existing + [build_entry(source_id, schema_path, description, tags)])
 
     run("git", "add", "sources.yaml")
     run("git", "commit", "-m", f"Add source: {source_id}")

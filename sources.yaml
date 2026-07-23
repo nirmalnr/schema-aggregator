@@ -1,25 +1,3 @@
-# sources.yaml
-# Schema source registry for schema-aggregator (POC).
-#
-# Each entry declares a GitHub-hosted schema source that the sync workflow
-# (.github/workflows/sync.yml) pulls from and flattens into this repo's root
-# as <Term>/<Version>/<file>.
-#
-# Fields:
-#   id          : derived automatically (by .github/scripts/propose_source.py)
-#                 from the schemaPath's own (owner, repo, ref, subpath) --
-#                 owner_repo_ref_subpath, lowercased, '_'-joined. Nobody types
-#                 an id: re-proposing the exact same (owner, repo, ref, subpath)
-#                 always derives the same id, so it's caught as an ordinary
-#                 already-registered rejection rather than silently
-#                 registering twice. Including subpath in the derivation is
-#                 what keeps two sources from the same repo (different
-#                 subpaths) from colliding the way they do in the current
-#                 admin app, which derives from repo+ref alone.
-#   schemaPath  : GitHub tree URL pointing at the schema folder to pull.
-#   description : human-readable summary.
-#   tags        : domain tags applied to all schemas from this source.
-
 sources:
   - id: beckn_schemas_main_schema
     schemaPath: "https://github.com/beckn/schemas/tree/main/schema"

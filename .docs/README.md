@@ -22,7 +22,7 @@ Every upstream source is one entry in `sources.yaml`, at repo root:
 
 | Field | Meaning |
 |---|---|
-| `id` | Derived automatically from the source's own `(owner, repo, ref, subpath)` -- `owner_repo_ref_subpath`, lowercased, `_`-joined. Nobody types this; re-proposing the exact same repo/branch/folder always derives the same id, so it's caught as an ordinary duplicate rather than silently registered twice. |
+| `id` | Derived automatically from the source's own `(owner, repo, ref, subpath)` -- `owner_repo_ref_subpath`, lowercased, `_`-joined. Nobody types this; re-proposing the exact same repo/branch/folder always derives the same id, so it's caught as an ordinary duplicate rather than silently registered twice. Including `subpath` in the derivation is also what keeps two sources from the same repo (different subpaths) from colliding the way they do in the current admin app, which derives an id from `repo`+`ref` alone. |
 | `schemaPath` | A GitHub tree URL pointing at the folder to pull from, e.g. `https://github.com/<owner>/<repo>/tree/<ref>/<subpath>`. |
 | `description` | Human-readable summary. |
 | `tags` | Optional domain tags applied to everything pulled from this source. |
@@ -80,8 +80,9 @@ Any failure here means no pull request is created; the error is reported directl
 ### When Proposing a Source Removal
 
 - `source_id` is required.
-- It must currently be registered in `sources.yaml` -- checked structurally, by parsing the file and looking for a matching `id`.
-- Separately, that entry's raw text must be found in `sources.yaml` in the expected hand-written shape (a `  - id: <id>` line followed by its indented fields). Removal deletes that literal text rather than re-serializing the whole file through a YAML dumper, to avoid reformatting the rest of the file or losing comments -- the same reasoning `propose_source.py` uses when adding an entry. This is a genuinely separate check from the one above: it can fail even when the id is registered, if `sources.yaml` was ever hand-edited into a differently-shaped (but still valid) YAML -- different indentation, an inline/flow-style entry, reordered fields -- since the parser would still find the id, but the text-matching removal wouldn't recognize that block's shape.
+- It must currently be registered in `sources.yaml` -- checked by parsing the file and looking for a matching `id`.
+
+Removal is a real structural edit (parse `sources.yaml`, filter that entry out, write it back), not a text search -- so there's no separate way for it to fail once the registered check above passes.
 
 ## Usage
 
