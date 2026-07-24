@@ -1,3 +1,0 @@
-# TestValidClass
-
-Test fixture class.

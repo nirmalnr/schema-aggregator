@@ -1,3 +1,0 @@
-# TestMissingFile
-
-Test fixture class.
