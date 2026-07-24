@@ -26,8 +26,3 @@ sources:
     schemaPath: "https://github.com/beckn/DDM/tree/main/specification/schema"
     description: "Decentralized Data Marketplace schema"
     tags: ["data exchange", "data"]
-
-  - id: nirmalnr_schema-test_main_schema
-    schemaPath: "https://github.com/nirmalnr/schema-test/tree/main/schema"
-    description: "Test schema"
-    tags: ["test1", "test2"]
