@@ -32,9 +32,10 @@ if [ -n "$VALIDATION_ISSUE" ]; then
 See #$VALIDATION_ISSUE for current validation issue details."
 fi
 
-# No --state filter: this issue is never closed by us, so "does it exist"
-# shouldn't depend on state.
-EXISTING=$(gh issue list --label "$LABEL" --json number --jq '.[0].number // empty')
+# --state all: `gh issue list` defaults to open-only, but this issue is
+# never closed by us, so "does it exist" must not depend on state -- a
+# human closing it by accident must not cause a duplicate to get created.
+EXISTING=$(gh issue list --label "$LABEL" --state all --json number --jq '.[0].number // empty')
 
 if [ -n "$EXISTING" ]; then
   gh issue edit "$EXISTING" --title "$TITLE" --body "$BODY"
