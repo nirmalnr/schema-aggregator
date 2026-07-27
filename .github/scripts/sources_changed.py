@@ -63,15 +63,16 @@ def main():
             check=True,
         )
 
-    # Refresh the tracking-issue report from the current aggregate state on
-    # disk (.sync/failures-*.json), so update_tracking_issue.sh has an
+    # Refresh both reports from the current aggregate state on disk, so
+    # update_tracking_issue.sh and update_status_issue.sh both have an
     # accurate answer regardless of whether this run added sources, removed
-    # them, or both -- sync_sources.py's own has_failures output only covers
-    # whichever single source it was last invoked for above, not the full
-    # picture.
+    # them, or both -- sync_sources.py's own per-source run (above) only
+    # reflects whichever single source it was last invoked for, not the
+    # full picture across every source.
     sys.path.insert(0, SCRIPTS_DIR)
     import sync_sources  # noqa: E402
     sync_sources.write_reports()
+    sync_sources.write_status_report()
 
 
 if __name__ == "__main__":

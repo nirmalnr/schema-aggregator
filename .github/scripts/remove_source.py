@@ -15,21 +15,13 @@ files.
 Usage: remove_source.py <source_id>
 """
 
-import json
 import os
 import shutil
 import sys
 
+from manifests import MANIFEST_DIR, manifest_path, failures_path, load_manifest_schemas
+
 REPO_ROOT = os.getcwd()
-MANIFEST_DIR = os.path.join(REPO_ROOT, ".sync")
-
-
-def manifest_path(source_id):
-    return os.path.join(MANIFEST_DIR, f"manifest-{source_id}.json")
-
-
-def failures_path(source_id):
-    return os.path.join(MANIFEST_DIR, f"failures-{source_id}.json")
 
 
 def other_sources_manifests(excluding_id):
@@ -42,19 +34,16 @@ def other_sources_manifests(excluding_id):
         other_id = fname[len("manifest-"):-len(".json")]
         if other_id == excluding_id:
             continue
-        with open(os.path.join(MANIFEST_DIR, fname)) as f:
-            others[other_id] = set(json.load(f))
+        others[other_id] = load_manifest_schemas(other_id)
     return others
 
 
 def remove_source(source_id):
-    m_path = manifest_path(source_id)
-    if not os.path.isfile(m_path):
+    if not os.path.isfile(manifest_path(source_id)):
         print(f"No manifest found for '{source_id}' -- nothing to clean up.")
         return
 
-    with open(m_path) as f:
-        owned_classes = set(json.load(f))
+    owned_classes = load_manifest_schemas(source_id)
 
     others = other_sources_manifests(source_id)
 
@@ -69,7 +58,7 @@ def remove_source(source_id):
             shutil.rmtree(class_path)
         removed.append(class_name)
 
-    for path in (m_path, failures_path(source_id)):
+    for path in (manifest_path(source_id), failures_path(source_id)):
         if os.path.isfile(path):
             os.remove(path)
 

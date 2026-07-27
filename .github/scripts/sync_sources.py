@@ -54,13 +54,16 @@ import shutil
 import subprocess
 import sys
 import tempfile
+from datetime import datetime, timedelta, timezone
 
 from schema_validator import validate_class_dir
 from remove_source import remove_source
 from sources_yaml import load_sources
+from manifests import (
+    MANIFEST_DIR, failures_path, load_manifest_schemas, load_manifest_synced_at, write_manifest,
+)
 
 REPO_ROOT = os.getcwd()
-MANIFEST_DIR = os.path.join(REPO_ROOT, ".sync")
 
 TREE_URL_RE = re.compile(r"github\.com/([^/]+)/([^/]+)/tree/([^/]+)/(.+)$")
 VERSION_PREFIX_RE = re.compile(r"^v(\d.*)$")
@@ -83,27 +86,12 @@ def normalize_version(name):
     return m.group(1) if m else name
 
 
-def manifest_path(source_id):
-    return os.path.join(MANIFEST_DIR, f"manifest-{source_id}.json")
-
-
-def load_manifest(source_id):
-    path = manifest_path(source_id)
+def load_failures(source_id):
+    path = failures_path(source_id)
     if not os.path.isfile(path):
-        return set()
+        return []
     with open(path) as f:
-        return set(json.load(f))
-
-
-def write_manifest(source_id, class_names):
-    os.makedirs(MANIFEST_DIR, exist_ok=True)
-    with open(manifest_path(source_id), "w") as f:
-        json.dump(sorted(class_names), f, indent=2)
-        f.write("\n")
-
-
-def failures_path(source_id):
-    return os.path.join(MANIFEST_DIR, f"failures-{source_id}.json")
+        return json.load(f)
 
 
 def write_source_failures(source_id, issues):
@@ -140,7 +128,7 @@ def earlier_sources_owned_classes(source_id, ordered_source_ids):
     for other_id in ordered_source_ids:
         if other_id == source_id:
             break
-        for class_name in load_manifest(other_id):
+        for class_name in load_manifest_schemas(other_id):
             owned.setdefault(class_name, other_id)
     return owned
 
@@ -234,6 +222,60 @@ def write_reports():
         print(f"{len(current_failures)} validation issue(s) currently known across all sources.")
     if all_deletions:
         print(f"{len(all_deletions)} class(es) removed (no longer upstream).")
+
+
+IST = timezone(timedelta(hours=5, minutes=30))  # fixed offset -- India has no DST
+
+
+def _format_ist(synced_at_utc_iso):
+    if not synced_at_utc_iso:
+        return "not yet recorded"
+    return datetime.fromisoformat(synced_at_utc_iso).astimezone(IST).strftime("%d %b %Y, %H:%M IST (+05:30)")
+
+
+def write_status_report():
+    """
+    Always-current summary of the whole registry: every source, how many
+    schemas it's currently publishing, how many known errors it has, and
+    when it was last synced -- independent of whether anything is
+    currently failing. Feeds the permanent "Repo Status" issue
+    (update_status_issue.sh), which is never closed, unlike the validation
+    tracking issue this deliberately doesn't duplicate (errors are a count
+    + a pointer here, not the full table -- that stays in the other
+    issue).
+
+    Runs unconditionally at the end of every sync, same as write_reports(),
+    regardless of which source(s) this particular run touched -- a
+    targeted run still shows every other source's last-known state.
+    """
+    sources = load_sources()
+
+    lines = [
+        "## Repo Status\n",
+        "_Rebuilt after every sync -- always reflects the current state, not just this run._\n",
+        "| Source ID | Source | Schemas Synced | Errors | Last Synced (IST) |",
+        "|---|---|---|---|---|",
+    ]
+
+    total_schemas = 0
+    total_errors = 0
+    for source in sources:
+        source_id = source["id"]
+        schema_count = len(load_manifest_schemas(source_id))
+        error_count = len(load_failures(source_id))
+        total_schemas += schema_count
+        total_errors += error_count
+        lines.append(
+            f"| `{source_id}` | [source]({source['schemaPath']}) | {schema_count} | "
+            f"{error_count} | {_format_ist(load_manifest_synced_at(source_id))} |"
+        )
+
+    lines.append("")
+    lines.append(f"**Totals: {len(sources)} source(s), {total_schemas} schema(s), {total_errors} known error(s).**")
+
+    status_report_path = os.environ.get("STATUS_REPORT_PATH", "/tmp/status-report.md")
+    with open(status_report_path, "w") as f:
+        f.write("\n".join(lines))
 
 
 # ── core sync ────────────────────────────────────────────────────────────
@@ -336,7 +378,7 @@ def sync_one(source, ordered_source_ids):
         # just isn't this source's to publish anymore. Treating that as a
         # deletion would rmtree the winning source's own content out from
         # under it (which may already be sitting there, or about to be).
-        previous_classes = load_manifest(source_id)
+        previous_classes = load_manifest_schemas(source_id)
         deleted = previous_classes - current_classes - blocked_this_run
         for class_name in sorted(deleted):
             class_path = os.path.join(REPO_ROOT, class_name)
@@ -399,6 +441,7 @@ def main():
         reconcile_orphaned_manifests(ordered_source_ids)
 
     write_reports()
+    write_status_report()
 
 
 if __name__ == "__main__":

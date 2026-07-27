@@ -44,6 +44,7 @@ jobs:
         env:
           SOURCE_ID: ${{ github.event.inputs.source_id || 'all' }}
           VALIDATION_REPORT_PATH: /tmp/validation-report.md
+          STATUS_REPORT_PATH: /tmp/status-report.md
         run: python3 .github/scripts/sync_sources.py
 
       - name: Commit and push if changed
@@ -64,3 +65,9 @@ jobs:
           HAS_FAILURES: ${{ steps.sync.outputs.has_failures }}
           VALIDATION_REPORT_PATH: /tmp/validation-report.md
         run: bash .github/scripts/update_tracking_issue.sh
+
+      - name: Update repo status issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          STATUS_REPORT_PATH: /tmp/status-report.md
+        run: bash .github/scripts/update_status_issue.sh

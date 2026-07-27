@@ -43,7 +43,10 @@ If a schema or schema pack disappears from a source's upstream repo, it is remov
 
 ### Status Reporting
 
-A single tracking Issue reflects the current state of every validation issue across every source, rebuilt from the full aggregate state each time it updates -- not just whatever happened to run most recently. This means syncing one clean source never masks failures reported by another, and syncing one already-broken source never suppresses issues fixed by a previous run.
+Two issues, each rebuilt after every sync from the full current state on disk -- never from just whatever happened to run most recently -- so syncing one clean source never masks another's failures, and syncing one already-broken source never suppresses issues fixed by a previous run:
+
+- **Validation tracking issue** (label `sync-validation`) -- the full table of current validation issues across every source. Created when there's something to report, updated in place while there still is, closed (with a comment) once everything's clean. Its open/closed state is itself a signal: no open issue with this label means the registry is currently healthy.
+- **Repo Status issue** (label `repo-status`) -- a permanent, pinned summary: every source, its schema count, its error count, and when it was last synced (in IST). Unlike the tracking issue, this one is never closed -- it's meant to be visible at a glance regardless of whether anything's currently failing, and links to the tracking issue for error detail rather than duplicating it. If a human closes it by accident, the next sync reopens it.
 
 ## Validation
 
@@ -133,9 +136,13 @@ Mirrors adding a source.
 
 A full (`all`) run is also a complete reconciliation against whatever `sources.yaml` currently says -- not just a re-pull of what's listed, but a cleanup of anything left behind by a source that's no longer registered. It's the right thing to run any time something seems out of sync, regardless of why.
 
+### Checking Repo Status
+
+The pinned **Repo Status** issue is the place to check sources, schema counts, error counts, and last-synced times at a glance -- it's always open, whether or not anything's currently failing.
+
 ### Checking Validation Status
 
-The tracking Issue always reflects current validation state across all sources. A specific workflow run's log shows what happened during that run alone.
+The **validation tracking issue** always reflects current validation state across all sources -- if it's closed, nothing's currently failing. A specific workflow run's log shows what happened during that run alone.
 
 ## Hosting
 
