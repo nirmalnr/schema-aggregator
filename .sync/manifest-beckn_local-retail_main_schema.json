@@ -1,13 +1,16 @@
-[
-  "FoodAndBeverageOffer",
-  "FoodAndBeverageResource",
-  "GroceryResource",
-  "HomeAndKitchenResource",
-  "RetailCommitment",
-  "RetailConsideration",
-  "RetailContract",
-  "RetailOffer",
-  "RetailPerformance",
-  "RetailResource",
-  "RetailSettlement"
-]
+{
+  "schemas": [
+    "FoodAndBeverageOffer",
+    "FoodAndBeverageResource",
+    "GroceryResource",
+    "HomeAndKitchenResource",
+    "RetailCommitment",
+    "RetailConsideration",
+    "RetailContract",
+    "RetailOffer",
+    "RetailPerformance",
+    "RetailResource",
+    "RetailSettlement"
+  ],
+  "last_synced": "2026-07-27T09:26:07.755238+00:00"
+}

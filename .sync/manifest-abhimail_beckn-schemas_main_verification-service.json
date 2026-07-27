@@ -1,6 +1,9 @@
-[
-  "VerificationContract",
-  "VerificationOffer",
-  "VerificationPerformance",
-  "VerificationResource"
-]
+{
+  "schemas": [
+    "VerificationContract",
+    "VerificationOffer",
+    "VerificationPerformance",
+    "VerificationResource"
+  ],
+  "last_synced": "2026-07-27T09:26:11.664757+00:00"
+}

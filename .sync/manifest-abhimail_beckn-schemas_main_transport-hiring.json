@@ -1,4 +1,7 @@
-[
-  "DriverCandidateProfileResource",
-  "DriverJobResource"
-]
+{
+  "schemas": [
+    "DriverCandidateProfileResource",
+    "DriverJobResource"
+  ],
+  "last_synced": "2026-07-27T09:26:10.796000+00:00"
+}

@@ -1,4 +1,7 @@
-[
-  "DatasetFulfillment",
-  "DatasetItem"
-]
+{
+  "schemas": [
+    "DatasetFulfillment",
+    "DatasetItem"
+  ],
+  "last_synced": "2026-07-27T09:26:12.195203+00:00"
+}
