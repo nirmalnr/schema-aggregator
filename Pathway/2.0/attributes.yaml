@@ -12,7 +12,7 @@ info:
 components:
   schemas:
     Pathway:
-      x-iri: https://schema.beckn.io/Pathway/v2.0
+      x-iri: https://schema.nfh.global/Pathway/v2.0
       type: object
       title: Pathway
       description: A connection between two points within a transit station (e.g.,
@@ -28,10 +28,10 @@ components:
           type: string
         fromStopId:
           description: Stop at the start of the pathway
-          $ref: https://schema.beckn.io/Stop/v2.0/attributes.yaml#/components/schemas/Stop
+          $ref: https://schema.nfh.global/Stop/v2.0/attributes.yaml#/components/schemas/Stop
         toStopId:
           description: Stop at the end of the pathway
-          $ref: https://schema.beckn.io/Stop/v2.0/attributes.yaml#/components/schemas/Stop
+          $ref: https://schema.nfh.global/Stop/v2.0/attributes.yaml#/components/schemas/Stop
         pathwayMode:
           description: Type of pathway (1=walkway, 2=stairs, 3=moving_sidewalk, 4=escalator,
             5=elevator, 6=fare_gate, 7=exit_gate)
@@ -50,13 +50,13 @@ components:
           type: string
         descriptor:
           description: Human-readable description of the location
-          $ref: https://schema.beckn.io/Descriptor/v2.0/attributes.yaml#/components/schemas/Descriptor
+          $ref: https://schema.nfh.global/Descriptor/v2.0/attributes.yaml#/components/schemas/Descriptor
         gps:
           description: GPS coordinates as a latitude,longitude string
           type: string
         address:
           description: Physical address of the location
-          $ref: https://schema.beckn.io/Address/v2.0/attributes.yaml#/components/schemas/Address
+          $ref: https://schema.nfh.global/Address/v2.0/attributes.yaml#/components/schemas/Address
         city:
           description: City name
           type: string
@@ -65,5 +65,5 @@ components:
           type: string
         geojson:
           description: GeoJSON geometry object representing this location
-          $ref: https://schema.beckn.io/GeoJSONGeometry/v2.0/attributes.yaml#/components/schemas/GeoJSONGeometry
+          $ref: https://schema.nfh.global/GeoJSONGeometry/v2.0/attributes.yaml#/components/schemas/GeoJSONGeometry
       additionalProperties: false

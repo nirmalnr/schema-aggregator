@@ -12,7 +12,7 @@ info:
 components:
   schemas:
     RiderCategory:
-      x-iri: https://schema.beckn.io/RiderCategory/v2.0
+      x-iri: https://schema.nfh.global/RiderCategory/v2.0
       type: object
       title: RiderCategory
       description: A classification of passenger type (e.g., adult, child, senior,
@@ -37,7 +37,7 @@ components:
           type: string
         descriptor:
           description: Human-readable label for the category
-          $ref: https://schema.beckn.io/Descriptor/v2.0/attributes.yaml#/components/schemas/Descriptor
+          $ref: https://schema.nfh.global/Descriptor/v2.0/attributes.yaml#/components/schemas/Descriptor
         parentCategoryId:
           description: Identifier of the parent category if hierarchical
           type: string

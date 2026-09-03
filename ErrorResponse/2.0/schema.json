@@ -1,6 +1,6 @@
 {
-  "$id": "https://schema.beckn.io/ErrorResponse/v2.0",
-  "x-iri": "https://schema.beckn.io/ErrorResponse/v2.0",
+  "$id": "https://schema.nfh.global/ErrorResponse/v2.0",
+  "x-iri": "https://schema.nfh.global/ErrorResponse/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "description": "Schema definition for ErrorResponse in the Beckn Protocol v2.0.1",
   "title": "ErrorResponse",
@@ -10,7 +10,7 @@
   "type": "object",
   "properties": {
     "error": {
-      "$ref": "https://schema.beckn.io/Error/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Error/v2.0/schema.json"
     }
   },
   "required": [

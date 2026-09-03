@@ -1,6 +1,6 @@
 {
-  "$id": "https://schema.beckn.io/Invoice/v2.2",
-  "x-iri": "https://schema.beckn.io/Invoice/v2.2",
+  "$id": "https://schema.nfh.global/Invoice/v2.2",
+  "x-iri": "https://schema.nfh.global/Invoice/v2.2",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "description": "An Invoice is a financial statement issued by a creditor to a debtor that itemises the amounts owed and records how they are settled. Each line item is a billed financial entry — an order, refund, commission, finder fee, or adjustment — rather than a product or service. The invoice tracks its lifecycle status, the agreed settlement terms, and the proofs of settlement (payment actions) that discharge the amount due. An invoice may be issued, updated, settled, cancelled, or disputed over its lifecycle.",
   "title": "Invoice",
@@ -27,13 +27,13 @@
     },
     "descriptor": {
       "description": "Describes the nature of the invoice in human / agent readable terms.",
-      "$ref": "https://schema.beckn.io/Descriptor/v2.1/schema.json"
+      "$ref": "https://schema.nfh.global/Descriptor/v2.1/schema.json"
     },
     "status": {
       "description": "The lifecycle state of the invoice expressed as a Descriptor whose code MUST be one of the standard invoice state values.",
       "allOf": [
         {
-          "$ref": "https://schema.beckn.io/Descriptor/v2.1/schema.json"
+          "$ref": "https://schema.nfh.global/Descriptor/v2.1/schema.json"
         },
         {
           "type": "object",
@@ -55,11 +55,11 @@
     },
     "creditor": {
       "description": "The party that is owed the net amount — the seller / provider.",
-      "$ref": "https://schema.beckn.io/Participant/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Participant/v2.0/schema.json"
     },
     "debtor": {
       "description": "The party the invoice is issued to and who owes the net amount — the consumer being billed.",
-      "$ref": "https://schema.beckn.io/Participant/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Participant/v2.0/schema.json"
     },
     "statement": {
       "description": "The itemised statement of charges that make up the invoice. Each entry pairs a consideration — the value being billed, whose considerationAttributes carries a JSON-LD object (by @type) identifying the underlying item such as a Contract, RetailOrder, DeliveryService, Commission, FinderFee, Adjustment, or Refund — with the monetary amount for that entry.",
@@ -72,7 +72,7 @@
             "description": "The value being billed by this entry. Its considerationAttributes carries the JSON-LD object (@type) identifying what is billed — e.g. a Contract, RetailOrder, DeliveryService, Commission, FinderFee, Adjustment, or Refund.",
             "allOf": [
               {
-                "$ref": "https://schema.beckn.io/Consideration/v2.0/schema.json"
+                "$ref": "https://schema.nfh.global/Consideration/v2.0/schema.json"
               },
               {
                 "type": "object",
@@ -97,7 +97,7 @@
           },
           "amount": {
             "description": "The monetary amount for this statement entry.",
-            "$ref": "https://schema.beckn.io/PriceSpecification/v2.1/schema.json"
+            "$ref": "https://schema.nfh.global/PriceSpecification/v2.1/schema.json"
           }
         },
         "required": [
@@ -109,22 +109,22 @@
     },
     "total": {
       "description": "The net amount payable for this invoice across all line items.",
-      "$ref": "https://schema.beckn.io/PriceSpecification/v2.1/schema.json"
+      "$ref": "https://schema.nfh.global/PriceSpecification/v2.1/schema.json"
     },
     "settlementTerms": {
       "description": "The agreed terms under which the invoice is to be settled — amount, payment trigger, schedule, remittance account, and accepted methods.",
-      "$ref": "https://schema.beckn.io/SettlementTerm/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/SettlementTerm/v2.0/schema.json"
     },
     "settlementAction": {
       "description": "Proofs of settlement that discharge the invoice — one entry per payment event (supporting installments and partial payments), carrying the transaction reference, method, time, amount, and status.",
       "type": "array",
       "items": {
-        "$ref": "https://schema.beckn.io/PaymentAction/v2.0/schema.json"
+        "$ref": "https://schema.nfh.global/PaymentAction/v2.0/schema.json"
       }
     },
     "invoiceAttributes": {
       "description": "Domain-specific extension attributes for this invoice — tax regime (e.g. GST/VAT), e-invoice refs, legal boilerplate, etc.",
-      "$ref": "https://schema.beckn.io/Attributes/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Attributes/v2.0/schema.json"
     }
   },
   "additionalProperties": false,

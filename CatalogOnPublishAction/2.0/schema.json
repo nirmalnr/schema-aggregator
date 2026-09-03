@@ -1,6 +1,6 @@
 {
-  "$id": "https://schema.beckn.io/CatalogOnPublishAction/v2.0",
-  "x-iri": "https://schema.beckn.io/CatalogOnPublishAction/v2.0",
+  "$id": "https://schema.nfh.global/CatalogOnPublishAction/v2.0",
+  "x-iri": "https://schema.nfh.global/CatalogOnPublishAction/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "description": "Catalog publish processing results from CDS to BPP.",
   "type": "object",
@@ -12,7 +12,7 @@
       "type": "array",
       "description": "Per-catalog processing results",
       "items": {
-        "$ref": "https://schema.beckn.io/CatalogProcessingResult/v2.0/schema.json"
+        "$ref": "https://schema.nfh.global/CatalogProcessingResult/v2.0/schema.json"
       }
     }
   }

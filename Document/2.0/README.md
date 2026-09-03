@@ -6,14 +6,10 @@ A document, that can be parsed, printed, download or displayed. This has intenti
 
 | File | Purpose |
 |---|---|
-| [https://schema.beckn.io/Document/attributes.yaml](https://schema.beckn.io/Document/attributes.yaml) | OpenAPI schema envelope (latest path) |
-| [https://schema.beckn.io/Document/v2.0/attributes.yaml](https://schema.beckn.io/Document/v2.0/attributes.yaml) | OpenAPI schema envelope (versioned path) |
-| [https://schema.beckn.io/Document/attributes.jsonschema.yaml](https://schema.beckn.io/Document/attributes.jsonschema.yaml) | JSON Schema document (latest path) |
-| [https://schema.beckn.io/Document/v2.0/attributes.jsonschema.yaml](https://schema.beckn.io/Document/v2.0/attributes.jsonschema.yaml) | JSON Schema document (versioned path) |
-| [https://schema.beckn.io/Document/context.jsonld](https://schema.beckn.io/Document/context.jsonld) | JSON-LD context (latest path) |
-| [https://schema.beckn.io/Document/v2.0/context.jsonld](https://schema.beckn.io/Document/v2.0/context.jsonld) | JSON-LD context (versioned path) |
-| [https://schema.beckn.io/Document/vocab.jsonld](https://schema.beckn.io/Document/vocab.jsonld) | RDF vocabulary (latest path) |
-| [https://schema.beckn.io/Document/v2.0/vocab.jsonld](https://schema.beckn.io/Document/v2.0/vocab.jsonld) | RDF vocabulary (versioned path) |
+| [https://schema.nfh.global/Document/v2.0/attributes.yaml](https://schema.nfh.global/Document/v2.0/attributes.yaml) | OpenAPI schema envelope (versioned path) |
+| [https://schema.nfh.global/Document/v2.0/attributes.jsonschema.yaml](https://schema.nfh.global/Document/v2.0/attributes.jsonschema.yaml) | JSON Schema document (versioned path) |
+| [https://schema.nfh.global/Document/v2.0/context.jsonld](https://schema.nfh.global/Document/v2.0/context.jsonld) | JSON-LD context (versioned path) |
+| [https://schema.nfh.global/Document/v2.0/vocab.jsonld](https://schema.nfh.global/Document/v2.0/vocab.jsonld) | RDF vocabulary (versioned path) |
 
 ## Properties
 

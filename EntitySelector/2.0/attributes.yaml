@@ -12,7 +12,7 @@ info:
 components:
   schemas:
     EntitySelector:
-      x-iri: https://schema.beckn.io/EntitySelector/v2.0
+      x-iri: https://schema.nfh.global/EntitySelector/v2.0
       type: object
       title: EntitySelector
       description: A selector that identifies which transport entities (routes, trips,
@@ -32,7 +32,7 @@ components:
           type: string
         tripDescriptor:
           description: Descriptor identifying the affected trip
-          $ref: https://schema.beckn.io/TripDescriptor/v2.0/attributes.yaml#/components/schemas/TripDescriptor
+          $ref: https://schema.nfh.global/TripDescriptor/v2.0/attributes.yaml#/components/schemas/TripDescriptor
         stopId:
           description: Identifier of the affected stop
           type: string
@@ -41,11 +41,11 @@ components:
           type: string
         descriptor:
           description: Human-readable description of the alert
-          $ref: https://schema.beckn.io/Descriptor/v2.0/attributes.yaml#/components/schemas/Descriptor
+          $ref: https://schema.nfh.global/Descriptor/v2.0/attributes.yaml#/components/schemas/Descriptor
         validity:
           description: Time period during which the alert is active
-          $ref: https://schema.beckn.io/TimePeriod/v2.0/attributes.yaml#/components/schemas/TimePeriod
+          $ref: https://schema.nfh.global/TimePeriod/v2.0/attributes.yaml#/components/schemas/TimePeriod
         status:
           description: Current status of the alert
-          $ref: https://schema.beckn.io/State/v2.0/attributes.yaml#/components/schemas/State
+          $ref: https://schema.nfh.global/State/v2.0/attributes.yaml#/components/schemas/State
       additionalProperties: false

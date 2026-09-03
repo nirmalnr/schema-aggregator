@@ -1,6 +1,6 @@
 {
-  "$id": "https://schema.beckn.io/Prognosis/v2.0",
-  "x-iri": "https://schema.beckn.io/Prognosis/v2.0",
+  "$id": "https://schema.nfh.global/Prognosis/v2.0",
+  "x-iri": "https://schema.nfh.global/Prognosis/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Prognosis",
   "type": "object",
@@ -35,11 +35,11 @@
     },
     "status": {
       "description": "Current tracking status",
-      "$ref": "https://schema.beckn.io/State/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/State/v2.0/schema.json"
     },
     "validity": {
       "description": "Validity period for this tracking record",
-      "$ref": "https://schema.beckn.io/TimePeriod/v2.1/schema.json"
+      "$ref": "https://schema.nfh.global/TimePeriod/v2.1/schema.json"
     }
   },
   "additionalProperties": false,

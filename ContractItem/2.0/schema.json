@@ -1,6 +1,6 @@
 {
-  "$id": "https://schema.beckn.io/ContractItem/v2.0",
-  "x-iri": "https://schema.beckn.io/ContractItem/v2.0",
+  "$id": "https://schema.nfh.global/ContractItem/v2.0",
+  "x-iri": "https://schema.nfh.global/ContractItem/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "description": "A line item within a Contract, linking an accepted Offer and ordered Item with quantity and price.",
   "title": "ContractItem",
@@ -14,13 +14,13 @@
       "x-jsonld": {
         "@id": "schema:acceptedOffer"
       },
-      "$ref": "https://schema.beckn.io/Offer/v2.1/schema.json"
+      "$ref": "https://schema.nfh.global/Offer/v2.1/schema.json"
     },
     "itemId": {
       "x-jsonld": {
         "@id": "schema:orderedItem"
       },
-      "$ref": "https://schema.beckn.io/Item/v2.1/schema.json"
+      "$ref": "https://schema.nfh.global/Item/v2.1/schema.json"
     },
     "lineId": {
       "description": "Unique line id within contract",
@@ -28,20 +28,20 @@
     },
     "contractItemAttributes": {
       "description": "Line-level Attribute Pack (options, substitutions, ESG, etc.)",
-      "$ref": "https://schema.beckn.io/Attributes/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Attributes/v2.0/schema.json"
     },
     "price": {
       "description": "Line price composition (unit/tax/delivery/discount)",
       "x-jsonld": {
         "@id": "schema:priceSpecification"
       },
-      "$ref": "https://schema.beckn.io/PriceSpecification/v2.1/schema.json"
+      "$ref": "https://schema.nfh.global/PriceSpecification/v2.1/schema.json"
     },
     "quantity": {
       "x-jsonld": {
         "@id": "beckn:quantity"
       },
-      "$ref": "https://schema.beckn.io/Quantity/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Quantity/v2.0/schema.json"
     }
   },
   "required": [

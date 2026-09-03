@@ -10,14 +10,10 @@ constraints. Endpoint-specific validation is defined inline in operation request
 
 | File | Purpose |
 |---|---|
-| [https://schema.beckn.io/Context/attributes.yaml](https://schema.beckn.io/Context/attributes.yaml) | OpenAPI schema envelope (latest path) |
-| [https://schema.beckn.io/Context/v2.0/attributes.yaml](https://schema.beckn.io/Context/v2.0/attributes.yaml) | OpenAPI schema envelope (versioned path) |
-| [https://schema.beckn.io/Context/attributes.jsonschema.yaml](https://schema.beckn.io/Context/attributes.jsonschema.yaml) | JSON Schema document (latest path) |
-| [https://schema.beckn.io/Context/v2.0/attributes.jsonschema.yaml](https://schema.beckn.io/Context/v2.0/attributes.jsonschema.yaml) | JSON Schema document (versioned path) |
-| [https://schema.beckn.io/Context/context.jsonld](https://schema.beckn.io/Context/context.jsonld) | JSON-LD context (latest path) |
-| [https://schema.beckn.io/Context/v2.0/context.jsonld](https://schema.beckn.io/Context/v2.0/context.jsonld) | JSON-LD context (versioned path) |
-| [https://schema.beckn.io/Context/vocab.jsonld](https://schema.beckn.io/Context/vocab.jsonld) | RDF vocabulary (latest path) |
-| [https://schema.beckn.io/Context/v2.0/vocab.jsonld](https://schema.beckn.io/Context/v2.0/vocab.jsonld) | RDF vocabulary (versioned path) |
+| [https://schema.nfh.global/Context/v2.0/attributes.yaml](https://schema.nfh.global/Context/v2.0/attributes.yaml) | OpenAPI schema envelope (versioned path) |
+| [https://schema.nfh.global/Context/v2.0/attributes.jsonschema.yaml](https://schema.nfh.global/Context/v2.0/attributes.jsonschema.yaml) | JSON Schema document (versioned path) |
+| [https://schema.nfh.global/Context/v2.0/context.jsonld](https://schema.nfh.global/Context/v2.0/context.jsonld) | JSON-LD context (versioned path) |
+| [https://schema.nfh.global/Context/v2.0/vocab.jsonld](https://schema.nfh.global/Context/v2.0/vocab.jsonld) | RDF vocabulary (versioned path) |
 
 ## Properties
 
@@ -38,4 +34,4 @@ constraints. Endpoint-specific validation is defined inline in operation request
 | `key` | no | string | The encryption public key of the sender |
 | `ttl` | no | string | The duration in ISO8601 format after timestamp for which this message holds valid |
 | `schemaContext` | no | array | Array of JSON-LD context urls representing the schemas relevant to the request in which this context object is transported. |
-| `requestDigest` | no | $ref: https://schema.beckn.io/RequestDigest/v2.0/attributes.yaml#/components/schemas/RequestDigest | - |
+| `requestDigest` | no | $ref: https://schema.nfh.global/RequestDigest/v2.0/attributes.yaml#/components/schemas/RequestDigest | - |

@@ -4,7 +4,7 @@ info:
   version: 2.0.0
   description: 'DEPRECATED. This schema is structurally invalid and does not validate any payloads — the oneOf keyword was incorrectly nested inside properties, which is not valid JSON Schema.
 
-    Use https://schema.beckn.io/BecknAction/v2.0 instead. BecknAction is the unified envelope for all Beckn actions (both request and callback directions). The request/callback distinction is encoded in context.action (e.g. beckn/discover for requests, beckn/on_discover for callbacks).
+    Use https://schema.nfh.global/BecknAction/v2.0 instead. BecknAction is the unified envelope for all Beckn actions (both request and callback directions). The request/callback distinction is encoded in context.action (e.g. beckn/discover for requests, beckn/on_discover for callbacks).
 
     This schema will be removed in a future major version.'
   license:
@@ -15,14 +15,14 @@ info:
 components:
   schemas:
     RequestAction:
-      x-iri: https://schema.beckn.io/RequestAction/v2.0
+      x-iri: https://schema.nfh.global/RequestAction/v2.0
       title: RequestAction
       x-tags:
       - common
       deprecated: true
       description: 'DEPRECATED. This schema is structurally invalid and does not validate any payloads — the oneOf keyword was incorrectly nested inside properties, which is not valid JSON Schema.
 
-        Use https://schema.beckn.io/BecknAction/v2.0 instead. BecknAction is the unified envelope for all Beckn actions (both request and callback directions). The request/callback distinction is encoded in context.action (e.g. beckn/discover for requests, beckn/on_discover for callbacks).
+        Use https://schema.nfh.global/BecknAction/v2.0 instead. BecknAction is the unified envelope for all Beckn actions (both request and callback directions). The request/callback distinction is encoded in context.action (e.g. beckn/discover for requests, beckn/on_discover for callbacks).
 
         This schema will be removed in a future major version.'
-      $ref: https://schema.beckn.io/BecknAction/v2.0/attributes.yaml#/components/schemas/BecknAction
+      $ref: https://schema.nfh.global/BecknAction/v2.0/attributes.yaml#/components/schemas/BecknAction

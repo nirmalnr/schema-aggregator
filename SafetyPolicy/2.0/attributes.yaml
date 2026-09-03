@@ -12,7 +12,7 @@ info:
 components:
   schemas:
     SafetyPolicy:
-      x-iri: https://schema.beckn.io/SafetyPolicy/v2.0
+      x-iri: https://schema.nfh.global/SafetyPolicy/v2.0
       type: object
       title: SafetyPolicy
       description: A set of rules, protocols, and standards governing safety requirements
@@ -26,7 +26,7 @@ components:
           type: string
         emergencyContact:
           description: Emergency contact handle for safety incidents
-          $ref: https://schema.beckn.io/ContactHandle/v2.0/attributes.yaml#/components/schemas/ContactHandle
+          $ref: https://schema.nfh.global/ContactHandle/v2.0/attributes.yaml#/components/schemas/ContactHandle
         insuranceCoverage:
           description: Description of insurance coverage under this policy
           type: string
@@ -38,11 +38,11 @@ components:
           type: string
         descriptor:
           description: Human-readable description of the policy
-          $ref: https://schema.beckn.io/Descriptor/v2.0/attributes.yaml#/components/schemas/Descriptor
+          $ref: https://schema.nfh.global/Descriptor/v2.0/attributes.yaml#/components/schemas/Descriptor
         validity:
           description: Validity window for this policy version
-          $ref: https://schema.beckn.io/TimePeriod/v2.0/attributes.yaml#/components/schemas/TimePeriod
+          $ref: https://schema.nfh.global/TimePeriod/v2.0/attributes.yaml#/components/schemas/TimePeriod
         policyAttributes:
           description: Extensible domain-specific policy attributes
-          $ref: https://schema.beckn.io/Attributes/v2.0/attributes.yaml#/components/schemas/Attributes
+          $ref: https://schema.nfh.global/Attributes/v2.0/attributes.yaml#/components/schemas/Attributes
       additionalProperties: false

@@ -11,7 +11,7 @@ info:
 components:
   schemas:
     Ack:
-      x-iri: https://schema.beckn.io/Ack/v2.0
+      x-iri: https://schema.nfh.global/Ack/v2.0
       description: New v2.0 Ack format carrying an HTTP Counter-Signature proving
         the receiver authenticated, received, and processed the inbound request.
       type: object
@@ -23,7 +23,7 @@ components:
           - NACK
           description: ACK if the request was accepted; NACK if rejected.
         signature:
-          $ref: https://schema.beckn.io/CounterSignature/v2.0/attributes.yaml#/components/schemas/CounterSignature
+          $ref: https://schema.nfh.global/CounterSignature/v2.0/attributes.yaml#/components/schemas/CounterSignature
           description: Counter-signature proving the receiver authenticated and processed
             the inbound request.
       required:

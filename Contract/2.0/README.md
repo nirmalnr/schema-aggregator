@@ -6,21 +6,17 @@ This is a JSON-LD compliant, linked-data schema that specifies a generic multi-p
 
 | File | Purpose |
 |---|---|
-| [https://schema.beckn.io/Contract/attributes.yaml](https://schema.beckn.io/Contract/attributes.yaml) | OpenAPI schema envelope (latest path) |
-| [https://schema.beckn.io/Contract/v2.0/attributes.yaml](https://schema.beckn.io/Contract/v2.0/attributes.yaml) | OpenAPI schema envelope (versioned path) |
-| [https://schema.beckn.io/Contract/attributes.jsonschema.yaml](https://schema.beckn.io/Contract/attributes.jsonschema.yaml) | JSON Schema document (latest path) |
-| [https://schema.beckn.io/Contract/v2.0/attributes.jsonschema.yaml](https://schema.beckn.io/Contract/v2.0/attributes.jsonschema.yaml) | JSON Schema document (versioned path) |
-| [https://schema.beckn.io/Contract/context.jsonld](https://schema.beckn.io/Contract/context.jsonld) | JSON-LD context (latest path) |
-| [https://schema.beckn.io/Contract/v2.0/context.jsonld](https://schema.beckn.io/Contract/v2.0/context.jsonld) | JSON-LD context (versioned path) |
-| [https://schema.beckn.io/Contract/vocab.jsonld](https://schema.beckn.io/Contract/vocab.jsonld) | RDF vocabulary (latest path) |
-| [https://schema.beckn.io/Contract/v2.0/vocab.jsonld](https://schema.beckn.io/Contract/v2.0/vocab.jsonld) | RDF vocabulary (versioned path) |
+| [https://schema.nfh.global/Contract/v2.0/attributes.yaml](https://schema.nfh.global/Contract/v2.0/attributes.yaml) | OpenAPI schema envelope (versioned path) |
+| [https://schema.nfh.global/Contract/v2.0/attributes.jsonschema.yaml](https://schema.nfh.global/Contract/v2.0/attributes.jsonschema.yaml) | JSON Schema document (versioned path) |
+| [https://schema.nfh.global/Contract/v2.0/context.jsonld](https://schema.nfh.global/Contract/v2.0/context.jsonld) | JSON-LD context (versioned path) |
+| [https://schema.nfh.global/Contract/v2.0/vocab.jsonld](https://schema.nfh.global/Contract/v2.0/vocab.jsonld) | RDF vocabulary (versioned path) |
 
 ## Properties
 
 | Property | Required | Type | Description |
 |---|---|---|---|
 | `id` | no | string | A UUID string generated at the BPP endpoint at any stage before the confirmation of the order i.e before `/on_confirm` callback. This value is intended typically for indexing or filtering. While the chances of a UUID collision are rare, it is recommended to use a combination of `bppId`, `providerId` and `id` to allow for global uniqueness. |
-| `descriptor` | no | $ref: https://schema.beckn.io/Descriptor/v2.1/attributes.yaml#/components/schemas/Descriptor | Describes the nature of the contract in human / agent readable terms |
+| `descriptor` | no | $ref: https://schema.nfh.global/Descriptor/v2.1/attributes.yaml#/components/schemas/Descriptor | Describes the nature of the contract in human / agent readable terms |
 | `commitments` | yes | array | Structured commitments governed by this contract. |
 | `consideration` | no | array | Value agreed to be exchanged under this contract. |
 | `participants` | no | array | The participants involved in the contract. Contracts are not always between two individuals.  Several entities may play a specific role in the creation, fulfillment, and post-fulfillment of the contract. |

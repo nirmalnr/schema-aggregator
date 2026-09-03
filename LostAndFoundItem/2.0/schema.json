@@ -1,6 +1,6 @@
 {
-  "$id": "https://schema.beckn.io/LostAndFoundItem/v2.0",
-  "x-iri": "https://schema.beckn.io/LostAndFoundItem/v2.0",
+  "$id": "https://schema.nfh.global/LostAndFoundItem/v2.0",
+  "x-iri": "https://schema.nfh.global/LostAndFoundItem/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "LostAndFoundItem",
   "type": "object",
@@ -26,7 +26,7 @@
     },
     "vehicleRef": {
       "description": "Vehicle on which the item was found or lost",
-      "$ref": "https://schema.beckn.io/Vehicle/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Vehicle/v2.0/schema.json"
     },
     "orderId": {
       "description": "Identifier of the contract/order against which support is required",
@@ -34,7 +34,7 @@
     },
     "ticketIds": {
       "description": "Identifiers of any open support tickets",
-      "$ref": "https://schema.beckn.io/SupportTicket/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/SupportTicket/v2.0/schema.json"
     },
     "callbackPhone": {
       "description": "Telephone number for callback support",

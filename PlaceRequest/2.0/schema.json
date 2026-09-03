@@ -1,6 +1,6 @@
 {
-  "$id": "https://schema.beckn.io/PlaceRequest/v2.0",
-  "x-iri": "https://schema.beckn.io/PlaceRequest/v2.0",
+  "$id": "https://schema.nfh.global/PlaceRequest/v2.0",
+  "x-iri": "https://schema.nfh.global/PlaceRequest/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "PlaceRequest",
   "type": "object",
@@ -16,7 +16,7 @@
     },
     "seatRef": {
       "description": "Specific seat requested, if applicable",
-      "$ref": "https://schema.beckn.io/Seat/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Seat/v2.0/schema.json"
     },
     "id": {
       "description": "Unique identifier for the contract item",
@@ -24,15 +24,15 @@
     },
     "descriptor": {
       "description": "Human-readable description of the item",
-      "$ref": "https://schema.beckn.io/Descriptor/v2.1/schema.json"
+      "$ref": "https://schema.nfh.global/Descriptor/v2.1/schema.json"
     },
     "price": {
       "description": "Price for this contract item",
-      "$ref": "https://schema.beckn.io/PriceSpecification/v2.1/schema.json"
+      "$ref": "https://schema.nfh.global/PriceSpecification/v2.1/schema.json"
     },
     "quantity": {
       "description": "Quantity of this contract item",
-      "$ref": "https://schema.beckn.io/Quantity/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Quantity/v2.0/schema.json"
     }
   },
   "additionalProperties": false,

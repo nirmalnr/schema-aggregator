@@ -1,9 +1,9 @@
 {
   "@context": {
     "schema": "https://schema.org/",
-    "beckn": "https://schema.beckn.io/",
-    "hjra": "https://schema.beckn.io/HiringJobResource#",
-    "jloc": "https://schema.beckn.io/JobLocation#",
+    "beckn": "https://schema.nfh.global/",
+    "hjra": "https://schema.nfh.global/HiringJobResource#",
+    "jloc": "https://schema.nfh.global/JobLocation#",
     "HiringJobResource": "hjra:HiringJobResource",
     "job_title": {
       "@id": "hjra:job_title"

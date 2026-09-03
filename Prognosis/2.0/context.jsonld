@@ -1,6 +1,6 @@
 {
   "@context": {
-    "beckn": "https://schema.beckn.io/mobility/v2.0/",
+    "beckn": "https://schema.nfh.global/mobility/v2.0/",
     "Prognosis": "beckn:Prognosis",
     "scheduledTime": "beckn:scheduledTime",
     "estimatedTime": "beckn:estimatedTime",

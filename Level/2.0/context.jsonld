@@ -1,6 +1,6 @@
 {
   "@context": {
-    "beckn": "https://schema.beckn.io/mobility/v2.0/",
+    "beckn": "https://schema.nfh.global/mobility/v2.0/",
     "Level": "beckn:Level",
     "levelId": "beckn:levelId",
     "levelName": "beckn:levelName",

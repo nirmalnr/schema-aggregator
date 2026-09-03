@@ -12,7 +12,7 @@ info:
 components:
   schemas:
     ItineraryElement:
-      x-iri: https://schema.beckn.io/ItineraryElement/v2.0
+      x-iri: https://schema.nfh.global/ItineraryElement/v2.0
       type: object
       title: ItineraryElement
       description: A component of an aviation itinerary such as a flight segment,
@@ -26,10 +26,10 @@ components:
           type: string
         segmentRef:
           description: Reference to a flight segment if this is a flight element
-          $ref: https://schema.beckn.io/FlightSegment/v2.0/attributes.yaml#/components/schemas/FlightSegment
+          $ref: https://schema.nfh.global/FlightSegment/v2.0/attributes.yaml#/components/schemas/FlightSegment
         legRef:
           description: Reference to a transport leg if this is a surface element
-          $ref: https://schema.beckn.io/Leg/v2.0/attributes.yaml#/components/schemas/Leg
+          $ref: https://schema.nfh.global/Leg/v2.0/attributes.yaml#/components/schemas/Leg
         sequence:
           description: Sequential order of this element within the itinerary
           type: number
@@ -38,11 +38,11 @@ components:
           type: string
         descriptor:
           description: Human-readable description of the item
-          $ref: https://schema.beckn.io/Descriptor/v2.0/attributes.yaml#/components/schemas/Descriptor
+          $ref: https://schema.nfh.global/Descriptor/v2.0/attributes.yaml#/components/schemas/Descriptor
         price:
           description: Price for this contract item
-          $ref: https://schema.beckn.io/PriceSpecification/v2.1/attributes.yaml#/components/schemas/PriceSpecification
+          $ref: https://schema.nfh.global/PriceSpecification/v2.1/attributes.yaml#/components/schemas/PriceSpecification
         quantity:
           description: Quantity of this contract item
-          $ref: https://schema.beckn.io/Quantity/v2.0/attributes.yaml#/components/schemas/Quantity
+          $ref: https://schema.nfh.global/Quantity/v2.0/attributes.yaml#/components/schemas/Quantity
       additionalProperties: false

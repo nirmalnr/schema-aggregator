@@ -11,7 +11,7 @@ info:
 components:
   schemas:
     SupportAction:
-      x-iri: https://schema.beckn.io/SupportAction/v2.0
+      x-iri: https://schema.nfh.global/SupportAction/v2.0
       title: Support Action
       description: 'Beckn /beckn/support message payload. Sent by a BAP to a BPP to
         request
@@ -25,6 +25,6 @@ components:
       additionalProperties: false
       properties:
         support:
-          $ref: https://schema.beckn.io/Support/v2.0/attributes.yaml#/components/schemas/Support
+          $ref: https://schema.nfh.global/Support/v2.0/attributes.yaml#/components/schemas/Support
       required:
       - support

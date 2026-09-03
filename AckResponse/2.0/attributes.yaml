@@ -11,7 +11,7 @@ info:
 components:
   schemas:
     AckResponse:
-      x-iri: https://schema.beckn.io/AckResponse/v2.0
+      x-iri: https://schema.nfh.global/AckResponse/v2.0
       description: Schema definition for AckResponse in the Beckn Protocol
       title: AckResponse
       type: object
@@ -27,7 +27,7 @@ components:
           - ACK
           - NACK
         error:
-          $ref: https://schema.beckn.io/Error/v2.0/attributes.yaml#/components/schemas/Error
+          $ref: https://schema.nfh.global/Error/v2.0/attributes.yaml#/components/schemas/Error
       required:
       - transaction_id
       - timestamp

@@ -1,6 +1,6 @@
 {
-  "$id": "https://schema.beckn.io/Payment/v2.0",
-  "x-iri": "https://schema.beckn.io/Payment/v2.0",
+  "$id": "https://schema.nfh.global/Payment/v2.0",
+  "x-iri": "https://schema.nfh.global/Payment/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "description": "Schema definition for Payment in the Beckn Protocol",
   "title": "Payment",
@@ -85,7 +85,7 @@
       }
     },
     "beckn:acceptedPaymentMethod": {
-      "$ref": "https://schema.beckn.io/AcceptedPaymentMethod/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/AcceptedPaymentMethod/v2.0/schema.json"
     },
     "beckn:beneficiary": {
       "type": "string",
@@ -101,7 +101,7 @@
       }
     },
     "beckn:paymentAttributes": {
-      "$ref": "https://schema.beckn.io/Attributes/v2.0/schema.json",
+      "$ref": "https://schema.nfh.global/Attributes/v2.0/schema.json",
       "description": "Rail-specific attribute pack (e.g., UPI: VPA/UTR; CARD: token/3DS; BNPL: plan/schedule) "
     }
   },

@@ -11,7 +11,7 @@ info:
 components:
   schemas:
     MediaFile:
-      x-iri: https://schema.beckn.io/MediaFile/v2.0
+      x-iri: https://schema.nfh.global/MediaFile/v2.0
       description: A image, audio, or video typically intended for display purposes
       title: MediaFile
       x-tags:

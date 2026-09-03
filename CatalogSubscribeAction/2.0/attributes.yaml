@@ -11,7 +11,7 @@ info:
 components:
   schemas:
     CatalogSubscribeAction:
-      x-iri: https://schema.beckn.io/CatalogSubscribeAction/v2.0
+      x-iri: https://schema.nfh.global/CatalogSubscribeAction/v2.0
       type: object
       description: 'Message payload for catalog/subscription.
 
@@ -45,4 +45,4 @@ components:
               format: uri
               description: Override callback URL (defaults to context.bapUri)
             deliveryPolicy:
-              $ref: https://schema.beckn.io/DeliveryPolicy/v2.0/attributes.yaml#/components/schemas/DeliveryPolicy
+              $ref: https://schema.nfh.global/DeliveryPolicy/v2.0/attributes.yaml#/components/schemas/DeliveryPolicy

@@ -1,6 +1,6 @@
 {
-  "$id": "https://schema.beckn.io/Fulfillment/v2.1",
-  "x-iri": "https://schema.beckn.io/Fulfillment/v2.1",
+  "$id": "https://schema.nfh.global/Fulfillment/v2.1",
+  "x-iri": "https://schema.nfh.global/Fulfillment/v2.1",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "description": "Schema definition for Fulfillment in the Beckn Protocol v2.0.1",
   "title": "Fulfillment",
@@ -11,11 +11,11 @@
   "properties": {
     "agent": {
       "description": "The entity that directly performs the fulfillment",
-      "$ref": "https://schema.beckn.io/FulfillmentAgent/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/FulfillmentAgent/v2.0/schema.json"
     },
     "fulfillmentAttributes": {
       "description": "Extensible set of domain-specific attributes describing the fulfillment",
-      "$ref": "https://schema.beckn.io/Attributes/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Attributes/v2.0/schema.json"
     },
     "id": {
       "description": "Fulfillment identifier",
@@ -27,7 +27,7 @@
     "instructions": {
       "type": "array",
       "items": {
-        "$ref": "https://schema.beckn.io/Descriptor/v2.1/schema.json"
+        "$ref": "https://schema.nfh.global/Descriptor/v2.1/schema.json"
       }
     },
     "mode": {
@@ -35,25 +35,25 @@
       "x-jsonld": {
         "@id": "beckn:FulfillmentMode"
       },
-      "$ref": "https://schema.beckn.io/FulfillmentMode/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/FulfillmentMode/v2.0/schema.json"
     },
     "participants": {
       "description": "A list of participants who are entitled to receive the fulfillment of the order. By default, it is the consumer who placed the order",
       "type": "array",
       "items": {
-        "$ref": "https://schema.beckn.io/Participant/v2.0/schema.json"
+        "$ref": "https://schema.nfh.global/Participant/v2.0/schema.json"
       },
       "minItems": 1
     },
     "state": {
       "description": "The current state of fulfillment",
-      "$ref": "https://schema.beckn.io/State/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/State/v2.0/schema.json"
     },
     "stages": {
       "description": "The various stages of the fulfillment",
       "type": "array",
       "items": {
-        "$ref": "https://schema.beckn.io/FulfillmentStage/v2.0/schema.json"
+        "$ref": "https://schema.nfh.global/FulfillmentStage/v2.0/schema.json"
       },
       "minItems": 1
     },

@@ -1,6 +1,6 @@
 {
   "@context": {
-    "spm": "https://schema.beckn.io/ServicePerformance#",
+    "spm": "https://schema.nfh.global/ServicePerformance#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#"
   },
   "@graph": []

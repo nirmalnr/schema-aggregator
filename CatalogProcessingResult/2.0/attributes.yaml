@@ -11,7 +11,7 @@ info:
 components:
   schemas:
     CatalogProcessingResult:
-      x-iri: https://schema.beckn.io/CatalogProcessingResult/v2.0
+      x-iri: https://schema.nfh.global/CatalogProcessingResult/v2.0
       description: Processing result for a single catalog submission.
       type: object
       required:
@@ -36,7 +36,7 @@ components:
           type: array
           description: Per-item or per-catalog errors (present when REJECTED or PARTIAL)
           items:
-            $ref: https://schema.beckn.io/Error/v2.0/attributes.yaml#/components/schemas/Error
+            $ref: https://schema.nfh.global/Error/v2.0/attributes.yaml#/components/schemas/Error
         stats:
           type: object
           description: Optional statistics about the processed catalog

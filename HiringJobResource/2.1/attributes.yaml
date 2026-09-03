@@ -16,7 +16,7 @@ components:
         - resource
         - transport-hiring
       x-jsonld:
-        "@context": "https://schema.beckn.io/HiringJobResource/v2.1/context.jsonld"
+        "@context": "https://schema.nfh.global/HiringJobResource/v2.1/context.jsonld"
         "@type": "hjra:HiringJobResource"
       description: >
         Intrinsic metadata about a job vacancy. Compensation terms live in
@@ -42,7 +42,7 @@ components:
           description: Physical location model for the role.
           x-jsonld-id: "hjra:work_mode"
         location:
-          $ref: "https://schema.beckn.io/JobLocation/v2.1/attributes.yaml#/components/schemas/JobLocation"
+          $ref: "https://schema.nfh.global/JobLocation/v2.1/attributes.yaml#/components/schemas/JobLocation"
           description: Work location using the shared JobLocation type.
           x-jsonld-id: "hjra:location"
         shift_type:
@@ -91,11 +91,11 @@ components:
         requirements:
           type: array
           items:
-            $ref: "https://schema.beckn.io/CredentialRequirement/v2.1/attributes.yaml#/components/schemas/CredentialRequirement"
+            $ref: "https://schema.nfh.global/CredentialRequirement/v2.1/attributes.yaml#/components/schemas/CredentialRequirement"
           description: Credential or certification prerequisites.
           x-jsonld-id: "hjra:requirements"
         industry_type:
-          $ref: "https://schema.beckn.io/CodedValue/v2.1/attributes.yaml#/components/schemas/CodedValue"
+          $ref: "https://schema.nfh.global/CodedValue/v2.1/attributes.yaml#/components/schemas/CodedValue"
           description: Industry classification (e.g. ISIC authority code).
           x-jsonld-id: "hjra:industry_type"
         functional_area:
@@ -124,7 +124,7 @@ components:
           x-pii-disclosure-stage: on_select
           x-jsonld-id: "hjra:application_instructions"
         operator_reputation:
-          $ref: "https://schema.beckn.io/ReputationSummary/v2.1/attributes.yaml#/components/schemas/ReputationSummary"
+          $ref: "https://schema.nfh.global/ReputationSummary/v2.1/attributes.yaml#/components/schemas/ReputationSummary"
           description: >
             Attested reputation summary for the hiring organisation. Safe at
             discovery stage — no PII.

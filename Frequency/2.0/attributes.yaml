@@ -12,7 +12,7 @@ info:
 components:
   schemas:
     Frequency:
-      x-iri: https://schema.beckn.io/Frequency/v2.0
+      x-iri: https://schema.nfh.global/Frequency/v2.0
       type: object
       title: Frequency
       description: A headway-based service specification indicating how often a vehicle
@@ -51,5 +51,5 @@ components:
           type: string
         validity:
           description: Validity window for this constraint
-          $ref: https://schema.beckn.io/TimePeriod/v2.0/attributes.yaml#/components/schemas/TimePeriod
+          $ref: https://schema.nfh.global/TimePeriod/v2.0/attributes.yaml#/components/schemas/TimePeriod
       additionalProperties: false

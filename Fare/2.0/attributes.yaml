@@ -12,7 +12,7 @@ info:
 components:
   schemas:
     Fare:
-      x-iri: https://schema.beckn.io/Fare/v2.0
+      x-iri: https://schema.nfh.global/Fare/v2.0
       type: object
       title: Fare
       description: The monetary cost of travel for a specific journey or service,
@@ -36,19 +36,19 @@ components:
           type: string
         fareRules:
           description: Leg rules that determine when this fare applies
-          $ref: https://schema.beckn.io/FareLegRule/v2.0/attributes.yaml#/components/schemas/FareLegRule
+          $ref: https://schema.nfh.global/FareLegRule/v2.0/attributes.yaml#/components/schemas/FareLegRule
         id:
           description: Unique identifier for the offer
           type: string
         descriptor:
           description: Human-readable description of the offer
-          $ref: https://schema.beckn.io/Descriptor/v2.0/attributes.yaml#/components/schemas/Descriptor
+          $ref: https://schema.nfh.global/Descriptor/v2.0/attributes.yaml#/components/schemas/Descriptor
         price:
           description: Price specification for this offer
-          $ref: https://schema.beckn.io/PriceSpecification/v2.1/attributes.yaml#/components/schemas/PriceSpecification
+          $ref: https://schema.nfh.global/PriceSpecification/v2.1/attributes.yaml#/components/schemas/PriceSpecification
         validity:
           description: Validity period of the offer
-          $ref: https://schema.beckn.io/TimePeriod/v2.0/attributes.yaml#/components/schemas/TimePeriod
+          $ref: https://schema.nfh.global/TimePeriod/v2.0/attributes.yaml#/components/schemas/TimePeriod
         tags:
           description: Tags or labels associated with the offer
           type: string

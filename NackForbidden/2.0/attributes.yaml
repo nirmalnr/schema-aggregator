@@ -13,7 +13,7 @@ info:
 components:
   schemas:
     NackForbidden:
-      x-iri: https://schema.beckn.io/NackForbidden/v2.0
+      x-iri: https://schema.nfh.global/NackForbidden/v2.0
       description: 'The synchronous rejection body returned when the caller is authenticated but does
         not have permission to access or modify the requested resource.
 
@@ -42,4 +42,4 @@ components:
               type: string
               description: Echoes the messageId from the triggering request's Context, for caller correlation.
             error:
-              $ref: https://schema.beckn.io/Error/v2.0/attributes.yaml#/components/schemas/Error
+              $ref: https://schema.nfh.global/Error/v2.0/attributes.yaml#/components/schemas/Error

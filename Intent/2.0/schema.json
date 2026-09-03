@@ -1,6 +1,6 @@
 {
-  "$id": "https://schema.beckn.io/Intent/v2.0",
-  "x-iri": "https://schema.beckn.io/Intent/v2.0",
+  "$id": "https://schema.nfh.global/Intent/v2.0",
+  "x-iri": "https://schema.nfh.global/Intent/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "description": "A declaration of an intent to transact",
   "title": "Intent",
@@ -38,11 +38,11 @@
       "description": "Optional array of spatial constraints (CQL2-JSON semantics).",
       "type": "array",
       "items": {
-        "$ref": "https://schema.beckn.io/SpatialConstraint/v2.0/schema.json"
+        "$ref": "https://schema.nfh.global/SpatialConstraint/v2.0/schema.json"
       }
     },
     "mediaSearch": {
-      "$ref": "https://schema.beckn.io/MediaSearch/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/MediaSearch/v2.0/schema.json"
     }
   },
   "additionalProperties": false

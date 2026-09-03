@@ -1,6 +1,6 @@
 {
-  "$id": "https://schema.beckn.io/Settlement/v2.0",
-  "x-iri": "https://schema.beckn.io/Settlement/v2.0",
+  "$id": "https://schema.nfh.global/Settlement/v2.0",
+  "x-iri": "https://schema.nfh.global/Settlement/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "type": "object",
   "properties": {
@@ -19,7 +19,7 @@
       ]
     },
     "settlementAttributes": {
-      "$ref": "https://schema.beckn.io/Attributes/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Attributes/v2.0/schema.json"
     }
   }
 }

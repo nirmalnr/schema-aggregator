@@ -34,8 +34,8 @@
       "x-jsonld-id": "cr:mandatory"
     }
   },
-  "$id": "https://schema.beckn.io/CredentialRequirement/v2.1",
-  "x-iri": "https://schema.beckn.io/CredentialRequirement/v2.1",
+  "$id": "https://schema.nfh.global/CredentialRequirement/v2.1",
+  "x-iri": "https://schema.nfh.global/CredentialRequirement/v2.1",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "CredentialRequirement"
 }

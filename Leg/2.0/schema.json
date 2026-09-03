@@ -1,6 +1,6 @@
 {
-  "$id": "https://schema.beckn.io/Leg/v2.0",
-  "x-iri": "https://schema.beckn.io/Leg/v2.0",
+  "$id": "https://schema.nfh.global/Leg/v2.0",
+  "x-iri": "https://schema.nfh.global/Leg/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Leg",
   "type": "object",
@@ -8,15 +8,15 @@
   "properties": {
     "mode": {
       "description": "Mode of fulfillment",
-      "$ref": "https://schema.beckn.io/FulfillmentMode/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/FulfillmentMode/v2.0/schema.json"
     },
     "origin": {
       "description": "Start location of the leg",
-      "$ref": "https://schema.beckn.io/Location/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Location/v2.0/schema.json"
     },
     "destination": {
       "description": "End location of the leg",
-      "$ref": "https://schema.beckn.io/Location/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Location/v2.0/schema.json"
     },
     "startTime": {
       "description": "Scheduled or actual start time of the leg",
@@ -38,7 +38,7 @@
     },
     "routeRef": {
       "description": "Reference to the route served on this leg",
-      "$ref": "https://schema.beckn.io/Route/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Route/v2.0/schema.json"
     },
     "id": {
       "description": "Unique identifier for the fulfillment",
@@ -50,19 +50,19 @@
     },
     "agent": {
       "description": "The entity responsible for performing the fulfillment",
-      "$ref": "https://schema.beckn.io/FulfillmentAgent/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/FulfillmentAgent/v2.0/schema.json"
     },
     "participants": {
       "description": "Participants entitled to receive this fulfillment",
-      "$ref": "https://schema.beckn.io/Participant/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Participant/v2.0/schema.json"
     },
     "stages": {
       "description": "Stages in the fulfillment lifecycle",
-      "$ref": "https://schema.beckn.io/FulfillmentStage/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/FulfillmentStage/v2.0/schema.json"
     },
     "instructions": {
       "description": "Instructions for fulfillment",
-      "$ref": "https://schema.beckn.io/Descriptor/v2.1/schema.json"
+      "$ref": "https://schema.nfh.global/Descriptor/v2.1/schema.json"
     }
   },
   "additionalProperties": false,

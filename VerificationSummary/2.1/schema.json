@@ -53,8 +53,8 @@
       "x-jsonld-id": "vs:proofMetadataHash"
     }
   },
-  "$id": "https://schema.beckn.io/VerificationSummary/v2.1",
-  "x-iri": "https://schema.beckn.io/VerificationSummary/v2.1",
+  "$id": "https://schema.nfh.global/VerificationSummary/v2.1",
+  "x-iri": "https://schema.nfh.global/VerificationSummary/v2.1",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "VerificationSummary"
 }

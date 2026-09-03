@@ -12,7 +12,7 @@ info:
 components:
   schemas:
     BikeAllowed:
-      x-iri: https://schema.beckn.io/BikeAllowed/v2.0
+      x-iri: https://schema.nfh.global/BikeAllowed/v2.0
       type: object
       title: BikeAllowed
       description: An indicator specifying whether bicycles are permitted on board
@@ -29,7 +29,7 @@ components:
           type: string
         descriptor:
           description: Human-readable label of the feature
-          $ref: https://schema.beckn.io/Descriptor/v2.0/attributes.yaml#/components/schemas/Descriptor
+          $ref: https://schema.nfh.global/Descriptor/v2.0/attributes.yaml#/components/schemas/Descriptor
         value:
           description: Value of the feature (e.g. yes, no, unknown)
           type: string

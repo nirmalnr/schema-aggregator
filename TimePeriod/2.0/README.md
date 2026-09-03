@@ -6,14 +6,10 @@ Time window with date-time precision for availability/validity
 
 | File | Purpose |
 |---|---|
-| [https://schema.beckn.io/TimePeriod/attributes.yaml](https://schema.beckn.io/TimePeriod/attributes.yaml) | OpenAPI schema envelope (latest path) |
-| [https://schema.beckn.io/TimePeriod/v2.0/attributes.yaml](https://schema.beckn.io/TimePeriod/v2.0/attributes.yaml) | OpenAPI schema envelope (versioned path) |
-| [https://schema.beckn.io/TimePeriod/attributes.jsonschema.yaml](https://schema.beckn.io/TimePeriod/attributes.jsonschema.yaml) | JSON Schema document (latest path) |
-| [https://schema.beckn.io/TimePeriod/v2.0/attributes.jsonschema.yaml](https://schema.beckn.io/TimePeriod/v2.0/attributes.jsonschema.yaml) | JSON Schema document (versioned path) |
-| [https://schema.beckn.io/TimePeriod/context.jsonld](https://schema.beckn.io/TimePeriod/context.jsonld) | JSON-LD context (latest path) |
-| [https://schema.beckn.io/TimePeriod/v2.0/context.jsonld](https://schema.beckn.io/TimePeriod/v2.0/context.jsonld) | JSON-LD context (versioned path) |
-| [https://schema.beckn.io/TimePeriod/vocab.jsonld](https://schema.beckn.io/TimePeriod/vocab.jsonld) | RDF vocabulary (latest path) |
-| [https://schema.beckn.io/TimePeriod/v2.0/vocab.jsonld](https://schema.beckn.io/TimePeriod/v2.0/vocab.jsonld) | RDF vocabulary (versioned path) |
+| [https://schema.nfh.global/TimePeriod/v2.0/attributes.yaml](https://schema.nfh.global/TimePeriod/v2.0/attributes.yaml) | OpenAPI schema envelope (versioned path) |
+| [https://schema.nfh.global/TimePeriod/v2.0/attributes.jsonschema.yaml](https://schema.nfh.global/TimePeriod/v2.0/attributes.jsonschema.yaml) | JSON Schema document (versioned path) |
+| [https://schema.nfh.global/TimePeriod/v2.0/context.jsonld](https://schema.nfh.global/TimePeriod/v2.0/context.jsonld) | JSON-LD context (versioned path) |
+| [https://schema.nfh.global/TimePeriod/v2.0/vocab.jsonld](https://schema.nfh.global/TimePeriod/v2.0/vocab.jsonld) | RDF vocabulary (versioned path) |
 
 ## Properties
 

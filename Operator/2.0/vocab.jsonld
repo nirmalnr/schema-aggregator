@@ -1,6 +1,6 @@
 {
   "@context": {
-    "beckn": "https://schema.beckn.io/linked-data/latest-context.jsonld",
+    "beckn": "https://schema.nfh.global/linked-data/latest-context.jsonld",
     "schema": "https://schema.org/version/latest/schemaorg-current-https.jsonld",
     "owl": "http://www.w3.org/2002/07/owl#",
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
@@ -144,7 +144,7 @@
         "@id": "beckn:Operator"
       },
       "rdfs:range": {
-        "@id": "https://schema.beckn.io/core/v2.0/#Descriptor"
+        "@id": "https://schema.nfh.global/core/v2.0/#Descriptor"
       }
     },
     {
@@ -162,7 +162,7 @@
         "@id": "beckn:Operator"
       },
       "rdfs:range": {
-        "@id": "https://schema.beckn.io/core/v2.0/#CategoryCode"
+        "@id": "https://schema.nfh.global/core/v2.0/#CategoryCode"
       }
     },
     {
@@ -180,7 +180,7 @@
         "@id": "beckn:Operator"
       },
       "rdfs:range": {
-        "@id": "https://schema.beckn.io/core/v2.0/#Location"
+        "@id": "https://schema.nfh.global/core/v2.0/#Location"
       }
     },
     {
@@ -198,7 +198,7 @@
         "@id": "beckn:Operator"
       },
       "rdfs:range": {
-        "@id": "https://schema.beckn.io/core/v2.0/#Item"
+        "@id": "https://schema.nfh.global/core/v2.0/#Item"
       }
     },
     {
@@ -237,7 +237,7 @@
         "@id": "beckn:Operator"
       },
       "rdfs:range": {
-        "@id": "https://schema.beckn.io/core/v2.0/#Rating"
+        "@id": "https://schema.nfh.global/core/v2.0/#Rating"
       }
     }
   ]

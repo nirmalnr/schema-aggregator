@@ -11,7 +11,7 @@ info:
 components:
   schemas:
     PaymentTerms:
-      x-iri: https://schema.beckn.io/PaymentTerms/v2.0
+      x-iri: https://schema.nfh.global/PaymentTerms/v2.0
       description: Schema definition for PaymentTerms in the Beckn Protocol v2.0.1
       title: PaymentTerms
       x-tags:
@@ -28,17 +28,17 @@ components:
           - BPP
           - ESCROW_AGENT
         checkoutAt:
-          $ref: https://schema.beckn.io/CheckoutTerminal/v2.0/attributes.yaml#/components/schemas/CheckoutTerminal
+          $ref: https://schema.nfh.global/CheckoutTerminal/v2.0/attributes.yaml#/components/schemas/CheckoutTerminal
         settlementTerms:
           type: array
           items:
-            $ref: https://schema.beckn.io/SettlementTerm/v2.0/attributes.yaml#/components/schemas/SettlementTerm
+            $ref: https://schema.nfh.global/SettlementTerm/v2.0/attributes.yaml#/components/schemas/SettlementTerm
         checkoutTrigger:
           description: The stage in the order lifecycle when the checkout should be
             triggered
-          $ref: https://schema.beckn.io/PaymentTrigger/v2.0/attributes.yaml#/components/schemas/PaymentTrigger
+          $ref: https://schema.nfh.global/PaymentTrigger/v2.0/attributes.yaml#/components/schemas/PaymentTrigger
         paymentTermsAttributes:
           description: 'Rail-specific attribute pack (e.g., UPI: VPA/UTR; CARD: token/3DS;
             BNPL: plan/schedule)'
-          $ref: https://schema.beckn.io/Attributes/v2.0/attributes.yaml#/components/schemas/Attributes
+          $ref: https://schema.nfh.global/Attributes/v2.0/attributes.yaml#/components/schemas/Attributes
       additionalProperties: false

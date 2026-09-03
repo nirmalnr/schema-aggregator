@@ -1,7 +1,7 @@
 {
   "@context": {
     "@version": 1.1,
-    "beckn": "https://schema.beckn.io/LinkedData/v2.1/context.jsonld",
+    "beckn": "https://schema.nfh.global/LinkedData/v2.1/context.jsonld",
     "owl": "http://www.w3.org/2002/07/owl#",
     "schema": "https://schema.org/version/latest/schemaorg-current-https.jsonld",
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
@@ -84,7 +84,7 @@
       "@id": "beckn:@context",
       "@type": "rdf:Property",
       "rdfs:label": "@context",
-      "rdfs:comment": "A URL to the reference vocabulary where this schema has been defined. If missing, this field defaults to `https://schema.beckn.io/`. It allows applications to fetch the mapping between the simple JSON keys of this class and absolute Beckn IRIs (Internationalized Resource Identifiers), allowing conversion of standard Beckn JSON payload into linked data."
+      "rdfs:comment": "A URL to the reference vocabulary where this schema has been defined. If missing, this field defaults to `https://schema.nfh.global/`. It allows applications to fetch the mapping between the simple JSON keys of this class and absolute Beckn IRIs (Internationalized Resource Identifiers), allowing conversion of standard Beckn JSON payload into linked data."
     },
     {
       "@id": "beckn:@type",

@@ -1,8 +1,8 @@
 {
   "@context": {
     "schema": "https://schema.org/",
-    "beckn": "https://schema.beckn.io/",
-    "scn": "https://schema.beckn.io/ServiceConsideration#",
+    "beckn": "https://schema.nfh.global/",
+    "scn": "https://schema.nfh.global/ServiceConsideration#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "ServiceConsideration": "scn:ServiceConsideration",
     "PaymentMethod": "scn:PaymentMethod",

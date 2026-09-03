@@ -12,7 +12,7 @@ info:
 components:
   schemas:
     Timetable:
-      x-iri: https://schema.beckn.io/Timetable/v2.0
+      x-iri: https://schema.nfh.global/Timetable/v2.0
       type: object
       title: Timetable
       description: A structured schedule listing planned arrival and departure times
@@ -24,10 +24,10 @@ components:
       properties:
         routeRef:
           description: Reference to the route this timetable covers
-          $ref: https://schema.beckn.io/Route/v2.0/attributes.yaml#/components/schemas/Route
+          $ref: https://schema.nfh.global/Route/v2.0/attributes.yaml#/components/schemas/Route
         trips:
           description: Vehicle journeys (trips) in this timetable
-          $ref: https://schema.beckn.io/VehicleJourney/v2.0/attributes.yaml#/components/schemas/VehicleJourney
+          $ref: https://schema.nfh.global/VehicleJourney/v2.0/attributes.yaml#/components/schemas/VehicleJourney
         validFrom:
           description: Date from which this timetable is valid
           type: string
@@ -41,7 +41,7 @@ components:
           type: string
         descriptor:
           description: Human-readable description of the catalog
-          $ref: https://schema.beckn.io/Descriptor/v2.0/attributes.yaml#/components/schemas/Descriptor
+          $ref: https://schema.nfh.global/Descriptor/v2.0/attributes.yaml#/components/schemas/Descriptor
         tags:
           description: Tags associated with the catalog
           type: string

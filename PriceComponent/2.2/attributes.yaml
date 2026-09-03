@@ -11,7 +11,7 @@ info:
 components:
   schemas:
     PriceComponent:
-      x-iri: https://schema.beckn.io/PriceComponent/v2.2
+      x-iri: https://schema.nfh.global/PriceComponent/v2.2
       title: PriceComponent
       description: A single line item within a PriceSpecification breakup, such as a base charge, tax, delivery cost, discount, fee, or surcharge. Beyond the monetary amount, a PriceComponent MAY carry a JSON-LD componentAttributes bag that richly describes why the component applies, how it is calculated, and any governing terms. This lets a receiving node render or act on the line without performing any price computation of its own.
       type: object
@@ -96,7 +96,7 @@ components:
           description: Human-readable label for this component.
         componentAttributes:
           description: JSON-LD aware container describing the rationale, calculation basis, and governing terms of this price component (for example a SurgeMultiplier, a FareLegRule with TariffZones, or a tax jurisdiction). MUST include @context and @type.
-          $ref: https://schema.beckn.io/Attributes/v2.0/attributes.yaml#/components/schemas/Attributes
+          $ref: https://schema.nfh.global/Attributes/v2.0/attributes.yaml#/components/schemas/Attributes
       x-jsonld:
         '@id': beckn:PriceComponent
       x-tags:

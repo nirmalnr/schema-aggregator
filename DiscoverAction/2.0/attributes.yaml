@@ -11,9 +11,9 @@ info:
 components:
   schemas:
     DiscoverAction:
-      x-iri: https://schema.beckn.io/DiscoverAction/v2.0
+      x-iri: https://schema.nfh.global/DiscoverAction/v2.0
       title: Discover Action (External)
-      description: 'Beckn /beckn/discover message payload as published at schema.beckn.io.
+      description: 'Beckn /beckn/discover message payload as published at schema.nfh.global.
 
         Requires all discover qualifiers to be nested inside an `intent`
 
@@ -23,7 +23,7 @@ components:
       type: object
       properties:
         intent:
-          $ref: https://schema.beckn.io/Intent/v2.0/attributes.yaml#/components/schemas/Intent
+          $ref: https://schema.nfh.global/Intent/v2.0/attributes.yaml#/components/schemas/Intent
         text_search:
           type: string
           description: Legacy flat free-text discover query

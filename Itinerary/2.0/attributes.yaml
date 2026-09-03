@@ -12,7 +12,7 @@ info:
 components:
   schemas:
     Itinerary:
-      x-iri: https://schema.beckn.io/Itinerary/v2.0
+      x-iri: https://schema.nfh.global/Itinerary/v2.0
       type: object
       title: Itinerary
       description: A complete planned trip containing an ordered sequence of legs,
@@ -24,7 +24,7 @@ components:
       properties:
         legs:
           description: Ordered list of legs making up this itinerary
-          $ref: https://schema.beckn.io/Leg/v2.0/attributes.yaml#/components/schemas/Leg
+          $ref: https://schema.nfh.global/Leg/v2.0/attributes.yaml#/components/schemas/Leg
         totalDuration:
           description: Total travel duration for the itinerary
           type: string
@@ -48,5 +48,5 @@ components:
           type: string
         descriptor:
           description: Human-readable description of the itinerary
-          $ref: https://schema.beckn.io/Descriptor/v2.0/attributes.yaml#/components/schemas/Descriptor
+          $ref: https://schema.nfh.global/Descriptor/v2.0/attributes.yaml#/components/schemas/Descriptor
       additionalProperties: false

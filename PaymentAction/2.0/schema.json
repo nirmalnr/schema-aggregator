@@ -1,6 +1,6 @@
 {
-  "$id": "https://schema.beckn.io/PaymentAction/v2.0",
-  "x-iri": "https://schema.beckn.io/PaymentAction/v2.0",
+  "$id": "https://schema.nfh.global/PaymentAction/v2.0",
+  "x-iri": "https://schema.nfh.global/PaymentAction/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "description": "Schema definition for PaymentAction in the Beckn Protocol v2.0.1",
   "title": "PaymentAction",
@@ -66,7 +66,7 @@
       "example": "https://payments.example.com/pay?transactionId=123&amount=100"
     },
     "state": {
-      "$ref": "https://schema.beckn.io/State/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/State/v2.0/schema.json"
     },
     "txnRef": {
       "description": "PSP/gateway/bank transaction reference",
@@ -76,7 +76,7 @@
       }
     },
     "checkoutAt": {
-      "$ref": "https://schema.beckn.io/CheckoutTerminal/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/CheckoutTerminal/v2.0/schema.json"
     },
     "paidAt": {
       "description": "The time at which the payment was made",
@@ -85,7 +85,7 @@
     },
     "paymentActionAttributes": {
       "description": "Extensible set of attributes containing payment actions specific to each ecosystem.",
-      "$ref": "https://schema.beckn.io/Attributes/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Attributes/v2.0/schema.json"
     }
   },
   "required": [

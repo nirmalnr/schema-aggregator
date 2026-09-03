@@ -12,7 +12,7 @@ info:
 components:
   schemas:
     Time:
-      x-iri: https://schema.beckn.io/Time/v2.0
+      x-iri: https://schema.nfh.global/Time/v2.0
       description: Represents a moment or duration in time. Can express a timestamp,
         a duration, or a time range.
       title: Time
@@ -33,7 +33,7 @@ components:
           description: A time range with start and end
           x-jsonld:
             '@id': beckn:timeRange
-          $ref: https://schema.beckn.io/TimePeriod/v2.1/attributes.yaml#/components/schemas/TimePeriod
+          $ref: https://schema.nfh.global/TimePeriod/v2.1/attributes.yaml#/components/schemas/TimePeriod
         label:
           type: string
           description: Human-readable label for this time

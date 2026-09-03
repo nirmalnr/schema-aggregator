@@ -11,7 +11,7 @@ info:
 components:
   schemas:
     CatalogSubscription:
-      x-iri: https://schema.beckn.io/CatalogSubscription/v2.0
+      x-iri: https://schema.nfh.global/CatalogSubscription/v2.0
       type: object
       description: Full subscription record
       required:
@@ -45,7 +45,7 @@ components:
           - DELETED
           description: Lifecycle status of the subscription
         deliveryPolicy:
-          $ref: https://schema.beckn.io/DeliveryPolicy/v2.0/attributes.yaml#/components/schemas/DeliveryPolicy
+          $ref: https://schema.nfh.global/DeliveryPolicy/v2.0/attributes.yaml#/components/schemas/DeliveryPolicy
         createdAt:
           type: string
           format: date-time

@@ -11,7 +11,7 @@ info:
 components:
   schemas:
     Pagination:
-      x-iri: https://schema.beckn.io/Pagination/v2.0
+      x-iri: https://schema.nfh.global/Pagination/v2.0
       type: object
       description: 'Pagination metadata returned with list responses
 

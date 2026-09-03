@@ -11,7 +11,7 @@ info:
 components:
   schemas:
     CancellationReason:
-      x-iri: https://schema.beckn.io/CancellationReason/v2.0
+      x-iri: https://schema.nfh.global/CancellationReason/v2.0
       description: Schema definition for CancellationReason in the Beckn Protocol v2.0.1
       title: CancellationReason
       x-tags:
@@ -20,7 +20,7 @@ components:
       properties:
         descriptor:
           allOf:
-          - $ref: https://schema.beckn.io/Descriptor/v2.1/attributes.yaml#/components/schemas/Descriptor
+          - $ref: https://schema.nfh.global/Descriptor/v2.1/attributes.yaml#/components/schemas/Descriptor
           properties:
             '@type':
               default: beckn:CancellationReason

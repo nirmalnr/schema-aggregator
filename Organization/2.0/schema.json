@@ -1,6 +1,6 @@
 {
-  "$id": "https://schema.beckn.io/Organization/v2.0",
-  "x-iri": "https://schema.beckn.io/Organization/v2.0",
+  "$id": "https://schema.nfh.global/Organization/v2.0",
+  "x-iri": "https://schema.nfh.global/Organization/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "description": "An organization such as a company, non-profit, or governmental institution. Modeled after schema.org/Organization.",
   "title": "Organization",
@@ -42,7 +42,7 @@
           "type": "string"
         },
         {
-          "$ref": "https://schema.beckn.io/Address/v2.0/schema.json"
+          "$ref": "https://schema.nfh.global/Address/v2.0/schema.json"
         }
       ],
       "x-jsonld": {
@@ -53,7 +53,7 @@
       "type": "array",
       "description": "Credentials held by the organization",
       "items": {
-        "$ref": "https://schema.beckn.io/Credential/v2.0/schema.json"
+        "$ref": "https://schema.nfh.global/Credential/v2.0/schema.json"
       },
       "x-jsonld": {
         "@id": "schema:hasCredential"
@@ -63,7 +63,7 @@
       "type": "array",
       "description": "Skills or capabilities of the organization",
       "items": {
-        "$ref": "https://schema.beckn.io/Skill/v2.0/schema.json"
+        "$ref": "https://schema.nfh.global/Skill/v2.0/schema.json"
       },
       "x-jsonld": {
         "@id": "schema:hasSkill"
@@ -71,7 +71,7 @@
     },
     "organizationAttributes": {
       "description": "Extensible attribute pack for jurisdictional or domain-specific organization properties",
-      "$ref": "https://schema.beckn.io/Attributes/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Attributes/v2.0/schema.json"
     }
   },
   "required": [

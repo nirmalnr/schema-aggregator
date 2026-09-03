@@ -12,7 +12,7 @@ info:
 components:
   schemas:
     AncillaryService:
-      x-iri: https://schema.beckn.io/AncillaryService/v2.0
+      x-iri: https://schema.nfh.global/AncillaryService/v2.0
       type: object
       title: AncillaryService
       description: An optional or additional service available for purchase alongside
@@ -36,13 +36,13 @@ components:
           type: string
         descriptor:
           description: Human-readable description of the offer
-          $ref: https://schema.beckn.io/Descriptor/v2.0/attributes.yaml#/components/schemas/Descriptor
+          $ref: https://schema.nfh.global/Descriptor/v2.0/attributes.yaml#/components/schemas/Descriptor
         price:
           description: Price specification for this offer
-          $ref: https://schema.beckn.io/PriceSpecification/v2.1/attributes.yaml#/components/schemas/PriceSpecification
+          $ref: https://schema.nfh.global/PriceSpecification/v2.1/attributes.yaml#/components/schemas/PriceSpecification
         validity:
           description: Validity period of the offer
-          $ref: https://schema.beckn.io/TimePeriod/v2.0/attributes.yaml#/components/schemas/TimePeriod
+          $ref: https://schema.nfh.global/TimePeriod/v2.0/attributes.yaml#/components/schemas/TimePeriod
         tags:
           description: Tags or labels associated with the offer
           type: string

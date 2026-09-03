@@ -1,6 +1,6 @@
 {
-  "$id": "https://schema.beckn.io/Descriptor/v2.1",
-  "x-iri": "https://schema.beckn.io/Descriptor/v2.1",
+  "$id": "https://schema.nfh.global/Descriptor/v2.1",
+  "x-iri": "https://schema.nfh.global/Descriptor/v2.1",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "description": "Schema definition for Descriptor in the Beckn Protocol v2.0.1",
   "title": "Descriptor",
@@ -34,14 +34,14 @@
       "description": "Links to downloadable business/supporting documents",
       "type": "array",
       "items": {
-        "$ref": "https://schema.beckn.io/Document/v2.0/schema.json"
+        "$ref": "https://schema.nfh.global/Document/v2.0/schema.json"
       }
     },
     "mediaFile": {
       "description": "Links to multimedia files and images",
       "type": "array",
       "items": {
-        "$ref": "https://schema.beckn.io/MediaFile/v2.0/schema.json"
+        "$ref": "https://schema.nfh.global/MediaFile/v2.0/schema.json"
       }
     }
   },

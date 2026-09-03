@@ -1,11 +1,11 @@
 {
-  "$id": "https://schema.beckn.io/NackBadRequest/v2.0",
-  "x-iri": "https://schema.beckn.io/NackBadRequest/v2.0",
+  "$id": "https://schema.nfh.global/NackBadRequest/v2.0",
+  "x-iri": "https://schema.nfh.global/NackBadRequest/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "description": "NACK — Bad Request: Malformed or invalid request; the server could not parse or validate the payload.",
   "allOf": [
     {
-      "$ref": "https://schema.beckn.io/Ack/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Ack/v2.0/schema.json"
     },
     {
       "type": "object",
@@ -15,7 +15,7 @@
           "const": "NACK"
         },
         "error": {
-          "$ref": "https://schema.beckn.io/Error/v2.0/schema.json"
+          "$ref": "https://schema.nfh.global/Error/v2.0/schema.json"
         }
       }
     }

@@ -6,14 +6,10 @@ Commercial and availability terms under which a course is offered. The proposedC
 
 | File | Purpose |
 |---|---|
-| [https://schema.beckn.io/CourseOfferAttributes/attributes.yaml](https://schema.beckn.io/CourseOfferAttributes/attributes.yaml) | OpenAPI schema envelope (latest path) |
-| [https://schema.beckn.io/CourseOfferAttributes/v2.1/attributes.yaml](https://schema.beckn.io/CourseOfferAttributes/v2.1/attributes.yaml) | OpenAPI schema envelope (versioned path) |
-| [https://schema.beckn.io/CourseOfferAttributes/attributes.jsonschema.yaml](https://schema.beckn.io/CourseOfferAttributes/attributes.jsonschema.yaml) | JSON Schema document (latest path) |
-| [https://schema.beckn.io/CourseOfferAttributes/v2.1/attributes.jsonschema.yaml](https://schema.beckn.io/CourseOfferAttributes/v2.1/attributes.jsonschema.yaml) | JSON Schema document (versioned path) |
-| [https://schema.beckn.io/CourseOfferAttributes/context.jsonld](https://schema.beckn.io/CourseOfferAttributes/context.jsonld) | JSON-LD context (latest path) |
-| [https://schema.beckn.io/CourseOfferAttributes/v2.1/context.jsonld](https://schema.beckn.io/CourseOfferAttributes/v2.1/context.jsonld) | JSON-LD context (versioned path) |
-| [https://schema.beckn.io/CourseOfferAttributes/vocab.jsonld](https://schema.beckn.io/CourseOfferAttributes/vocab.jsonld) | RDF vocabulary (latest path) |
-| [https://schema.beckn.io/CourseOfferAttributes/v2.1/vocab.jsonld](https://schema.beckn.io/CourseOfferAttributes/v2.1/vocab.jsonld) | RDF vocabulary (versioned path) |
+| [https://schema.nfh.global/CourseOfferAttributes/v2.1/attributes.yaml](https://schema.nfh.global/CourseOfferAttributes/v2.1/attributes.yaml) | OpenAPI schema envelope (versioned path) |
+| [https://schema.nfh.global/CourseOfferAttributes/v2.1/attributes.jsonschema.yaml](https://schema.nfh.global/CourseOfferAttributes/v2.1/attributes.jsonschema.yaml) | JSON Schema document (versioned path) |
+| [https://schema.nfh.global/CourseOfferAttributes/v2.1/context.jsonld](https://schema.nfh.global/CourseOfferAttributes/v2.1/context.jsonld) | JSON-LD context (versioned path) |
+| [https://schema.nfh.global/CourseOfferAttributes/v2.1/vocab.jsonld](https://schema.nfh.global/CourseOfferAttributes/v2.1/vocab.jsonld) | RDF vocabulary (versioned path) |
 
 ## Properties
 

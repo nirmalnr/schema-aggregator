@@ -1,6 +1,6 @@
 {
-  "$id": "https://schema.beckn.io/TripSpecification/v2.0",
-  "x-iri": "https://schema.beckn.io/TripSpecification/v2.0",
+  "$id": "https://schema.nfh.global/TripSpecification/v2.0",
+  "x-iri": "https://schema.nfh.global/TripSpecification/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "TripSpecification",
   "type": "object",
@@ -8,11 +8,11 @@
   "properties": {
     "origin": {
       "description": "Desired origin of the trip",
-      "$ref": "https://schema.beckn.io/Location/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Location/v2.0/schema.json"
     },
     "destination": {
       "description": "Desired destination of the trip",
-      "$ref": "https://schema.beckn.io/Location/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Location/v2.0/schema.json"
     },
     "time": {
       "description": "Desired departure or arrival time",
@@ -37,7 +37,7 @@
     },
     "spatial": {
       "description": "Geographic constraints on the search area",
-      "$ref": "https://schema.beckn.io/SpatialConstraint/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/SpatialConstraint/v2.0/schema.json"
     },
     "provider": {
       "description": "Identifier of a specific provider to search within",

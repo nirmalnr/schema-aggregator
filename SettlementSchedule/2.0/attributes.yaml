@@ -11,7 +11,7 @@ info:
 components:
   schemas:
     SettlementSchedule:
-      x-iri: https://schema.beckn.io/SettlementSchedule/v2.0
+      x-iri: https://schema.nfh.global/SettlementSchedule/v2.0
       description: Schema definition for SettlementSchedule in the Beckn Protocol v2.0.1
       title: SettlementSchedule
       type: object

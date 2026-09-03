@@ -24,8 +24,8 @@ Initial v2.1 release using generalised contractAttributes container.
 
 This schema uses a self-contained `context.jsonld` that declares:
 - `schema`: `https://schema.org/`
-- `beckn`: `https://schema.beckn.io/`
-- Per-schema prefix pointing to `https://schema.beckn.io/EmployerHiringContract#`
+- `beckn`: `https://schema.nfh.global/`
+- Per-schema prefix pointing to `https://schema.nfh.global/EmployerHiringContract#`
 
 No `@import` is used — all prefixes are declared directly.
 

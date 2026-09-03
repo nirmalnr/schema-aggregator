@@ -6,12 +6,9 @@ An Invoice is a financial statement issued by a creditor to a debtor that itemis
 
 | File | Purpose |
 |---|---|
-| [https://schema.beckn.io/Invoice/attributes.yaml](https://schema.beckn.io/Invoice/attributes.yaml) | OpenAPI schema envelope (latest path) |
-| [https://schema.beckn.io/Invoice/v2.2/attributes.yaml](https://schema.beckn.io/Invoice/v2.2/attributes.yaml) | OpenAPI schema envelope (versioned path) |
-| [https://schema.beckn.io/Invoice/context.jsonld](https://schema.beckn.io/Invoice/context.jsonld) | JSON-LD context (latest path) |
-| [https://schema.beckn.io/Invoice/v2.2/context.jsonld](https://schema.beckn.io/Invoice/v2.2/context.jsonld) | JSON-LD context (versioned path) |
-| [https://schema.beckn.io/Invoice/vocab.jsonld](https://schema.beckn.io/Invoice/vocab.jsonld) | RDF vocabulary (latest path) |
-| [https://schema.beckn.io/Invoice/v2.2/vocab.jsonld](https://schema.beckn.io/Invoice/v2.2/vocab.jsonld) | RDF vocabulary (versioned path) |
+| [https://schema.nfh.global/Invoice/v2.2/attributes.yaml](https://schema.nfh.global/Invoice/v2.2/attributes.yaml) | OpenAPI schema envelope (versioned path) |
+| [https://schema.nfh.global/Invoice/v2.2/context.jsonld](https://schema.nfh.global/Invoice/v2.2/context.jsonld) | JSON-LD context (versioned path) |
+| [https://schema.nfh.global/Invoice/v2.2/vocab.jsonld](https://schema.nfh.global/Invoice/v2.2/vocab.jsonld) | RDF vocabulary (versioned path) |
 
 ## Model
 
@@ -32,12 +29,12 @@ Invoice is an **independent** schema (not a specialisation of `Contract`). It bo
 | `number` | yes | string | Human-visible invoice number. |
 | `issuedAt` | yes | string (date-time) | Timestamp at which the invoice was issued. |
 | `dueDate` | no | string (date) | Date by which the invoice amount is due for settlement. |
-| `descriptor` | no | $ref: https://schema.beckn.io/Descriptor/v2.1/attributes.yaml#/components/schemas/Descriptor | Describes the nature of the invoice in human / agent readable terms. |
+| `descriptor` | no | $ref: https://schema.nfh.global/Descriptor/v2.1/attributes.yaml#/components/schemas/Descriptor | Describes the nature of the invoice in human / agent readable terms. |
 | `status` | no | allOf: Descriptor (code ∈ DRAFT, PENDING, COMMITTED, SETTLED, CANCELLED, DISPUTED; default PENDING) | The lifecycle state of the invoice. |
-| `creditor` | yes | $ref: https://schema.beckn.io/Participant/v2.0/attributes.yaml#/components/schemas/Participant | The party that is owed the net amount — the seller / provider. |
-| `debtor` | yes | $ref: https://schema.beckn.io/Participant/v2.0/attributes.yaml#/components/schemas/Participant | The party the invoice is issued to and who owes the net amount — the consumer being billed. |
+| `creditor` | yes | $ref: https://schema.nfh.global/Participant/v2.0/attributes.yaml#/components/schemas/Participant | The party that is owed the net amount — the seller / provider. |
+| `debtor` | yes | $ref: https://schema.nfh.global/Participant/v2.0/attributes.yaml#/components/schemas/Participant | The party the invoice is issued to and who owes the net amount — the consumer being billed. |
 | `statement` | yes | array of `{ consideration, amount }` | The itemised statement of charges. Each entry pairs a `Consideration` (billed item, by `@type` in `considerationAttributes`) with its monetary `amount` (`PriceSpecification`). |
-| `total` | no | $ref: https://schema.beckn.io/PriceSpecification/v2.1/attributes.yaml#/components/schemas/PriceSpecification | The net amount payable for this invoice across all statement entries. |
-| `settlementTerms` | no | $ref: https://schema.beckn.io/SettlementTerm/v2.0/attributes.yaml#/components/schemas/SettlementTerm | The agreed terms under which the invoice is to be settled. |
-| `settlementAction` | no | array of $ref: https://schema.beckn.io/PaymentAction/v2.0/attributes.yaml#/components/schemas/PaymentAction | Proofs of settlement that discharge the invoice — one entry per payment event. |
-| `invoiceAttributes` | no | $ref: https://schema.beckn.io/Attributes/v2.0/attributes.yaml#/components/schemas/Attributes | Domain-specific extension attributes — tax regime (e.g. GST/VAT), e-invoice refs, legal boilerplate, etc. |
+| `total` | no | $ref: https://schema.nfh.global/PriceSpecification/v2.1/attributes.yaml#/components/schemas/PriceSpecification | The net amount payable for this invoice across all statement entries. |
+| `settlementTerms` | no | $ref: https://schema.nfh.global/SettlementTerm/v2.0/attributes.yaml#/components/schemas/SettlementTerm | The agreed terms under which the invoice is to be settled. |
+| `settlementAction` | no | array of $ref: https://schema.nfh.global/PaymentAction/v2.0/attributes.yaml#/components/schemas/PaymentAction | Proofs of settlement that discharge the invoice — one entry per payment event. |
+| `invoiceAttributes` | no | $ref: https://schema.nfh.global/Attributes/v2.0/attributes.yaml#/components/schemas/Attributes | Domain-specific extension attributes — tax regime (e.g. GST/VAT), e-invoice refs, legal boilerplate, etc. |

@@ -1,6 +1,6 @@
 {
-  "$id": "https://schema.beckn.io/ItineraryElement/v2.0",
-  "x-iri": "https://schema.beckn.io/ItineraryElement/v2.0",
+  "$id": "https://schema.nfh.global/ItineraryElement/v2.0",
+  "x-iri": "https://schema.nfh.global/ItineraryElement/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "ItineraryElement",
   "type": "object",
@@ -12,11 +12,11 @@
     },
     "segmentRef": {
       "description": "Reference to a flight segment if this is a flight element",
-      "$ref": "https://schema.beckn.io/FlightSegment/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/FlightSegment/v2.0/schema.json"
     },
     "legRef": {
       "description": "Reference to a transport leg if this is a surface element",
-      "$ref": "https://schema.beckn.io/Leg/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Leg/v2.0/schema.json"
     },
     "sequence": {
       "description": "Sequential order of this element within the itinerary",
@@ -28,15 +28,15 @@
     },
     "descriptor": {
       "description": "Human-readable description of the item",
-      "$ref": "https://schema.beckn.io/Descriptor/v2.1/schema.json"
+      "$ref": "https://schema.nfh.global/Descriptor/v2.1/schema.json"
     },
     "price": {
       "description": "Price for this contract item",
-      "$ref": "https://schema.beckn.io/PriceSpecification/v2.1/schema.json"
+      "$ref": "https://schema.nfh.global/PriceSpecification/v2.1/schema.json"
     },
     "quantity": {
       "description": "Quantity of this contract item",
-      "$ref": "https://schema.beckn.io/Quantity/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Quantity/v2.0/schema.json"
     }
   },
   "additionalProperties": false,

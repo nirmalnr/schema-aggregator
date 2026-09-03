@@ -1,6 +1,6 @@
 {
-  "$id": "https://schema.beckn.io/RatingInput/v2.1",
-  "x-iri": "https://schema.beckn.io/RatingInput/v2.1",
+  "$id": "https://schema.nfh.global/RatingInput/v2.1",
+  "x-iri": "https://schema.nfh.global/RatingInput/v2.1",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "description": "A form designed to capture rating and feedback from a user. This can be used by both BAP and BPP to fetch ratings and feedback of their respective users.",
   "title": "RatingInput",
@@ -18,10 +18,10 @@
           "type": "string"
         },
         "descriptor": {
-          "$ref": "https://schema.beckn.io/Descriptor/v2.1/schema.json"
+          "$ref": "https://schema.nfh.global/Descriptor/v2.1/schema.json"
         },
         "targetAttributes": {
-          "$ref": "https://schema.beckn.io/Attributes/v2.0/schema.json"
+          "$ref": "https://schema.nfh.global/Attributes/v2.0/schema.json"
         }
       }
     },
@@ -29,7 +29,7 @@
       "type": "object"
     },
     "feedbackFormSubmission": {
-      "$ref": "https://schema.beckn.io/FormSubmission/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/FormSubmission/v2.0/schema.json"
     }
   },
   "required": [

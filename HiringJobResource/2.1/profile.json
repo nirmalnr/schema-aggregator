@@ -1,5 +1,5 @@
 {
-  "id": "https://schema.beckn.io/HiringJobResource/v1",
+  "id": "https://schema.nfh.global/HiringJobResource/v1",
   "name": "HiringJobResource",
   "version": "2.1.0",
   "protocol_version": "2.0",

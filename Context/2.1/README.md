@@ -8,9 +8,9 @@ This version is aligned with the `Context` schema in `beckn.yaml`.
 
 | File | Purpose |
 |---|---|
-| [https://schema.beckn.io/Context/v2.1/attributes.yaml](https://schema.beckn.io/Context/v2.1/attributes.yaml) | OpenAPI schema envelope (versioned path) |
-| [https://schema.beckn.io/Context/v2.1/context.jsonld](https://schema.beckn.io/Context/v2.1/context.jsonld) | JSON-LD context (versioned path) |
-| [https://schema.beckn.io/Context/v2.1/vocab.jsonld](https://schema.beckn.io/Context/v2.1/vocab.jsonld) | RDF vocabulary (versioned path) |
+| [https://schema.nfh.global/Context/v2.1/attributes.yaml](https://schema.nfh.global/Context/v2.1/attributes.yaml) | OpenAPI schema envelope (versioned path) |
+| [https://schema.nfh.global/Context/v2.1/context.jsonld](https://schema.nfh.global/Context/v2.1/context.jsonld) | JSON-LD context (versioned path) |
+| [https://schema.nfh.global/Context/v2.1/vocab.jsonld](https://schema.nfh.global/Context/v2.1/vocab.jsonld) | RDF vocabulary (versioned path) |
 
 ## Changes from v2.0
 

@@ -11,7 +11,7 @@ info:
 components:
   schemas:
     SupportTicket:
-      x-iri: https://schema.beckn.io/SupportTicket/v2.0
+      x-iri: https://schema.nfh.global/SupportTicket/v2.0
       description: A support ticket raised against an order
       title: SupportTicket
       x-tags:
@@ -22,5 +22,5 @@ components:
           description: Ticket ID
           type: string
         supportTicketAttributes:
-          $ref: https://schema.beckn.io/Attributes/v2.0/attributes.yaml#/components/schemas/Attributes
+          $ref: https://schema.nfh.global/Attributes/v2.0/attributes.yaml#/components/schemas/Attributes
       additionalProperties: false

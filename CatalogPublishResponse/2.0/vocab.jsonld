@@ -1,8 +1,8 @@
 {
   "@context": {
-    "@vocab": "https://schema.beckn.io/CatalogPublishResponse/v2.0#",
+    "@vocab": "https://schema.nfh.global/CatalogPublishResponse/v2.0#",
     "schema": "https://schema.org/version/latest/schemaorg-current-https.jsonld",
-    "beckn": "https://schema.beckn.io/LinkedData/v2.1/context.jsonld",
+    "beckn": "https://schema.nfh.global/LinkedData/v2.1/context.jsonld",
     "CatalogPublishResponse": "beckn:CatalogPublishResponse",
     "action": "beckn:action",
     "context": "beckn:context",

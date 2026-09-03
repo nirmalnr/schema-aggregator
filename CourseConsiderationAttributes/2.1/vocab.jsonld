@@ -1,10 +1,10 @@
 {
   "@context": {
-    "@import": "https://schema.beckn.io/core/v2/vocab.jsonld",
+    "@import": "https://schema.nfh.global/core/v2/vocab.jsonld",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
-    "ccoa": "https://schema.beckn.io/CourseConsiderationAttributes#",
+    "ccoa": "https://schema.nfh.global/CourseConsiderationAttributes#",
     "schema": "https://schema.org/version/latest/schemaorg-current-https.jsonld",
-    "beckn": "https://schema.beckn.io/LinkedData/v2.1/context.jsonld",
+    "beckn": "https://schema.nfh.global/LinkedData/v2.1/context.jsonld",
     "CourseConsiderationAttributes": "beckn:CourseConsiderationAttributes",
     "fee_category": "beckn:fee_category",
     "installment_count": "beckn:installment_count",

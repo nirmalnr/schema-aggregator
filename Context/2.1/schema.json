@@ -1,6 +1,6 @@
 {
-  "$id": "https://schema.beckn.io/Context/v2.1",
-  "x-iri": "https://schema.beckn.io/Context/v2.1",
+  "$id": "https://schema.nfh.global/Context/v2.1",
+  "x-iri": "https://schema.nfh.global/Context/v2.1",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "description": "The message envelope header that accompanies every Beckn API call, carrying network addressing, protocol version, action identification, transaction correlation identifiers, timing constraints, and optional cryptographic metadata required to route, authenticate, and correlate messages across the asynchronous Beckn communication pattern.\n\nContext appears in every request and callback across all phases of the value-exchange lifecycle. The CN assigns bapId, bapUri, transactionId, messageId, and timestamp when originating a request; the PN assigns bppId and bppUri when it is the receiving actor. Fabric services such as the CS (Cataloging Service) and DS (Discovery Service) validate the version, action, and signature fields as part of request authentication.\n\nRelationship: Composes the RequestDigest schema via the requestDigest property, which carries the BLAKE2b-512 hash of the originating request body for non-repudiation of the asynchronous callback leg.",
   "type": "object",
@@ -91,7 +91,7 @@
       }
     },
     "requestDigest": {
-      "$ref": "https://schema.beckn.io/RequestDigest/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/RequestDigest/v2.0/schema.json"
     }
   }
 }

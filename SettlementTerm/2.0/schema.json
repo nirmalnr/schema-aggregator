@@ -1,6 +1,6 @@
 {
-  "$id": "https://schema.beckn.io/SettlementTerm/v2.0",
-  "x-iri": "https://schema.beckn.io/SettlementTerm/v2.0",
+  "$id": "https://schema.nfh.global/SettlementTerm/v2.0",
+  "x-iri": "https://schema.nfh.global/SettlementTerm/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "description": "Describes the terms of settlement associated with a given transaction. This is not to be confused with the PaymentAction as it describes all the places where the money gets disbursed after reconciliation.",
   "title": "SettlementTerm",
@@ -26,7 +26,7 @@
     },
     "paymentTrigger": {
       "description": "Describes the event which triggers the payment against this settlement term",
-      "$ref": "https://schema.beckn.io/PaymentTrigger/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/PaymentTrigger/v2.0/schema.json"
     },
     "settlementStatus": {
       "type": "string",
@@ -36,7 +36,7 @@
       ]
     },
     "settlementSchedule": {
-      "$ref": "https://schema.beckn.io/SettlementSchedule/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/SettlementSchedule/v2.0/schema.json"
     },
     "payTo": {
       "description": "Describes the details of the account where the money must be remited. It could be a bank account, a payment gateway, or a virtual payment address (like a UPI ID)",
@@ -91,7 +91,7 @@
     },
     "settlementTermAttributes": {
       "description": "Additional use case specific settlement terms that must be adhered to",
-      "$ref": "https://schema.beckn.io/Attributes/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Attributes/v2.0/schema.json"
     }
   },
   "x-tags": [

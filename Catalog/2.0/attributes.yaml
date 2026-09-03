@@ -11,7 +11,7 @@ info:
 components:
   schemas:
     Catalog:
-      x-iri: https://schema.beckn.io/Catalog/v2.0
+      x-iri: https://schema.nfh.global/Catalog/v2.0
       description: Schema definition for Catalog in the Beckn Protocol
       title: Catalog
       type: object
@@ -29,7 +29,7 @@ components:
           description: Unique identifier for the catalog
           example: catalog-electronics-001
         beckn:descriptor:
-          $ref: https://schema.beckn.io/Descriptor/v2.1/attributes.yaml#/components/schemas/Descriptor
+          $ref: https://schema.nfh.global/Descriptor/v2.1/attributes.yaml#/components/schemas/Descriptor
         beckn:providerId:
           type: string
           description: Reference to the provider that owns this catalog
@@ -44,7 +44,7 @@ components:
           description: BPP (Beckn Protocol Provider) URI endpoint
           example: https://bpp.example.com
         beckn:validity:
-          $ref: https://schema.beckn.io/TimePeriod/v2.1/attributes.yaml#/components/schemas/TimePeriod
+          $ref: https://schema.nfh.global/TimePeriod/v2.1/attributes.yaml#/components/schemas/TimePeriod
         beckn:isActive:
           type: boolean
           description: Whether the catalog is active
@@ -55,11 +55,11 @@ components:
 
             '
           items:
-            $ref: https://schema.beckn.io/Item/v2.1/attributes.yaml#/components/schemas/Item
+            $ref: https://schema.nfh.global/Item/v2.1/attributes.yaml#/components/schemas/Item
         beckn:offers:
           type: array
           items:
-            $ref: https://schema.beckn.io/Offer/v2.1/attributes.yaml#/components/schemas/Offer
+            $ref: https://schema.nfh.global/Offer/v2.1/attributes.yaml#/components/schemas/Offer
       required:
       - '@context'
       - '@type'

@@ -11,7 +11,7 @@ info:
 components:
   schemas:
     Support:
-      x-iri: https://schema.beckn.io/Support/v2.0
+      x-iri: https://schema.nfh.global/Support/v2.0
       description: Describes a support session info
       title: Support
       type: object
@@ -21,12 +21,12 @@ components:
           type: string
         descriptor:
           description: A description of the nature of support needed
-          $ref: https://schema.beckn.io/Descriptor/v2.1/attributes.yaml#/components/schemas/Descriptor
+          $ref: https://schema.nfh.global/Descriptor/v2.1/attributes.yaml#/components/schemas/Descriptor
         channels:
           description: Available support channels described in individual linked data
             JSON objects
           type: array
           minItems: 1
           items:
-            $ref: https://schema.beckn.io/Attributes/v2.0/attributes.yaml#/components/schemas/Attributes
+            $ref: https://schema.nfh.global/Attributes/v2.0/attributes.yaml#/components/schemas/Attributes
       additionalProperties: false

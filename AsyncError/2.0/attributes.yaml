@@ -11,12 +11,12 @@ info:
 components:
   schemas:
     AsyncError:
-      x-iri: https://schema.beckn.io/AsyncError/v2.0
+      x-iri: https://schema.nfh.global/AsyncError/v2.0
       title: Asynchronous Error
       description: Error returned asynchronously during a callback. Wraps the base
         `Error` schema with JSON-LD type annotations to allow linked-data processing.
       allOf:
-      - $ref: https://schema.beckn.io/Error/v2.0/attributes.yaml#/components/schemas/Error
+      - $ref: https://schema.nfh.global/Error/v2.0/attributes.yaml#/components/schemas/Error
       - type: object
         properties: {}
         additionalProperties: true

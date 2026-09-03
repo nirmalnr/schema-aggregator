@@ -12,7 +12,7 @@ info:
 components:
   schemas:
     VehicleJourney:
-      x-iri: https://schema.beckn.io/VehicleJourney/v2.0
+      x-iri: https://schema.nfh.global/VehicleJourney/v2.0
       type: object
       title: VehicleJourney
       description: A specific operational instance of a vehicle traveling a defined
@@ -27,19 +27,19 @@ components:
           type: string
         routeRef:
           description: Reference to the route being served
-          $ref: https://schema.beckn.io/Route/v2.0/attributes.yaml#/components/schemas/Route
+          $ref: https://schema.nfh.global/Route/v2.0/attributes.yaml#/components/schemas/Route
         serviceCalendarRef:
           description: Calendar defining when this journey operates
-          $ref: https://schema.beckn.io/ServiceCalendar/v2.0/attributes.yaml#/components/schemas/ServiceCalendar
+          $ref: https://schema.nfh.global/ServiceCalendar/v2.0/attributes.yaml#/components/schemas/ServiceCalendar
         vehicleRef:
           description: Vehicle assigned to this journey
-          $ref: https://schema.beckn.io/Vehicle/v2.0/attributes.yaml#/components/schemas/Vehicle
+          $ref: https://schema.nfh.global/Vehicle/v2.0/attributes.yaml#/components/schemas/Vehicle
         patternRef:
           description: Journey pattern being followed
-          $ref: https://schema.beckn.io/Pattern/v2.0/attributes.yaml#/components/schemas/Pattern
+          $ref: https://schema.nfh.global/Pattern/v2.0/attributes.yaml#/components/schemas/Pattern
         stopTimes:
           description: Scheduled stop times for each stop on this journey
-          $ref: https://schema.beckn.io/StopTime/v2.0/attributes.yaml#/components/schemas/StopTime
+          $ref: https://schema.nfh.global/StopTime/v2.0/attributes.yaml#/components/schemas/StopTime
         id:
           description: Unique identifier for the fulfillment
           type: string
@@ -48,17 +48,17 @@ components:
           type: string
         agent:
           description: The entity responsible for performing the fulfillment
-          $ref: https://schema.beckn.io/FulfillmentAgent/v2.0/attributes.yaml#/components/schemas/FulfillmentAgent
+          $ref: https://schema.nfh.global/FulfillmentAgent/v2.0/attributes.yaml#/components/schemas/FulfillmentAgent
         mode:
           description: Mode of fulfillment
-          $ref: https://schema.beckn.io/FulfillmentMode/v2.0/attributes.yaml#/components/schemas/FulfillmentMode
+          $ref: https://schema.nfh.global/FulfillmentMode/v2.0/attributes.yaml#/components/schemas/FulfillmentMode
         participants:
           description: Participants entitled to receive this fulfillment
-          $ref: https://schema.beckn.io/Participant/v2.0/attributes.yaml#/components/schemas/Participant
+          $ref: https://schema.nfh.global/Participant/v2.0/attributes.yaml#/components/schemas/Participant
         stages:
           description: Stages in the fulfillment lifecycle
-          $ref: https://schema.beckn.io/FulfillmentStage/v2.0/attributes.yaml#/components/schemas/FulfillmentStage
+          $ref: https://schema.nfh.global/FulfillmentStage/v2.0/attributes.yaml#/components/schemas/FulfillmentStage
         instructions:
           description: Instructions for fulfillment
-          $ref: https://schema.beckn.io/Descriptor/v2.0/attributes.yaml#/components/schemas/Descriptor
+          $ref: https://schema.nfh.global/Descriptor/v2.0/attributes.yaml#/components/schemas/Descriptor
       additionalProperties: false

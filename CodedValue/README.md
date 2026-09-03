@@ -36,7 +36,7 @@ Not attached to any Beckn container directly. Referenced via `$ref` as a propert
 other schemas' `attributes.yaml`. Always use the canonical absolute URL:
 
 ```
-$ref: "https://schema.beckn.io/CodedValue/v2.1/attributes.yaml#/components/schemas/CodedValue"
+$ref: "https://schema.nfh.global/CodedValue/v2.1/attributes.yaml#/components/schemas/CodedValue"
 ```
 
 ## Design Rationale

@@ -6,7 +6,7 @@
   "version": "2.1.0",
   "beckn_container": "performanceAttributes",
   "namespace_prefix": "hppa",
-  "namespace_iri": "https://schema.beckn.io/HiringProcessPerformance#",
+  "namespace_iri": "https://schema.nfh.global/HiringProcessPerformance#",
   "topology": "inverted",
   "bap_role": "Employer App",
   "bpp_role": "Candidate Platform",

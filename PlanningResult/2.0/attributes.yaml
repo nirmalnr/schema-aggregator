@@ -12,7 +12,7 @@ info:
 components:
   schemas:
     PlanningResult:
-      x-iri: https://schema.beckn.io/PlanningResult/v2.0
+      x-iri: https://schema.nfh.global/PlanningResult/v2.0
       type: object
       title: PlanningResult
       description: The output of a MaaS platform planning request, listing available
@@ -23,22 +23,22 @@ components:
       properties:
         origin:
           description: Origin location for the planning query
-          $ref: https://schema.beckn.io/Location/v2.0/attributes.yaml#/components/schemas/Location
+          $ref: https://schema.nfh.global/Location/v2.0/attributes.yaml#/components/schemas/Location
         destination:
           description: Destination location for the planning query
-          $ref: https://schema.beckn.io/Location/v2.0/attributes.yaml#/components/schemas/Location
+          $ref: https://schema.nfh.global/Location/v2.0/attributes.yaml#/components/schemas/Location
         options:
           description: Available transport options returned
-          $ref: https://schema.beckn.io/RideOption/v2.0/attributes.yaml#/components/schemas/RideOption
+          $ref: https://schema.nfh.global/RideOption/v2.0/attributes.yaml#/components/schemas/RideOption
         itineraries:
           description: Multi-modal itinerary options if applicable
-          $ref: https://schema.beckn.io/Itinerary/v2.0/attributes.yaml#/components/schemas/Itinerary
+          $ref: https://schema.nfh.global/Itinerary/v2.0/attributes.yaml#/components/schemas/Itinerary
         id:
           description: Unique identifier for the catalog
           type: string
         descriptor:
           description: Human-readable description of the catalog
-          $ref: https://schema.beckn.io/Descriptor/v2.0/attributes.yaml#/components/schemas/Descriptor
+          $ref: https://schema.nfh.global/Descriptor/v2.0/attributes.yaml#/components/schemas/Descriptor
         tags:
           description: Tags associated with the catalog
           type: string

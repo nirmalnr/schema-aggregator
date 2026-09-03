@@ -11,7 +11,7 @@ info:
 components:
   schemas:
     MediaSearchOptions:
-      x-iri: https://schema.beckn.io/MediaSearchOptions/v2.0
+      x-iri: https://schema.nfh.global/MediaSearchOptions/v2.0
       description: How the discovery engine should use the provided media inputs.
       title: MediaSearchOptions
       type: object

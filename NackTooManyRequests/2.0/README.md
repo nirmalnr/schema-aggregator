@@ -6,14 +6,10 @@ The synchronous rejection body returned when the responding NP has exceeded a re
 
 | File | Purpose |
 |---|---|
-| [https://schema.beckn.io/NackTooManyRequests/attributes.yaml](https://schema.beckn.io/NackTooManyRequests/attributes.yaml) | OpenAPI schema envelope (latest path) |
-| [https://schema.beckn.io/NackTooManyRequests/v2.0/attributes.yaml](https://schema.beckn.io/NackTooManyRequests/v2.0/attributes.yaml) | OpenAPI schema envelope (versioned path) |
-| [https://schema.beckn.io/NackTooManyRequests/attributes.jsonschema.yaml](https://schema.beckn.io/NackTooManyRequests/attributes.jsonschema.yaml) | JSON Schema document (latest path) |
-| [https://schema.beckn.io/NackTooManyRequests/v2.0/attributes.jsonschema.yaml](https://schema.beckn.io/NackTooManyRequests/v2.0/attributes.jsonschema.yaml) | JSON Schema document (versioned path) |
-| [https://schema.beckn.io/NackTooManyRequests/context.jsonld](https://schema.beckn.io/NackTooManyRequests/context.jsonld) | JSON-LD context (latest path) |
-| [https://schema.beckn.io/NackTooManyRequests/v2.0/context.jsonld](https://schema.beckn.io/NackTooManyRequests/v2.0/context.jsonld) | JSON-LD context (versioned path) |
-| [https://schema.beckn.io/NackTooManyRequests/vocab.jsonld](https://schema.beckn.io/NackTooManyRequests/vocab.jsonld) | RDF vocabulary (latest path) |
-| [https://schema.beckn.io/NackTooManyRequests/v2.0/vocab.jsonld](https://schema.beckn.io/NackTooManyRequests/v2.0/vocab.jsonld) | RDF vocabulary (versioned path) |
+| [https://schema.nfh.global/NackTooManyRequests/v2.0/attributes.yaml](https://schema.nfh.global/NackTooManyRequests/v2.0/attributes.yaml) | OpenAPI schema envelope (versioned path) |
+| [https://schema.nfh.global/NackTooManyRequests/v2.0/attributes.jsonschema.yaml](https://schema.nfh.global/NackTooManyRequests/v2.0/attributes.jsonschema.yaml) | JSON Schema document (versioned path) |
+| [https://schema.nfh.global/NackTooManyRequests/v2.0/context.jsonld](https://schema.nfh.global/NackTooManyRequests/v2.0/context.jsonld) | JSON-LD context (versioned path) |
+| [https://schema.nfh.global/NackTooManyRequests/v2.0/vocab.jsonld](https://schema.nfh.global/NackTooManyRequests/v2.0/vocab.jsonld) | RDF vocabulary (versioned path) |
 
 ## Properties
 

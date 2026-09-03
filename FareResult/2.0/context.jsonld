@@ -1,6 +1,6 @@
 {
   "@context": {
-    "beckn": "https://schema.beckn.io/mobility/v2.0/",
+    "beckn": "https://schema.nfh.global/mobility/v2.0/",
     "FareResult": "beckn:FareResult",
     "totalAmount": "beckn:totalAmount",
     "currency": "beckn:currency",

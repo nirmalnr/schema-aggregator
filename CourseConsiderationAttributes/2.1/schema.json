@@ -41,8 +41,8 @@
       "x-jsonld-id": "ccoa:refundPolicy"
     }
   },
-  "$id": "https://schema.beckn.io/CourseConsiderationAttributes/v2.1",
-  "x-iri": "https://schema.beckn.io/CourseConsiderationAttributes/v2.1",
+  "$id": "https://schema.nfh.global/CourseConsiderationAttributes/v2.1",
+  "x-iri": "https://schema.nfh.global/CourseConsiderationAttributes/v2.1",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "CourseConsiderationAttributes"
 }

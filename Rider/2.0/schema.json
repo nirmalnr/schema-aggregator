@@ -1,6 +1,6 @@
 {
-  "$id": "https://schema.beckn.io/Rider/v2.0",
-  "x-iri": "https://schema.beckn.io/Rider/v2.0",
+  "$id": "https://schema.nfh.global/Rider/v2.0",
+  "x-iri": "https://schema.nfh.global/Rider/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Rider",
   "type": "object",
@@ -24,15 +24,15 @@
     },
     "person": {
       "description": "Personal details of the participant",
-      "$ref": "https://schema.beckn.io/Person/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Person/v2.0/schema.json"
     },
     "organization": {
       "description": "Organisation the participant belongs to",
-      "$ref": "https://schema.beckn.io/Organization/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Organization/v2.0/schema.json"
     },
     "entitlements": {
       "description": "Entitlements held by the participant",
-      "$ref": "https://schema.beckn.io/Entitlement/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Entitlement/v2.0/schema.json"
     }
   },
   "additionalProperties": false,

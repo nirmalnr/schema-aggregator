@@ -1,6 +1,6 @@
 {
-  "$id": "https://schema.beckn.io/Catalog/v2.2",
-  "x-iri": "https://schema.beckn.io/Catalog/v2.2",
+  "$id": "https://schema.nfh.global/Catalog/v2.2",
+  "x-iri": "https://schema.nfh.global/Catalog/v2.2",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "description": "A structured representation of the resources, offers, and provider information that a PN makes available on the network for discovery, selection, and commitment by CNs.\n\nCatalogs appear in the discovery phase of the value-exchange lifecycle. The PN produces them and publishes them to the CS (Cataloging Service) via CatalogPublishAction; the CS indexes them and synchronizes them to the DS, which serves them to CNs in OnDiscoverAction responses.\n\nFabric context: Catalogs are managed by the CS, which indexes them for discovery and synchronizes them to the DS for delivery to subscribing CNs. The CS also stores and serves canonical master catalog items.\n\nRelationship: Composes Provider, Resource, and Offer schemas. MUST include at least one of a resources array or an offers array. The validity field constrains the temporal window during which the catalog is active, expressed as a TimePeriod.",
   "title": "Catalog",
@@ -20,7 +20,7 @@
       "description": "Human / Agent-readable description of this catalog",
       "allOf": [
         {
-          "$ref": "https://schema.beckn.io/Descriptor/v2.1/schema.json"
+          "$ref": "https://schema.nfh.global/Descriptor/v2.1/schema.json"
         }
       ]
     },
@@ -38,22 +38,22 @@
       "description": "Array of offers optionally linked to resources",
       "type": "array",
       "items": {
-        "$ref": "https://schema.beckn.io/Offer/v2.1/schema.json"
+        "$ref": "https://schema.nfh.global/Offer/v2.1/schema.json"
       }
     },
     "resources": {
       "description": "Array of generalized Resource entities in this catalog (new model)",
       "type": "array",
       "items": {
-        "$ref": "https://schema.beckn.io/Resource/v2.0/schema.json"
+        "$ref": "https://schema.nfh.global/Resource/v2.0/schema.json"
       }
     },
     "provider": {
-      "$ref": "https://schema.beckn.io/Provider/v2.1/schema.json"
+      "$ref": "https://schema.nfh.global/Provider/v2.1/schema.json"
     },
     "validity": {
       "description": "The time period during which this catalog is valid",
-      "$ref": "https://schema.beckn.io/TimePeriod/v2.1/schema.json"
+      "$ref": "https://schema.nfh.global/TimePeriod/v2.1/schema.json"
     }
   },
   "required": [

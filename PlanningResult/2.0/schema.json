@@ -1,6 +1,6 @@
 {
-  "$id": "https://schema.beckn.io/PlanningResult/v2.0",
-  "x-iri": "https://schema.beckn.io/PlanningResult/v2.0",
+  "$id": "https://schema.nfh.global/PlanningResult/v2.0",
+  "x-iri": "https://schema.nfh.global/PlanningResult/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "PlanningResult",
   "type": "object",
@@ -8,19 +8,19 @@
   "properties": {
     "origin": {
       "description": "Origin location for the planning query",
-      "$ref": "https://schema.beckn.io/Location/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Location/v2.0/schema.json"
     },
     "destination": {
       "description": "Destination location for the planning query",
-      "$ref": "https://schema.beckn.io/Location/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Location/v2.0/schema.json"
     },
     "options": {
       "description": "Available transport options returned",
-      "$ref": "https://schema.beckn.io/RideOption/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/RideOption/v2.0/schema.json"
     },
     "itineraries": {
       "description": "Multi-modal itinerary options if applicable",
-      "$ref": "https://schema.beckn.io/Itinerary/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Itinerary/v2.0/schema.json"
     },
     "id": {
       "description": "Unique identifier for the catalog",
@@ -28,7 +28,7 @@
     },
     "descriptor": {
       "description": "Human-readable description of the catalog",
-      "$ref": "https://schema.beckn.io/Descriptor/v2.1/schema.json"
+      "$ref": "https://schema.nfh.global/Descriptor/v2.1/schema.json"
     },
     "tags": {
       "description": "Tags associated with the catalog",

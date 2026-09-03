@@ -11,7 +11,7 @@ info:
 components:
   schemas:
     TrackingRequest:
-      x-iri: https://schema.beckn.io/TrackingRequest/v2.0
+      x-iri: https://schema.nfh.global/TrackingRequest/v2.0
       description: Schema definition for TrackingRequest in the Beckn Protocol v2.0.1
       title: TrackingRequest
       x-tags:

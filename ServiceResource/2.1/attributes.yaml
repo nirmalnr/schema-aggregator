@@ -8,7 +8,7 @@ info:
 components:
   schemas:
     ServiceResource:
-      x-iri: https://schema.beckn.io/ServiceResource/v2.1
+      x-iri: https://schema.nfh.global/ServiceResource/v2.1
       type: object
       x-beckn-container: resourceAttributes
       x-status: under-review
@@ -17,7 +17,7 @@ components:
         - generic-service
         - resource
       x-jsonld:
-        "@context": "https://schema.beckn.io/ServiceResource/v2.1/context.jsonld"
+        "@context": "https://schema.nfh.global/ServiceResource/v2.1/context.jsonld"
         "@type": "sr:ServiceResource"
       properties:
         serviceUnit:
@@ -80,7 +80,7 @@ components:
           x-jsonld-id: "sr:languagesSupported"
 
     ServiceCoverageArea:
-      x-iri: https://schema.beckn.io/ServiceCoverageArea/v2.1
+      x-iri: https://schema.nfh.global/ServiceCoverageArea/v2.1
       type: object
       description: Geographic area where the service is available
       properties:
@@ -106,7 +106,7 @@ components:
           x-jsonld-id: "sr:coverageRadiusKm"
 
     ServiceAvailabilitySlot:
-      x-iri: https://schema.beckn.io/ServiceAvailabilitySlot/v2.1
+      x-iri: https://schema.nfh.global/ServiceAvailabilitySlot/v2.1
       type: object
       description: Time slot for service availability on a specific day of week
       properties:

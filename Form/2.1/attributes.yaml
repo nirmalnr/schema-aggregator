@@ -11,7 +11,7 @@ info:
 components:
   schemas:
     Form:
-      x-iri: https://schema.beckn.io/Form/v2.1
+      x-iri: https://schema.nfh.global/Form/v2.1
       description: Describes a form
       title: Form
       type: object

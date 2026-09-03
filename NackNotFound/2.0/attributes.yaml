@@ -13,7 +13,7 @@ info:
 components:
   schemas:
     NackNotFound:
-      x-iri: https://schema.beckn.io/NackNotFound/v2.0
+      x-iri: https://schema.nfh.global/NackNotFound/v2.0
       description: 'The synchronous rejection body returned when the requested resource does not exist
         in the system.
 
@@ -42,4 +42,4 @@ components:
               type: string
               description: Echoes the messageId from the triggering request's Context, for caller correlation.
             error:
-              $ref: https://schema.beckn.io/Error/v2.0/attributes.yaml#/components/schemas/Error
+              $ref: https://schema.nfh.global/Error/v2.0/attributes.yaml#/components/schemas/Error

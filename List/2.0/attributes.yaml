@@ -11,7 +11,7 @@ info:
 components:
   schemas:
     List:
-      x-iri: https://schema.beckn.io/List/v2.0
+      x-iri: https://schema.nfh.global/List/v2.0
       description: A generic, domain-agnostic collection of elements. Each element
         carries an id, a descriptor, and an extensible listElementAttributes bag. The
         order property indicates whether the elements are ranked ascending, descending,
@@ -30,10 +30,10 @@ components:
                 type: string
               descriptor:
                 description: Describes this element in human / agent readable terms.
-                $ref: https://schema.beckn.io/Descriptor/v2.1/attributes.yaml#/components/schemas/Descriptor
+                $ref: https://schema.nfh.global/Descriptor/v2.1/attributes.yaml#/components/schemas/Descriptor
               listElementAttributes:
                 description: Domain-specific extension attributes for this element.
-                $ref: https://schema.beckn.io/Attributes/v2.0/attributes.yaml#/components/schemas/Attributes
+                $ref: https://schema.nfh.global/Attributes/v2.0/attributes.yaml#/components/schemas/Attributes
             additionalProperties: false
         order:
           description: The ordering of the elements within the list.

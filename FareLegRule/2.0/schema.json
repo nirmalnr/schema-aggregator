@@ -1,6 +1,6 @@
 {
-  "$id": "https://schema.beckn.io/FareLegRule/v2.0",
-  "x-iri": "https://schema.beckn.io/FareLegRule/v2.0",
+  "$id": "https://schema.nfh.global/FareLegRule/v2.0",
+  "x-iri": "https://schema.nfh.global/FareLegRule/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "FareLegRule",
   "type": "object",
@@ -20,15 +20,15 @@
     },
     "fromAreaId": {
       "description": "Origin tariff zone for this fare leg rule",
-      "$ref": "https://schema.beckn.io/TariffZone/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/TariffZone/v2.0/schema.json"
     },
     "toAreaId": {
       "description": "Destination tariff zone for this fare leg rule",
-      "$ref": "https://schema.beckn.io/TariffZone/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/TariffZone/v2.0/schema.json"
     },
     "containsServiceId": {
       "description": "Specific route this rule applies to",
-      "$ref": "https://schema.beckn.io/Route/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Route/v2.0/schema.json"
     },
     "id": {
       "description": "Unique identifier for the policy",
@@ -40,15 +40,15 @@
     },
     "descriptor": {
       "description": "Human-readable description of the policy",
-      "$ref": "https://schema.beckn.io/Descriptor/v2.1/schema.json"
+      "$ref": "https://schema.nfh.global/Descriptor/v2.1/schema.json"
     },
     "validity": {
       "description": "Validity window for this policy version",
-      "$ref": "https://schema.beckn.io/TimePeriod/v2.1/schema.json"
+      "$ref": "https://schema.nfh.global/TimePeriod/v2.1/schema.json"
     },
     "policyAttributes": {
       "description": "Extensible domain-specific policy attributes",
-      "$ref": "https://schema.beckn.io/Attributes/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Attributes/v2.0/schema.json"
     }
   },
   "additionalProperties": false,

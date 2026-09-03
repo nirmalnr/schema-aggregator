@@ -11,7 +11,7 @@ info:
 components:
   schemas:
     OnDiscoverAction:
-      x-iri: https://schema.beckn.io/OnDiscoverAction/v2.0
+      x-iri: https://schema.nfh.global/OnDiscoverAction/v2.0
       description: The on_discover response payload containing matching catalogs.
       type: object
       required:
@@ -23,5 +23,5 @@ components:
 
             Array of catalogs matching the discovery request.'
           items:
-            $ref: https://schema.beckn.io/Catalog/v2.1/attributes.yaml#/components/schemas/Catalog
+            $ref: https://schema.nfh.global/Catalog/v2.1/attributes.yaml#/components/schemas/Catalog
       additionalProperties: false

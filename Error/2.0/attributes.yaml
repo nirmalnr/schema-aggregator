@@ -11,7 +11,7 @@ info:
 components:
   schemas:
     Error:
-      x-iri: https://schema.beckn.io/Error/v2.0
+      x-iri: https://schema.nfh.global/Error/v2.0
       description: Schema definition for Error in the Beckn Protocol v2.0.1
       title: Error
       x-tags:

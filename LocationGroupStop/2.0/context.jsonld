@@ -1,6 +1,6 @@
 {
   "@context": {
-    "beckn": "https://schema.beckn.io/mobility/v2.0/",
+    "beckn": "https://schema.nfh.global/mobility/v2.0/",
     "LocationGroupStop": "beckn:LocationGroupStop",
     "locationGroupId": "beckn:locationGroupId",
     "stopId": "beckn:stopId",

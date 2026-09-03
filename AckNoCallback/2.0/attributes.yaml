@@ -11,15 +11,15 @@ info:
 components:
   schemas:
     AckNoCallback:
-      x-iri: https://schema.beckn.io/AckNoCallback/v2.0
+      x-iri: https://schema.nfh.global/AckNoCallback/v2.0
       description: Request received but no callback will follow (e.g. agents not found,
         inventory unavailable, provider closed, context.try preview complete).
       allOf:
-      - $ref: https://schema.beckn.io/Ack/v2.0/attributes.yaml#/components/schemas/Ack
+      - $ref: https://schema.nfh.global/Ack/v2.0/attributes.yaml#/components/schemas/Ack
       - type: object
         properties:
           error:
-            $ref: https://schema.beckn.io/Error/v2.0/attributes.yaml#/components/schemas/Error
+            $ref: https://schema.nfh.global/Error/v2.0/attributes.yaml#/components/schemas/Error
       - required:
         - status
         - signature

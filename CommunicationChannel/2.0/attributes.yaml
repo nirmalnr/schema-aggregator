@@ -11,10 +11,10 @@ info:
 components:
   schemas:
     CommunicationChannel:
-      x-iri: https://schema.beckn.io/CommunicationChannel/v2.0
+      x-iri: https://schema.nfh.global/CommunicationChannel/v2.0
       description: A channel through which communication or support takes place. The
         enumerated values are derived from SupportInfo.channels
-        (https://schema.beckn.io/SupportInfo/v2.0).
+        (https://schema.nfh.global/SupportInfo/v2.0).
       title: CommunicationChannel
       type: string
       enum:

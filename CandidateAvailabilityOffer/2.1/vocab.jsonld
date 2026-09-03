@@ -1,7 +1,7 @@
 {
-  "@import": "https://schema.beckn.io/core/v2/vocab.jsonld",
+  "@import": "https://schema.nfh.global/core/v2/vocab.jsonld",
   "@context": {
-    "caoa": "https://schema.beckn.io/CandidateAvailabilityOffer#",
+    "caoa": "https://schema.nfh.global/CandidateAvailabilityOffer#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "skos": "http://www.w3.org/2004/02/skos/core#"
   },

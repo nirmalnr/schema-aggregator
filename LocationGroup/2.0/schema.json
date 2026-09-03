@@ -1,6 +1,6 @@
 {
-  "$id": "https://schema.beckn.io/LocationGroup/v2.0",
-  "x-iri": "https://schema.beckn.io/LocationGroup/v2.0",
+  "$id": "https://schema.nfh.global/LocationGroup/v2.0",
+  "x-iri": "https://schema.nfh.global/LocationGroup/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "LocationGroup",
   "type": "object",
@@ -16,7 +16,7 @@
     },
     "stops": {
       "description": "Stops included in this location group",
-      "$ref": "https://schema.beckn.io/Stop/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Stop/v2.0/schema.json"
     },
     "id": {
       "description": "Unique identifier for the location",
@@ -24,7 +24,7 @@
     },
     "descriptor": {
       "description": "Human-readable description of the location",
-      "$ref": "https://schema.beckn.io/Descriptor/v2.1/schema.json"
+      "$ref": "https://schema.nfh.global/Descriptor/v2.1/schema.json"
     },
     "gps": {
       "description": "GPS coordinates as a latitude,longitude string",
@@ -32,7 +32,7 @@
     },
     "address": {
       "description": "Physical address of the location",
-      "$ref": "https://schema.beckn.io/Address/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Address/v2.0/schema.json"
     },
     "city": {
       "description": "City name",
@@ -44,7 +44,7 @@
     },
     "geojson": {
       "description": "GeoJSON geometry object representing this location",
-      "$ref": "https://schema.beckn.io/GeoJSONGeometry/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/GeoJSONGeometry/v2.0/schema.json"
     }
   },
   "additionalProperties": false,

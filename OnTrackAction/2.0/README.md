@@ -9,17 +9,13 @@ the URL and/or WebSocket endpoint for real-time fulfillment tracking.
 
 | File | Purpose |
 |---|---|
-| [https://schema.beckn.io/OnTrackAction/attributes.yaml](https://schema.beckn.io/OnTrackAction/attributes.yaml) | OpenAPI schema envelope (latest path) |
-| [https://schema.beckn.io/OnTrackAction/v2.0/attributes.yaml](https://schema.beckn.io/OnTrackAction/v2.0/attributes.yaml) | OpenAPI schema envelope (versioned path) |
-| [https://schema.beckn.io/OnTrackAction/attributes.jsonschema.yaml](https://schema.beckn.io/OnTrackAction/attributes.jsonschema.yaml) | JSON Schema document (latest path) |
-| [https://schema.beckn.io/OnTrackAction/v2.0/attributes.jsonschema.yaml](https://schema.beckn.io/OnTrackAction/v2.0/attributes.jsonschema.yaml) | JSON Schema document (versioned path) |
-| [https://schema.beckn.io/OnTrackAction/context.jsonld](https://schema.beckn.io/OnTrackAction/context.jsonld) | JSON-LD context (latest path) |
-| [https://schema.beckn.io/OnTrackAction/v2.0/context.jsonld](https://schema.beckn.io/OnTrackAction/v2.0/context.jsonld) | JSON-LD context (versioned path) |
-| [https://schema.beckn.io/OnTrackAction/vocab.jsonld](https://schema.beckn.io/OnTrackAction/vocab.jsonld) | RDF vocabulary (latest path) |
-| [https://schema.beckn.io/OnTrackAction/v2.0/vocab.jsonld](https://schema.beckn.io/OnTrackAction/v2.0/vocab.jsonld) | RDF vocabulary (versioned path) |
+| [https://schema.nfh.global/OnTrackAction/v2.0/attributes.yaml](https://schema.nfh.global/OnTrackAction/v2.0/attributes.yaml) | OpenAPI schema envelope (versioned path) |
+| [https://schema.nfh.global/OnTrackAction/v2.0/attributes.jsonschema.yaml](https://schema.nfh.global/OnTrackAction/v2.0/attributes.jsonschema.yaml) | JSON Schema document (versioned path) |
+| [https://schema.nfh.global/OnTrackAction/v2.0/context.jsonld](https://schema.nfh.global/OnTrackAction/v2.0/context.jsonld) | JSON-LD context (versioned path) |
+| [https://schema.nfh.global/OnTrackAction/v2.0/vocab.jsonld](https://schema.nfh.global/OnTrackAction/v2.0/vocab.jsonld) | RDF vocabulary (versioned path) |
 
 ## Properties
 
 | Property | Required | Type | Description |
 |---|---|---|---|
-| `tracking` | yes | $ref: https://schema.beckn.io/Tracking/v2.1/attributes.yaml#/components/schemas/Tracking | - |
+| `tracking` | yes | $ref: https://schema.nfh.global/Tracking/v2.1/attributes.yaml#/components/schemas/Tracking | - |

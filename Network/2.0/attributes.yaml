@@ -12,7 +12,7 @@ info:
 components:
   schemas:
     Network:
-      x-iri: https://schema.beckn.io/Network/v2.0
+      x-iri: https://schema.nfh.global/Network/v2.0
       type: object
       title: Network
       description: A grouping of routes and lines operated under a common brand or
@@ -30,16 +30,16 @@ components:
           type: string
         operatorRef:
           description: Operator(s) running services within this network
-          $ref: https://schema.beckn.io/Operator/v2.0/attributes.yaml#/components/schemas/Operator
+          $ref: https://schema.nfh.global/Operator/v2.0/attributes.yaml#/components/schemas/Operator
         lines:
           description: Lines that belong to this network
-          $ref: https://schema.beckn.io/Line/v2.0/attributes.yaml#/components/schemas/Line
+          $ref: https://schema.nfh.global/Line/v2.0/attributes.yaml#/components/schemas/Line
         id:
           description: Unique identifier for the catalog
           type: string
         descriptor:
           description: Human-readable description of the catalog
-          $ref: https://schema.beckn.io/Descriptor/v2.0/attributes.yaml#/components/schemas/Descriptor
+          $ref: https://schema.nfh.global/Descriptor/v2.0/attributes.yaml#/components/schemas/Descriptor
         tags:
           description: Tags associated with the catalog
           type: string

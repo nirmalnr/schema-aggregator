@@ -1,9 +1,9 @@
 {
   "@context": {
     "schema": "https://schema.org/",
-    "beckn": "https://schema.beckn.io/",
-    "scoord": "https://schema.beckn.io/ServiceCoordination#",
-    "sc": "https://schema.beckn.io/ServiceContract#",
+    "beckn": "https://schema.nfh.global/",
+    "scoord": "https://schema.nfh.global/ServiceCoordination#",
+    "sc": "https://schema.nfh.global/ServiceContract#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
 
     "ServiceCoordination": "scoord:ServiceCoordination",

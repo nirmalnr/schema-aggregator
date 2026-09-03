@@ -6,14 +6,10 @@ Defines a recurring temporal schedule such as operating hours or serviceability 
 
 | File | Purpose |
 |---|---|
-| [https://schema.beckn.io/RecurringSchedule/attributes.yaml](https://schema.beckn.io/RecurringSchedule/attributes.yaml) | OpenAPI schema envelope (latest path) |
-| [https://schema.beckn.io/RecurringSchedule/v2.0/attributes.yaml](https://schema.beckn.io/RecurringSchedule/v2.0/attributes.yaml) | OpenAPI schema envelope (versioned path) |
-| [https://schema.beckn.io/RecurringSchedule/attributes.jsonschema.yaml](https://schema.beckn.io/RecurringSchedule/attributes.jsonschema.yaml) | JSON Schema document (latest path) |
-| [https://schema.beckn.io/RecurringSchedule/v2.0/attributes.jsonschema.yaml](https://schema.beckn.io/RecurringSchedule/v2.0/attributes.jsonschema.yaml) | JSON Schema document (versioned path) |
-| [https://schema.beckn.io/RecurringSchedule/context.jsonld](https://schema.beckn.io/RecurringSchedule/context.jsonld) | JSON-LD context (latest path) |
-| [https://schema.beckn.io/RecurringSchedule/v2.0/context.jsonld](https://schema.beckn.io/RecurringSchedule/v2.0/context.jsonld) | JSON-LD context (versioned path) |
-| [https://schema.beckn.io/RecurringSchedule/vocab.jsonld](https://schema.beckn.io/RecurringSchedule/vocab.jsonld) | RDF vocabulary (latest path) |
-| [https://schema.beckn.io/RecurringSchedule/v2.0/vocab.jsonld](https://schema.beckn.io/RecurringSchedule/v2.0/vocab.jsonld) | RDF vocabulary (versioned path) |
+| [https://schema.nfh.global/RecurringSchedule/v2.0/attributes.yaml](https://schema.nfh.global/RecurringSchedule/v2.0/attributes.yaml) | OpenAPI schema envelope (versioned path) |
+| [https://schema.nfh.global/RecurringSchedule/v2.0/attributes.jsonschema.yaml](https://schema.nfh.global/RecurringSchedule/v2.0/attributes.jsonschema.yaml) | JSON Schema document (versioned path) |
+| [https://schema.nfh.global/RecurringSchedule/v2.0/context.jsonld](https://schema.nfh.global/RecurringSchedule/v2.0/context.jsonld) | JSON-LD context (versioned path) |
+| [https://schema.nfh.global/RecurringSchedule/v2.0/vocab.jsonld](https://schema.nfh.global/RecurringSchedule/v2.0/vocab.jsonld) | RDF vocabulary (versioned path) |
 
 ## Properties
 

@@ -11,7 +11,7 @@ info:
 components:
   schemas:
     Alert:
-      x-iri: https://schema.beckn.io/Alert/v2.0
+      x-iri: https://schema.nfh.global/Alert/v2.0
       description: Schema definition for Alert in the Beckn Protocol v2.0.1
       title: Alert
       type: object
@@ -22,13 +22,13 @@ components:
           items:
             type: string
         descriptor:
-          $ref: https://schema.beckn.io/Descriptor/v2.1/attributes.yaml#/components/schemas/Descriptor
+          $ref: https://schema.nfh.global/Descriptor/v2.1/attributes.yaml#/components/schemas/Descriptor
         id:
           type: string
         severity:
           type: string
         validity:
-          $ref: https://schema.beckn.io/TimePeriod/v2.1/attributes.yaml#/components/schemas/TimePeriod
+          $ref: https://schema.nfh.global/TimePeriod/v2.1/attributes.yaml#/components/schemas/TimePeriod
       required:
       - id
       - descriptor

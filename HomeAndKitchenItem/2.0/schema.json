@@ -1,7 +1,7 @@
 {
   "allOf": [
     {
-      "$ref": "https://schema.beckn.io/RetailCoreItem/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/RetailCoreItem/v2.0/schema.json"
     },
     {
       "type": "object",
@@ -75,8 +75,8 @@
       }
     }
   ],
-  "$id": "https://schema.beckn.io/HomeAndKitchenItem/v2.0",
-  "x-iri": "https://schema.beckn.io/HomeAndKitchenItem/v2.0",
+  "$id": "https://schema.nfh.global/HomeAndKitchenItem/v2.0",
+  "x-iri": "https://schema.nfh.global/HomeAndKitchenItem/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "HomeAndKitchenItem"
 }

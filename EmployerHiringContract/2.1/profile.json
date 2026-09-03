@@ -6,7 +6,7 @@
   "version": "2.1.0",
   "beckn_container": "contractAttributes",
   "namespace_prefix": "ehca",
-  "namespace_iri": "https://schema.beckn.io/EmployerHiringContract#",
+  "namespace_iri": "https://schema.nfh.global/EmployerHiringContract#",
   "topology": "inverted",
   "bap_role": "Employer App",
   "bpp_role": "Candidate Platform",

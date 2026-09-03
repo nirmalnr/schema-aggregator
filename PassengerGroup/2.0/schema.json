@@ -1,6 +1,6 @@
 {
-  "$id": "https://schema.beckn.io/PassengerGroup/v2.0",
-  "x-iri": "https://schema.beckn.io/PassengerGroup/v2.0",
+  "$id": "https://schema.nfh.global/PassengerGroup/v2.0",
+  "x-iri": "https://schema.nfh.global/PassengerGroup/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "PassengerGroup",
   "type": "object",
@@ -16,7 +16,7 @@
     },
     "leadPassenger": {
       "description": "The lead or primary passenger for the group",
-      "$ref": "https://schema.beckn.io/Passenger/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Passenger/v2.0/schema.json"
     },
     "unitCode": {
       "description": "Unit of measure code (UN/ECE Rec 20)",

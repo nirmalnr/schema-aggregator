@@ -11,7 +11,7 @@ info:
 components:
   schemas:
     ShippingFareBreakup:
-      x-iri: https://schema.beckn.io/ShippingFareBreakup/v2.0
+      x-iri: https://schema.nfh.global/ShippingFareBreakup/v2.0
       type: object
       title: FareBreakup
       description: A single line item in the fare breakup for a logistics service.

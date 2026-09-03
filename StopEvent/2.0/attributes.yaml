@@ -12,7 +12,7 @@ info:
 components:
   schemas:
     StopEvent:
-      x-iri: https://schema.beckn.io/StopEvent/v2.0
+      x-iri: https://schema.nfh.global/StopEvent/v2.0
       type: object
       title: StopEvent
       description: A departure or arrival event at a stop, used to retrieve the next
@@ -34,23 +34,23 @@ components:
           format: date-time
         serviceJourneyRef:
           description: Reference to the vehicle journey for this event
-          $ref: https://schema.beckn.io/VehicleJourney/v2.0/attributes.yaml#/components/schemas/VehicleJourney
+          $ref: https://schema.nfh.global/VehicleJourney/v2.0/attributes.yaml#/components/schemas/VehicleJourney
         stopPointRef:
           description: Reference to the stop point where the event occurs
-          $ref: https://schema.beckn.io/StopPoint/v2.0/attributes.yaml#/components/schemas/StopPoint
+          $ref: https://schema.nfh.global/StopPoint/v2.0/attributes.yaml#/components/schemas/StopPoint
         id:
           description: Unique identifier for the fulfillment stop
           type: string
         location:
           description: Geographic location of the stop
-          $ref: https://schema.beckn.io/Location/v2.0/attributes.yaml#/components/schemas/Location
+          $ref: https://schema.nfh.global/Location/v2.0/attributes.yaml#/components/schemas/Location
         type:
           description: Type of stop (start, end, intermediate)
           type: string
         instructions:
           description: Instructions for passengers at this stop
-          $ref: https://schema.beckn.io/Descriptor/v2.0/attributes.yaml#/components/schemas/Descriptor
+          $ref: https://schema.nfh.global/Descriptor/v2.0/attributes.yaml#/components/schemas/Descriptor
         time:
           description: Expected time window at this stop
-          $ref: https://schema.beckn.io/TimePeriod/v2.0/attributes.yaml#/components/schemas/TimePeriod
+          $ref: https://schema.nfh.global/TimePeriod/v2.0/attributes.yaml#/components/schemas/TimePeriod
       additionalProperties: false

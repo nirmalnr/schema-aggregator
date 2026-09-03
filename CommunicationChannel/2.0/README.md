@@ -6,9 +6,9 @@ A channel through which communication or support takes place. It is a string enu
 
 | File | Purpose |
 |---|---|
-| [https://schema.beckn.io/CommunicationChannel/v2.0/attributes.yaml](https://schema.beckn.io/CommunicationChannel/v2.0/attributes.yaml) | OpenAPI schema envelope (versioned path) |
-| [https://schema.beckn.io/CommunicationChannel/v2.0/context.jsonld](https://schema.beckn.io/CommunicationChannel/v2.0/context.jsonld) | JSON-LD context (versioned path) |
-| [https://schema.beckn.io/CommunicationChannel/v2.0/vocab.jsonld](https://schema.beckn.io/CommunicationChannel/v2.0/vocab.jsonld) | RDF vocabulary (versioned path) |
+| [https://schema.nfh.global/CommunicationChannel/v2.0/attributes.yaml](https://schema.nfh.global/CommunicationChannel/v2.0/attributes.yaml) | OpenAPI schema envelope (versioned path) |
+| [https://schema.nfh.global/CommunicationChannel/v2.0/context.jsonld](https://schema.nfh.global/CommunicationChannel/v2.0/context.jsonld) | JSON-LD context (versioned path) |
+| [https://schema.nfh.global/CommunicationChannel/v2.0/vocab.jsonld](https://schema.nfh.global/CommunicationChannel/v2.0/vocab.jsonld) | RDF vocabulary (versioned path) |
 
 ## Definition
 

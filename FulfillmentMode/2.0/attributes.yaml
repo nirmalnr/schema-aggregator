@@ -12,7 +12,7 @@ info:
 components:
   schemas:
     FulfillmentMode:
-      x-iri: https://schema.beckn.io/FulfillmentMode/v2.0
+      x-iri: https://schema.nfh.global/FulfillmentMode/v2.0
       description: Describes the mode of fulfillment. This is an extensible container
         allowing domain-specific fulfillment modes to be expressed via attributes.
       title: FulfillmentMode
@@ -21,11 +21,11 @@ components:
         id:
           type: string
         descriptor:
-          $ref: https://schema.beckn.io/Descriptor/v2.1/attributes.yaml#/components/schemas/Descriptor
+          $ref: https://schema.nfh.global/Descriptor/v2.1/attributes.yaml#/components/schemas/Descriptor
         modeAttributes:
           description: Domain-specific fulfillment mode attributes (e.g., delivery,
             pickup, reservation, digital)
-          $ref: https://schema.beckn.io/Attributes/v2.0/attributes.yaml#/components/schemas/Attributes
+          $ref: https://schema.nfh.global/Attributes/v2.0/attributes.yaml#/components/schemas/Attributes
       additionalProperties: false
       x-tags:
       - common

@@ -12,7 +12,7 @@ info:
 components:
   schemas:
     Station:
-      x-iri: https://schema.beckn.io/Station/v2.0
+      x-iri: https://schema.nfh.global/Station/v2.0
       type: object
       title: Station
       description: A major transit facility serving as a hub for one or more transport
@@ -33,25 +33,25 @@ components:
           type: string
         platforms:
           description: Platforms or quays within this station
-          $ref: https://schema.beckn.io/Quay/v2.0/attributes.yaml#/components/schemas/Quay
+          $ref: https://schema.nfh.global/Quay/v2.0/attributes.yaml#/components/schemas/Quay
         levels:
           description: Levels or floors within the station
-          $ref: https://schema.beckn.io/Level/v2.0/attributes.yaml#/components/schemas/Level
+          $ref: https://schema.nfh.global/Level/v2.0/attributes.yaml#/components/schemas/Level
         pathways:
           description: Internal navigation pathways within the station
-          $ref: https://schema.beckn.io/Pathway/v2.0/attributes.yaml#/components/schemas/Pathway
+          $ref: https://schema.nfh.global/Pathway/v2.0/attributes.yaml#/components/schemas/Pathway
         id:
           description: Unique identifier for the location
           type: string
         descriptor:
           description: Human-readable description of the location
-          $ref: https://schema.beckn.io/Descriptor/v2.0/attributes.yaml#/components/schemas/Descriptor
+          $ref: https://schema.nfh.global/Descriptor/v2.0/attributes.yaml#/components/schemas/Descriptor
         gps:
           description: GPS coordinates as a latitude,longitude string
           type: string
         address:
           description: Physical address of the location
-          $ref: https://schema.beckn.io/Address/v2.0/attributes.yaml#/components/schemas/Address
+          $ref: https://schema.nfh.global/Address/v2.0/attributes.yaml#/components/schemas/Address
         city:
           description: City name
           type: string
@@ -60,5 +60,5 @@ components:
           type: string
         geojson:
           description: GeoJSON geometry object representing this location
-          $ref: https://schema.beckn.io/GeoJSONGeometry/v2.0/attributes.yaml#/components/schemas/GeoJSONGeometry
+          $ref: https://schema.nfh.global/GeoJSONGeometry/v2.0/attributes.yaml#/components/schemas/GeoJSONGeometry
       additionalProperties: false

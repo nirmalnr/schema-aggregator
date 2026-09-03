@@ -1,6 +1,6 @@
 {
-  "$id": "https://schema.beckn.io/Trip/v2.0",
-  "x-iri": "https://schema.beckn.io/Trip/v2.0",
+  "$id": "https://schema.nfh.global/Trip/v2.0",
+  "x-iri": "https://schema.nfh.global/Trip/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Trip",
   "type": "object",
@@ -12,11 +12,11 @@
     },
     "origin": {
       "description": "Pickup location",
-      "$ref": "https://schema.beckn.io/Location/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Location/v2.0/schema.json"
     },
     "destination": {
       "description": "Dropoff location",
-      "$ref": "https://schema.beckn.io/Location/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Location/v2.0/schema.json"
     },
     "startTime": {
       "description": "Actual start time of the trip",
@@ -34,11 +34,11 @@
     },
     "driverRef": {
       "description": "Reference to the driver for this trip",
-      "$ref": "https://schema.beckn.io/Driver/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Driver/v2.0/schema.json"
     },
     "vehicleRef": {
       "description": "Reference to the vehicle for this trip",
-      "$ref": "https://schema.beckn.io/Vehicle/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Vehicle/v2.0/schema.json"
     },
     "id": {
       "description": "Unique identifier for the trip",
@@ -46,7 +46,7 @@
     },
     "descriptor": {
       "description": "Human-readable description of the trip",
-      "$ref": "https://schema.beckn.io/Descriptor/v2.1/schema.json"
+      "$ref": "https://schema.nfh.global/Descriptor/v2.1/schema.json"
     }
   },
   "additionalProperties": false,

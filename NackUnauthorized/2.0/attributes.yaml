@@ -11,15 +11,15 @@ info:
 components:
   schemas:
     NackUnauthorized:
-      x-iri: https://schema.beckn.io/NackUnauthorized/v2.0
+      x-iri: https://schema.nfh.global/NackUnauthorized/v2.0
       description: Invalid or missing authentication credentials; signature could
         not be verified.
       allOf:
-      - $ref: https://schema.beckn.io/Ack/v2.0/attributes.yaml#/components/schemas/Ack
+      - $ref: https://schema.nfh.global/Ack/v2.0/attributes.yaml#/components/schemas/Ack
       - type: object
         properties:
           status:
             type: string
             const: NACK
           error:
-            $ref: https://schema.beckn.io/Error/v2.0/attributes.yaml#/components/schemas/Error
+            $ref: https://schema.nfh.global/Error/v2.0/attributes.yaml#/components/schemas/Error

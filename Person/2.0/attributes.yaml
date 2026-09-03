@@ -11,7 +11,7 @@ info:
 components:
   schemas:
     Person:
-      x-iri: https://schema.beckn.io/Person/v2.0
+      x-iri: https://schema.nfh.global/Person/v2.0
       description: A person (alive, deceased, or fictional). Modeled after schema.org/Person.
       title: Person
       type: object
@@ -41,7 +41,7 @@ components:
           description: Physical address
           oneOf:
           - type: string
-          - $ref: https://schema.beckn.io/Address/v2.0/attributes.yaml#/components/schemas/Address
+          - $ref: https://schema.nfh.global/Address/v2.0/attributes.yaml#/components/schemas/Address
           x-jsonld:
             '@id': schema:address
         age:
@@ -61,25 +61,25 @@ components:
           description: Organization the person works for
           x-jsonld:
             '@id': schema:worksFor
-          $ref: https://schema.beckn.io/Organization/v2.0/attributes.yaml#/components/schemas/Organization
+          $ref: https://schema.nfh.global/Organization/v2.0/attributes.yaml#/components/schemas/Organization
         credentials:
           type: array
           description: Credentials held by the person
           items:
-            $ref: https://schema.beckn.io/Credential/v2.0/attributes.yaml#/components/schemas/Credential
+            $ref: https://schema.nfh.global/Credential/v2.0/attributes.yaml#/components/schemas/Credential
           x-jsonld:
             '@id': schema:hasCredential
         skills:
           type: array
           description: Skills possessed by the person
           items:
-            $ref: https://schema.beckn.io/Skill/v2.0/attributes.yaml#/components/schemas/Skill
+            $ref: https://schema.nfh.global/Skill/v2.0/attributes.yaml#/components/schemas/Skill
           x-jsonld:
             '@id': schema:hasSkill
         personAttributes:
           description: Extensible attribute pack for jurisdictional or domain-specific
             person properties
-          $ref: https://schema.beckn.io/Attributes/v2.0/attributes.yaml#/components/schemas/Attributes
+          $ref: https://schema.nfh.global/Attributes/v2.0/attributes.yaml#/components/schemas/Attributes
       required:
       - id
       additionalProperties: false

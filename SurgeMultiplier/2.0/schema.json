@@ -1,6 +1,6 @@
 {
-  "$id": "https://schema.beckn.io/SurgeMultiplier/v2.0",
-  "x-iri": "https://schema.beckn.io/SurgeMultiplier/v2.0",
+  "$id": "https://schema.nfh.global/SurgeMultiplier/v2.0",
+  "x-iri": "https://schema.nfh.global/SurgeMultiplier/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "SurgeMultiplier",
   "type": "object",
@@ -21,7 +21,7 @@
     },
     "geofenceRef": {
       "description": "Geographic area where the surge pricing applies",
-      "$ref": "https://schema.beckn.io/Geofence/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Geofence/v2.0/schema.json"
     },
     "title": {
       "description": "Title or label of this price component",
@@ -29,7 +29,7 @@
     },
     "price": {
       "description": "Monetary value of this component",
-      "$ref": "https://schema.beckn.io/PriceSpecification/v2.1/schema.json"
+      "$ref": "https://schema.nfh.global/PriceSpecification/v2.1/schema.json"
     },
     "tags": {
       "description": "Tags associated with this price component",

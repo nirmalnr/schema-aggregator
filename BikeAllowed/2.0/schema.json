@@ -1,6 +1,6 @@
 {
-  "$id": "https://schema.beckn.io/BikeAllowed/v2.0",
-  "x-iri": "https://schema.beckn.io/BikeAllowed/v2.0",
+  "$id": "https://schema.nfh.global/BikeAllowed/v2.0",
+  "x-iri": "https://schema.nfh.global/BikeAllowed/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "BikeAllowed",
   "type": "object",
@@ -16,7 +16,7 @@
     },
     "descriptor": {
       "description": "Human-readable label of the feature",
-      "$ref": "https://schema.beckn.io/Descriptor/v2.1/schema.json"
+      "$ref": "https://schema.nfh.global/Descriptor/v2.1/schema.json"
     },
     "value": {
       "description": "Value of the feature (e.g. yes, no, unknown)",

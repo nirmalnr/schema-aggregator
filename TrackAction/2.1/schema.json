@@ -1,13 +1,13 @@
 {
-  "$id": "https://schema.beckn.io/TrackAction/v2.1",
-  "x-iri": "https://schema.beckn.io/TrackAction/v2.1",
+  "$id": "https://schema.nfh.global/TrackAction/v2.1",
+  "x-iri": "https://schema.nfh.global/TrackAction/v2.1",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "type": "object",
   "description": "Details required to initiate real-time tracking (if relevant) for an ongoing transaction",
   "additionalProperties": false,
   "properties": {
     "tracking": {
-      "$ref": "https://schema.beckn.io/Tracking/v2.1/schema.json"
+      "$ref": "https://schema.nfh.global/Tracking/v2.1/schema.json"
     }
   },
   "required": [

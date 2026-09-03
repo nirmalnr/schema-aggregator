@@ -11,7 +11,7 @@ info:
 components:
   schemas:
     LineageEntry:
-      x-iri: https://schema.beckn.io/LineageEntry/v2.0
+      x-iri: https://schema.nfh.global/LineageEntry/v2.0
       title: LineageEntry
       x-tags:
       - common
@@ -20,7 +20,7 @@ components:
       properties:
         action:
           description: The Beckn endpoint of the upstream message that caused this transaction to be initiated.
-          $ref: https://schema.beckn.io/BecknEndpoint/v2.0/attributes.yaml#/components/schemas/BecknEndpoint
+          $ref: https://schema.nfh.global/BecknEndpoint/v2.0/attributes.yaml#/components/schemas/BecknEndpoint
         transactionId:
           description: The transactionId of the upstream Beckn transaction, taken from its Context.
           type: string

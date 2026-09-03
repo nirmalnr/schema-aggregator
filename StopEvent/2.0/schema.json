@@ -1,6 +1,6 @@
 {
-  "$id": "https://schema.beckn.io/StopEvent/v2.0",
-  "x-iri": "https://schema.beckn.io/StopEvent/v2.0",
+  "$id": "https://schema.nfh.global/StopEvent/v2.0",
+  "x-iri": "https://schema.nfh.global/StopEvent/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "StopEvent",
   "type": "object",
@@ -22,11 +22,11 @@
     },
     "serviceJourneyRef": {
       "description": "Reference to the vehicle journey for this event",
-      "$ref": "https://schema.beckn.io/VehicleJourney/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/VehicleJourney/v2.0/schema.json"
     },
     "stopPointRef": {
       "description": "Reference to the stop point where the event occurs",
-      "$ref": "https://schema.beckn.io/StopPoint/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/StopPoint/v2.0/schema.json"
     },
     "id": {
       "description": "Unique identifier for the fulfillment stop",
@@ -34,7 +34,7 @@
     },
     "location": {
       "description": "Geographic location of the stop",
-      "$ref": "https://schema.beckn.io/Location/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Location/v2.0/schema.json"
     },
     "type": {
       "description": "Type of stop (start, end, intermediate)",
@@ -42,11 +42,11 @@
     },
     "instructions": {
       "description": "Instructions for passengers at this stop",
-      "$ref": "https://schema.beckn.io/Descriptor/v2.1/schema.json"
+      "$ref": "https://schema.nfh.global/Descriptor/v2.1/schema.json"
     },
     "time": {
       "description": "Expected time window at this stop",
-      "$ref": "https://schema.beckn.io/TimePeriod/v2.1/schema.json"
+      "$ref": "https://schema.nfh.global/TimePeriod/v2.1/schema.json"
     }
   },
   "additionalProperties": false,

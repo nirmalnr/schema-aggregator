@@ -11,7 +11,7 @@ info:
 components:
   schemas:
     Eligibility:
-      x-iri: https://schema.beckn.io/Eligibility/v2.0
+      x-iri: https://schema.nfh.global/Eligibility/v2.0
       description: Schema definition for Eligibility in the Beckn Protocol v2.0.1
       title: Eligibility
       x-tags:

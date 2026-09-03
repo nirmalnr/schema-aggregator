@@ -12,7 +12,7 @@ info:
 components:
   schemas:
     TariffZone:
-      x-iri: https://schema.beckn.io/TariffZone/v2.0
+      x-iri: https://schema.nfh.global/TariffZone/v2.0
       type: object
       title: TariffZone
       description: A geographic zone used to define and apply fare structures, within
@@ -31,19 +31,19 @@ components:
           type: string
         geometry:
           description: GeoJSON geometry defining the zone boundary
-          $ref: https://schema.beckn.io/GeoJSONGeometry/v2.0/attributes.yaml#/components/schemas/GeoJSONGeometry
+          $ref: https://schema.nfh.global/GeoJSONGeometry/v2.0/attributes.yaml#/components/schemas/GeoJSONGeometry
         id:
           description: Unique identifier for the location
           type: string
         descriptor:
           description: Human-readable description of the location
-          $ref: https://schema.beckn.io/Descriptor/v2.0/attributes.yaml#/components/schemas/Descriptor
+          $ref: https://schema.nfh.global/Descriptor/v2.0/attributes.yaml#/components/schemas/Descriptor
         gps:
           description: GPS coordinates as a latitude,longitude string
           type: string
         address:
           description: Physical address of the location
-          $ref: https://schema.beckn.io/Address/v2.0/attributes.yaml#/components/schemas/Address
+          $ref: https://schema.nfh.global/Address/v2.0/attributes.yaml#/components/schemas/Address
         city:
           description: City name
           type: string
@@ -52,5 +52,5 @@ components:
           type: string
         geojson:
           description: GeoJSON geometry object representing this location
-          $ref: https://schema.beckn.io/GeoJSONGeometry/v2.0/attributes.yaml#/components/schemas/GeoJSONGeometry
+          $ref: https://schema.nfh.global/GeoJSONGeometry/v2.0/attributes.yaml#/components/schemas/GeoJSONGeometry
       additionalProperties: false

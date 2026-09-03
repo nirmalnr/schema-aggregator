@@ -11,7 +11,7 @@ info:
 components:
   schemas:
     OnSupportAction:
-      x-iri: https://schema.beckn.io/OnSupportAction/v2.0
+      x-iri: https://schema.nfh.global/OnSupportAction/v2.0
       title: On Support Action
       description: 'Beckn /beckn/on_support message payload. Sent by a BPP to a BAP
         in
@@ -24,6 +24,6 @@ components:
       additionalProperties: false
       properties:
         support:
-          $ref: https://schema.beckn.io/Support/v2.0/attributes.yaml#/components/schemas/Support
+          $ref: https://schema.nfh.global/Support/v2.0/attributes.yaml#/components/schemas/Support
       required:
       - support

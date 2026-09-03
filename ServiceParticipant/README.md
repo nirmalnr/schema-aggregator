@@ -18,7 +18,7 @@ Attaches to `Participant.participantAttributes` within `Contract.participants[]`
 
 ## Design Rationale
 
-- **`credentialRefs` referencing Beckn Credential/2.0** — Rather than defining a custom credential structure, ServiceParticipant delegates entirely to the Beckn core Credential/2.0 type (`https://schema.beckn.io/Credential/v2.0/attributes.yaml`). This keeps the definition authoritative and in sync with the broader Beckn trust infrastructure.
+- **`credentialRefs` referencing Beckn Credential/2.0** — Rather than defining a custom credential structure, ServiceParticipant delegates entirely to the Beckn core Credential/2.0 type (`https://schema.nfh.global/Credential/v2.0/attributes.yaml`). This keeps the definition authoritative and in sync with the broader Beckn trust infrastructure.
 
 - **Credential/2.0 is a `oneOf` of two branches:**
   - *W3C Verifiable Credential* — an opaque JSON object (`additionalProperties: true`) conforming to the W3C VC Data Model. Machine-verifiable via the issuer's DID. Beckn intentionally does not validate the internal VC structure at the schema layer — the W3C VC spec governs that.

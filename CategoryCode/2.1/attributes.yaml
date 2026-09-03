@@ -11,7 +11,7 @@ info:
 components:
   schemas:
     CategoryCode:
-      x-iri: https://schema.beckn.io/CategoryCode/v2.1
+      x-iri: https://schema.nfh.global/CategoryCode/v2.1
       description: Schema definition for CategoryCode in the Beckn Protocol v2.0.1
       title: CategoryCode
       x-tags:

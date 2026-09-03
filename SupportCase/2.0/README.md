@@ -6,9 +6,9 @@ A domain-agnostic customer support ticket used to record an issue raised between
 
 | File | Purpose |
 |---|---|
-| [https://schema.beckn.io/SupportCase/v2.0/attributes.yaml](https://schema.beckn.io/SupportCase/v2.0/attributes.yaml) | OpenAPI schema envelope (versioned path) |
-| [https://schema.beckn.io/SupportCase/v2.0/context.jsonld](https://schema.beckn.io/SupportCase/v2.0/context.jsonld) | JSON-LD context (versioned path) |
-| [https://schema.beckn.io/SupportCase/v2.0/vocab.jsonld](https://schema.beckn.io/SupportCase/v2.0/vocab.jsonld) | RDF vocabulary (versioned path) |
+| [https://schema.nfh.global/SupportCase/v2.0/attributes.yaml](https://schema.nfh.global/SupportCase/v2.0/attributes.yaml) | OpenAPI schema envelope (versioned path) |
+| [https://schema.nfh.global/SupportCase/v2.0/context.jsonld](https://schema.nfh.global/SupportCase/v2.0/context.jsonld) | JSON-LD context (versioned path) |
+| [https://schema.nfh.global/SupportCase/v2.0/vocab.jsonld](https://schema.nfh.global/SupportCase/v2.0/vocab.jsonld) | RDF vocabulary (versioned path) |
 
 ## Design notes
 

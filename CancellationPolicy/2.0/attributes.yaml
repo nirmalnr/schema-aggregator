@@ -11,7 +11,7 @@ info:
 components:
   schemas:
     CancellationPolicy:
-      x-iri: https://schema.beckn.io/CancellationPolicy/v2.0
+      x-iri: https://schema.nfh.global/CancellationPolicy/v2.0
       description: Schema definition for CancellationPolicy in the Beckn Protocol
         v2.0.1
       title: CancellationPolicy

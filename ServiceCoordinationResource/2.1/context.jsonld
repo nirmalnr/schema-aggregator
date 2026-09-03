@@ -1,9 +1,9 @@
 {
   "@context": {
     "schema": "https://schema.org/",
-    "beckn": "https://schema.beckn.io/",
-    "scres": "https://schema.beckn.io/ServiceCoordinationResource#",
-    "sr": "https://schema.beckn.io/ServiceResource#",
+    "beckn": "https://schema.nfh.global/",
+    "scres": "https://schema.nfh.global/ServiceCoordinationResource#",
+    "sr": "https://schema.nfh.global/ServiceResource#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
 
     "ServiceCoordinationResource": "scres:ServiceCoordinationResource",

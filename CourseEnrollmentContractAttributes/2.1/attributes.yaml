@@ -13,7 +13,7 @@ info:
 components:
   schemas:
     CourseEnrollmentContractAttributes:
-      x-iri: https://schema.beckn.io/CourseEnrollmentContractAttributes/v2.1
+      x-iri: https://schema.nfh.global/CourseEnrollmentContractAttributes/v2.1
       type: object
       x-beckn-container: contractAttributes
       x-jsonld-context: ./context.jsonld
@@ -30,7 +30,7 @@ components:
           description: Identifier of the cohort or batch the learner is assigned to.
           x-jsonld-id: ceca:cohortId
         prerequisite_verification_summary:
-          $ref: https://schema.beckn.io/VerificationSummary/v2.1/attributes.yaml#/components/schemas/VerificationSummary
+          $ref: https://schema.nfh.global/VerificationSummary/v2.1/attributes.yaml#/components/schemas/VerificationSummary
           x-jsonld-id: ceca:prerequisiteVerificationSummary
         credential_issuance_pending:
           type: boolean

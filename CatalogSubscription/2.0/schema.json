@@ -1,6 +1,6 @@
 {
-  "$id": "https://schema.beckn.io/CatalogSubscription/v2.0",
-  "x-iri": "https://schema.beckn.io/CatalogSubscription/v2.0",
+  "$id": "https://schema.nfh.global/CatalogSubscription/v2.0",
+  "x-iri": "https://schema.nfh.global/CatalogSubscription/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "type": "object",
   "description": "Full subscription record",
@@ -43,7 +43,7 @@
       "description": "Lifecycle status of the subscription"
     },
     "deliveryPolicy": {
-      "$ref": "https://schema.beckn.io/DeliveryPolicy/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/DeliveryPolicy/v2.0/schema.json"
     },
     "createdAt": {
       "type": "string",

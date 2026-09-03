@@ -11,7 +11,7 @@ info:
 components:
   schemas:
     Constraint:
-      x-iri: https://schema.beckn.io/Constraint/v2.0
+      x-iri: https://schema.nfh.global/Constraint/v2.0
       description: Schema definition for Constraint in the Beckn Protocol v2.0.1
       title: Constraint
       type: object
@@ -29,7 +29,7 @@ components:
           description: Unit code (e.g., km, min)
           type: string
         validity:
-          $ref: https://schema.beckn.io/TimePeriod/v2.1/attributes.yaml#/components/schemas/TimePeriod
+          $ref: https://schema.nfh.global/TimePeriod/v2.1/attributes.yaml#/components/schemas/TimePeriod
         value:
           description: Constraint value
           type: number

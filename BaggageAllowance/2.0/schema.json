@@ -1,6 +1,6 @@
 {
-  "$id": "https://schema.beckn.io/BaggageAllowance/v2.0",
-  "x-iri": "https://schema.beckn.io/BaggageAllowance/v2.0",
+  "$id": "https://schema.nfh.global/BaggageAllowance/v2.0",
+  "x-iri": "https://schema.nfh.global/BaggageAllowance/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "BaggageAllowance",
   "type": "object",
@@ -44,7 +44,7 @@
     },
     "validity": {
       "description": "Validity window for this constraint",
-      "$ref": "https://schema.beckn.io/TimePeriod/v2.1/schema.json"
+      "$ref": "https://schema.nfh.global/TimePeriod/v2.1/schema.json"
     }
   },
   "additionalProperties": false,

@@ -11,13 +11,13 @@ info:
 components:
   schemas:
     Participant:
-      x-iri: https://schema.beckn.io/Participant/v2.0
+      x-iri: https://schema.nfh.global/Participant/v2.0
       type: object
       properties:
         id:
           type: string
         descriptor:
-          $ref: https://schema.beckn.io/Descriptor/v2.1/attributes.yaml#/components/schemas/Descriptor
+          $ref: https://schema.nfh.global/Descriptor/v2.1/attributes.yaml#/components/schemas/Descriptor
         participantAttributes:
           description: 'Domain-specific extension attributes for this contract.
 
@@ -26,5 +26,5 @@ components:
 
             other fulfillment types where no well-known domain schema exists.'
           allOf:
-          - $ref: https://schema.beckn.io/Attributes/v2.0/attributes.yaml#/components/schemas/Attributes
+          - $ref: https://schema.nfh.global/Attributes/v2.0/attributes.yaml#/components/schemas/Attributes
           - properties: {}

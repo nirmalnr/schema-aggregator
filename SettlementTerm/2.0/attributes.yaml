@@ -13,7 +13,7 @@ info:
 components:
   schemas:
     SettlementTerm:
-      x-iri: https://schema.beckn.io/SettlementTerm/v2.0
+      x-iri: https://schema.nfh.global/SettlementTerm/v2.0
       description: Describes the terms of settlement associated with a given transaction.
         This is not to be confused with the PaymentAction as it describes all the
         places where the money gets disbursed after reconciliation.
@@ -35,14 +35,14 @@ components:
         paymentTrigger:
           description: Describes the event which triggers the payment against this
             settlement term
-          $ref: https://schema.beckn.io/PaymentTrigger/v2.0/attributes.yaml#/components/schemas/PaymentTrigger
+          $ref: https://schema.nfh.global/PaymentTrigger/v2.0/attributes.yaml#/components/schemas/PaymentTrigger
         settlementStatus:
           type: string
           enum:
           - PENDING
           - COMPLETE
         settlementSchedule:
-          $ref: https://schema.beckn.io/SettlementSchedule/v2.0/attributes.yaml#/components/schemas/SettlementSchedule
+          $ref: https://schema.nfh.global/SettlementSchedule/v2.0/attributes.yaml#/components/schemas/SettlementSchedule
         payTo:
           description: Describes the details of the account where the money must be
             remited. It could be a bank account, a payment gateway, or a virtual payment
@@ -80,6 +80,6 @@ components:
         settlementTermAttributes:
           description: Additional use case specific settlement terms that must be
             adhered to
-          $ref: https://schema.beckn.io/Attributes/v2.0/attributes.yaml#/components/schemas/Attributes
+          $ref: https://schema.nfh.global/Attributes/v2.0/attributes.yaml#/components/schemas/Attributes
       x-tags:
       - common

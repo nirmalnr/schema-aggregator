@@ -1,6 +1,6 @@
 {
-  "$id": "https://schema.beckn.io/Plan/v2.0",
-  "x-iri": "https://schema.beckn.io/Plan/v2.0",
+  "$id": "https://schema.nfh.global/Plan/v2.0",
+  "x-iri": "https://schema.nfh.global/Plan/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Plan",
   "type": "object",
@@ -13,15 +13,15 @@
     },
     "itineraries": {
       "description": "List of itinerary options returned in the plan",
-      "$ref": "https://schema.beckn.io/Itinerary/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Itinerary/v2.0/schema.json"
     },
     "from": {
       "description": "Origin location for this plan",
-      "$ref": "https://schema.beckn.io/Location/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Location/v2.0/schema.json"
     },
     "to": {
       "description": "Destination location for this plan",
-      "$ref": "https://schema.beckn.io/Location/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Location/v2.0/schema.json"
     },
     "id": {
       "description": "Unique identifier for the catalog",
@@ -29,7 +29,7 @@
     },
     "descriptor": {
       "description": "Human-readable description of the catalog",
-      "$ref": "https://schema.beckn.io/Descriptor/v2.1/schema.json"
+      "$ref": "https://schema.nfh.global/Descriptor/v2.1/schema.json"
     },
     "tags": {
       "description": "Tags associated with the catalog",

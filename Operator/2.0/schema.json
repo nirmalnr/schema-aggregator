@@ -1,6 +1,6 @@
 {
-  "$id": "https://schema.beckn.io/Operator/v2.0",
-  "x-iri": "https://schema.beckn.io/Operator/v2.0",
+  "$id": "https://schema.nfh.global/Operator/v2.0",
+  "x-iri": "https://schema.nfh.global/Operator/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Operator",
   "type": "object",
@@ -28,19 +28,19 @@
     },
     "descriptor": {
       "description": "Human-readable description of the provider",
-      "$ref": "https://schema.beckn.io/Descriptor/v2.1/schema.json"
+      "$ref": "https://schema.nfh.global/Descriptor/v2.1/schema.json"
     },
     "categories": {
       "description": "Service categories offered by the provider",
-      "$ref": "https://schema.beckn.io/CategoryCode/v2.1/schema.json"
+      "$ref": "https://schema.nfh.global/CategoryCode/v2.1/schema.json"
     },
     "locations": {
       "description": "Locations where the provider offers services",
-      "$ref": "https://schema.beckn.io/Location/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Location/v2.0/schema.json"
     },
     "items": {
       "description": "Items available for discovery from this provider",
-      "$ref": "https://schema.beckn.io/Item/v2.1/schema.json"
+      "$ref": "https://schema.nfh.global/Item/v2.1/schema.json"
     },
     "ratingsTotal": {
       "description": "Total number of ratings received",
@@ -48,7 +48,7 @@
     },
     "rating": {
       "description": "Aggregate rating of the provider",
-      "$ref": "https://schema.beckn.io/Rating/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Rating/v2.0/schema.json"
     }
   },
   "additionalProperties": false,

@@ -12,7 +12,7 @@ info:
 components:
   schemas:
     FareBreakup:
-      x-iri: https://schema.beckn.io/FareBreakup/v2.0
+      x-iri: https://schema.nfh.global/FareBreakup/v2.0
       type: object
       title: FareBreakup
       description: A detailed breakdown of the total fare into its constituent components,
@@ -41,7 +41,7 @@ components:
           type: string
         price:
           description: Monetary value of this component
-          $ref: https://schema.beckn.io/PriceSpecification/v2.1/attributes.yaml#/components/schemas/PriceSpecification
+          $ref: https://schema.nfh.global/PriceSpecification/v2.1/attributes.yaml#/components/schemas/PriceSpecification
         tags:
           description: Tags associated with this price component
           type: string

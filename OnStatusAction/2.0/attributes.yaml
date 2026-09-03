@@ -11,7 +11,7 @@ info:
 components:
   schemas:
     OnStatusAction:
-      x-iri: https://schema.beckn.io/OnStatusAction/v2.0
+      x-iri: https://schema.nfh.global/OnStatusAction/v2.0
       title: On Status Action
       description: 'Beckn /beckn/on_status message payload. Sent by a BPP to a BAP
         in
@@ -24,6 +24,6 @@ components:
       additionalProperties: false
       properties:
         contract:
-          $ref: https://schema.beckn.io/Contract/v2.0/attributes.yaml#/components/schemas/Contract
+          $ref: https://schema.nfh.global/Contract/v2.0/attributes.yaml#/components/schemas/Contract
       required:
       - contract

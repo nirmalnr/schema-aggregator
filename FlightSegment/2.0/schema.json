@@ -1,6 +1,6 @@
 {
-  "$id": "https://schema.beckn.io/FlightSegment/v2.0",
-  "x-iri": "https://schema.beckn.io/FlightSegment/v2.0",
+  "$id": "https://schema.nfh.global/FlightSegment/v2.0",
+  "x-iri": "https://schema.nfh.global/FlightSegment/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "FlightSegment",
   "type": "object",
@@ -42,11 +42,11 @@
     },
     "origin": {
       "description": "Start location of the leg",
-      "$ref": "https://schema.beckn.io/Location/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Location/v2.0/schema.json"
     },
     "destination": {
       "description": "End location of the leg",
-      "$ref": "https://schema.beckn.io/Location/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Location/v2.0/schema.json"
     },
     "startTime": {
       "description": "Scheduled or actual start time of the leg",
@@ -68,7 +68,7 @@
     },
     "routeRef": {
       "description": "Reference to the route served on this leg",
-      "$ref": "https://schema.beckn.io/Route/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Route/v2.0/schema.json"
     }
   },
   "additionalProperties": false,

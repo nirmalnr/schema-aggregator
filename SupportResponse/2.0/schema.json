@@ -1,6 +1,6 @@
 {
-  "$id": "https://schema.beckn.io/SupportResponse/v2.0",
-  "x-iri": "https://schema.beckn.io/SupportResponse/v2.0",
+  "$id": "https://schema.nfh.global/SupportResponse/v2.0",
+  "x-iri": "https://schema.nfh.global/SupportResponse/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "description": "Support response payload returned by a BPP to a BAP in the /beckn/on_support callback. Contains the support ticket reference, available contact channels, SLA commitment, and optional consumer acknowledgement details. ",
   "title": "SupportResponse",
@@ -19,7 +19,7 @@
     },
     "descriptor": {
       "description": "Human-readable label for this support response.",
-      "$ref": "https://schema.beckn.io/Descriptor/v2.1/schema.json"
+      "$ref": "https://schema.nfh.global/Descriptor/v2.1/schema.json"
     },
     "channels": {
       "description": "Available support channels with contact details.",
@@ -73,7 +73,7 @@
     },
     "consumer": {
       "description": "The consumer the support response is addressed to (optional).",
-      "$ref": "https://schema.beckn.io/Consumer/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Consumer/v2.0/schema.json"
     }
   },
   "required": [],

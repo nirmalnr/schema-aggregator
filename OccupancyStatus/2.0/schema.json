@@ -1,6 +1,6 @@
 {
-  "$id": "https://schema.beckn.io/OccupancyStatus/v2.0",
-  "x-iri": "https://schema.beckn.io/OccupancyStatus/v2.0",
+  "$id": "https://schema.nfh.global/OccupancyStatus/v2.0",
+  "x-iri": "https://schema.nfh.global/OccupancyStatus/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "OccupancyStatus",
   "type": "object",
@@ -24,7 +24,7 @@
     },
     "descriptor": {
       "description": "Human-readable description of the state",
-      "$ref": "https://schema.beckn.io/Descriptor/v2.1/schema.json"
+      "$ref": "https://schema.nfh.global/Descriptor/v2.1/schema.json"
     },
     "updatedAt": {
       "description": "Timestamp when the state was last updated",

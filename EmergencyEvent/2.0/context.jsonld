@@ -1,6 +1,6 @@
 {
   "@context": {
-    "beckn": "https://schema.beckn.io/mobility/v2.0/",
+    "beckn": "https://schema.nfh.global/mobility/v2.0/",
     "EmergencyEvent": "beckn:EmergencyEvent",
     "emergencyType": "beckn:emergencyType",
     "severity": "beckn:severity",

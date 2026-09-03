@@ -1,8 +1,8 @@
 {
-  "@import": "https://schema.beckn.io/core/v2/vocab.jsonld",
+  "@import": "https://schema.nfh.global/core/v2/vocab.jsonld",
   "@context": {
-    "@import": "https://schema.beckn.io/core/v2/vocab.jsonld",
-    "japa": "https://schema.beckn.io/JobApplicationPerformance#",
+    "@import": "https://schema.nfh.global/core/v2/vocab.jsonld",
+    "japa": "https://schema.nfh.global/JobApplicationPerformance#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "ScreeningType": "japa:ScreeningType",
     "CV_REVIEW": "japa:CV_REVIEW",

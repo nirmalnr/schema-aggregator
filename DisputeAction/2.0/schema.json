@@ -1,6 +1,6 @@
 {
-  "$id": "https://schema.beckn.io/DisputeAction/v2.0",
-  "x-iri": "https://schema.beckn.io/DisputeAction/v2.0",
+  "$id": "https://schema.nfh.global/DisputeAction/v2.0",
+  "x-iri": "https://schema.nfh.global/DisputeAction/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "description": "Container for the dispute / on_dispute messages exchanged between nodes. A DisputeAction carries the Dispute object being created, updated, status-tracked, or cancelled (withdrawn). The action being performed is conveyed by the endpoint (dispute / on_dispute) and the lifecycle state of the carried Dispute.",
   "title": "DisputeAction",
@@ -8,7 +8,7 @@
   "properties": {
     "dispute": {
       "description": "The dispute being exchanged.",
-      "$ref": "https://schema.beckn.io/Dispute/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Dispute/v2.0/schema.json"
     }
   },
   "required": [

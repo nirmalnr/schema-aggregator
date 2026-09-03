@@ -12,7 +12,7 @@ info:
 components:
   schemas:
     PassengerGroup:
-      x-iri: https://schema.beckn.io/PassengerGroup/v2.0
+      x-iri: https://schema.nfh.global/PassengerGroup/v2.0
       type: object
       title: PassengerGroup
       description: A collection of passengers traveling together as a group, with
@@ -29,7 +29,7 @@ components:
           type: number
         leadPassenger:
           description: The lead or primary passenger for the group
-          $ref: https://schema.beckn.io/Passenger/v2.0/attributes.yaml#/components/schemas/Passenger
+          $ref: https://schema.nfh.global/Passenger/v2.0/attributes.yaml#/components/schemas/Passenger
         unitCode:
           description: Unit of measure code (UN/ECE Rec 20)
           type: string

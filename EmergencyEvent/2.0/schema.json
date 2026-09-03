@@ -1,6 +1,6 @@
 {
-  "$id": "https://schema.beckn.io/EmergencyEvent/v2.0",
-  "x-iri": "https://schema.beckn.io/EmergencyEvent/v2.0",
+  "$id": "https://schema.nfh.global/EmergencyEvent/v2.0",
+  "x-iri": "https://schema.nfh.global/EmergencyEvent/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "EmergencyEvent",
   "type": "object",
@@ -21,7 +21,7 @@
     },
     "location": {
       "description": "Geographic location of the emergency",
-      "$ref": "https://schema.beckn.io/Location/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Location/v2.0/schema.json"
     },
     "id": {
       "description": "Unique identifier for the alert",
@@ -29,15 +29,15 @@
     },
     "descriptor": {
       "description": "Human-readable description of the alert",
-      "$ref": "https://schema.beckn.io/Descriptor/v2.1/schema.json"
+      "$ref": "https://schema.nfh.global/Descriptor/v2.1/schema.json"
     },
     "validity": {
       "description": "Time period during which the alert is active",
-      "$ref": "https://schema.beckn.io/TimePeriod/v2.1/schema.json"
+      "$ref": "https://schema.nfh.global/TimePeriod/v2.1/schema.json"
     },
     "status": {
       "description": "Current status of the alert",
-      "$ref": "https://schema.beckn.io/State/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/State/v2.0/schema.json"
     }
   },
   "additionalProperties": false,

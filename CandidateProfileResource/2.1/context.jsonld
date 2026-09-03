@@ -1,10 +1,10 @@
 {
   "@context": {
     "schema": "https://schema.org/",
-    "beckn": "https://schema.beckn.io/",
-    "cpra": "https://schema.beckn.io/CandidateProfileResource#",
-    "jloc": "https://schema.beckn.io/JobLocation#",
-    "salspec": "https://schema.beckn.io/SalarySpecification#",
+    "beckn": "https://schema.nfh.global/",
+    "cpra": "https://schema.nfh.global/CandidateProfileResource#",
+    "jloc": "https://schema.nfh.global/JobLocation#",
+    "salspec": "https://schema.nfh.global/SalarySpecification#",
     "xsd": "http://www.w3.org/2001/XMLSchema#",
     "experience_level": {
       "@id": "cpra:experienceLevel"

@@ -11,13 +11,13 @@ info:
 components:
   schemas:
     TrackAction:
-      x-iri: https://schema.beckn.io/TrackAction/v2.1
+      x-iri: https://schema.nfh.global/TrackAction/v2.1
       type: object
       description: Details required to initiate real-time tracking (if relevant) for
         an ongoing transaction
       additionalProperties: false
       properties:
         tracking:
-          $ref: https://schema.beckn.io/Tracking/v2.1/attributes.yaml#/components/schemas/Tracking
+          $ref: https://schema.nfh.global/Tracking/v2.1/attributes.yaml#/components/schemas/Tracking
       required:
       - tracking

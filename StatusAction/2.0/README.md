@@ -8,14 +8,10 @@ the current state of a contract/order by its identifier.
 
 | File | Purpose |
 |---|---|
-| [https://schema.beckn.io/StatusAction/attributes.yaml](https://schema.beckn.io/StatusAction/attributes.yaml) | OpenAPI schema envelope (latest path) |
-| [https://schema.beckn.io/StatusAction/v2.0/attributes.yaml](https://schema.beckn.io/StatusAction/v2.0/attributes.yaml) | OpenAPI schema envelope (versioned path) |
-| [https://schema.beckn.io/StatusAction/attributes.jsonschema.yaml](https://schema.beckn.io/StatusAction/attributes.jsonschema.yaml) | JSON Schema document (latest path) |
-| [https://schema.beckn.io/StatusAction/v2.0/attributes.jsonschema.yaml](https://schema.beckn.io/StatusAction/v2.0/attributes.jsonschema.yaml) | JSON Schema document (versioned path) |
-| [https://schema.beckn.io/StatusAction/context.jsonld](https://schema.beckn.io/StatusAction/context.jsonld) | JSON-LD context (latest path) |
-| [https://schema.beckn.io/StatusAction/v2.0/context.jsonld](https://schema.beckn.io/StatusAction/v2.0/context.jsonld) | JSON-LD context (versioned path) |
-| [https://schema.beckn.io/StatusAction/vocab.jsonld](https://schema.beckn.io/StatusAction/vocab.jsonld) | RDF vocabulary (latest path) |
-| [https://schema.beckn.io/StatusAction/v2.0/vocab.jsonld](https://schema.beckn.io/StatusAction/v2.0/vocab.jsonld) | RDF vocabulary (versioned path) |
+| [https://schema.nfh.global/StatusAction/v2.0/attributes.yaml](https://schema.nfh.global/StatusAction/v2.0/attributes.yaml) | OpenAPI schema envelope (versioned path) |
+| [https://schema.nfh.global/StatusAction/v2.0/attributes.jsonschema.yaml](https://schema.nfh.global/StatusAction/v2.0/attributes.jsonschema.yaml) | JSON Schema document (versioned path) |
+| [https://schema.nfh.global/StatusAction/v2.0/context.jsonld](https://schema.nfh.global/StatusAction/v2.0/context.jsonld) | JSON-LD context (versioned path) |
+| [https://schema.nfh.global/StatusAction/v2.0/vocab.jsonld](https://schema.nfh.global/StatusAction/v2.0/vocab.jsonld) | RDF vocabulary (versioned path) |
 
 ## Properties
 

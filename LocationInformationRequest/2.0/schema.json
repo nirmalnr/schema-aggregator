@@ -1,6 +1,6 @@
 {
-  "$id": "https://schema.beckn.io/LocationInformationRequest/v2.0",
-  "x-iri": "https://schema.beckn.io/LocationInformationRequest/v2.0",
+  "$id": "https://schema.nfh.global/LocationInformationRequest/v2.0",
+  "x-iri": "https://schema.nfh.global/LocationInformationRequest/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "LocationInformationRequest",
   "type": "object",
@@ -16,7 +16,7 @@
     },
     "coordinates": {
       "description": "Geographic coordinates to query around",
-      "$ref": "https://schema.beckn.io/GeoJSONGeometry/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/GeoJSONGeometry/v2.0/schema.json"
     },
     "radius": {
       "description": "Search radius in metres",
@@ -32,7 +32,7 @@
     },
     "spatial": {
       "description": "Geographic constraints on the search area",
-      "$ref": "https://schema.beckn.io/SpatialConstraint/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/SpatialConstraint/v2.0/schema.json"
     },
     "provider": {
       "description": "Identifier of a specific provider to search within",

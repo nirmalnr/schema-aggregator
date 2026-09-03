@@ -1,6 +1,6 @@
 {
-  "$id": "https://schema.beckn.io/Provider/v2.0",
-  "x-iri": "https://schema.beckn.io/Provider/v2.0",
+  "$id": "https://schema.nfh.global/Provider/v2.0",
+  "x-iri": "https://schema.nfh.global/Provider/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "description": "Schema definition for Provider in the Beckn Protocol",
   "title": "Provider",
@@ -12,15 +12,15 @@
       "example": "tech-store-001"
     },
     "beckn:descriptor": {
-      "$ref": "https://schema.beckn.io/Descriptor/v2.1/schema.json"
+      "$ref": "https://schema.nfh.global/Descriptor/v2.1/schema.json"
     },
     "beckn:validity": {
-      "$ref": "https://schema.beckn.io/TimePeriod/v2.1/schema.json"
+      "$ref": "https://schema.nfh.global/TimePeriod/v2.1/schema.json"
     },
     "beckn:locations": {
       "type": "array",
       "items": {
-        "$ref": "https://schema.beckn.io/Location/v2.0/schema.json"
+        "$ref": "https://schema.nfh.global/Location/v2.0/schema.json"
       },
       "description": "Physical locations where the provider operates"
     },
@@ -30,10 +30,10 @@
       "example": true
     },
     "beckn:rating": {
-      "$ref": "https://schema.beckn.io/Rating/v2.1/schema.json"
+      "$ref": "https://schema.nfh.global/Rating/v2.1/schema.json"
     },
     "beckn:providerAttributes": {
-      "$ref": "https://schema.beckn.io/Attributes/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Attributes/v2.0/schema.json"
     }
   },
   "required": [

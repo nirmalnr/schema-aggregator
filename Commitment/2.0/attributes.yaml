@@ -11,7 +11,7 @@ info:
 components:
   schemas:
     Commitment:
-      x-iri: https://schema.beckn.io/Commitment/v2.0
+      x-iri: https://schema.nfh.global/Commitment/v2.0
       type: object
       required:
       - status
@@ -25,7 +25,7 @@ components:
           properties:
             descriptor:
               allOf:
-              - $ref: https://schema.beckn.io/Descriptor/v2.1/attributes.yaml#/components/schemas/Descriptor
+              - $ref: https://schema.nfh.global/Descriptor/v2.1/attributes.yaml#/components/schemas/Descriptor
               - properties:
                   code:
                     enum:
@@ -38,14 +38,14 @@ components:
             required:
             - id
             - quantity
-            $ref: https://schema.beckn.io/Resource/v2.0/attributes.yaml#/components/schemas/Resource
+            $ref: https://schema.nfh.global/Resource/v2.0/attributes.yaml#/components/schemas/Resource
         offer:
           required:
           - id
           - resourceIds
-          $ref: https://schema.beckn.io/Offer/v2.1/attributes.yaml#/components/schemas/Offer
+          $ref: https://schema.nfh.global/Offer/v2.1/attributes.yaml#/components/schemas/Offer
         commitmentAttributes:
           description: Domain-specific extension attributes for this commitment.
           allOf:
-          - $ref: https://schema.beckn.io/Attributes/v2.0/attributes.yaml#/components/schemas/Attributes
+          - $ref: https://schema.nfh.global/Attributes/v2.0/attributes.yaml#/components/schemas/Attributes
           - properties: {}

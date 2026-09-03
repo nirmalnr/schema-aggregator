@@ -11,7 +11,7 @@ info:
 components:
   schemas:
     CounterSignature:
-      x-iri: https://schema.beckn.io/CounterSignature/v2.0
+      x-iri: https://schema.nfh.global/CounterSignature/v2.0
       title: Beckn HTTP Counter-Signature
       description: 'A signed receipt transmitted in the synchronous `Ack` response
         body, proving that the
@@ -48,4 +48,4 @@ components:
 
         ```'
       allOf:
-      - $ref: https://schema.beckn.io/Signature/v2.0/attributes.yaml#/components/schemas/Signature
+      - $ref: https://schema.nfh.global/Signature/v2.0/attributes.yaml#/components/schemas/Signature

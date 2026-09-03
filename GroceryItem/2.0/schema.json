@@ -1,7 +1,7 @@
 {
   "allOf": [
     {
-      "$ref": "https://schema.beckn.io/RetailCoreItem/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/RetailCoreItem/v2.0/schema.json"
     },
     {
       "type": "object",
@@ -26,7 +26,7 @@
               },
               "value": {
                 "description": "Nutrient value expressed as Beckn core Quantity.",
-                "$ref": "https://schema.beckn.io/Quantity/v2.0/schema.json"
+                "$ref": "https://schema.nfh.global/Quantity/v2.0/schema.json"
               }
             }
           }
@@ -45,8 +45,8 @@
       }
     }
   ],
-  "$id": "https://schema.beckn.io/GroceryItem/v2.0",
-  "x-iri": "https://schema.beckn.io/GroceryItem/v2.0",
+  "$id": "https://schema.nfh.global/GroceryItem/v2.0",
+  "x-iri": "https://schema.nfh.global/GroceryItem/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "GroceryItem"
 }

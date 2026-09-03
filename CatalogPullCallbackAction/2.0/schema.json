@@ -1,6 +1,6 @@
 {
-  "$id": "https://schema.beckn.io/CatalogPullCallbackAction/v2.0",
-  "x-iri": "https://schema.beckn.io/CatalogPullCallbackAction/v2.0",
+  "$id": "https://schema.nfh.global/CatalogPullCallbackAction/v2.0",
+  "x-iri": "https://schema.nfh.global/CatalogPullCallbackAction/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "CatalogPullCallbackAction",
   "type": "object",
@@ -22,7 +22,7 @@
       "type": "array",
       "description": "Requested catalogs inline. Present when status is COMPLETED.",
       "items": {
-        "$ref": "https://schema.beckn.io/Catalog/v2.2/schema.json"
+        "$ref": "https://schema.nfh.global/Catalog/v2.2/schema.json"
       }
     },
     "downloadManifest": {
@@ -66,11 +66,11 @@
       }
     },
     "pagination": {
-      "$ref": "https://schema.beckn.io/Pagination/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Pagination/v2.0/schema.json"
     },
     "error": {
       "description": "Present when status is FAILED.",
-      "$ref": "https://schema.beckn.io/Error/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Error/v2.0/schema.json"
     }
   }
 }

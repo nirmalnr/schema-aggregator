@@ -1,6 +1,6 @@
 {
   "@context": {
-    "beckn": "https://schema.beckn.io/mobility/v2.0/",
+    "beckn": "https://schema.nfh.global/mobility/v2.0/",
     "ItineraryElement": "beckn:ItineraryElement",
     "elementType": "beckn:elementType",
     "segmentRef": "beckn:segmentRef",

@@ -11,7 +11,7 @@ info:
 components:
   schemas:
     DisputeAction:
-      x-iri: https://schema.beckn.io/DisputeAction/v2.0
+      x-iri: https://schema.nfh.global/DisputeAction/v2.0
       description: Container for the dispute / on_dispute messages exchanged between
         nodes. A DisputeAction carries the Dispute object being created, updated,
         status-tracked, or cancelled (withdrawn). The action being performed is
@@ -22,7 +22,7 @@ components:
       properties:
         dispute:
           description: The dispute being exchanged.
-          $ref: https://schema.beckn.io/Dispute/v2.0/attributes.yaml#/components/schemas/Dispute
+          $ref: https://schema.nfh.global/Dispute/v2.0/attributes.yaml#/components/schemas/Dispute
       required:
       - dispute
       additionalProperties: false

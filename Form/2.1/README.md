@@ -6,14 +6,10 @@ Describes a form
 
 | File | Purpose |
 |---|---|
-| [https://schema.beckn.io/Form/attributes.yaml](https://schema.beckn.io/Form/attributes.yaml) | OpenAPI schema envelope (latest path) |
-| [https://schema.beckn.io/Form/v2.1/attributes.yaml](https://schema.beckn.io/Form/v2.1/attributes.yaml) | OpenAPI schema envelope (versioned path) |
-| [https://schema.beckn.io/Form/attributes.jsonschema.yaml](https://schema.beckn.io/Form/attributes.jsonschema.yaml) | JSON Schema document (latest path) |
-| [https://schema.beckn.io/Form/v2.1/attributes.jsonschema.yaml](https://schema.beckn.io/Form/v2.1/attributes.jsonschema.yaml) | JSON Schema document (versioned path) |
-| [https://schema.beckn.io/Form/context.jsonld](https://schema.beckn.io/Form/context.jsonld) | JSON-LD context (latest path) |
-| [https://schema.beckn.io/Form/v2.1/context.jsonld](https://schema.beckn.io/Form/v2.1/context.jsonld) | JSON-LD context (versioned path) |
-| [https://schema.beckn.io/Form/vocab.jsonld](https://schema.beckn.io/Form/vocab.jsonld) | RDF vocabulary (latest path) |
-| [https://schema.beckn.io/Form/v2.1/vocab.jsonld](https://schema.beckn.io/Form/v2.1/vocab.jsonld) | RDF vocabulary (versioned path) |
+| [https://schema.nfh.global/Form/v2.1/attributes.yaml](https://schema.nfh.global/Form/v2.1/attributes.yaml) | OpenAPI schema envelope (versioned path) |
+| [https://schema.nfh.global/Form/v2.1/attributes.jsonschema.yaml](https://schema.nfh.global/Form/v2.1/attributes.jsonschema.yaml) | JSON Schema document (versioned path) |
+| [https://schema.nfh.global/Form/v2.1/context.jsonld](https://schema.nfh.global/Form/v2.1/context.jsonld) | JSON-LD context (versioned path) |
+| [https://schema.nfh.global/Form/v2.1/vocab.jsonld](https://schema.nfh.global/Form/v2.1/vocab.jsonld) | RDF vocabulary (versioned path) |
 
 ## Properties
 

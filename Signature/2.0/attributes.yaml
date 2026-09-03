@@ -11,7 +11,7 @@ info:
 components:
   schemas:
     Signature:
-      x-iri: https://schema.beckn.io/Signature/v2.0
+      x-iri: https://schema.nfh.global/Signature/v2.0
       title: Signature
       description: 'A digitally signed authentication credential in the HTTP `Authorization` header.
 

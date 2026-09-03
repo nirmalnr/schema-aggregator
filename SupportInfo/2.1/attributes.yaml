@@ -11,7 +11,7 @@ info:
 components:
   schemas:
     SupportInfo:
-      x-iri: https://schema.beckn.io/SupportInfo/v2.1
+      x-iri: https://schema.nfh.global/SupportInfo/v2.1
       description: Canonical support contact for an entity, mapped to schema.org ContactPoint.
       title: SupportInfo
       x-tags:

@@ -12,7 +12,7 @@ info:
 components:
   schemas:
     Driver:
-      x-iri: https://schema.beckn.io/Driver/v2.0
+      x-iri: https://schema.nfh.global/Driver/v2.0
       type: object
       title: Driver
       description: A person who operates a transport vehicle and is responsible for
@@ -35,14 +35,14 @@ components:
           type: string
         person:
           description: Personal details of the agent
-          $ref: https://schema.beckn.io/Person/v2.0/attributes.yaml#/components/schemas/Person
+          $ref: https://schema.nfh.global/Person/v2.0/attributes.yaml#/components/schemas/Person
         organization:
           description: Organisation the agent belongs to
-          $ref: https://schema.beckn.io/Organization/v2.0/attributes.yaml#/components/schemas/Organization
+          $ref: https://schema.nfh.global/Organization/v2.0/attributes.yaml#/components/schemas/Organization
         contact:
           description: Contact information for the agent
           type: string
         rating:
           description: Overall rating of the agent
-          $ref: https://schema.beckn.io/Rating/v2.0/attributes.yaml#/components/schemas/Rating
+          $ref: https://schema.nfh.global/Rating/v2.0/attributes.yaml#/components/schemas/Rating
       additionalProperties: false

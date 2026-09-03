@@ -13,7 +13,7 @@ info:
 components:
   schemas:
     RatingForm:
-      x-iri: https://schema.beckn.io/RatingForm/v2.0
+      x-iri: https://schema.nfh.global/RatingForm/v2.0
       description: A form designed to capture rating and feedback from a user. This
         can be used by both BAP and BPP to fetch ratings and feedback of their respective
         users.
@@ -58,10 +58,10 @@ components:
                   type: integer
                   minimum: 0
                 value:
-                  $ref: https://schema.beckn.io/Descriptor/v2.1/attributes.yaml#/components/schemas/Descriptor
+                  $ref: https://schema.nfh.global/Descriptor/v2.1/attributes.yaml#/components/schemas/Descriptor
         feedbackForm:
           description: A feedback form sent along with a rating request
-          $ref: https://schema.beckn.io/Form/v2.1/attributes.yaml#/components/schemas/Form
+          $ref: https://schema.nfh.global/Form/v2.1/attributes.yaml#/components/schemas/Form
         feedbackRequired:
           type: boolean
           description: Specifies whether feedback after rating is required for acceptance

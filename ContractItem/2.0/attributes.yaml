@@ -11,7 +11,7 @@ info:
 components:
   schemas:
     ContractItem:
-      x-iri: https://schema.beckn.io/ContractItem/v2.0
+      x-iri: https://schema.nfh.global/ContractItem/v2.0
       description: A line item within a Contract, linking an accepted Offer and ordered Item with quantity and price.
       title: ContractItem
       x-tags:
@@ -22,26 +22,26 @@ components:
           description: Offer applied to this line (if different from contract-level)
           x-jsonld:
             '@id': schema:acceptedOffer
-          $ref: https://schema.beckn.io/Offer/v2.1/attributes.yaml#/components/schemas/Offer
+          $ref: https://schema.nfh.global/Offer/v2.1/attributes.yaml#/components/schemas/Offer
         itemId:
           x-jsonld:
             '@id': schema:orderedItem
-          $ref: https://schema.beckn.io/Item/v2.1/attributes.yaml#/components/schemas/Item
+          $ref: https://schema.nfh.global/Item/v2.1/attributes.yaml#/components/schemas/Item
         lineId:
           description: Unique line id within contract
           type: string
         contractItemAttributes:
           description: Line-level Attribute Pack (options, substitutions, ESG, etc.)
-          $ref: https://schema.beckn.io/Attributes/v2.0/attributes.yaml#/components/schemas/Attributes
+          $ref: https://schema.nfh.global/Attributes/v2.0/attributes.yaml#/components/schemas/Attributes
         price:
           description: Line price composition (unit/tax/delivery/discount)
           x-jsonld:
             '@id': schema:priceSpecification
-          $ref: https://schema.beckn.io/PriceSpecification/v2.1/attributes.yaml#/components/schemas/PriceSpecification
+          $ref: https://schema.nfh.global/PriceSpecification/v2.1/attributes.yaml#/components/schemas/PriceSpecification
         quantity:
           x-jsonld:
             '@id': beckn:quantity
-          $ref: https://schema.beckn.io/Quantity/v2.0/attributes.yaml#/components/schemas/Quantity
+          $ref: https://schema.nfh.global/Quantity/v2.0/attributes.yaml#/components/schemas/Quantity
       required:
       - itemId
       additionalProperties: false

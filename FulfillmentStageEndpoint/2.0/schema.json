@@ -1,6 +1,6 @@
 {
-  "$id": "https://schema.beckn.io/FulfillmentStageEndpoint/v2.0",
-  "x-iri": "https://schema.beckn.io/FulfillmentStageEndpoint/v2.0",
+  "$id": "https://schema.nfh.global/FulfillmentStageEndpoint/v2.0",
+  "x-iri": "https://schema.nfh.global/FulfillmentStageEndpoint/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "description": "A stage boundary endpoint (entry or exit) within a fulfillment, such as pickup, handover, warehouse in/out, border crossing, gate entry/exit, security check, etc. May require one or more proofs/permits/tokens/documents. ",
   "title": "FulfillmentStageEndpoint",
@@ -8,16 +8,16 @@
   "additionalProperties": false,
   "properties": {
     "location": {
-      "$ref": "https://schema.beckn.io/Location/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Location/v2.0/schema.json"
     },
     "time": {
-      "$ref": "https://schema.beckn.io/TimePeriod/v2.1/schema.json"
+      "$ref": "https://schema.nfh.global/TimePeriod/v2.1/schema.json"
     },
     "authorization": {
       "type": "array",
       "description": "One or more credentials required and/or issued at this endpoint. Includes machine-readable tokens (QR/URL/OTP) and manual documents (IDs, permits). ",
       "items": {
-        "$ref": "https://schema.beckn.io/FulfillmentStageAuthorization/v2.0/schema.json"
+        "$ref": "https://schema.nfh.global/FulfillmentStageAuthorization/v2.0/schema.json"
       }
     }
   },

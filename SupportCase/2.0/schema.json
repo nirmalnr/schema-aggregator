@@ -1,6 +1,6 @@
 {
-  "$id": "https://schema.beckn.io/SupportCase/v2.0",
-  "x-iri": "https://schema.beckn.io/SupportCase/v2.0",
+  "$id": "https://schema.nfh.global/SupportCase/v2.0",
+  "x-iri": "https://schema.nfh.global/SupportCase/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "description": "A domain-agnostic customer support ticket used to record an issue raised between parties — its category, priority, lifecycle status, supporting attachments, and support interaction sessions. It is independent of any particular domain; domain-specific values are carried via the category descriptor and the extensible attribute bags.",
   "title": "SupportCase",
@@ -13,7 +13,7 @@
     },
     "category": {
       "description": "The category of the issue, expressed as a Descriptor whose code is defined by the domain (e.g. SHIPMENT_LOST, BILLING_DISPUTE, SERVICE_QUALITY).",
-      "$ref": "https://schema.beckn.io/Descriptor/v2.1/schema.json"
+      "$ref": "https://schema.nfh.global/Descriptor/v2.1/schema.json"
     },
     "description": {
       "description": "Human-readable description of the issue.",
@@ -39,7 +39,7 @@
       "description": "The lifecycle state of the support case expressed as a Descriptor whose code MUST be one of the standard values.",
       "allOf": [
         {
-          "$ref": "https://schema.beckn.io/Descriptor/v2.1/schema.json"
+          "$ref": "https://schema.nfh.global/Descriptor/v2.1/schema.json"
         },
         {
           "type": "object",
@@ -67,7 +67,7 @@
       "description": "Supporting attachments / evidence for the case — documents, images, or other artifacts, distinguished by mimeType.",
       "type": "array",
       "items": {
-        "$ref": "https://schema.beckn.io/Document/v2.0/schema.json"
+        "$ref": "https://schema.nfh.global/Document/v2.0/schema.json"
       }
     },
     "sessions": {
@@ -82,11 +82,11 @@
           },
           "supportChannel": {
             "description": "The channel over which this session took place.",
-            "$ref": "https://schema.beckn.io/CommunicationChannel/v2.0/schema.json"
+            "$ref": "https://schema.nfh.global/CommunicationChannel/v2.0/schema.json"
           },
           "data": {
             "description": "Media captured or exchanged during the session.",
-            "$ref": "https://schema.beckn.io/MediaFile/v2.0/schema.json"
+            "$ref": "https://schema.nfh.global/MediaFile/v2.0/schema.json"
           }
         },
         "additionalProperties": false

@@ -6,7 +6,7 @@
   "version": "2.1.0",
   "beckn_container": "offerAttributes",
   "namespace_prefix": "caoa",
-  "namespace_iri": "https://schema.beckn.io/CandidateAvailabilityOffer#",
+  "namespace_iri": "https://schema.nfh.global/CandidateAvailabilityOffer#",
   "topology": "inverted",
   "bap_role": "Employer App",
   "bpp_role": "Candidate Platform",

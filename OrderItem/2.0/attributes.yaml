@@ -11,7 +11,7 @@ info:
 components:
   schemas:
     OrderItem:
-      x-iri: https://schema.beckn.io/OrderItem/v2.0
+      x-iri: https://schema.nfh.global/OrderItem/v2.0
       description: Schema definition for OrderItem in the Beckn Protocol
       title: OrderItem
       type: object
@@ -20,25 +20,25 @@ components:
           type: string
           description: Unique line id within order
         beckn:orderedItem:
-          $ref: https://schema.beckn.io/Item/v2.1/attributes.yaml#/components/schemas/Item
+          $ref: https://schema.nfh.global/Item/v2.1/attributes.yaml#/components/schemas/Item
           x-jsonld:
             '@id': schema:orderedItem
         beckn:acceptedOffer:
-          $ref: https://schema.beckn.io/Offer/v2.1/attributes.yaml#/components/schemas/Offer
+          $ref: https://schema.nfh.global/Offer/v2.1/attributes.yaml#/components/schemas/Offer
           description: Offer applied to this line (if different from order-level)
           x-jsonld:
             '@id': schema:acceptedOffer
         beckn:quantity:
-          $ref: https://schema.beckn.io/Quantity/v2.0/attributes.yaml#/components/schemas/Quantity
+          $ref: https://schema.nfh.global/Quantity/v2.0/attributes.yaml#/components/schemas/Quantity
           x-jsonld:
             '@id': beckn:quantity
         beckn:price:
-          $ref: https://schema.beckn.io/PriceSpecification/v2.1/attributes.yaml#/components/schemas/PriceSpecification
+          $ref: https://schema.nfh.global/PriceSpecification/v2.1/attributes.yaml#/components/schemas/PriceSpecification
           description: Line price composition (unit/tax/delivery/discount)
           x-jsonld:
             '@id': schema:priceSpecification
         beckn:orderItemAttributes:
-          $ref: https://schema.beckn.io/Attributes/v2.0/attributes.yaml#/components/schemas/Attributes
+          $ref: https://schema.nfh.global/Attributes/v2.0/attributes.yaml#/components/schemas/Attributes
           description: Line-level Attribute Pack (options, substitutions, ESG, etc.)
       required:
       - beckn:orderedItem

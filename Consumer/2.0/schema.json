@@ -1,6 +1,6 @@
 {
-  "$id": "https://schema.beckn.io/Consumer/v2.0",
-  "x-iri": "https://schema.beckn.io/Consumer/v2.0",
+  "$id": "https://schema.nfh.global/Consumer/v2.0",
+  "x-iri": "https://schema.nfh.global/Consumer/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "description": "Schema definition for Consumer in the Beckn Protocol v2.0.1",
   "title": "Consumer",
@@ -16,13 +16,13 @@
     },
     "consumerAttributes": {
       "description": "Attribute Pack reference for richer identity: # consumer/identity.v1 (contact details: email, phone, address) # consumer/org-ids.v1 (LEI, GSTIN, ISIN, CUSIP…) # consumer/kyc.v1 (jurisdictional compliance fields) # consumer/preferences.v1 (delivery preferences, accessibility needs, etc.)",
-      "$ref": "https://schema.beckn.io/Attributes/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Attributes/v2.0/schema.json"
     },
     "person": {
-      "$ref": "https://schema.beckn.io/Person/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Person/v2.0/schema.json"
     },
     "organization": {
-      "$ref": "https://schema.beckn.io/Organization/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Organization/v2.0/schema.json"
     }
   },
   "required": [],

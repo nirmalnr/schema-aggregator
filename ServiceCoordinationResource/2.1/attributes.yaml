@@ -1,5 +1,5 @@
 openapi: 3.1.1
-$id: "https://schema.beckn.io/ServiceCoordinationResource/v2.1/attributes.yaml"
+$id: "https://schema.nfh.global/ServiceCoordinationResource/v2.1/attributes.yaml"
 info:
   title: ServiceCoordinationResource Schema
   version: "2.1.0"
@@ -25,12 +25,12 @@ components:
         - generic-service
         - coordination
         - resource
-      x-beckn-extends: "https://schema.beckn.io/ServiceResource/v2.1/attributes.yaml#/components/schemas/ServiceResource"
+      x-beckn-extends: "https://schema.nfh.global/ServiceResource/v2.1/attributes.yaml#/components/schemas/ServiceResource"
       x-jsonld:
-        "@context": "https://schema.beckn.io/ServiceCoordinationResource/v2.1/context.jsonld"
+        "@context": "https://schema.nfh.global/ServiceCoordinationResource/v2.1/context.jsonld"
         "@type": "scres:ServiceCoordinationResource"
       allOf:
-        - $ref: "https://schema.beckn.io/ServiceResource/v2.1/attributes.yaml#/components/schemas/ServiceResource"
+        - $ref: "https://schema.nfh.global/ServiceResource/v2.1/attributes.yaml#/components/schemas/ServiceResource"
       properties:
         coordinationScope:
           type: object
@@ -65,7 +65,7 @@ components:
                 governed CodedValue (authority such as a programme registry).
               x-jsonld-id: "scres:programmeScope"
               items:
-                $ref: "https://schema.beckn.io/CodedValue/v2.1/attributes.yaml#/components/schemas/CodedValue"
+                $ref: "https://schema.nfh.global/CodedValue/v2.1/attributes.yaml#/components/schemas/CodedValue"
             geographyScope:
               type: array
               description: >
@@ -73,7 +73,7 @@ components:
                 (e.g. LGD district / PIN code authority).
               x-jsonld-id: "scres:geographyScope"
               items:
-                $ref: "https://schema.beckn.io/CodedValue/v2.1/attributes.yaml#/components/schemas/CodedValue"
+                $ref: "https://schema.nfh.global/CodedValue/v2.1/attributes.yaml#/components/schemas/CodedValue"
         acceptanceMode:
           type: string
           enum:
@@ -104,7 +104,7 @@ components:
         own vocabulary. `code` is a member of that vocabulary. Detecting an unaccepted code
         system is a network edge rule, not a schema constraint.
       allOf:
-        - $ref: "https://schema.beckn.io/CodedValue/v2.1/attributes.yaml#/components/schemas/CodedValue"
+        - $ref: "https://schema.nfh.global/CodedValue/v2.1/attributes.yaml#/components/schemas/CodedValue"
         - type: object
           properties:
             "@type":
@@ -112,7 +112,7 @@ components:
             "@context":
               type: string
               format: uri
-              default: "https://schema.beckn.io/ServiceCoordinationResource/v2.1/context.jsonld"
+              default: "https://schema.nfh.global/ServiceCoordinationResource/v2.1/context.jsonld"
 
     TargetServiceType:
       description: >
@@ -121,7 +121,7 @@ components:
         own vocabulary. `code` is a member of that vocabulary. Detecting an unaccepted code
         system is a network edge rule, not a schema constraint.
       allOf:
-        - $ref: "https://schema.beckn.io/CodedValue/v2.1/attributes.yaml#/components/schemas/CodedValue"
+        - $ref: "https://schema.nfh.global/CodedValue/v2.1/attributes.yaml#/components/schemas/CodedValue"
         - type: object
           properties:
             "@type":
@@ -129,4 +129,4 @@ components:
             "@context":
               type: string
               format: uri
-              default: "https://schema.beckn.io/ServiceCoordinationResource/v2.1/context.jsonld"
+              default: "https://schema.nfh.global/ServiceCoordinationResource/v2.1/context.jsonld"

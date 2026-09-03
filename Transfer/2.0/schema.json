@@ -1,6 +1,6 @@
 {
-  "$id": "https://schema.beckn.io/Transfer/v2.0",
-  "x-iri": "https://schema.beckn.io/Transfer/v2.0",
+  "$id": "https://schema.nfh.global/Transfer/v2.0",
+  "x-iri": "https://schema.nfh.global/Transfer/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Transfer",
   "type": "object",
@@ -8,19 +8,19 @@
   "properties": {
     "fromStopId": {
       "description": "Stop passengers transfer from",
-      "$ref": "https://schema.beckn.io/Stop/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Stop/v2.0/schema.json"
     },
     "toStopId": {
       "description": "Stop passengers transfer to",
-      "$ref": "https://schema.beckn.io/Stop/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Stop/v2.0/schema.json"
     },
     "fromRouteId": {
       "description": "Route passengers transfer from",
-      "$ref": "https://schema.beckn.io/Route/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Route/v2.0/schema.json"
     },
     "toRouteId": {
       "description": "Route passengers transfer to",
-      "$ref": "https://schema.beckn.io/Route/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Route/v2.0/schema.json"
     },
     "transferType": {
       "description": "Type of transfer (0=recommended, 1=timed, 2=min_time, 3=not_possible)",
@@ -36,7 +36,7 @@
     },
     "location": {
       "description": "Geographic location of the stop",
-      "$ref": "https://schema.beckn.io/Location/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Location/v2.0/schema.json"
     },
     "type": {
       "description": "Type of stop (start, end, intermediate)",
@@ -44,11 +44,11 @@
     },
     "instructions": {
       "description": "Instructions for passengers at this stop",
-      "$ref": "https://schema.beckn.io/Descriptor/v2.1/schema.json"
+      "$ref": "https://schema.nfh.global/Descriptor/v2.1/schema.json"
     },
     "time": {
       "description": "Expected time window at this stop",
-      "$ref": "https://schema.beckn.io/TimePeriod/v2.1/schema.json"
+      "$ref": "https://schema.nfh.global/TimePeriod/v2.1/schema.json"
     }
   },
   "additionalProperties": false,

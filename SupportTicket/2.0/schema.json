@@ -1,6 +1,6 @@
 {
-  "$id": "https://schema.beckn.io/SupportTicket/v2.0",
-  "x-iri": "https://schema.beckn.io/SupportTicket/v2.0",
+  "$id": "https://schema.nfh.global/SupportTicket/v2.0",
+  "x-iri": "https://schema.nfh.global/SupportTicket/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "description": "A support ticket raised against an order",
   "title": "SupportTicket",
@@ -14,7 +14,7 @@
       "type": "string"
     },
     "supportTicketAttributes": {
-      "$ref": "https://schema.beckn.io/Attributes/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Attributes/v2.0/schema.json"
     }
   },
   "additionalProperties": false

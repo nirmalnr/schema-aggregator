@@ -11,11 +11,11 @@ info:
 components:
   schemas:
     TransactionEndpoint:
-      x-iri: https://schema.beckn.io/TransactionEndpoint/v2.0
+      x-iri: https://schema.nfh.global/TransactionEndpoint/v2.0
       description: Beckn protocol transaction endpoint identifier.
       title: TransactionEndpoint
       allOf:
-      - $ref: https://schema.beckn.io/BecknEndpoint/v2.0/attributes.yaml#/components/schemas/BecknEndpoint
+      - $ref: https://schema.nfh.global/BecknEndpoint/v2.0/attributes.yaml#/components/schemas/BecknEndpoint
       - type: string
         enum:
         - beckn/discover

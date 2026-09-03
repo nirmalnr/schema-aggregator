@@ -12,7 +12,7 @@ info:
 components:
   schemas:
     Line:
-      x-iri: https://schema.beckn.io/Line/v2.0
+      x-iri: https://schema.nfh.global/Line/v2.0
       type: object
       title: Line
       description: A named, branded public transport service identified by a number
@@ -42,25 +42,25 @@ components:
           type: string
         operatorRef:
           description: Reference to the operator running this line
-          $ref: https://schema.beckn.io/Operator/v2.0/attributes.yaml#/components/schemas/Operator
+          $ref: https://schema.nfh.global/Operator/v2.0/attributes.yaml#/components/schemas/Operator
         networkRef:
           description: Reference to the network this line belongs to
-          $ref: https://schema.beckn.io/Network/v2.0/attributes.yaml#/components/schemas/Network
+          $ref: https://schema.nfh.global/Network/v2.0/attributes.yaml#/components/schemas/Network
         id:
           description: Unique identifier for the item
           type: string
         descriptor:
           description: Human-readable description of the item
-          $ref: https://schema.beckn.io/Descriptor/v2.0/attributes.yaml#/components/schemas/Descriptor
+          $ref: https://schema.nfh.global/Descriptor/v2.0/attributes.yaml#/components/schemas/Descriptor
         categoryId:
           description: Category code classifying the item
-          $ref: https://schema.beckn.io/CategoryCode/v2.1/attributes.yaml#/components/schemas/CategoryCode
+          $ref: https://schema.nfh.global/CategoryCode/v2.1/attributes.yaml#/components/schemas/CategoryCode
         price:
           description: Price specification for this item
-          $ref: https://schema.beckn.io/PriceSpecification/v2.1/attributes.yaml#/components/schemas/PriceSpecification
+          $ref: https://schema.nfh.global/PriceSpecification/v2.1/attributes.yaml#/components/schemas/PriceSpecification
         quantity:
           description: Available quantity of the item
-          $ref: https://schema.beckn.io/Quantity/v2.0/attributes.yaml#/components/schemas/Quantity
+          $ref: https://schema.nfh.global/Quantity/v2.0/attributes.yaml#/components/schemas/Quantity
         tags:
           description: Tags associated with the item
           type: string

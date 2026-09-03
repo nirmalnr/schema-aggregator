@@ -1,8 +1,8 @@
 {
   "@context": {
-    "caoa": "https://schema.beckn.io/CandidateAvailabilityOffer#",
+    "caoa": "https://schema.nfh.global/CandidateAvailabilityOffer#",
     "schema": "https://schema.org/",
-    "beckn": "https://schema.beckn.io/",
+    "beckn": "https://schema.nfh.global/",
     "xsd": "http://www.w3.org/2001/XMLSchema#",
     "availableFrom": {
       "@id": "caoa:availableFrom",

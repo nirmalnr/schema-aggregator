@@ -12,7 +12,7 @@ info:
 components:
   schemas:
     Ticket:
-      x-iri: https://schema.beckn.io/Ticket/v2.0
+      x-iri: https://schema.nfh.global/Ticket/v2.0
       type: object
       title: Ticket
       description: A document or digital record granting the holder the right to travel
@@ -38,20 +38,20 @@ components:
           format: date-time
         fareProductRef:
           description: Reference to the fare product this ticket is issued under
-          $ref: https://schema.beckn.io/FareProduct/v2.0/attributes.yaml#/components/schemas/FareProduct
+          $ref: https://schema.nfh.global/FareProduct/v2.0/attributes.yaml#/components/schemas/FareProduct
         passengerRef:
           description: Reference to the passenger this ticket is issued to
-          $ref: https://schema.beckn.io/Passenger/v2.0/attributes.yaml#/components/schemas/Passenger
+          $ref: https://schema.nfh.global/Passenger/v2.0/attributes.yaml#/components/schemas/Passenger
         id:
           description: Unique identifier for the entitlement
           type: string
         descriptor:
           description: Human-readable information about the entitlement
-          $ref: https://schema.beckn.io/Descriptor/v2.0/attributes.yaml#/components/schemas/Descriptor
+          $ref: https://schema.nfh.global/Descriptor/v2.0/attributes.yaml#/components/schemas/Descriptor
         resource:
           description: The resource being accessed against this entitlement
-          $ref: https://schema.beckn.io/ContractItem/v2.0/attributes.yaml#/components/schemas/ContractItem
+          $ref: https://schema.nfh.global/ContractItem/v2.0/attributes.yaml#/components/schemas/ContractItem
         credentials:
           description: Credential descriptors for the entitlement
-          $ref: https://schema.beckn.io/Descriptor/v2.0/attributes.yaml#/components/schemas/Descriptor
+          $ref: https://schema.nfh.global/Descriptor/v2.0/attributes.yaml#/components/schemas/Descriptor
       additionalProperties: false

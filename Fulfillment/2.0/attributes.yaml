@@ -11,7 +11,7 @@ info:
 components:
   schemas:
     Fulfillment:
-      x-iri: https://schema.beckn.io/Fulfillment/v2.0
+      x-iri: https://schema.nfh.global/Fulfillment/v2.0
       description: Schema definition for Fulfillment in the Beckn Protocol
       title: Fulfillment
       type: object
@@ -55,14 +55,14 @@ components:
           x-jsonld:
             '@id': beckn:mode
         trackingAction:
-          $ref: https://schema.beckn.io/TrackAction/v2.1/attributes.yaml#/components/schemas/TrackAction
+          $ref: https://schema.nfh.global/TrackAction/v2.1/attributes.yaml#/components/schemas/TrackAction
           description: 'Tracking entrypoint for this fulfillment, modeled as schema.org TrackAction. Use target.url for a clickable tracking URL; may also include deliveryMethod.
 
             '
           x-jsonld:
             '@type': schema:TrackAction
         beckn:deliveryAttributes:
-          $ref: https://schema.beckn.io/Attributes/v2.0/attributes.yaml#/components/schemas/Attributes
+          $ref: https://schema.nfh.global/Attributes/v2.0/attributes.yaml#/components/schemas/Attributes
           description: 'Bundle of attributes for the chosen mode:  # DELIVERY: endpoints, slot windows, route & events → map to schema:ParcelDelivery / schema:DeliveryEvent # PICKUP: pickupPlace, counter codes, time windows → map to schema:Place + schema:openingHoursSpecification # RESERVATION: reservationStatus, reservedTicket → map to schema:Reservation # DIGITAL: contentUrl/license/expiry → map to schema:DataDownload/schema:MediaObject
 
             '

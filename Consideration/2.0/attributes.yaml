@@ -11,7 +11,7 @@ info:
 components:
   schemas:
     Consideration:
-      x-iri: https://schema.beckn.io/Consideration/v2.0
+      x-iri: https://schema.nfh.global/Consideration/v2.0
       type: object
       description: 'Generalized representation of value exchanged under a Contract.
 
@@ -36,7 +36,7 @@ components:
           type: string
         status:
           description: The status of this consideration
-          $ref: https://schema.beckn.io/Descriptor/v2.1/attributes.yaml#/components/schemas/Descriptor
+          $ref: https://schema.nfh.global/Descriptor/v2.1/attributes.yaml#/components/schemas/Descriptor
         considerationAttributes:
           description: 'Domain-specific attributes of this consideration. For monetary
             considerations,
@@ -44,4 +44,4 @@ components:
             use the PriceSpecification schema to capture total value with breakup.
 
             For other consideration types, use a generic Attributes bag.'
-          $ref: https://schema.beckn.io/Attributes/v2.0/attributes.yaml#/components/schemas/Attributes
+          $ref: https://schema.nfh.global/Attributes/v2.0/attributes.yaml#/components/schemas/Attributes

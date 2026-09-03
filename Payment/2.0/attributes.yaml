@@ -11,7 +11,7 @@ info:
 components:
   schemas:
     Payment:
-      x-iri: https://schema.beckn.io/Payment/v2.0
+      x-iri: https://schema.nfh.global/Payment/v2.0
       description: Schema definition for Payment in the Beckn Protocol
       title: Payment
       type: object
@@ -78,7 +78,7 @@ components:
           x-jsonld:
             '@id': schema:paymentDueDate
         beckn:acceptedPaymentMethod:
-          $ref: https://schema.beckn.io/AcceptedPaymentMethod/v2.0/attributes.yaml#/components/schemas/AcceptedPaymentMethod
+          $ref: https://schema.nfh.global/AcceptedPaymentMethod/v2.0/attributes.yaml#/components/schemas/AcceptedPaymentMethod
         beckn:beneficiary:
           type: string
           description: Who will be the beneficiary or recipient of the payment
@@ -90,7 +90,7 @@ components:
           x-jsonld:
             '@id': schema:beneficiary
         beckn:paymentAttributes:
-          $ref: https://schema.beckn.io/Attributes/v2.0/attributes.yaml#/components/schemas/Attributes
+          $ref: https://schema.nfh.global/Attributes/v2.0/attributes.yaml#/components/schemas/Attributes
           description: 'Rail-specific attribute pack (e.g., UPI: VPA/UTR; CARD: token/3DS;
             BNPL: plan/schedule)
 

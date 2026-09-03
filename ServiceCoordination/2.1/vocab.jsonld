@@ -1,6 +1,6 @@
 {
   "@context": {
-    "scoord": "https://schema.beckn.io/ServiceCoordination#",
+    "scoord": "https://schema.nfh.global/ServiceCoordination#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#"
   },
   "@graph": [

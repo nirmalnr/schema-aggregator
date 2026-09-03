@@ -18,7 +18,7 @@
       "x-jsonld-id": "ceca:cohortId"
     },
     "prerequisite_verification_summary": {
-      "$ref": "https://schema.beckn.io/VerificationSummary/v2.1/schema.json",
+      "$ref": "https://schema.nfh.global/VerificationSummary/v2.1/schema.json",
       "x-jsonld-id": "ceca:prerequisiteVerificationSummary"
     },
     "credential_issuance_pending": {
@@ -34,8 +34,8 @@
       "x-jsonld-id": "ceca:enrolledAt"
     }
   },
-  "$id": "https://schema.beckn.io/CourseEnrollmentContractAttributes/v2.1",
-  "x-iri": "https://schema.beckn.io/CourseEnrollmentContractAttributes/v2.1",
+  "$id": "https://schema.nfh.global/CourseEnrollmentContractAttributes/v2.1",
+  "x-iri": "https://schema.nfh.global/CourseEnrollmentContractAttributes/v2.1",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "CourseEnrollmentContractAttributes"
 }

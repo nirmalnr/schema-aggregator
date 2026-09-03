@@ -1,6 +1,6 @@
 {
-  "$id": "https://schema.beckn.io/MonitoredVehicleJourney/v2.0",
-  "x-iri": "https://schema.beckn.io/MonitoredVehicleJourney/v2.0",
+  "$id": "https://schema.nfh.global/MonitoredVehicleJourney/v2.0",
+  "x-iri": "https://schema.nfh.global/MonitoredVehicleJourney/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "MonitoredVehicleJourney",
   "type": "object",
@@ -8,19 +8,19 @@
   "properties": {
     "lineRef": {
       "description": "Reference to the line being monitored",
-      "$ref": "https://schema.beckn.io/Line/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Line/v2.0/schema.json"
     },
     "directionRef": {
       "description": "Direction of travel being monitored",
-      "$ref": "https://schema.beckn.io/Direction/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Direction/v2.0/schema.json"
     },
     "vehicleRef": {
       "description": "Vehicle assigned to this journey",
-      "$ref": "https://schema.beckn.io/Vehicle/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Vehicle/v2.0/schema.json"
     },
     "vehicleLocation": {
       "description": "Current geographic position of the vehicle",
-      "$ref": "https://schema.beckn.io/VehiclePosition/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/VehiclePosition/v2.0/schema.json"
     },
     "bearing": {
       "description": "Compass bearing of travel in degrees",
@@ -32,7 +32,7 @@
     },
     "occupancy": {
       "description": "Current passenger occupancy of the vehicle",
-      "$ref": "https://schema.beckn.io/OccupancyStatus/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/OccupancyStatus/v2.0/schema.json"
     },
     "vehicleJourneyCode": {
       "description": "Unique code for this vehicle journey",
@@ -40,19 +40,19 @@
     },
     "routeRef": {
       "description": "Reference to the route being served",
-      "$ref": "https://schema.beckn.io/Route/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Route/v2.0/schema.json"
     },
     "serviceCalendarRef": {
       "description": "Calendar defining when this journey operates",
-      "$ref": "https://schema.beckn.io/ServiceCalendar/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/ServiceCalendar/v2.0/schema.json"
     },
     "patternRef": {
       "description": "Journey pattern being followed",
-      "$ref": "https://schema.beckn.io/Pattern/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Pattern/v2.0/schema.json"
     },
     "stopTimes": {
       "description": "Scheduled stop times for each stop on this journey",
-      "$ref": "https://schema.beckn.io/StopTime/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/StopTime/v2.0/schema.json"
     }
   },
   "additionalProperties": false,

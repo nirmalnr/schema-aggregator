@@ -1,5 +1,5 @@
 openapi: 3.1.1
-$id: "https://schema.beckn.io/ServiceCoordinationOffer/v2.1/attributes.yaml"
+$id: "https://schema.nfh.global/ServiceCoordinationOffer/v2.1/attributes.yaml"
 info:
   title: ServiceCoordinationOffer Schema
   version: "2.1.0"
@@ -29,12 +29,12 @@ components:
         - generic-service
         - coordination
         - offer
-      x-beckn-extends: "https://schema.beckn.io/ServiceOffer/v2.1/attributes.yaml#/components/schemas/ServiceOffer"
+      x-beckn-extends: "https://schema.nfh.global/ServiceOffer/v2.1/attributes.yaml#/components/schemas/ServiceOffer"
       x-jsonld:
-        "@context": "https://schema.beckn.io/ServiceCoordinationOffer/v2.1/context.jsonld"
+        "@context": "https://schema.nfh.global/ServiceCoordinationOffer/v2.1/context.jsonld"
         "@type": "scoff:ServiceCoordinationOffer"
       allOf:
-        - $ref: "https://schema.beckn.io/ServiceOffer/v2.1/attributes.yaml#/components/schemas/ServiceOffer"
+        - $ref: "https://schema.nfh.global/ServiceOffer/v2.1/attributes.yaml#/components/schemas/ServiceOffer"
       properties:
         coordinationSlaWindows:
           type: array

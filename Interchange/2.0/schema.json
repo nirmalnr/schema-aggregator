@@ -1,6 +1,6 @@
 {
-  "$id": "https://schema.beckn.io/Interchange/v2.0",
-  "x-iri": "https://schema.beckn.io/Interchange/v2.0",
+  "$id": "https://schema.nfh.global/Interchange/v2.0",
+  "x-iri": "https://schema.nfh.global/Interchange/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Interchange",
   "type": "object",
@@ -16,19 +16,19 @@
     },
     "fromStopId": {
       "description": "The stop passengers transfer from",
-      "$ref": "https://schema.beckn.io/Stop/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Stop/v2.0/schema.json"
     },
     "toStopId": {
       "description": "The stop passengers transfer to",
-      "$ref": "https://schema.beckn.io/Stop/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Stop/v2.0/schema.json"
     },
     "fromTripId": {
       "description": "The vehicle journey passengers transfer from",
-      "$ref": "https://schema.beckn.io/VehicleJourney/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/VehicleJourney/v2.0/schema.json"
     },
     "toTripId": {
       "description": "The vehicle journey passengers transfer to",
-      "$ref": "https://schema.beckn.io/VehicleJourney/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/VehicleJourney/v2.0/schema.json"
     },
     "stopId": {
       "description": "Unique identifier for the stop",
@@ -48,7 +48,7 @@
     },
     "parentStation": {
       "description": "Reference to the parent station if this is a platform",
-      "$ref": "https://schema.beckn.io/Station/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Station/v2.0/schema.json"
     },
     "wheelchairBoarding": {
       "description": "Wheelchair accessibility (0=no info, 1=accessible, 2=not accessible)",

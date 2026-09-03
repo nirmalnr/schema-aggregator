@@ -12,7 +12,7 @@ info:
 components:
   schemas:
     Rider:
-      x-iri: https://schema.beckn.io/Rider/v2.0
+      x-iri: https://schema.nfh.global/Rider/v2.0
       type: object
       title: Rider
       description: A person using a shared mobility service (such as a bike-share,
@@ -35,11 +35,11 @@ components:
           type: string
         person:
           description: Personal details of the participant
-          $ref: https://schema.beckn.io/Person/v2.0/attributes.yaml#/components/schemas/Person
+          $ref: https://schema.nfh.global/Person/v2.0/attributes.yaml#/components/schemas/Person
         organization:
           description: Organisation the participant belongs to
-          $ref: https://schema.beckn.io/Organization/v2.0/attributes.yaml#/components/schemas/Organization
+          $ref: https://schema.nfh.global/Organization/v2.0/attributes.yaml#/components/schemas/Organization
         entitlements:
           description: Entitlements held by the participant
-          $ref: https://schema.beckn.io/Entitlement/v2.0/attributes.yaml#/components/schemas/Entitlement
+          $ref: https://schema.nfh.global/Entitlement/v2.0/attributes.yaml#/components/schemas/Entitlement
       additionalProperties: false

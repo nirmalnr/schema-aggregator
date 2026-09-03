@@ -1,9 +1,9 @@
 {
   "@context": {
     "schema": "https://schema.org/",
-    "beckn": "https://schema.beckn.io/",
-    "hjoa": "https://schema.beckn.io/HiringJobOffer#",
-    "salspec": "https://schema.beckn.io/SalarySpecification#",
+    "beckn": "https://schema.nfh.global/",
+    "hjoa": "https://schema.nfh.global/HiringJobOffer#",
+    "salspec": "https://schema.nfh.global/SalarySpecification#",
     "HiringJobOffer": "hjoa:HiringJobOffer",
     "salary_specification": {
       "@id": "hjoa:salary_specification"

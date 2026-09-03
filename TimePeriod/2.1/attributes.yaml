@@ -11,7 +11,7 @@ info:
 components:
   schemas:
     TimePeriod:
-      x-iri: https://schema.beckn.io/TimePeriod/v2.1
+      x-iri: https://schema.nfh.global/TimePeriod/v2.1
       description: 'Time window with date-time precision for availability/validity
 
 

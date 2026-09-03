@@ -12,7 +12,7 @@ info:
 components:
   schemas:
     Interchange:
-      x-iri: https://schema.beckn.io/Interchange/v2.0
+      x-iri: https://schema.nfh.global/Interchange/v2.0
       type: object
       title: Interchange
       description: A planned transfer connection point where passengers switch between
@@ -29,16 +29,16 @@ components:
           type: string
         fromStopId:
           description: The stop passengers transfer from
-          $ref: https://schema.beckn.io/Stop/v2.0/attributes.yaml#/components/schemas/Stop
+          $ref: https://schema.nfh.global/Stop/v2.0/attributes.yaml#/components/schemas/Stop
         toStopId:
           description: The stop passengers transfer to
-          $ref: https://schema.beckn.io/Stop/v2.0/attributes.yaml#/components/schemas/Stop
+          $ref: https://schema.nfh.global/Stop/v2.0/attributes.yaml#/components/schemas/Stop
         fromTripId:
           description: The vehicle journey passengers transfer from
-          $ref: https://schema.beckn.io/VehicleJourney/v2.0/attributes.yaml#/components/schemas/VehicleJourney
+          $ref: https://schema.nfh.global/VehicleJourney/v2.0/attributes.yaml#/components/schemas/VehicleJourney
         toTripId:
           description: The vehicle journey passengers transfer to
-          $ref: https://schema.beckn.io/VehicleJourney/v2.0/attributes.yaml#/components/schemas/VehicleJourney
+          $ref: https://schema.nfh.global/VehicleJourney/v2.0/attributes.yaml#/components/schemas/VehicleJourney
         stopId:
           description: Unique identifier for the stop
           type: string
@@ -54,7 +54,7 @@ components:
           type: string
         parentStation:
           description: Reference to the parent station if this is a platform
-          $ref: https://schema.beckn.io/Station/v2.0/attributes.yaml#/components/schemas/Station
+          $ref: https://schema.nfh.global/Station/v2.0/attributes.yaml#/components/schemas/Station
         wheelchairBoarding:
           description: Wheelchair accessibility (0=no info, 1=accessible, 2=not accessible)
           type: string

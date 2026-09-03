@@ -1,7 +1,7 @@
 {
   "@context": {
-    "scoff": "https://schema.beckn.io/ServiceCoordinationOffer#",
-    "scoord": "https://schema.beckn.io/ServiceCoordination#",
+    "scoff": "https://schema.nfh.global/ServiceCoordinationOffer#",
+    "scoord": "https://schema.nfh.global/ServiceCoordination#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "skos": "http://www.w3.org/2004/02/skos/core#"
   },

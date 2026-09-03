@@ -1,6 +1,6 @@
 {
-  "$id": "https://schema.beckn.io/FareResult/v2.0",
-  "x-iri": "https://schema.beckn.io/FareResult/v2.0",
+  "$id": "https://schema.nfh.global/FareResult/v2.0",
+  "x-iri": "https://schema.nfh.global/FareResult/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "FareResult",
   "type": "object",
@@ -16,11 +16,11 @@
     },
     "fareProducts": {
       "description": "Fare products applicable to the result",
-      "$ref": "https://schema.beckn.io/FareProduct/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/FareProduct/v2.0/schema.json"
     },
     "fareBreakup": {
       "description": "Itemised breakdown of the calculated fare",
-      "$ref": "https://schema.beckn.io/FareBreakup/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/FareBreakup/v2.0/schema.json"
     },
     "id": {
       "description": "Unique identifier for the offer",
@@ -28,15 +28,15 @@
     },
     "descriptor": {
       "description": "Human-readable description of the offer",
-      "$ref": "https://schema.beckn.io/Descriptor/v2.1/schema.json"
+      "$ref": "https://schema.nfh.global/Descriptor/v2.1/schema.json"
     },
     "price": {
       "description": "Price specification for this offer",
-      "$ref": "https://schema.beckn.io/PriceSpecification/v2.1/schema.json"
+      "$ref": "https://schema.nfh.global/PriceSpecification/v2.1/schema.json"
     },
     "validity": {
       "description": "Validity period of the offer",
-      "$ref": "https://schema.beckn.io/TimePeriod/v2.1/schema.json"
+      "$ref": "https://schema.nfh.global/TimePeriod/v2.1/schema.json"
     },
     "tags": {
       "description": "Tags or labels associated with the offer",

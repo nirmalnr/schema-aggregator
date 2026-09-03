@@ -6,14 +6,10 @@ The real-world act by which the CS (Cataloging Service) delivers the results of 
 
 | File | Purpose |
 |---|---|
-| [https://schema.beckn.io/CatalogPullCallbackAction/attributes.yaml](https://schema.beckn.io/CatalogPullCallbackAction/attributes.yaml) | OpenAPI schema envelope (latest path) |
-| [https://schema.beckn.io/CatalogPullCallbackAction/v2.0/attributes.yaml](https://schema.beckn.io/CatalogPullCallbackAction/v2.0/attributes.yaml) | OpenAPI schema envelope (versioned path) |
-| [https://schema.beckn.io/CatalogPullCallbackAction/attributes.jsonschema.yaml](https://schema.beckn.io/CatalogPullCallbackAction/attributes.jsonschema.yaml) | JSON Schema document (latest path) |
-| [https://schema.beckn.io/CatalogPullCallbackAction/v2.0/attributes.jsonschema.yaml](https://schema.beckn.io/CatalogPullCallbackAction/v2.0/attributes.jsonschema.yaml) | JSON Schema document (versioned path) |
-| [https://schema.beckn.io/CatalogPullCallbackAction/context.jsonld](https://schema.beckn.io/CatalogPullCallbackAction/context.jsonld) | JSON-LD context (latest path) |
-| [https://schema.beckn.io/CatalogPullCallbackAction/v2.0/context.jsonld](https://schema.beckn.io/CatalogPullCallbackAction/v2.0/context.jsonld) | JSON-LD context (versioned path) |
-| [https://schema.beckn.io/CatalogPullCallbackAction/vocab.jsonld](https://schema.beckn.io/CatalogPullCallbackAction/vocab.jsonld) | RDF vocabulary (latest path) |
-| [https://schema.beckn.io/CatalogPullCallbackAction/v2.0/vocab.jsonld](https://schema.beckn.io/CatalogPullCallbackAction/v2.0/vocab.jsonld) | RDF vocabulary (versioned path) |
+| [https://schema.nfh.global/CatalogPullCallbackAction/v2.0/attributes.yaml](https://schema.nfh.global/CatalogPullCallbackAction/v2.0/attributes.yaml) | OpenAPI schema envelope (versioned path) |
+| [https://schema.nfh.global/CatalogPullCallbackAction/v2.0/attributes.jsonschema.yaml](https://schema.nfh.global/CatalogPullCallbackAction/v2.0/attributes.jsonschema.yaml) | JSON Schema document (versioned path) |
+| [https://schema.nfh.global/CatalogPullCallbackAction/v2.0/context.jsonld](https://schema.nfh.global/CatalogPullCallbackAction/v2.0/context.jsonld) | JSON-LD context (versioned path) |
+| [https://schema.nfh.global/CatalogPullCallbackAction/v2.0/vocab.jsonld](https://schema.nfh.global/CatalogPullCallbackAction/v2.0/vocab.jsonld) | RDF vocabulary (versioned path) |
 
 ## Properties
 

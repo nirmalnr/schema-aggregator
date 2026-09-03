@@ -1,6 +1,6 @@
 {
-  "$id": "https://schema.beckn.io/PaymentTerms/v2.0",
-  "x-iri": "https://schema.beckn.io/PaymentTerms/v2.0",
+  "$id": "https://schema.nfh.global/PaymentTerms/v2.0",
+  "x-iri": "https://schema.nfh.global/PaymentTerms/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "description": "Schema definition for PaymentTerms in the Beckn Protocol v2.0.1",
   "title": "PaymentTerms",
@@ -19,21 +19,21 @@
       ]
     },
     "checkoutAt": {
-      "$ref": "https://schema.beckn.io/CheckoutTerminal/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/CheckoutTerminal/v2.0/schema.json"
     },
     "settlementTerms": {
       "type": "array",
       "items": {
-        "$ref": "https://schema.beckn.io/SettlementTerm/v2.0/schema.json"
+        "$ref": "https://schema.nfh.global/SettlementTerm/v2.0/schema.json"
       }
     },
     "checkoutTrigger": {
       "description": "The stage in the order lifecycle when the checkout should be triggered",
-      "$ref": "https://schema.beckn.io/PaymentTrigger/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/PaymentTrigger/v2.0/schema.json"
     },
     "paymentTermsAttributes": {
       "description": "Rail-specific attribute pack (e.g., UPI: VPA/UTR; CARD: token/3DS; BNPL: plan/schedule)",
-      "$ref": "https://schema.beckn.io/Attributes/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Attributes/v2.0/schema.json"
     }
   },
   "additionalProperties": false

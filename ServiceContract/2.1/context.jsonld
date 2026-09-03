@@ -1,8 +1,8 @@
 {
   "@context": {
     "schema": "https://schema.org/",
-    "beckn": "https://schema.beckn.io/",
-    "sc": "https://schema.beckn.io/ServiceContract#",
+    "beckn": "https://schema.nfh.global/",
+    "sc": "https://schema.nfh.global/ServiceContract#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
 
     "ServiceContract": "sc:ServiceContract",

@@ -12,7 +12,7 @@ info:
 components:
   schemas:
     Feed:
-      x-iri: https://schema.beckn.io/Feed/v2.0
+      x-iri: https://schema.nfh.global/Feed/v2.0
       type: object
       title: Feed
       description: A data publication providing transit or mobility information in
@@ -47,7 +47,7 @@ components:
           type: string
         descriptor:
           description: Human-readable description of the catalog
-          $ref: https://schema.beckn.io/Descriptor/v2.0/attributes.yaml#/components/schemas/Descriptor
+          $ref: https://schema.nfh.global/Descriptor/v2.0/attributes.yaml#/components/schemas/Descriptor
         tags:
           description: Tags associated with the catalog
           type: string

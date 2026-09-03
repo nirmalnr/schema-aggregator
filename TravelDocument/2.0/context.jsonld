@@ -1,6 +1,6 @@
 {
   "@context": {
-    "beckn": "https://schema.beckn.io/mobility/v2.0/",
+    "beckn": "https://schema.nfh.global/mobility/v2.0/",
     "TravelDocument": "beckn:TravelDocument",
     "documentType": "beckn:documentType",
     "documentNumber": "beckn:documentNumber",

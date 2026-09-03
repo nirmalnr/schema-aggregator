@@ -1,6 +1,6 @@
 {
-  "$id": "https://schema.beckn.io/Offer/v2.0",
-  "x-iri": "https://schema.beckn.io/Offer/v2.0",
+  "$id": "https://schema.nfh.global/Offer/v2.0",
+  "x-iri": "https://schema.nfh.global/Offer/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "description": "Schema definition for Offer in the Beckn Protocol",
   "title": "Offer",
@@ -28,10 +28,10 @@
       }
     },
     "beckn:descriptor": {
-      "$ref": "https://schema.beckn.io/Descriptor/v2.1/schema.json"
+      "$ref": "https://schema.nfh.global/Descriptor/v2.1/schema.json"
     },
     "beckn:provider": {
-      "$ref": "https://schema.beckn.io/Provider/v2.1/schema.json",
+      "$ref": "https://schema.nfh.global/Provider/v2.1/schema.json",
       "description": "Seller / provider of this offer",
       "x-jsonld": {
         "@id": "schema:seller"
@@ -41,7 +41,7 @@
       "type": "array",
       "minItems": 1,
       "items": {
-        "$ref": "https://schema.beckn.io/Item/v2.1/schema.json"
+        "$ref": "https://schema.nfh.global/Item/v2.1/schema.json"
       },
       "description": "Base item(s) the offer applies to (single or bundle)",
       "x-jsonld": {
@@ -51,7 +51,7 @@
     "beckn:addOns": {
       "type": "array",
       "items": {
-        "$ref": "https://schema.beckn.io/Offer/v2.1/schema.json"
+        "$ref": "https://schema.nfh.global/Offer/v2.1/schema.json"
       },
       "description": "Optional extra Offers that can be attached (e.g., warranty, gift wrap)",
       "x-jsonld": {
@@ -61,7 +61,7 @@
     "beckn:addOnItems": {
       "type": "array",
       "items": {
-        "$ref": "https://schema.beckn.io/Item/v2.1/schema.json"
+        "$ref": "https://schema.nfh.global/Item/v2.1/schema.json"
       },
       "description": "Optional extras modeled as items (e.g., toppings, accessories)",
       "x-jsonld": {
@@ -74,14 +74,14 @@
       "default": true
     },
     "beckn:validity": {
-      "$ref": "https://schema.beckn.io/TimePeriod/v2.1/schema.json",
+      "$ref": "https://schema.nfh.global/TimePeriod/v2.1/schema.json",
       "description": "Offer validity window",
       "x-jsonld": {
         "@id": "schema:availabilityStarts|schema:availabilityEnds"
       }
     },
     "beckn:price": {
-      "$ref": "https://schema.beckn.io/PriceSpecification/v2.1/schema.json",
+      "$ref": "https://schema.nfh.global/PriceSpecification/v2.1/schema.json",
       "description": "Price snapshot; detailed models can live in offerAttributes",
       "x-jsonld": {
         "@id": "schema:priceSpecification"
@@ -90,15 +90,15 @@
     "beckn:eligibleRegion": {
       "type": "array",
       "items": {
-        "$ref": "https://schema.beckn.io/Location/v2.0/schema.json"
+        "$ref": "https://schema.nfh.global/Location/v2.0/schema.json"
       },
       "description": "Regions where the offer is eligible"
     },
     "beckn:acceptedPaymentMethod": {
-      "$ref": "https://schema.beckn.io/AcceptedPaymentMethod/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/AcceptedPaymentMethod/v2.0/schema.json"
     },
     "beckn:offerAttributes": {
-      "$ref": "https://schema.beckn.io/Attributes/v2.0/schema.json",
+      "$ref": "https://schema.nfh.global/Attributes/v2.0/schema.json",
       "description": "Attribute Pack attachment (pricing models, discounts, rail terms, etc.)"
     }
   },

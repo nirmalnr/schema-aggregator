@@ -74,7 +74,7 @@ components:
         - hiring-jobs
         - performance
       x-jsonld:
-        "@context": "https://schema.beckn.io/JobApplicationPerformance/v2.1/context.jsonld"
+        "@context": "https://schema.nfh.global/JobApplicationPerformance/v2.1/context.jsonld"
         "@type": "japa:JobApplicationPerformance"
       description: >
         Performance attributes for evaluation steps in a hiring contract.
@@ -148,7 +148,7 @@ components:
           description: "Legacy: qualitative notes on the primary step outcome."
           x-jsonld-id: "japa:result_notes"
         verification_summary:
-          $ref: "https://schema.beckn.io/VerificationSummary/v2.1/attributes.yaml#/components/schemas/VerificationSummary"
+          $ref: "https://schema.nfh.global/VerificationSummary/v2.1/attributes.yaml#/components/schemas/VerificationSummary"
           description: Credential verification outcome during this performance cycle.
           x-jsonld-id: "japa:verification_summary"
         next_step:

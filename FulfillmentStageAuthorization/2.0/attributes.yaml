@@ -15,7 +15,7 @@ info:
 components:
   schemas:
     FulfillmentStageAuthorization:
-      x-iri: https://schema.beckn.io/FulfillmentStageAuthorization/v2.0
+      x-iri: https://schema.nfh.global/FulfillmentStageAuthorization/v2.0
       description: 'A credential/document/proof relevant to authorization at a fulfillment
         stage endpoint. This may be a token to be verified (QR/OTP/URL) or a document
         to be inspected manually.
@@ -35,14 +35,14 @@ components:
             etc
           type: array
           items:
-            $ref: https://schema.beckn.io/MediaFile/v2.0/attributes.yaml#/components/schemas/MediaFile
+            $ref: https://schema.nfh.global/MediaFile/v2.0/attributes.yaml#/components/schemas/MediaFile
         docs:
           description: Documents required to enter or exit this fulfillment stage.
             The could be entry tickets, boarding passes, waybill, permits, certificates,
             credentials, etc
           type: array
           items:
-            $ref: https://schema.beckn.io/Document/v2.0/attributes.yaml#/components/schemas/Document
+            $ref: https://schema.nfh.global/Document/v2.0/attributes.yaml#/components/schemas/Document
         purpose:
           description: The purpose of this authorization. e.g., proof of delivery,
             entry verification, identity check

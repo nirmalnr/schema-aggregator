@@ -6,14 +6,10 @@ Beckn v2.1 extension schema for the considerationAttributes container. Captures 
 
 | File | Purpose |
 |---|---|
-| [https://schema.beckn.io/CourseConsiderationAttributes/attributes.yaml](https://schema.beckn.io/CourseConsiderationAttributes/attributes.yaml) | OpenAPI schema envelope (latest path) |
-| [https://schema.beckn.io/CourseConsiderationAttributes/v2.1/attributes.yaml](https://schema.beckn.io/CourseConsiderationAttributes/v2.1/attributes.yaml) | OpenAPI schema envelope (versioned path) |
-| [https://schema.beckn.io/CourseConsiderationAttributes/attributes.jsonschema.yaml](https://schema.beckn.io/CourseConsiderationAttributes/attributes.jsonschema.yaml) | JSON Schema document (latest path) |
-| [https://schema.beckn.io/CourseConsiderationAttributes/v2.1/attributes.jsonschema.yaml](https://schema.beckn.io/CourseConsiderationAttributes/v2.1/attributes.jsonschema.yaml) | JSON Schema document (versioned path) |
-| [https://schema.beckn.io/CourseConsiderationAttributes/context.jsonld](https://schema.beckn.io/CourseConsiderationAttributes/context.jsonld) | JSON-LD context (latest path) |
-| [https://schema.beckn.io/CourseConsiderationAttributes/v2.1/context.jsonld](https://schema.beckn.io/CourseConsiderationAttributes/v2.1/context.jsonld) | JSON-LD context (versioned path) |
-| [https://schema.beckn.io/CourseConsiderationAttributes/vocab.jsonld](https://schema.beckn.io/CourseConsiderationAttributes/vocab.jsonld) | RDF vocabulary (latest path) |
-| [https://schema.beckn.io/CourseConsiderationAttributes/v2.1/vocab.jsonld](https://schema.beckn.io/CourseConsiderationAttributes/v2.1/vocab.jsonld) | RDF vocabulary (versioned path) |
+| [https://schema.nfh.global/CourseConsiderationAttributes/v2.1/attributes.yaml](https://schema.nfh.global/CourseConsiderationAttributes/v2.1/attributes.yaml) | OpenAPI schema envelope (versioned path) |
+| [https://schema.nfh.global/CourseConsiderationAttributes/v2.1/attributes.jsonschema.yaml](https://schema.nfh.global/CourseConsiderationAttributes/v2.1/attributes.jsonschema.yaml) | JSON Schema document (versioned path) |
+| [https://schema.nfh.global/CourseConsiderationAttributes/v2.1/context.jsonld](https://schema.nfh.global/CourseConsiderationAttributes/v2.1/context.jsonld) | JSON-LD context (versioned path) |
+| [https://schema.nfh.global/CourseConsiderationAttributes/v2.1/vocab.jsonld](https://schema.nfh.global/CourseConsiderationAttributes/v2.1/vocab.jsonld) | RDF vocabulary (versioned path) |
 
 ## Properties
 

@@ -1,8 +1,8 @@
 {
   "@context": {
     "schema": "https://schema.org/",
-    "beckn": "https://schema.beckn.io/",
-    "japa": "https://schema.beckn.io/JobApplicationPerformance#",
+    "beckn": "https://schema.nfh.global/",
+    "japa": "https://schema.nfh.global/JobApplicationPerformance#",
     "JobApplicationPerformance": "japa:JobApplicationPerformance",
     "EvaluationStep": "japa:EvaluationStep",
     "lifecycle_stage": {

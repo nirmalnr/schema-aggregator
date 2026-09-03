@@ -1,6 +1,6 @@
 {
-  "$id": "https://schema.beckn.io/Policy/v2.0",
-  "x-iri": "https://schema.beckn.io/Policy/v2.0",
+  "$id": "https://schema.nfh.global/Policy/v2.0",
+  "x-iri": "https://schema.nfh.global/Policy/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "description": "Schema definition for Policy in the Beckn Protocol v2.0.1",
   "title": "Policy",
@@ -8,7 +8,7 @@
   "properties": {
     "descriptor": {
       "description": "Validity window for this policy version",
-      "$ref": "https://schema.beckn.io/Descriptor/v2.1/schema.json"
+      "$ref": "https://schema.nfh.global/Descriptor/v2.1/schema.json"
     },
     "id": {
       "description": "Identifier for the policy",
@@ -20,10 +20,10 @@
     },
     "validity": {
       "description": "Validity window for this policy version",
-      "$ref": "https://schema.beckn.io/TimePeriod/v2.1/schema.json"
+      "$ref": "https://schema.nfh.global/TimePeriod/v2.1/schema.json"
     },
     "policyAttributes": {
-      "$ref": "https://schema.beckn.io/Attributes/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Attributes/v2.0/schema.json"
     }
   },
   "required": [

@@ -1,6 +1,6 @@
 {
-  "$id": "https://schema.beckn.io/CancellationOutcome/v2.0",
-  "x-iri": "https://schema.beckn.io/CancellationOutcome/v2.0",
+  "$id": "https://schema.nfh.global/CancellationOutcome/v2.0",
+  "x-iri": "https://schema.nfh.global/CancellationOutcome/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "description": "Schema definition for CancellationOutcome in the Beckn Protocol v2.0.1",
   "title": "CancellationOutcome",
@@ -12,7 +12,7 @@
     "descriptor": {
       "allOf": [
         {
-          "$ref": "https://schema.beckn.io/Descriptor/v2.1/schema.json"
+          "$ref": "https://schema.nfh.global/Descriptor/v2.1/schema.json"
         }
       ],
       "properties": {

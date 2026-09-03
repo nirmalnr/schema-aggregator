@@ -1,8 +1,8 @@
 {
   "@context": {
     "schema": "https://schema.org/",
-    "beckn": "https://schema.beckn.io/",
-    "ssl": "https://schema.beckn.io/ServiceSettlement#",
+    "beckn": "https://schema.nfh.global/",
+    "ssl": "https://schema.nfh.global/ServiceSettlement#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
 
     "ServiceSettlement": "ssl:ServiceSettlement",

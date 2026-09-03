@@ -1,6 +1,6 @@
 {
-  "$id": "https://schema.beckn.io/Network/v2.0",
-  "x-iri": "https://schema.beckn.io/Network/v2.0",
+  "$id": "https://schema.nfh.global/Network/v2.0",
+  "x-iri": "https://schema.nfh.global/Network/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Network",
   "type": "object",
@@ -16,11 +16,11 @@
     },
     "operatorRef": {
       "description": "Operator(s) running services within this network",
-      "$ref": "https://schema.beckn.io/Operator/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Operator/v2.0/schema.json"
     },
     "lines": {
       "description": "Lines that belong to this network",
-      "$ref": "https://schema.beckn.io/Line/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Line/v2.0/schema.json"
     },
     "id": {
       "description": "Unique identifier for the catalog",
@@ -28,7 +28,7 @@
     },
     "descriptor": {
       "description": "Human-readable description of the catalog",
-      "$ref": "https://schema.beckn.io/Descriptor/v2.1/schema.json"
+      "$ref": "https://schema.nfh.global/Descriptor/v2.1/schema.json"
     },
     "tags": {
       "description": "Tags associated with the catalog",

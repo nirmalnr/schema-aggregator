@@ -1,6 +1,6 @@
 {
-  "$id": "https://schema.beckn.io/Ticket/v2.0",
-  "x-iri": "https://schema.beckn.io/Ticket/v2.0",
+  "$id": "https://schema.nfh.global/Ticket/v2.0",
+  "x-iri": "https://schema.nfh.global/Ticket/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Ticket",
   "type": "object",
@@ -26,11 +26,11 @@
     },
     "fareProductRef": {
       "description": "Reference to the fare product this ticket is issued under",
-      "$ref": "https://schema.beckn.io/FareProduct/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/FareProduct/v2.0/schema.json"
     },
     "passengerRef": {
       "description": "Reference to the passenger this ticket is issued to",
-      "$ref": "https://schema.beckn.io/Passenger/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Passenger/v2.0/schema.json"
     },
     "id": {
       "description": "Unique identifier for the entitlement",
@@ -38,15 +38,15 @@
     },
     "descriptor": {
       "description": "Human-readable information about the entitlement",
-      "$ref": "https://schema.beckn.io/Descriptor/v2.1/schema.json"
+      "$ref": "https://schema.nfh.global/Descriptor/v2.1/schema.json"
     },
     "resource": {
       "description": "The resource being accessed against this entitlement",
-      "$ref": "https://schema.beckn.io/ContractItem/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/ContractItem/v2.0/schema.json"
     },
     "credentials": {
       "description": "Credential descriptors for the entitlement",
-      "$ref": "https://schema.beckn.io/Descriptor/v2.1/schema.json"
+      "$ref": "https://schema.nfh.global/Descriptor/v2.1/schema.json"
     }
   },
   "additionalProperties": false,

@@ -11,7 +11,7 @@ info:
 components:
   schemas:
     Document:
-      x-iri: https://schema.beckn.io/Document/v2.0
+      x-iri: https://schema.nfh.global/Document/v2.0
       description: A document, that can be parsed, printed, download or displayed. This has intentionally been kept separate from MediaFile as they may contain additional attributes like signature, schema etc.
       title: Document
       x-tags:

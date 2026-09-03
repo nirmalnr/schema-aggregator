@@ -1,6 +1,6 @@
 {
-  "$id": "https://schema.beckn.io/RideOption/v2.0",
-  "x-iri": "https://schema.beckn.io/RideOption/v2.0",
+  "$id": "https://schema.nfh.global/RideOption/v2.0",
+  "x-iri": "https://schema.nfh.global/RideOption/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "RideOption",
   "type": "object",
@@ -8,7 +8,7 @@
   "properties": {
     "vehicleType": {
       "description": "Category of vehicle for this ride option",
-      "$ref": "https://schema.beckn.io/VehicleCategory/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/VehicleCategory/v2.0/schema.json"
     },
     "estimatedArrival": {
       "description": "Estimated vehicle arrival time at the pickup point",
@@ -26,7 +26,7 @@
     },
     "pricingModel": {
       "description": "Pricing model applicable to this ride option",
-      "$ref": "https://schema.beckn.io/SystemPricingPlan/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/SystemPricingPlan/v2.0/schema.json"
     },
     "id": {
       "description": "Unique identifier for the offer",
@@ -34,15 +34,15 @@
     },
     "descriptor": {
       "description": "Human-readable description of the offer",
-      "$ref": "https://schema.beckn.io/Descriptor/v2.1/schema.json"
+      "$ref": "https://schema.nfh.global/Descriptor/v2.1/schema.json"
     },
     "price": {
       "description": "Price specification for this offer",
-      "$ref": "https://schema.beckn.io/PriceSpecification/v2.1/schema.json"
+      "$ref": "https://schema.nfh.global/PriceSpecification/v2.1/schema.json"
     },
     "validity": {
       "description": "Validity period of the offer",
-      "$ref": "https://schema.beckn.io/TimePeriod/v2.1/schema.json"
+      "$ref": "https://schema.nfh.global/TimePeriod/v2.1/schema.json"
     },
     "tags": {
       "description": "Tags or labels associated with the offer",

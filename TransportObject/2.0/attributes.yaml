@@ -12,7 +12,7 @@ info:
 components:
   schemas:
     TransportObject:
-      x-iri: https://schema.beckn.io/TransportObject/v2.0
+      x-iri: https://schema.nfh.global/TransportObject/v2.0
       type: object
       title: TransportObject
       description: A generic transport entity in the OSLO mobility ontology representing
@@ -33,16 +33,16 @@ components:
           type: string
         descriptor:
           description: Human-readable description of the item
-          $ref: https://schema.beckn.io/Descriptor/v2.0/attributes.yaml#/components/schemas/Descriptor
+          $ref: https://schema.nfh.global/Descriptor/v2.0/attributes.yaml#/components/schemas/Descriptor
         categoryId:
           description: Category code classifying the item
-          $ref: https://schema.beckn.io/CategoryCode/v2.1/attributes.yaml#/components/schemas/CategoryCode
+          $ref: https://schema.nfh.global/CategoryCode/v2.1/attributes.yaml#/components/schemas/CategoryCode
         price:
           description: Price specification for this item
-          $ref: https://schema.beckn.io/PriceSpecification/v2.1/attributes.yaml#/components/schemas/PriceSpecification
+          $ref: https://schema.nfh.global/PriceSpecification/v2.1/attributes.yaml#/components/schemas/PriceSpecification
         quantity:
           description: Available quantity of the item
-          $ref: https://schema.beckn.io/Quantity/v2.0/attributes.yaml#/components/schemas/Quantity
+          $ref: https://schema.nfh.global/Quantity/v2.0/attributes.yaml#/components/schemas/Quantity
         tags:
           description: Tags associated with the item
           type: string

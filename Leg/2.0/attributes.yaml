@@ -12,7 +12,7 @@ info:
 components:
   schemas:
     Leg:
-      x-iri: https://schema.beckn.io/Leg/v2.0
+      x-iri: https://schema.nfh.global/Leg/v2.0
       type: object
       title: Leg
       description: A single uninterrupted segment of a journey made using one transport
@@ -24,13 +24,13 @@ components:
       properties:
         mode:
           description: Mode of fulfillment
-          $ref: https://schema.beckn.io/FulfillmentMode/v2.0/attributes.yaml#/components/schemas/FulfillmentMode
+          $ref: https://schema.nfh.global/FulfillmentMode/v2.0/attributes.yaml#/components/schemas/FulfillmentMode
         origin:
           description: Start location of the leg
-          $ref: https://schema.beckn.io/Location/v2.0/attributes.yaml#/components/schemas/Location
+          $ref: https://schema.nfh.global/Location/v2.0/attributes.yaml#/components/schemas/Location
         destination:
           description: End location of the leg
-          $ref: https://schema.beckn.io/Location/v2.0/attributes.yaml#/components/schemas/Location
+          $ref: https://schema.nfh.global/Location/v2.0/attributes.yaml#/components/schemas/Location
         startTime:
           description: Scheduled or actual start time of the leg
           type: string
@@ -47,7 +47,7 @@ components:
           type: string
         routeRef:
           description: Reference to the route served on this leg
-          $ref: https://schema.beckn.io/Route/v2.0/attributes.yaml#/components/schemas/Route
+          $ref: https://schema.nfh.global/Route/v2.0/attributes.yaml#/components/schemas/Route
         id:
           description: Unique identifier for the fulfillment
           type: string
@@ -56,14 +56,14 @@ components:
           type: string
         agent:
           description: The entity responsible for performing the fulfillment
-          $ref: https://schema.beckn.io/FulfillmentAgent/v2.0/attributes.yaml#/components/schemas/FulfillmentAgent
+          $ref: https://schema.nfh.global/FulfillmentAgent/v2.0/attributes.yaml#/components/schemas/FulfillmentAgent
         participants:
           description: Participants entitled to receive this fulfillment
-          $ref: https://schema.beckn.io/Participant/v2.0/attributes.yaml#/components/schemas/Participant
+          $ref: https://schema.nfh.global/Participant/v2.0/attributes.yaml#/components/schemas/Participant
         stages:
           description: Stages in the fulfillment lifecycle
-          $ref: https://schema.beckn.io/FulfillmentStage/v2.0/attributes.yaml#/components/schemas/FulfillmentStage
+          $ref: https://schema.nfh.global/FulfillmentStage/v2.0/attributes.yaml#/components/schemas/FulfillmentStage
         instructions:
           description: Instructions for fulfillment
-          $ref: https://schema.beckn.io/Descriptor/v2.0/attributes.yaml#/components/schemas/Descriptor
+          $ref: https://schema.nfh.global/Descriptor/v2.0/attributes.yaml#/components/schemas/Descriptor
       additionalProperties: false

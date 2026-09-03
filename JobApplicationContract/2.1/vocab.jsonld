@@ -1,8 +1,8 @@
 {
-  "@import": "https://schema.beckn.io/core/v2/vocab.jsonld",
+  "@import": "https://schema.nfh.global/core/v2/vocab.jsonld",
   "@context": {
-    "@import": "https://schema.beckn.io/core/v2/vocab.jsonld",
-    "jaca": "https://schema.beckn.io/JobApplicationContract#",
+    "@import": "https://schema.nfh.global/core/v2/vocab.jsonld",
+    "jaca": "https://schema.nfh.global/JobApplicationContract#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "ApplicationStage": "jaca:ApplicationStage",
     "APPLIED": "jaca:APPLIED",

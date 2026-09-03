@@ -12,7 +12,7 @@ info:
 components:
   schemas:
     PlaceRequest:
-      x-iri: https://schema.beckn.io/PlaceRequest/v2.0
+      x-iri: https://schema.nfh.global/PlaceRequest/v2.0
       type: object
       title: PlaceRequest
       description: A request for a specific accommodation or seat assignment within
@@ -29,17 +29,17 @@ components:
           type: string
         seatRef:
           description: Specific seat requested, if applicable
-          $ref: https://schema.beckn.io/Seat/v2.0/attributes.yaml#/components/schemas/Seat
+          $ref: https://schema.nfh.global/Seat/v2.0/attributes.yaml#/components/schemas/Seat
         id:
           description: Unique identifier for the contract item
           type: string
         descriptor:
           description: Human-readable description of the item
-          $ref: https://schema.beckn.io/Descriptor/v2.0/attributes.yaml#/components/schemas/Descriptor
+          $ref: https://schema.nfh.global/Descriptor/v2.0/attributes.yaml#/components/schemas/Descriptor
         price:
           description: Price for this contract item
-          $ref: https://schema.beckn.io/PriceSpecification/v2.1/attributes.yaml#/components/schemas/PriceSpecification
+          $ref: https://schema.nfh.global/PriceSpecification/v2.1/attributes.yaml#/components/schemas/PriceSpecification
         quantity:
           description: Quantity of this contract item
-          $ref: https://schema.beckn.io/Quantity/v2.0/attributes.yaml#/components/schemas/Quantity
+          $ref: https://schema.nfh.global/Quantity/v2.0/attributes.yaml#/components/schemas/Quantity
       additionalProperties: false

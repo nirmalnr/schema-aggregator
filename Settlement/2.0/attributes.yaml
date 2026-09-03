@@ -11,13 +11,13 @@ info:
 components:
   schemas:
     Settlement:
-      x-iri: https://schema.beckn.io/Settlement/v2.0
+      x-iri: https://schema.nfh.global/Settlement/v2.0
       type: object
       properties:
         id:
           type: string
         considerationId:
-          $ref: https://schema.beckn.io/Consideration/v2.0/attributes.yaml#/components/schemas/Consideration/properties/id
+          $ref: https://schema.nfh.global/Consideration/v2.0/attributes.yaml#/components/schemas/Consideration/properties/id
         status:
           type: string
           enum:
@@ -25,4 +25,4 @@ components:
           - COMMITTED
           - COMPLETE
         settlementAttributes:
-          $ref: https://schema.beckn.io/Attributes/v2.0/attributes.yaml#/components/schemas/Attributes
+          $ref: https://schema.nfh.global/Attributes/v2.0/attributes.yaml#/components/schemas/Attributes

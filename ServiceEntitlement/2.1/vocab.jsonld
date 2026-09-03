@@ -1,6 +1,6 @@
 {
   "@context": {
-    "se": "https://schema.beckn.io/ServiceEntitlement#",
+    "se": "https://schema.nfh.global/ServiceEntitlement#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#"
   },
   "@graph": [

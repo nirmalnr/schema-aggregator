@@ -14,7 +14,7 @@ info:
 components:
   schemas:
     Entitlement:
-      x-iri: https://schema.beckn.io/Entitlement/v2.0
+      x-iri: https://schema.nfh.global/Entitlement/v2.0
       description: A contractually granted, policy-governed right that allows a specific
         party to access, use, or claim a defined economic resource within stated scope
         and validity constraints. It represents the enforceable permission created
@@ -28,16 +28,16 @@ components:
           type: string
         resource:
           description: The resource being availed or accessed against this entitlement
-          $ref: https://schema.beckn.io/ContractItem/v2.0/attributes.yaml#/components/schemas/ContractItem
+          $ref: https://schema.nfh.global/ContractItem/v2.0/attributes.yaml#/components/schemas/ContractItem
         descriptor:
           description: Human-readable information regarding the entitlement like QR-code
             images, attached documents containing terms and conditions, video or audio
             files instructing the user on how to use the entitlement
-          $ref: https://schema.beckn.io/Descriptor/v2.1/attributes.yaml#/components/schemas/Descriptor
+          $ref: https://schema.nfh.global/Descriptor/v2.1/attributes.yaml#/components/schemas/Descriptor
         credentials:
           type: array
           items:
-            $ref: https://schema.beckn.io/Descriptor/v2.1/attributes.yaml#/components/schemas/Descriptor
+            $ref: https://schema.nfh.global/Descriptor/v2.1/attributes.yaml#/components/schemas/Descriptor
       additionalProperties: true
       required:
       - id

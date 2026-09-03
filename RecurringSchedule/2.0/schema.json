@@ -47,8 +47,8 @@
       "description": "IANA timezone identifier (e.g., Asia/Kolkata)."
     }
   },
-  "$id": "https://schema.beckn.io/RecurringSchedule/v2.0",
-  "x-iri": "https://schema.beckn.io/RecurringSchedule/v2.0",
+  "$id": "https://schema.nfh.global/RecurringSchedule/v2.0",
+  "x-iri": "https://schema.nfh.global/RecurringSchedule/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "RecurringSchedule"
 }

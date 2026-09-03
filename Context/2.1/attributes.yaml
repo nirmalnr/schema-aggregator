@@ -11,7 +11,7 @@ info:
 components:
   schemas:
     Context:
-      x-iri: https://schema.beckn.io/Context/v2.1
+      x-iri: https://schema.nfh.global/Context/v2.1
       description: 'The message envelope header that accompanies every Beckn API call, carrying network addressing, protocol version, action identification, transaction correlation identifiers, timing constraints, and optional cryptographic metadata required to route, authenticate, and correlate messages across the asynchronous Beckn communication pattern.
 
 
@@ -88,4 +88,4 @@ components:
             type: string
             format: uri
         requestDigest:
-          $ref: https://schema.beckn.io/RequestDigest/v2.0/attributes.yaml#/components/schemas/RequestDigest
+          $ref: https://schema.nfh.global/RequestDigest/v2.0/attributes.yaml#/components/schemas/RequestDigest

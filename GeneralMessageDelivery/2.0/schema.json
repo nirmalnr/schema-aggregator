@@ -1,6 +1,6 @@
 {
-  "$id": "https://schema.beckn.io/GeneralMessageDelivery/v2.0",
-  "x-iri": "https://schema.beckn.io/GeneralMessageDelivery/v2.0",
+  "$id": "https://schema.nfh.global/GeneralMessageDelivery/v2.0",
+  "x-iri": "https://schema.nfh.global/GeneralMessageDelivery/v2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "GeneralMessageDelivery",
   "type": "object",
@@ -13,7 +13,7 @@
     },
     "infoMessages": {
       "description": "List of informational messages in this delivery",
-      "$ref": "https://schema.beckn.io/Alert/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/Alert/v2.0/schema.json"
     },
     "channel": {
       "description": "Distribution channel for this message (e.g. WEB, SMS, APP)",
@@ -25,15 +25,15 @@
     },
     "descriptor": {
       "description": "Human-readable description of the alert",
-      "$ref": "https://schema.beckn.io/Descriptor/v2.1/schema.json"
+      "$ref": "https://schema.nfh.global/Descriptor/v2.1/schema.json"
     },
     "validity": {
       "description": "Time period during which the alert is active",
-      "$ref": "https://schema.beckn.io/TimePeriod/v2.1/schema.json"
+      "$ref": "https://schema.nfh.global/TimePeriod/v2.1/schema.json"
     },
     "status": {
       "description": "Current status of the alert",
-      "$ref": "https://schema.beckn.io/State/v2.0/schema.json"
+      "$ref": "https://schema.nfh.global/State/v2.0/schema.json"
     }
   },
   "additionalProperties": false,

@@ -11,8 +11,8 @@ info:
 components:
   schemas:
     AddOn:
-      x-iri: https://schema.beckn.io/AddOn/v2.0
+      x-iri: https://schema.nfh.global/AddOn/v2.0
       description: Add-on to a catalog resource
       oneOf:
-      - $ref: https://schema.beckn.io/Resource/v2.0/attributes.yaml#/components/schemas/Resource
-      - $ref: https://schema.beckn.io/Offer/v2.1/attributes.yaml#/components/schemas/Offer
+      - $ref: https://schema.nfh.global/Resource/v2.0/attributes.yaml#/components/schemas/Resource
+      - $ref: https://schema.nfh.global/Offer/v2.1/attributes.yaml#/components/schemas/Offer

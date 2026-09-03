@@ -1,8 +1,8 @@
 {
   "@context": {
     "schema": "https://schema.org/",
-    "beckn": "https://schema.beckn.io/",
-    "se": "https://schema.beckn.io/ServiceEntitlement#",
+    "beckn": "https://schema.nfh.global/",
+    "se": "https://schema.nfh.global/ServiceEntitlement#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "ServiceEntitlement": "se:ServiceEntitlement",
     "EntitlementState": "se:EntitlementState",

@@ -12,7 +12,7 @@ info:
 components:
   schemas:
     BookingRule:
-      x-iri: https://schema.beckn.io/BookingRule/v2.0
+      x-iri: https://schema.nfh.global/BookingRule/v2.0
       type: object
       title: BookingRule
       description: A set of rules governing how and when a demand-responsive transport
@@ -54,11 +54,11 @@ components:
           type: string
         descriptor:
           description: Human-readable description of the policy
-          $ref: https://schema.beckn.io/Descriptor/v2.0/attributes.yaml#/components/schemas/Descriptor
+          $ref: https://schema.nfh.global/Descriptor/v2.0/attributes.yaml#/components/schemas/Descriptor
         validity:
           description: Validity window for this policy version
-          $ref: https://schema.beckn.io/TimePeriod/v2.0/attributes.yaml#/components/schemas/TimePeriod
+          $ref: https://schema.nfh.global/TimePeriod/v2.0/attributes.yaml#/components/schemas/TimePeriod
         policyAttributes:
           description: Extensible domain-specific policy attributes
-          $ref: https://schema.beckn.io/Attributes/v2.0/attributes.yaml#/components/schemas/Attributes
+          $ref: https://schema.nfh.global/Attributes/v2.0/attributes.yaml#/components/schemas/Attributes
       additionalProperties: false

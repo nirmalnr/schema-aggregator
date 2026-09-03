@@ -12,7 +12,7 @@ info:
 components:
   schemas:
     FareProduct:
-      x-iri: https://schema.beckn.io/FareProduct/v2.0
+      x-iri: https://schema.nfh.global/FareProduct/v2.0
       type: object
       title: FareProduct
       description: A purchasable entitlement to travel defining conditions of use,
@@ -27,7 +27,7 @@ components:
           type: string
         riderCategoryId:
           description: Passenger category eligible for this fare product
-          $ref: https://schema.beckn.io/RiderCategory/v2.0/attributes.yaml#/components/schemas/RiderCategory
+          $ref: https://schema.nfh.global/RiderCategory/v2.0/attributes.yaml#/components/schemas/RiderCategory
         durationType:
           description: Duration basis (e.g. SINGLE_TRIP, DAILY, MONTHLY)
           type: string
@@ -44,13 +44,13 @@ components:
           type: string
         descriptor:
           description: Human-readable description of the offer
-          $ref: https://schema.beckn.io/Descriptor/v2.0/attributes.yaml#/components/schemas/Descriptor
+          $ref: https://schema.nfh.global/Descriptor/v2.0/attributes.yaml#/components/schemas/Descriptor
         price:
           description: Price specification for this offer
-          $ref: https://schema.beckn.io/PriceSpecification/v2.1/attributes.yaml#/components/schemas/PriceSpecification
+          $ref: https://schema.nfh.global/PriceSpecification/v2.1/attributes.yaml#/components/schemas/PriceSpecification
         validity:
           description: Validity period of the offer
-          $ref: https://schema.beckn.io/TimePeriod/v2.0/attributes.yaml#/components/schemas/TimePeriod
+          $ref: https://schema.nfh.global/TimePeriod/v2.0/attributes.yaml#/components/schemas/TimePeriod
         tags:
           description: Tags or labels associated with the offer
           type: string
