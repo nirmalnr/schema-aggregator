@@ -26,3 +26,8 @@ sources:
     schemaPath: "https://github.com/beckn/DDM/tree/main/specification/schema"
     description: "Decentralized Data Marketplace schema"
     tags: ["data exchange", "data"]
+
+  - id: beckn_open-tourism_main_ont_schema
+    schemaPath: "https://github.com/beckn/open-tourism/tree/main/ONT/schema"
+    description: "Open Tourism network"
+    tags: ["tourism", "travel"]
