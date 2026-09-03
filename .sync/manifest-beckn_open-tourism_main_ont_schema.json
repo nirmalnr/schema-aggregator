@@ -1,0 +1,10 @@
+{
+  "schemas": [
+    "AccommodationRate",
+    "AccommodationReservation",
+    "AccommodationResource",
+    "CancellationTerms",
+    "GuestManifest"
+  ],
+  "last_synced": "2026-09-03T03:54:39.443583+00:00"
+}
